@@ -1,0 +1,389 @@
+<svg width="1400" height="1200" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="awsGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#FF9900;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#FF6600;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="k8sGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#326CE5;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#1E3A8A;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="dbGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#336791;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#1E3A5F;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="monitoringGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#E6522C;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#B8441F;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="1400" height="1200" fill="#f8f9fa"/>
+  
+  <!-- Title -->
+  <text x="700" y="30" text-anchor="middle" font-family="Arial, sans-serif" font-size="24" font-weight="bold" fill="#2c3e50">Deployment Architecture - File Upload System</text>
+  
+  <!-- Global Infrastructure -->
+  <rect x="50" y="60" width="1300" height="80" rx="10" fill="#2c3e50" stroke="#34495e" stroke-width="2"/>
+  <text x="700" y="85" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="white">Global Infrastructure</text>
+  
+  <!-- Regions -->
+  <rect x="100" y="100" width="150" height="30" rx="5" fill="url(#awsGradient)" stroke="#ff6600" stroke-width="1"/>
+  <text x="175" y="120" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="white">US-East-1</text>
+  
+  <rect x="270" y="100" width="150" height="30" rx="5" fill="url(#awsGradient)" stroke="#ff6600" stroke-width="1"/>
+  <text x="345" y="120" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="white">US-West-2</text>
+  
+  <rect x="440" y="100" width="150" height="30" rx="5" fill="url(#awsGradient)" stroke="#ff6600" stroke-width="1"/>
+  <text x="515" y="120" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="white">EU-West-1</text>
+  
+  <rect x="610" y="100" width="150" height="30" rx="5" fill="url(#awsGradient)" stroke="#ff6600" stroke-width="1"/>
+  <text x="685" y="120" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="white">AP-Southeast-1</text>
+  
+  <rect x="780" y="100" width="150" height="30" rx="5" fill="url(#awsGradient)" stroke="#ff6600" stroke-width="1"/>
+  <text x="855" y="120" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="white">CloudFront CDN</text>
+  
+  <rect x="950" y="100" width="150" height="30" rx="5" fill="url(#awsGradient)" stroke="#ff6600" stroke-width="1"/>
+  <text x="1025" y="120" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="white">Route 53 DNS</text>
+  
+  <!-- Primary Region (US-East-1) -->
+  <rect x="50" y="160" width="650" height="500" rx="10" fill="#fdf6e3" stroke="#f39c12" stroke-width="3"/>
+  <text x="375" y="185" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="#d68910">Primary Region: US-East-1 (Production)</text>
+  
+  <!-- Availability Zones -->
+  <rect x="80" y="200" width="280" height="220" rx="5" fill="#eaf2f8" stroke="#3498db" stroke-width="2"/>
+  <text x="220" y="220" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#2980b9">Availability Zone A</text>
+  
+  <rect x="390" y="200" width="280" height="220" rx="5" fill="#eaf2f8" stroke="#3498db" stroke-width="2"/>
+  <text x="530" y="220" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#2980b9">Availability Zone B</text>
+  
+  <!-- Kubernetes Clusters -->
+  <rect x="100" y="240" width="240" height="160" rx="5" fill="url(#k8sGradient)" stroke="#1e3a8a" stroke-width="2"/>
+  <text x="220" y="260" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="white">EKS Cluster A</text>
+  
+  <!-- Pods in AZ-A -->
+  <rect x="110" y="275" width="70" height="30" rx="3" fill="#60a5fa" stroke="#3b82f6" stroke-width="1"/>
+  <text x="145" y="295" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="white">API Gateway</text>
+  
+  <rect x="190" y="275" width="70" height="30" rx="3" fill="#60a5fa" stroke="#3b82f6" stroke-width="1"/>
+  <text x="225" y="295" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="white">Auth Service</text>
+  
+  <rect x="270" y="275" width="60" height="30" rx="3" fill="#60a5fa" stroke="#3b82f6" stroke-width="1"/>
+  <text x="300" y="295" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="white">File Service</text>
+  
+  <rect x="110" y="315" width="70" height="30" rx="3" fill="#60a5fa" stroke="#3b82f6" stroke-width="1"/>
+  <text x="145" y="335" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="white">Permission</text>
+  
+  <rect x="190" y="315" width="70" height="30" rx="3" fill="#60a5fa" stroke="#3b82f6" stroke-width="1"/>
+  <text x="225" y="335" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="white">Image Proc</text>
+  
+  <rect x="270" y="315" width="60" height="30" rx="3" fill="#60a5fa" stroke="#3b82f6" stroke-width="1"/>
+  <text x="300" y="335" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="white">Notification</text>
+  
+  <rect x="110" y="355" width="100" height="30" rx="3" fill="#f59e0b" stroke="#d97706" stroke-width="1"/>
+  <text x="160" y="375" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="white">Redis Cache</text>
+  
+  <rect x="220" y="355" width="110" height="30" rx="3" fill="#8b5cf6" stroke="#7c3aed" stroke-width="1"/>
+  <text x="275" y="375" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="white">Message Queue</text>
+  
+  <!-- Kubernetes Cluster B -->
+  <rect x="410" y="240" width="240" height="160" rx="5" fill="url(#k8sGradient)" stroke="#1e3a8a" stroke-width="2"/>
+  <text x="530" y="260" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="white">EKS Cluster B</text>
+  
+  <!-- Pods in AZ-B -->
+  <rect x="420" y="275" width="70" height="30" rx="3" fill="#60a5fa" stroke="#3b82f6" stroke-width="1"/>
+  <text x="455" y="295" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="white">API Gateway</text>
+  
+  <rect x="500" y="275" width="70" height="30" rx="3" fill="#60a5fa" stroke="#3b82f6" stroke-width="1"/>
+  <text x="535" y="295" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="white">Auth Service</text>
+  
+  <rect x="580" y="275" width="60" height="30" rx="3" fill="#60a5fa" stroke="#3b82f6" stroke-width="1"/>
+  <text x="610" y="295" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="white">File Service</text>
+  
+  <rect x="420" y="315" width="70" height="30" rx="3" fill="#60a5fa" stroke="#3b82f6" stroke-width="1"/>
+  <text x="455" y="335" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="white">Permission</text>
+  
+  <rect x="500" y="315" width="70" height="30" rx="3" fill="#60a5fa" stroke="#3b82f6" stroke-width="1"/>
+  <text x="535" y="335" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="white">Image Proc</text>
+  
+  <rect x="580" y="315" width="60" height="30" rx="3" fill="#60a5fa" stroke="#3b82f6" stroke-width="1"/>
+  <text x="610" y="335" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="white">Notification</text>
+  
+  <rect x="420" y="355" width="100" height="30" rx="3" fill="#f59e0b" stroke="#d97706" stroke-width="1"/>
+  <text x="470" y="375" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="white">Redis Cache</text>
+  
+  <rect x="530" y="355" width="110" height="30" rx="3" fill="#8b5cf6" stroke="#7c3aed" stroke-width="1"/>
+  <text x="585" y="375" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="white">Message Queue</text>
+  
+  <!-- Load Balancer -->
+  <rect x="80" y="440" width="590" height="40" rx="5" fill="#e74c3c" stroke="#c0392b" stroke-width="2"/>
+  <text x="375" y="465" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="white">Application Load Balancer (ALB)</text>
+  
+  <!-- Database Layer -->
+  <rect x="80" y="500" width="280" height="140" rx="5" fill="url(#dbGradient)" stroke="#1e3a5f" stroke-width="2"/>
+  <text x="220" y="520" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="white">Database Layer</text>
+  
+  <rect x="100" y="535" width="120" height="30" rx="3" fill="#4ade80" stroke="#22c55e" stroke-width="1"/>
+  <text x="160" y="555" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="white">PostgreSQL Primary</text>
+  
+  <rect x="230" y="535" width="120" height="30" rx="3" fill="#4ade80" stroke="#22c55e" stroke-width="1"/>
+  <text x="290" y="555" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="white">PostgreSQL Replica</text>
+  
+  <rect x="100" y="575" width="120" height="30" rx="3" fill="#f59e0b" stroke="#d97706" stroke-width="1"/>
+  <text x="160" y="595" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="white">Redis Cluster</text>
+  
+  <rect x="230" y="575" width="120" height="30" rx="3" fill="#8b5cf6" stroke="#7c3aed" stroke-width="1"/>
+  <text x="290" y="595" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="white">Elasticsearch</text>
+  
+  <rect x="165" y="615" width="120" height="20" rx="3" fill="#64748b" stroke="#475569" stroke-width="1"/>
+  <text x="225" y="630" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" fill="white">RDS Multi-AZ</text>
+  
+  <!-- Storage Layer -->
+  <rect x="390" y="500" width="280" height="140" rx="5" fill="#27ae60" stroke="#229954" stroke-width="2"/>
+  <text x="530" y="520" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="white">Storage Layer</text>
+  
+  <rect x="410" y="535" width="120" height="30" rx="3" fill="#f97316" stroke="#ea580c" stroke-width="1"/>
+  <text x="470" y="555" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="white">S3 Primary</text>
+  
+  <rect x="540" y="535" width="120" height="30" rx="3" fill="#f97316" stroke="#ea580c" stroke-width="1"/>
+  <text x="600" y="555" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="white">S3 Variants</text>
+  
+  <rect x="410" y="575" width="120" height="30" rx="3" fill="#06b6d4" stroke="#0891b2" stroke-width="1"/>
+  <text x="470" y="595" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="white">S3 Glacier</text>
+  
+  <rect x="540" y="575" width="120" height="30" rx="3" fill="#8b5cf6" stroke="#7c3aed" stroke-width="1"/>
+  <text x="600" y="595" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="white">EFS Shared</text>
+  
+  <rect x="475" y="615" width="120" height="20" rx="3" fill="#64748b" stroke="#475569" stroke-width="1"/>
+  <text x="535" y="630" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" fill="white">Cross-Region Replication</text>
+  
+  <!-- Secondary Region (US-West-2) -->
+  <rect x="720" y="160" width="630" height="300" rx="10" fill="#f4f1de" stroke="#e67e22" stroke-width="3"/>
+  <text x="1035" y="185" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="#d68910">Secondary Region: US-West-2 (DR)</text>
+  
+  <!-- DR Infrastructure -->
+  <rect x="750" y="200" width="570" height="120" rx="5" fill="#fef3c7" stroke="#f59e0b" stroke-width="2"/>
+  <text x="1035" y="220" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#92400e">Disaster Recovery Infrastructure</text>
+  
+  <rect x="770" y="240" width="120" height="30" rx="3" fill="#60a5fa" stroke="#3b82f6" stroke-width="1"/>
+  <text x="830" y="260" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="white">Standby EKS</text>
+  
+  <rect x="900" y="240" width="120" height="30" rx="3" fill="#4ade80" stroke="#22c55e" stroke-width="1"/>
+  <text x="960" y="260" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="white">RDS Read Replica</text>
+  
+  <rect x="1030" y="240" width="120" height="30" rx="3" fill="#f97316" stroke="#ea580c" stroke-width="1"/>
+  <text x="1090" y="260" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="white">S3 Cross-Region</text>
+  
+  <rect x="1160" y="240" width="120" height="30" rx="3" fill="#f59e0b" stroke="#d97706" stroke-width="1"/>
+  <text x="1220" y="260" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="white">Redis Backup</text>
+  
+  <rect x="835" y="280" width="120" height="30" rx="3" fill="#8b5cf6" stroke="#7c3aed" stroke-width="1"/>
+  <text x="895" y="300" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="white">Automated Failover</text>
+  
+  <rect x="965" y="280" width="120" height="30" rx="3" fill="#ef4444" stroke="#dc2626" stroke-width="1"/>
+  <text x="1025" y="300" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="white">Health Checks</text>
+  
+  <rect x="1095" y="280" width="120" height="30" rx="3" fill="#06b6d4" stroke="#0891b2" stroke-width="1"/>
+  <text x="1155" y="300" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="white">DNS Failover</text>
+  
+  <!-- Development Environment -->
+  <rect x="750" y="340" width="270" height="100" rx="5" fill="#e0f2fe" stroke="#0284c7" stroke-width="2"/>
+  <text x="885" y="360" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#0369a1">Development Environment</text>
+  
+  <rect x="770" y="375" width="80" height="25" rx="3" fill="#38bdf8" stroke="#0284c7" stroke-width="1"/>
+  <text x="810" y="392" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" fill="white">Dev EKS</text>
+  
+  <rect x="860" y="375" width="80" height="25" rx="3" fill="#38bdf8" stroke="#0284c7" stroke-width="1"/>
+  <text x="900" y="392" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" fill="white">Test DB</text>
+  
+  <rect x="950" y="375" width="80" height="25" rx="3" fill="#38bdf8" stroke="#0284c7" stroke-width="1"/>
+  <text x="990" y="392" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" fill="white">S3 Dev</text>
+  
+  <rect x="815" y="410" width="80" height="25" rx="3" fill="#fbbf24" stroke="#f59e0b" stroke-width="1"/>
+  <text x="855" y="427" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" fill="white">CI/CD</text>
+  
+  <rect x="905" y="410" width="80" height="25" rx="3" fill="#a78bfa" stroke="#8b5cf6" stroke-width="1"/>
+  <text x="945" y="427" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" fill="white">Staging</text>
+  
+  <!-- Staging Environment -->
+  <rect x="1050" y="340" width="270" height="100" rx="5" fill="#fef3c7" stroke="#f59e0b" stroke-width="2"/>
+  <text x="1185" y="360" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#92400e">Staging Environment</text>
+  
+  <rect x="1070" y="375" width="80" height="25" rx="3" fill="#fbbf24" stroke="#f59e0b" stroke-width="1"/>
+  <text x="1110" y="392" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" fill="white">Stage EKS</text>
+  
+  <rect x="1160" y="375" width="80" height="25" rx="3" fill="#fbbf24" stroke="#f59e0b" stroke-width="1"/>
+  <text x="1200" y="392" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" fill="white">Stage DB</text>
+  
+  <rect x="1250" y="375" width="80" height="25" rx="3" fill="#fbbf24" stroke="#f59e0b" stroke-width="1"/>
+  <text x="1290" y="392" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" fill="white">S3 Stage</text>
+  
+  <rect x="1115" y="410" width="80" height="25" rx="3" fill="#34d399" stroke="#10b981" stroke-width="1"/>
+  <text x="1155" y="427" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" fill="white">Load Test</text>
+  
+  <rect x="1205" y="410" width="80" height="25" rx="3" fill="#f87171" stroke="#ef4444" stroke-width="1"/>
+  <text x="1245" y="427" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" fill="white">Security Test</text>
+  
+  <!-- Monitoring & Observability -->
+  <rect x="50" y="680" width="1300" height="200" rx="10" fill="#fef7f0" stroke="#e6522c" stroke-width="3"/>
+  <text x="700" y="705" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="#b8441f">Monitoring & Observability</text>
+  
+  <!-- Monitoring Tools -->
+  <rect x="100" y="720" width="150" height="60" rx="5" fill="url(#monitoringGradient)" stroke="#b8441f" stroke-width="2"/>
+  <text x="175" y="740" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="white">Prometheus</text>
+  <text x="175" y="755" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">Metrics Collection</text>
+  <text x="175" y="770" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">Alerting</text>
+  
+  <rect x="280" y="720" width="150" height="60" rx="5" fill="url(#monitoringGradient)" stroke="#b8441f" stroke-width="2"/>
+  <text x="355" y="740" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="white">Grafana</text>
+  <text x="355" y="755" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">Dashboards</text>
+  <text x="355" y="770" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">Visualization</text>
+  
+  <rect x="460" y="720" width="150" height="60" rx="5" fill="url(#monitoringGradient)" stroke="#b8441f" stroke-width="2"/>
+  <text x="535" y="740" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="white">Jaeger</text>
+  <text x="535" y="755" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">Distributed Tracing</text>
+  <text x="535" y="770" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">Performance</text>
+  
+  <rect x="640" y="720" width="150" height="60" rx="5" fill="url(#monitoringGradient)" stroke="#b8441f" stroke-width="2"/>
+  <text x="715" y="740" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="white">ELK Stack</text>
+  <text x="715" y="755" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">Log Aggregation</text>
+  <text x="715" y="770" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">Search & Analysis</text>
+  
+  <rect x="820" y="720" width="150" height="60" rx="5" fill="url(#monitoringGradient)" stroke="#b8441f" stroke-width="2"/>
+  <text x="895" y="740" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="white">CloudWatch</text>
+  <text x="895" y="755" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">AWS Native</text>
+  <text x="895" y="770" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">Infrastructure</text>
+  
+  <rect x="1000" y="720" width="150" height="60" rx="5" fill="url(#monitoringGradient)" stroke="#b8441f" stroke-width="2"/>
+  <text x="1075" y="740" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="white">PagerDuty</text>
+  <text x="1075" y="755" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">Incident Mgmt</text>
+  <text x="1075" y="770" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">On-call Rotation</text>
+  
+  <rect x="1180" y="720" width="150" height="60" rx="5" fill="url(#monitoringGradient)" stroke="#b8441f" stroke-width="2"/>
+  <text x="1255" y="740" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="white">Datadog</text>
+  <text x="1255" y="755" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">APM</text>
+  <text x="1255" y="770" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">Real User Monitoring</text>
+  
+  <!-- SLI/SLO Metrics -->
+  <rect x="100" y="800" width="600" height="60" rx="5" fill="#2c3e50" stroke="#34495e" stroke-width="2"/>
+  <text x="400" y="820" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="white">SLI/SLO Metrics</text>
+  
+  <text x="120" y="840" font-family="Arial, sans-serif" font-size="10" fill="white">• Availability: 99.99% (SLO: 99.9%)</text>
+  <text x="120" y="855" font-family="Arial, sans-serif" font-size="10" fill="white">• Latency P95: <100ms (SLO: <200ms)</text>
+  
+  <text x="320" y="840" font-family="Arial, sans-serif" font-size="10" fill="white">• Error Rate: <0.1% (SLO: <1%)</text>
+  <text x="320" y="855" font-family="Arial, sans-serif" font-size="10" fill="white">• Throughput: 10K req/s</text>
+  
+  <text x="520" y="840" font-family="Arial, sans-serif" font-size="10" fill="white">• MTTR: <15 minutes</text>
+  <text x="520" y="855" font-family="Arial, sans-serif" font-size="10" fill="white">• MTBF: >720 hours</text>
+  
+  <!-- Alert Channels -->
+  <rect x="720" y="800" width="600" height="60" rx="5" fill="#8e44ad" stroke="#7d3c98" stroke-width="2"/>
+  <text x="1020" y="820" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="white">Alert Channels</text>
+  
+  <text x="740" y="840" font-family="Arial, sans-serif" font-size="10" fill="white">• Slack Integration</text>
+  <text x="740" y="855" font-family="Arial, sans-serif" font-size="10" fill="white">• Email Notifications</text>
+  
+  <text x="880" y="840" font-family="Arial, sans-serif" font-size="10" fill="white">• SMS for Critical</text>
+  <text x="880" y="855" font-family="Arial, sans-serif" font-size="10" fill="white">• Webhook Integration</text>
+  
+  <text x="1020" y="840" font-family="Arial, sans-serif" font-size="10" fill="white">• Auto-scaling Triggers</text>
+  <text x="1020" y="855" font-family="Arial, sans-serif" font-size="10" fill="white">• Runbook Automation</text>
+  
+  <text x="1180" y="840" font-family="Arial, sans-serif" font-size="10" fill="white">• Incident Response</text>
+  <text x="1180" y="855" font-family="Arial, sans-serif" font-size="10" fill="white">• Escalation Policies</text>
+  
+  <!-- CI/CD Pipeline -->
+  <rect x="50" y="900" width="1300" height="120" rx="10" fill="#e8f5e8" stroke="#27ae60" stroke-width="3"/>
+  <text x="700" y="925" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="#229954">CI/CD Pipeline</text>
+  
+  <!-- Pipeline Stages -->
+  <rect x="100" y="940" width="120" height="40" rx="5" fill="#3498db" stroke="#2980b9" stroke-width="2"/>
+  <text x="160" y="965" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="white">Source Control</text>
+  <text x="160" y="975" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" fill="white">GitHub</text>
+  
+  <rect x="240" y="940" width="120" height="40" rx="5" fill="#e74c3c" stroke="#c0392b" stroke-width="2"/>
+  <text x="300" y="965" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="white">Build & Test</text>
+  <text x="300" y="975" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" fill="white">GitHub Actions</text>
+  
+  <rect x="380" y="940" width="120" height="40" rx="5" fill="#f39c12" stroke="#e67e22" stroke-width="2"/>
+  <text x="440" y="965" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="white">Security Scan</text>
+  <text x="440" y="975" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" fill="white">Snyk, SonarQube</text>
+  
+  <rect x="520" y="940" width="120" height="40" rx="5" fill="#9b59b6" stroke="#8e44ad" stroke-width="2"/>
+  <text x="580" y="965" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="white">Container Build</text>
+  <text x="580" y="975" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" fill="white">Docker, ECR</text>
+  
+  <rect x="660" y="940" width="120" height="40" rx="5" fill="#1abc9c" stroke="#16a085" stroke-width="2"/>
+  <text x="720" y="965" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="white">Deploy Staging</text>
+  <text x="720" y="975" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" fill="white">ArgoCD</text>
+  
+  <rect x="800" y="940" width="120" height="40" rx="5" fill="#34495e" stroke="#2c3e50" stroke-width="2"/>
+  <text x="860" y="965" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="white">Integration Test</text>
+  <text x="860" y="975" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" fill="white">Automated</text>
+  
+  <rect x="940" y="940" width="120" height="40" rx="5" fill="#e67e22" stroke="#d35400" stroke-width="2"/>
+  <text x="1000" y="965" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="white">Manual Approval</text>
+  <text x="1000" y="975" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" fill="white">Production Gate</text>
+  
+  <rect x="1080" y="940" width="120" height="40" rx="5" fill="#27ae60" stroke="#229954" stroke-width="2"/>
+  <text x="1140" y="965" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="white">Deploy Prod</text>
+  <text x="1140" y="975" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" fill="white">Blue/Green</text>
+  
+  <rect x="1220" y="940" width="120" height="40" rx="5" fill="#8e44ad" stroke="#7d3c98" stroke-width="2"/>
+  <text x="1280" y="965" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="white">Post-Deploy</text>
+  <text x="1280" y="975" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" fill="white">Monitoring</text>
+  
+  <!-- Pipeline Arrows -->
+  <defs>
+    <marker id="pipelineArrow" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#27ae60"/>
+    </marker>
+  </defs>
+  
+  <line x1="220" y1="960" x2="240" y2="960" stroke="#27ae60" stroke-width="2" marker-end="url(#pipelineArrow)"/>
+  <line x1="360" y1="960" x2="380" y2="960" stroke="#27ae60" stroke-width="2" marker-end="url(#pipelineArrow)"/>
+  <line x1="500" y1="960" x2="520" y2="960" stroke="#27ae60" stroke-width="2" marker-end="url(#pipelineArrow)"/>
+  <line x1="640" y1="960" x2="660" y2="960" stroke="#27ae60" stroke-width="2" marker-end="url(#pipelineArrow)"/>
+  <line x1="780" y1="960" x2="800" y2="960" stroke="#27ae60" stroke-width="2" marker-end="url(#pipelineArrow)"/>
+  <line x1="920" y1="960" x2="940" y2="960" stroke="#27ae60" stroke-width="2" marker-end="url(#pipelineArrow)"/>
+  <line x1="1060" y1="960" x2="1080" y2="960" stroke="#27ae60" stroke-width="2" marker-end="url(#pipelineArrow)"/>
+  <line x1="1200" y1="960" x2="1220" y2="960" stroke="#27ae60" stroke-width="2" marker-end="url(#pipelineArrow)"/>
+  
+  <!-- Deployment Strategy -->
+  <rect x="50" y="1040" width="1300" height="120" rx="10" fill="#f4ecf7" stroke="#8e44ad" stroke-width="3"/>
+  <text x="700" y="1065" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="#7d3c98">Deployment Strategy & Scaling</text>
+  
+  <!-- Deployment Types -->
+  <rect x="100" y="1080" width="200" height="60" rx="5" fill="#3498db" stroke="#2980b9" stroke-width="2"/>
+  <text x="200" y="1100" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="white">Blue/Green Deployment</text>
+  <text x="200" y="1115" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">Zero Downtime</text>
+  <text x="200" y="1130" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">Instant Rollback</text>
+  
+  <rect x="320" y="1080" width="200" height="60" rx="5" fill="#27ae60" stroke="#229954" stroke-width="2"/>
+  <text x="420" y="1100" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="white">Canary Deployment</text>
+  <text x="420" y="1115" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">Gradual Rollout</text>
+  <text x="420" y="1130" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">Risk Mitigation</text>
+  
+  <rect x="540" y="1080" width="200" height="60" rx="5" fill="#e74c3c" stroke="#c0392b" stroke-width="2"/>
+  <text x="640" y="1100" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="white">Auto Scaling</text>
+  <text x="640" y="1115" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">HPA & VPA</text>
+  <text x="640" y="1130" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">Cluster Autoscaler</text>
+  
+  <rect x="760" y="1080" width="200" height="60" rx="5" fill="#f39c12" stroke="#e67e22" stroke-width="2"/>
+  <text x="860" y="1100" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="white">Circuit Breaker</text>
+  <text x="860" y="1115" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">Fault Tolerance</text>
+  <text x="860" y="1130" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">Hystrix Pattern</text>
+  
+  <rect x="980" y="1080" width="200" height="60" rx="5" fill="#9b59b6" stroke="#8e44ad" stroke-width="2"/>
+  <text x="1080" y="1100" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="white">Feature Flags</text>
+  <text x="1080" y="1115" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">LaunchDarkly</text>
+  <text x="1080" y="1130" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">A/B Testing</text>
+  
+  <rect x="1200" y="1080" width="140" height="60" rx="5" fill="#1abc9c" stroke="#16a085" stroke-width="2"/>
+  <text x="1270" y="1100" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="white">GitOps</text>
+  <text x="1270" y="1115" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">ArgoCD</text>
+  <text x="1270" y="1130" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">Declarative</text>
+  
+</svg>

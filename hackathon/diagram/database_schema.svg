@@ -1,0 +1,299 @@
+<svg width="1200" height="900" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="tableGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#3498DB;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#2980B9;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="relationGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#E74C3C;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#C0392B;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="1200" height="900" fill="#f8f9fa"/>
+  
+  <!-- Title -->
+  <text x="600" y="30" text-anchor="middle" font-family="Arial, sans-serif" font-size="24" font-weight="bold" fill="#2c3e50">Database Schema - File Upload System with Access Control</text>
+  
+  <!-- Users Table -->
+  <rect x="50" y="80" width="250" height="200" rx="10" fill="url(#tableGradient)" stroke="#2980b9" stroke-width="2"/>
+  <text x="175" y="105" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="white">users</text>
+  <line x1="60" y1="115" x2="290" y2="115" stroke="white" stroke-width="2"/>
+  
+  <text x="70" y="135" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="white">id</text>
+  <text x="200" y="135" font-family="Arial, sans-serif" font-size="12" fill="white">INTEGER PRIMARY KEY</text>
+  
+  <text x="70" y="155" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="white">username</text>
+  <text x="200" y="155" font-family="Arial, sans-serif" font-size="12" fill="white">VARCHAR(50) UNIQUE</text>
+  
+  <text x="70" y="175" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="white">password_hash</text>
+  <text x="200" y="175" font-family="Arial, sans-serif" font-size="12" fill="white">VARCHAR(255)</text>
+  
+  <text x="70" y="195" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="white">role</text>
+  <text x="200" y="195" font-family="Arial, sans-serif" font-size="12" fill="white">VARCHAR(20)</text>
+  
+  <text x="70" y="215" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="white">created_at</text>
+  <text x="200" y="215" font-family="Arial, sans-serif" font-size="12" fill="white">TIMESTAMP</text>
+  
+  <text x="70" y="235" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="white">last_login</text>
+  <text x="200" y="235" font-family="Arial, sans-serif" font-size="12" fill="white">TIMESTAMP</text>
+  
+  <text x="70" y="255" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="white">is_active</text>
+  <text x="200" y="255" font-family="Arial, sans-serif" font-size="12" fill="white">BOOLEAN</text>
+  
+  <!-- Files Table -->
+  <rect x="400" y="80" width="300" height="280" rx="10" fill="url(#tableGradient)" stroke="#2980b9" stroke-width="2"/>
+  <text x="550" y="105" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="white">files</text>
+  <line x1="410" y1="115" x2="690" y2="115" stroke="white" stroke-width="2"/>
+  
+  <text x="420" y="135" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="white">id</text>
+  <text x="580" y="135" font-family="Arial, sans-serif" font-size="12" fill="white">INTEGER PRIMARY KEY</text>
+  
+  <text x="420" y="155" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="white">owner_id</text>
+  <text x="580" y="155" font-family="Arial, sans-serif" font-size="12" fill="white">INTEGER FK → users.id</text>
+  
+  <text x="420" y="175" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="white">filename</text>
+  <text x="580" y="175" font-family="Arial, sans-serif" font-size="12" fill="white">VARCHAR(255)</text>
+  
+  <text x="420" y="195" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="white">original_name</text>
+  <text x="580" y="195" font-family="Arial, sans-serif" font-size="12" fill="white">VARCHAR(255)</text>
+  
+  <text x="420" y="215" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="white">content_type</text>
+  <text x="580" y="215" font-family="Arial, sans-serif" font-size="12" fill="white">VARCHAR(100)</text>
+  
+  <text x="420" y="235" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="white">file_size</text>
+  <text x="580" y="235" font-family="Arial, sans-serif" font-size="12" fill="white">INTEGER</text>
+  
+  <text x="420" y="255" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="white">file_path</text>
+  <text x="580" y="255" font-family="Arial, sans-serif" font-size="12" fill="white">VARCHAR(500)</text>
+  
+  <text x="420" y="275" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="white">upload_ip</text>
+  <text x="580" y="275" font-family="Arial, sans-serif" font-size="12" fill="white">VARCHAR(45)</text>
+  
+  <text x="420" y="295" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="white">user_agent</text>
+  <text x="580" y="295" font-family="Arial, sans-serif" font-size="12" fill="white">TEXT</text>
+  
+  <text x="420" y="315" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="white">created_at</text>
+  <text x="580" y="315" font-family="Arial, sans-serif" font-size="12" fill="white">TIMESTAMP</text>
+  
+  <text x="420" y="335" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="white">is_deleted</text>
+  <text x="580" y="335" font-family="Arial, sans-serif" font-size="12" fill="white">BOOLEAN</text>
+  
+  <!-- User Groups Table -->
+  <rect x="800" y="80" width="250" height="160" rx="10" fill="url(#tableGradient)" stroke="#2980b9" stroke-width="2"/>
+  <text x="925" y="105" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="white">user_groups</text>
+  <line x1="810" y1="115" x2="1040" y2="115" stroke="white" stroke-width="2"/>
+  
+  <text x="820" y="135" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="white">id</text>
+  <text x="950" y="135" font-family="Arial, sans-serif" font-size="12" fill="white">INTEGER PRIMARY KEY</text>
+  
+  <text x="820" y="155" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="white">group_name</text>
+  <text x="950" y="155" font-family="Arial, sans-serif" font-size="12" fill="white">VARCHAR(100)</text>
+  
+  <text x="820" y="175" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="white">description</text>
+  <text x="950" y="175" font-family="Arial, sans-serif" font-size="12" fill="white">TEXT</text>
+  
+  <text x="820" y="195" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="white">created_by</text>
+  <text x="950" y="195" font-family="Arial, sans-serif" font-size="12" fill="white">INTEGER FK → users.id</text>
+  
+  <text x="820" y="215" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="white">created_at</text>
+  <text x="950" y="215" font-family="Arial, sans-serif" font-size="12" fill="white">TIMESTAMP</text>
+  
+  <!-- Group Members Table -->
+  <rect x="800" y="280" width="250" height="140" rx="10" fill="url(#tableGradient)" stroke="#2980b9" stroke-width="2"/>
+  <text x="925" y="305" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="white">group_members</text>
+  <line x1="810" y1="315" x2="1040" y2="315" stroke="white" stroke-width="2"/>
+  
+  <text x="820" y="335" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="white">id</text>
+  <text x="950" y="335" font-family="Arial, sans-serif" font-size="12" fill="white">INTEGER PRIMARY KEY</text>
+  
+  <text x="820" y="355" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="white">group_id</text>
+  <text x="950" y="355" font-family="Arial, sans-serif" font-size="12" fill="white">INTEGER FK → user_groups.id</text>
+  
+  <text x="820" y="375" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="white">user_id</text>
+  <text x="950" y="375" font-family="Arial, sans-serif" font-size="12" fill="white">INTEGER FK → users.id</text>
+  
+  <text x="820" y="395" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="white">joined_at</text>
+  <text x="950" y="395" font-family="Arial, sans-serif" font-size="12" fill="white">TIMESTAMP</text>
+  
+  <!-- File Permissions Table -->
+  <rect x="50" y="400" width="300" height="200" rx="10" fill="url(#relationGradient)" stroke="#c0392b" stroke-width="2"/>
+  <text x="200" y="425" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="white">file_permissions</text>
+  <line x1="60" y1="435" x2="340" y2="435" stroke="white" stroke-width="2"/>
+  
+  <text x="70" y="455" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="white">id</text>
+  <text x="230" y="455" font-family="Arial, sans-serif" font-size="12" fill="white">INTEGER PRIMARY KEY</text>
+  
+  <text x="70" y="475" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="white">file_id</text>
+  <text x="230" y="475" font-family="Arial, sans-serif" font-size="12" fill="white">INTEGER FK → files.id</text>
+  
+  <text x="70" y="495" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="white">user_id</text>
+  <text x="230" y="495" font-family="Arial, sans-serif" font-size="12" fill="white">INTEGER FK → users.id</text>
+  
+  <text x="70" y="515" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="white">can_read</text>
+  <text x="230" y="515" font-family="Arial, sans-serif" font-size="12" fill="white">BOOLEAN</text>
+  
+  <text x="70" y="535" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="white">can_download</text>
+  <text x="230" y="535" font-family="Arial, sans-serif" font-size="12" fill="white">BOOLEAN</text>
+  
+  <text x="70" y="555" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="white">can_write</text>
+  <text x="230" y="555" font-family="Arial, sans-serif" font-size="12" fill="white">BOOLEAN</text>
+  
+  <text x="70" y="575" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="white">can_share</text>
+  <text x="230" y="575" font-family="Arial, sans-serif" font-size="12" fill="white">BOOLEAN</text>
+  
+  <text x="70" y="595" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="white">granted_at</text>
+  <text x="230" y="595" font-family="Arial, sans-serif" font-size="12" fill="white">TIMESTAMP</text>
+  
+  <!-- Group File Permissions Table -->
+  <rect x="400" y="400" width="300" height="200" rx="10" fill="url(#relationGradient)" stroke="#c0392b" stroke-width="2"/>
+  <text x="550" y="425" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="white">group_file_permissions</text>
+  <line x1="410" y1="435" x2="690" y2="435" stroke="white" stroke-width="2"/>
+  
+  <text x="420" y="455" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="white">id</text>
+  <text x="580" y="455" font-family="Arial, sans-serif" font-size="12" fill="white">INTEGER PRIMARY KEY</text>
+  
+  <text x="420" y="475" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="white">file_id</text>
+  <text x="580" y="475" font-family="Arial, sans-serif" font-size="12" fill="white">INTEGER FK → files.id</text>
+  
+  <text x="420" y="495" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="white">group_id</text>
+  <text x="580" y="495" font-family="Arial, sans-serif" font-size="12" fill="white">INTEGER FK → user_groups.id</text>
+  
+  <text x="420" y="515" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="white">can_read</text>
+  <text x="580" y="515" font-family="Arial, sans-serif" font-size="12" fill="white">BOOLEAN</text>
+  
+  <text x="420" y="535" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="white">can_download</text>
+  <text x="580" y="535" font-family="Arial, sans-serif" font-size="12" fill="white">BOOLEAN</text>
+  
+  <text x="420" y="555" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="white">can_write</text>
+  <text x="580" y="555" font-family="Arial, sans-serif" font-size="12" fill="white">BOOLEAN</text>
+  
+  <text x="420" y="575" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="white">can_share</text>
+  <text x="580" y="575" font-family="Arial, sans-serif" font-size="12" fill="white">BOOLEAN</text>
+  
+  <text x="420" y="595" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="white">granted_at</text>
+  <text x="580" y="595" font-family="Arial, sans-serif" font-size="12" fill="white">TIMESTAMP</text>
+  
+  <!-- Image Variants Table -->
+  <rect x="750" y="450" width="300" height="220" rx="10" fill="#27ae60" stroke="#2ecc71" stroke-width="2"/>
+  <text x="900" y="475" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="white">image_variants</text>
+  <line x1="760" y1="485" x2="1040" y2="485" stroke="white" stroke-width="2"/>
+  
+  <text x="770" y="505" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="white">id</text>
+  <text x="930" y="505" font-family="Arial, sans-serif" font-size="12" fill="white">INTEGER PRIMARY KEY</text>
+  
+  <text x="770" y="525" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="white">original_file_id</text>
+  <text x="930" y="525" font-family="Arial, sans-serif" font-size="12" fill="white">INTEGER FK → files.id</text>
+  
+  <text x="770" y="545" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="white">variant_type</text>
+  <text x="930" y="545" font-family="Arial, sans-serif" font-size="12" fill="white">VARCHAR(20)</text>
+  
+  <text x="770" y="565" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="white">quality_level</text>
+  <text x="930" y="565" font-family="Arial, sans-serif" font-size="12" fill="white">VARCHAR(10)</text>
+  
+  <text x="770" y="585" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="white">format</text>
+  <text x="930" y="585" font-family="Arial, sans-serif" font-size="12" fill="white">VARCHAR(10)</text>
+  
+  <text x="770" y="605" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="white">file_path</text>
+  <text x="930" y="605" font-family="Arial, sans-serif" font-size="12" fill="white">VARCHAR(500)</text>
+  
+  <text x="770" y="625" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="white">file_size</text>
+  <text x="930" y="625" font-family="Arial, sans-serif" font-size="12" fill="white">INTEGER</text>
+  
+  <text x="770" y="645" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="white">width/height</text>
+  <text x="930" y="645" font-family="Arial, sans-serif" font-size="12" fill="white">INTEGER</text>
+  
+  <!-- Activity Logs Table -->
+  <rect x="50" y="650" width="300" height="180" rx="10" fill="#8e44ad" stroke="#9b59b6" stroke-width="2"/>
+  <text x="200" y="675" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="white">activity_logs</text>
+  <line x1="60" y1="685" x2="340" y2="685" stroke="white" stroke-width="2"/>
+  
+  <text x="70" y="705" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="white">id</text>
+  <text x="230" y="705" font-family="Arial, sans-serif" font-size="12" fill="white">INTEGER PRIMARY KEY</text>
+  
+  <text x="70" y="725" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="white">user_id</text>
+  <text x="230" y="725" font-family="Arial, sans-serif" font-size="12" fill="white">INTEGER FK → users.id</text>
+  
+  <text x="70" y="745" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="white">file_id</text>
+  <text x="230" y="745" font-family="Arial, sans-serif" font-size="12" fill="white">INTEGER FK → files.id</text>
+  
+  <text x="70" y="765" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="white">action</text>
+  <text x="230" y="765" font-family="Arial, sans-serif" font-size="12" fill="white">VARCHAR(50)</text>
+  
+  <text x="70" y="785" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="white">ip_address</text>
+  <text x="230" y="785" font-family="Arial, sans-serif" font-size="12" fill="white">VARCHAR(45)</text>
+  
+  <text x="70" y="805" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="white">timestamp</text>
+  <text x="230" y="805" font-family="Arial, sans-serif" font-size="12" fill="white">TIMESTAMP</text>
+  
+  <!-- Revoked Tokens Table -->
+  <rect x="400" y="650" width="250" height="140" rx="10" fill="#e67e22" stroke="#d35400" stroke-width="2"/>
+  <text x="525" y="675" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="white">revoked_tokens</text>
+  <line x1="410" y1="685" x2="640" y2="685" stroke="white" stroke-width="2"/>
+  
+  <text x="420" y="705" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="white">id</text>
+  <text x="580" y="705" font-family="Arial, sans-serif" font-size="12" fill="white">INTEGER PRIMARY KEY</text>
+  
+  <text x="420" y="725" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="white">token_id</text>
+  <text x="580" y="725" font-family="Arial, sans-serif" font-size="12" fill="white">VARCHAR(255) UNIQUE</text>
+  
+  <text x="420" y="745" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="white">user_id</text>
+  <text x="580" y="745" font-family="Arial, sans-serif" font-size="12" fill="white">INTEGER FK → users.id</text>
+  
+  <text x="420" y="765" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="white">revoked_at</text>
+  <text x="580" y="765" font-family="Arial, sans-serif" font-size="12" fill="white">TIMESTAMP</text>
+  
+  <!-- Relationship Lines -->
+  <!-- Users to Files -->
+  <line x1="300" y1="180" x2="400" y2="180" stroke="#34495e" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <text x="350" y="175" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#34495e">1:N</text>
+  
+  <!-- Users to Group Members -->
+  <line x1="300" y1="200" x2="800" y2="350" stroke="#34495e" stroke-width="2" marker-end="url(#arrowhead)"/>
+  
+  <!-- User Groups to Group Members -->
+  <line x1="925" y1="240" x2="925" y2="280" stroke="#34495e" stroke-width="2" marker-end="url(#arrowhead)"/>
+  
+  <!-- Files to File Permissions -->
+  <line x1="400" y1="300" x2="350" y2="450" stroke="#e74c3c" stroke-width="2" marker-end="url(#arrowhead)"/>
+  
+  <!-- Users to File Permissions -->
+  <line x1="175" y1="280" x2="175" y2="400" stroke="#e74c3c" stroke-width="2" marker-end="url(#arrowhead)"/>
+  
+  <!-- Files to Group File Permissions -->
+  <line x1="550" y1="360" x2="550" y2="400" stroke="#e74c3c" stroke-width="2" marker-end="url(#arrowhead)"/>
+  
+  <!-- User Groups to Group File Permissions -->
+  <line x1="800" y1="300" x2="700" y2="450" stroke="#e74c3c" stroke-width="2" marker-end="url(#arrowhead)"/>
+  
+  <!-- Files to Image Variants -->
+  <line x1="700" y1="250" x2="750" y2="550" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowhead)"/>
+  
+  <!-- Users to Activity Logs -->
+  <line x1="175" y1="280" x2="175" y2="650" stroke="#8e44ad" stroke-width="2" marker-end="url(#arrowhead)"/>
+  
+  <!-- Files to Activity Logs -->
+  <line x1="400" y1="400" x2="350" y2="700" stroke="#8e44ad" stroke-width="2" marker-end="url(#arrowhead)"/>
+  
+  <!-- Users to Revoked Tokens -->
+  <line x1="300" y1="250" x2="400" y2="700" stroke="#e67e22" stroke-width="2" marker-end="url(#arrowhead)"/>
+  
+  <!-- Arrow marker definition -->
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#34495e"/>
+    </marker>
+  </defs>
+  
+  <!-- Legend -->
+  <rect x="750" y="720" width="400" height="150" rx="10" fill="#ecf0f1" stroke="#bdc3c7" stroke-width="2"/>
+  <text x="950" y="745" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#2c3e50">Database Indexes & Performance</text>
+  
+  <text x="770" y="770" font-family="Arial, sans-serif" font-size="12" fill="#2c3e50">• Composite Index: (user_id, file_id, permission_type)</text>
+  <text x="770" y="790" font-family="Arial, sans-serif" font-size="12" fill="#2c3e50">• Index: files.owner_id, files.created_at</text>
+  <text x="770" y="810" font-family="Arial, sans-serif" font-size="12" fill="#2c3e50">• Index: image_variants(original_file_id, variant_type)</text>
+  <text x="770" y="830" font-family="Arial, sans-serif" font-size="12" fill="#2c3e50">• Partitioning: activity_logs by timestamp</text>
+  <text x="770" y="850" font-family="Arial, sans-serif" font-size="12" fill="#2c3e50">• Connection Pooling: PgBouncer (1000 max connections)</text>
+  
+</svg>

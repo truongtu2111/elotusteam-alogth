@@ -1,0 +1,232 @@
+DATA FLOW DIAGRAM - FILE UPLOAD SYSTEM
+======================================
+
+OVERVIEW
+--------
+This diagram illustrates the complete data flow for a scalable file upload system, showing how data moves through different layers from client requests to storage and processing.
+
+SYSTEM LAYERS
+=============
+
+1. CLIENT LAYER
+---------------
+• Web Client - Browser-based file upload interface
+• Mobile App - Native mobile applications
+• API Client - Third-party integrations and programmatic access
+• CDN - Content Delivery Network for global file distribution
+• Load Balancer - Traffic distribution and high availability
+• API Gateway - Single entry point, rate limiting, authentication
+
+2. PROCESSING LAYER
+-------------------
+
+Core Services:
+• Authentication Service
+  - JWT token validation
+  - User verification and session management
+  
+• File Upload Service
+  - File type and size validation
+  - Virus scanning and security checks
+  
+• Permission Service
+  - Access control validation
+  - Role-Based Access Control (RBAC) checks
+  
+• Image Processing Service
+  - Image resizing and optimization
+  - Format conversion (JPEG, PNG, WebP)
+  
+• Metadata Service
+  - File information extraction
+  - Content indexing for search
+  
+• Notification Service
+  - Email and SMS notifications
+  - Real-time push notifications
+
+Supporting Infrastructure:
+• Message Queue (Redis/RabbitMQ)
+  - Asynchronous task processing
+  - Decoupling of services
+  
+• Background Workers
+  - Image processing jobs
+  - File cleanup and maintenance
+  
+• Cache Layer (Redis)
+  - Session data caching
+  - Metadata and permission caching
+  
+• Search Engine (Elasticsearch)
+  - Full-text file content indexing
+  - Advanced search capabilities
+
+3. DATA LAYER
+-------------
+
+Database Systems:
+• Primary Database (PostgreSQL)
+  - User accounts and profiles
+  - File metadata and relationships
+  - Permission and access control data
+  
+• Read Replicas (PostgreSQL)
+  - Read query distribution
+  - Load balancing for database operations
+  
+• Analytics Database (ClickHouse)
+  - Usage statistics and metrics
+  - Performance analytics
+  - Business intelligence data
+
+Storage Systems:
+• File Storage (AWS S3)
+  - Original file storage
+  - Encrypted at rest
+  - Versioning and lifecycle management
+  
+• Image Variants (AWS S3)
+  - Optimized image versions
+  - Multiple format support
+  - Responsive image delivery
+  
+• Backup Storage (AWS Glacier)
+  - Long-term archival
+  - Disaster recovery
+  - Compliance requirements
+
+Audit and Monitoring:
+• Audit Logs (Immutable)
+  - Compliance and security tracking
+  - Tamper-proof logging
+  
+• Monitoring (Prometheus)
+  - System metrics and alerts
+  - Performance monitoring
+
+DATA FLOW PROCESSES
+===================
+
+1. UPLOAD FLOW
+--------------
+Step 1: Client uploads file via HTTPS
+Step 2: API Gateway validates JWT token
+Step 3: File validation (type, size, virus scan)
+Step 4: Permission check (RBAC)
+Step 5: Store original file in S3
+Step 6: Queue image processing job
+Step 7: Update database metadata
+Step 8: Generate variants asynchronously
+Step 9: Send notification to user
+
+Data Path:
+Client → API Gateway → Authentication → File Upload → Permission → Storage → Database → Notification
+
+2. DOWNLOAD FLOW
+----------------
+Step 1: Client requests file via CDN URL
+Step 2: CDN checks cache (edge locations)
+Step 3: If cache miss, validate permissions
+Step 4: Check Redis cache for metadata
+Step 5: Select optimal image variant
+Step 6: Retrieve from S3 storage
+Step 7: Cache at CDN edge
+Step 8: Serve to client with headers
+Step 9: Log access for analytics
+
+Data Path:
+Client → CDN → Permission Check → Cache → Storage → CDN → Client
+
+3. CACHE OPERATIONS
+-------------------
+• Permission Service ↔ Redis Cache
+• Metadata Service ↔ Redis Cache
+• Frequent data caching for performance optimization
+
+4. DATABASE OPERATIONS
+----------------------
+• Primary Database → Read Replicas (synchronous replication)
+• Write operations to primary
+• Read operations distributed across replicas
+
+5. ASYNCHRONOUS PROCESSING
+--------------------------
+• Message Queue → Background Workers
+• Workers → Image Variants Storage
+• Search Engine indexing from Metadata Service
+
+PERFORMANCE METRICS
+===================
+
+Speed and Throughput:
+• Upload Speed: 100MB/s average
+• Download Speed: 1GB/s (via CDN)
+• API Throughput: 10,000 requests/second
+• Database Response Time: <10ms
+
+Caching and Efficiency:
+• Cache Hit Ratio: >95%
+• Image Processing Time: <30 seconds
+• API Latency: <100ms (95th percentile)
+
+Reliability:
+• System Availability: 99.99%
+• Storage Durability: 99.999999999% (11 9's)
+• Automatic failover and recovery
+
+DATA FLOW PATTERNS
+==================
+
+1. Synchronous Flows:
+   - User authentication
+   - Permission validation
+   - Immediate file upload
+   - Real-time download requests
+
+2. Asynchronous Flows:
+   - Image processing and optimization
+   - Search indexing
+   - Notification delivery
+   - Analytics data processing
+
+3. Caching Strategies:
+   - CDN edge caching for global distribution
+   - Redis caching for frequently accessed data
+   - Database query result caching
+
+4. Data Replication:
+   - Database read replicas for load distribution
+   - Multi-region storage replication
+   - Cross-availability zone redundancy
+
+SECURITY CONSIDERATIONS
+=======================
+
+• HTTPS encryption for all data in transit
+• JWT token-based authentication
+• Role-based access control (RBAC)
+• File type validation and virus scanning
+• Encrypted storage at rest
+• Audit logging for compliance
+• Rate limiting and DDoS protection
+
+SCALABILITY FEATURES
+====================
+
+• Horizontal scaling of processing services
+• Auto-scaling based on load
+• Database sharding capabilities
+• CDN for global content distribution
+• Message queue for handling traffic spikes
+• Microservices architecture for independent scaling
+
+MONITORING AND OBSERVABILITY
+============================
+
+• Real-time metrics collection
+• Distributed tracing across services
+• Centralized logging and analysis
+• Automated alerting and incident response
+• Performance dashboards and reporting
+• Capacity planning and optimization insights

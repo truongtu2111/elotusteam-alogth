@@ -1,0 +1,158 @@
+<svg width="1200" height="800" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="blueGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#4A90E2;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#357ABD;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="greenGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#7ED321;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#5BA517;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="orangeGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#F5A623;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#D1891A;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="redGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#D0021B;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#A50115;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="1200" height="800" fill="#f8f9fa"/>
+  
+  <!-- Title -->
+  <text x="600" y="30" text-anchor="middle" font-family="Arial, sans-serif" font-size="24" font-weight="bold" fill="#2c3e50">File Upload Server - System Architecture Overview</text>
+  
+  <!-- Client Layer -->
+  <rect x="50" y="80" width="200" height="100" rx="10" fill="url(#blueGradient)" stroke="#2980b9" stroke-width="2"/>
+  <text x="150" y="110" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="white">Client Applications</text>
+  <text x="150" y="130" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="white">Web/Mobile/API</text>
+  <text x="150" y="150" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="white">Clients</text>
+  
+  <!-- Load Balancer -->
+  <rect x="350" y="80" width="150" height="100" rx="10" fill="url(#greenGradient)" stroke="#27ae60" stroke-width="2"/>
+  <text x="425" y="110" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="white">Load Balancer</text>
+  <text x="425" y="130" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="white">HAProxy/Nginx</text>
+  <text x="425" y="150" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="white">SSL Termination</text>
+  
+  <!-- API Gateway -->
+  <rect x="600" y="80" width="150" height="100" rx="10" fill="url(#orangeGradient)" stroke="#e67e22" stroke-width="2"/>
+  <text x="675" y="110" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="white">API Gateway</text>
+  <text x="675" y="130" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="white">Rate Limiting</text>
+  <text x="675" y="150" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="white">Authentication</text>
+  
+  <!-- CDN -->
+  <rect x="850" y="80" width="150" height="100" rx="10" fill="#9b59b6" stroke="#8e44ad" stroke-width="2"/>
+  <text x="925" y="110" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="white">CDN</text>
+  <text x="925" y="130" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="white">CloudFront</text>
+  <text x="925" y="150" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="white">Global Cache</text>
+  
+  <!-- Application Layer -->
+  <rect x="200" y="250" width="800" height="120" rx="10" fill="#ecf0f1" stroke="#bdc3c7" stroke-width="2"/>
+  <text x="600" y="275" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#2c3e50">Application Layer (Auto-Scaling: 5-50 instances)</text>
+  
+  <!-- Auth Service -->
+  <rect x="230" y="290" width="120" height="60" rx="5" fill="url(#blueGradient)" stroke="#2980b9" stroke-width="1"/>
+  <text x="290" y="315" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="white">Auth Service</text>
+  <text x="290" y="330" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">JWT/bcrypt</text>
+  
+  <!-- File Service -->
+  <rect x="370" y="290" width="120" height="60" rx="5" fill="url(#greenGradient)" stroke="#27ae60" stroke-width="1"/>
+  <text x="430" y="315" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="white">File Service</text>
+  <text x="430" y="330" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">Upload/Download</text>
+  
+  <!-- Permission Service -->
+  <rect x="510" y="290" width="120" height="60" rx="5" fill="url(#orangeGradient)" stroke="#e67e22" stroke-width="1"/>
+  <text x="570" y="315" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="white">Permission</text>
+  <text x="570" y="330" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">Access Control</text>
+  
+  <!-- User Service -->
+  <rect x="650" y="290" width="120" height="60" rx="5" fill="url(#redGradient)" stroke="#c0392b" stroke-width="1"/>
+  <text x="710" y="315" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="white">User Service</text>
+  <text x="710" y="330" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">Profile/Groups</text>
+  
+  <!-- Message Queue -->
+  <rect x="790" y="290" width="120" height="60" rx="5" fill="#34495e" stroke="#2c3e50" stroke-width="1"/>
+  <text x="850" y="315" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="white">Message Queue</text>
+  <text x="850" y="330" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">RabbitMQ/Kafka</text>
+  
+  <!-- Cache Layer -->
+  <rect x="100" y="420" width="300" height="80" rx="10" fill="#e74c3c" stroke="#c0392b" stroke-width="2"/>
+  <text x="250" y="445" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="white">Cache Layer</text>
+  <text x="250" y="465" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="white">Redis Cluster (64GB)</text>
+  <text x="250" y="480" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="white">Session Data & Permissions</text>
+  
+  <!-- Database Layer -->
+  <rect x="450" y="420" width="300" height="80" rx="10" fill="#2c3e50" stroke="#34495e" stroke-width="2"/>
+  <text x="600" y="445" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="white">Database Layer</text>
+  <text x="600" y="465" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="white">PostgreSQL + Read Replicas</text>
+  <text x="600" y="480" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="white">PgBouncer Connection Pooling</text>
+  
+  <!-- Storage Layer -->
+  <rect x="800" y="420" width="300" height="80" rx="10" fill="#16a085" stroke="#1abc9c" stroke-width="2"/>
+  <text x="950" y="445" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="white">Storage Layer</text>
+  <text x="950" y="465" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="white">AWS S3/Google Cloud Storage</text>
+  <text x="950" y="480" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="white">Multi-Region Replication</text>
+  
+  <!-- Monitoring -->
+  <rect x="200" y="550" width="200" height="80" rx="10" fill="#8e44ad" stroke="#9b59b6" stroke-width="2"/>
+  <text x="300" y="575" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="white">Monitoring</text>
+  <text x="300" y="595" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="white">Prometheus/Grafana</text>
+  <text x="300" y="610" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="white">ELK Stack</text>
+  
+  <!-- Security -->
+  <rect x="450" y="550" width="200" height="80" rx="10" fill="#e67e22" stroke="#d35400" stroke-width="2"/>
+  <text x="550" y="575" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="white">Security</text>
+  <text x="550" y="595" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="white">WAF/DDoS Protection</text>
+  <text x="550" y="610" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="white">Rate Limiting</text>
+  
+  <!-- Performance Metrics -->
+  <rect x="700" y="550" width="200" height="80" rx="10" fill="#27ae60" stroke="#2ecc71" stroke-width="2"/>
+  <text x="800" y="575" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="white">Performance</text>
+  <text x="800" y="595" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="white">10K login/sec</text>
+  <text x="800" y="610" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="white">5K downloads/sec</text>
+  
+  <!-- Arrows -->
+  <!-- Client to Load Balancer -->
+  <line x1="250" y1="130" x2="350" y2="130" stroke="#34495e" stroke-width="2" marker-end="url(#arrowhead)"/>
+  
+  <!-- Load Balancer to API Gateway -->
+  <line x1="500" y1="130" x2="600" y2="130" stroke="#34495e" stroke-width="2" marker-end="url(#arrowhead)"/>
+  
+  <!-- API Gateway to CDN -->
+  <line x1="750" y1="130" x2="850" y2="130" stroke="#34495e" stroke-width="2" marker-end="url(#arrowhead)"/>
+  
+  <!-- API Gateway to Application Layer -->
+  <line x1="675" y1="180" x2="675" y2="250" stroke="#34495e" stroke-width="2" marker-end="url(#arrowhead)"/>
+  
+  <!-- Application to Cache -->
+  <line x1="300" y1="370" x2="250" y2="420" stroke="#34495e" stroke-width="2" marker-end="url(#arrowhead)"/>
+  
+  <!-- Application to Database -->
+  <line x1="500" y1="370" x2="550" y2="420" stroke="#34495e" stroke-width="2" marker-end="url(#arrowhead)"/>
+  
+  <!-- Application to Storage -->
+  <line x1="700" y1="370" x2="900" y2="420" stroke="#34495e" stroke-width="2" marker-end="url(#arrowhead)"/>
+  
+  <!-- Arrow marker definition -->
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#34495e"/>
+    </marker>
+  </defs>
+  
+  <!-- Performance Targets Box -->
+  <rect x="50" y="680" width="1100" height="100" rx="10" fill="#f39c12" stroke="#e67e22" stroke-width="2"/>
+  <text x="600" y="705" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="white">Performance Targets</text>
+  <text x="200" y="730" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="white">Login: 10K req/sec (&lt;100ms)</text>
+  <text x="400" y="730" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="white">Downloads: 5K concurrent (&lt;200ms)</text>
+  <text x="600" y="730" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="white">Uploads: 1K concurrent (&lt;500ms)</text>
+  <text x="800" y="730" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="white">Permissions: 50K checks/sec (&lt;10ms)</text>
+  <text x="1000" y="730" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="white">Sessions: 100K concurrent</text>
+  
+  <text x="200" y="750" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="white">Registration: 1K req/sec (&lt;150ms)</text>
+  <text x="500" y="750" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="white">Peak Upload Rate: 200 files/sec</text>
+  <text x="800" y="750" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="white">Peak Download Rate: 2K files/sec</text>
+  
+</svg>

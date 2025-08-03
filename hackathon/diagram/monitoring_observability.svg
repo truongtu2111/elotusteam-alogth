@@ -1,0 +1,484 @@
+<svg width="1600" height="1400" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="monitoringGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ff6b6b;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#ee5a24;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="metricsGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#4834d4;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#686de0;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="logsGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#00d2d3;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#01a3a4;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="tracingGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ff9ff3;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#f368e0;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="alertGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ffa726;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#ff7043;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="1600" height="1400" fill="#f8f9fa"/>
+  
+  <!-- Title -->
+  <text x="800" y="30" text-anchor="middle" font-family="Arial, sans-serif" font-size="24" font-weight="bold" fill="#2c3e50">Monitoring & Observability Architecture</text>
+  
+  <!-- Three Pillars of Observability -->
+  <rect x="50" y="60" width="1500" height="80" rx="10" fill="#2c3e50" stroke="#34495e" stroke-width="2"/>
+  <text x="800" y="85" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="white">Three Pillars of Observability</text>
+  
+  <!-- Metrics Pillar -->
+  <rect x="150" y="100" width="200" height="30" rx="5" fill="url(#metricsGradient)" stroke="#4834d4" stroke-width="1"/>
+  <text x="250" y="120" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="white">Metrics</text>
+  
+  <!-- Logs Pillar -->
+  <rect x="400" y="100" width="200" height="30" rx="5" fill="url(#logsGradient)" stroke="#00d2d3" stroke-width="1"/>
+  <text x="500" y="120" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="white">Logs</text>
+  
+  <!-- Traces Pillar -->
+  <rect x="650" y="100" width="200" height="30" rx="5" fill="url(#tracingGradient)" stroke="#ff9ff3" stroke-width="1"/>
+  <text x="750" y="120" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="white">Traces</text>
+  
+  <!-- Additional Observability Components -->
+  <rect x="900" y="100" width="150" height="30" rx="5" fill="url(#alertGradient)" stroke="#ffa726" stroke-width="1"/>
+  <text x="975" y="120" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="white">Alerts</text>
+  
+  <rect x="1070" y="100" width="150" height="30" rx="5" fill="#27ae60" stroke="#229954" stroke-width="1"/>
+  <text x="1145" y="120" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="white">Dashboards</text>
+  
+  <rect x="1240" y="100" width="150" height="30" rx="5" fill="#8e44ad" stroke="#7d3c98" stroke-width="1"/>
+  <text x="1315" y="120" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="white">SLI/SLO</text>
+  
+  <!-- Data Sources Layer -->
+  <rect x="50" y="160" width="1500" height="120" rx="10" fill="#ecf0f1" stroke="#bdc3c7" stroke-width="3"/>
+  <text x="800" y="185" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="#2c3e50">Data Sources</text>
+  
+  <!-- Application Sources -->
+  <rect x="100" y="200" width="180" height="60" rx="5" fill="#3498db" stroke="#2980b9" stroke-width="2"/>
+  <text x="190" y="220" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="white">Application Metrics</text>
+  <text x="190" y="235" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">Response Time</text>
+  <text x="190" y="250" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">Error Rate, Throughput</text>
+  
+  <rect x="300" y="200" width="180" height="60" rx="5" fill="#3498db" stroke="#2980b9" stroke-width="2"/>
+  <text x="390" y="220" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="white">Infrastructure</text>
+  <text x="390" y="235" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">CPU, Memory, Disk</text>
+  <text x="390" y="250" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">Network, Storage</text>
+  
+  <rect x="500" y="200" width="180" height="60" rx="5" fill="#3498db" stroke="#2980b9" stroke-width="2"/>
+  <text x="590" y="220" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="white">Database</text>
+  <text x="590" y="235" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">Query Performance</text>
+  <text x="590" y="250" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">Connection Pool</text>
+  
+  <rect x="700" y="200" width="180" height="60" rx="5" fill="#3498db" stroke="#2980b9" stroke-width="2"/>
+  <text x="790" y="220" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="white">Kubernetes</text>
+  <text x="790" y="235" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">Pod Metrics</text>
+  <text x="790" y="250" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">Cluster Health</text>
+  
+  <rect x="900" y="200" width="180" height="60" rx="5" fill="#3498db" stroke="#2980b9" stroke-width="2"/>
+  <text x="990" y="220" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="white">Load Balancer</text>
+  <text x="990" y="235" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">Request Distribution</text>
+  <text x="990" y="250" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">Health Checks</text>
+  
+  <rect x="1100" y="200" width="180" height="60" rx="5" fill="#3498db" stroke="#2980b9" stroke-width="2"/>
+  <text x="1190" y="220" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="white">CDN</text>
+  <text x="1190" y="235" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">Cache Hit Rate</text>
+  <text x="1190" y="250" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">Edge Performance</text>
+  
+  <rect x="1300" y="200" width="180" height="60" rx="5" fill="#3498db" stroke="#2980b9" stroke-width="2"/>
+  <text x="1390" y="220" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="white">Security</text>
+  <text x="1390" y="235" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">Failed Logins</text>
+  <text x="1390" y="250" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">Threat Detection</text>
+  
+  <!-- Metrics Collection Layer -->
+  <rect x="50" y="300" width="1500" height="200" rx="10" fill="#e8f4fd" stroke="#4834d4" stroke-width="3"/>
+  <text x="800" y="325" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="#2c3e50">Metrics Collection & Storage</text>
+  
+  <!-- Prometheus Stack -->
+  <rect x="100" y="350" width="300" height="120" rx="5" fill="url(#metricsGradient)" stroke="#4834d4" stroke-width="2"/>
+  <text x="250" y="375" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="white">Prometheus Stack</text>
+  
+  <rect x="120" y="390" width="120" height="25" rx="3" fill="#ffffff" stroke="#4834d4" stroke-width="1"/>
+  <text x="180" y="407" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#4834d4">Prometheus Server</text>
+  
+  <rect x="250" y="390" width="120" height="25" rx="3" fill="#ffffff" stroke="#4834d4" stroke-width="1"/>
+  <text x="310" y="407" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#4834d4">Node Exporter</text>
+  
+  <rect x="120" y="425" width="120" height="25" rx="3" fill="#ffffff" stroke="#4834d4" stroke-width="1"/>
+  <text x="180" y="442" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#4834d4">Alertmanager</text>
+  
+  <rect x="250" y="425" width="120" height="25" rx="3" fill="#ffffff" stroke="#4834d4" stroke-width="1"/>
+  <text x="310" y="442" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#4834d4">Pushgateway</text>
+  
+  <rect x="185" y="455" width="120" height="10" rx="2" fill="#ffffff" stroke="#4834d4" stroke-width="1"/>
+  <text x="245" y="463" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" fill="#4834d4">PromQL Queries</text>
+  
+  <!-- InfluxDB Stack -->
+  <rect x="420" y="350" width="300" height="120" rx="5" fill="url(#metricsGradient)" stroke="#4834d4" stroke-width="2"/>
+  <text x="570" y="375" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="white">InfluxDB Stack</text>
+  
+  <rect x="440" y="390" width="120" height="25" rx="3" fill="#ffffff" stroke="#4834d4" stroke-width="1"/>
+  <text x="500" y="407" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#4834d4">InfluxDB</text>
+  
+  <rect x="570" y="390" width="120" height="25" rx="3" fill="#ffffff" stroke="#4834d4" stroke-width="1"/>
+  <text x="630" y="407" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#4834d4">Telegraf</text>
+  
+  <rect x="440" y="425" width="120" height="25" rx="3" fill="#ffffff" stroke="#4834d4" stroke-width="1"/>
+  <text x="500" y="442" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#4834d4">Chronograf</text>
+  
+  <rect x="570" y="425" width="120" height="25" rx="3" fill="#ffffff" stroke="#4834d4" stroke-width="1"/>
+  <text x="630" y="442" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#4834d4">Kapacitor</text>
+  
+  <rect x="505" y="455" width="120" height="10" rx="2" fill="#ffffff" stroke="#4834d4" stroke-width="1"/>
+  <text x="565" y="463" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" fill="#4834d4">Time Series Data</text>
+  
+  <!-- CloudWatch -->
+  <rect x="740" y="350" width="300" height="120" rx="5" fill="url(#metricsGradient)" stroke="#4834d4" stroke-width="2"/>
+  <text x="890" y="375" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="white">AWS CloudWatch</text>
+  
+  <rect x="760" y="390" width="120" height="25" rx="3" fill="#ffffff" stroke="#4834d4" stroke-width="1"/>
+  <text x="820" y="407" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#4834d4">CloudWatch Metrics</text>
+  
+  <rect x="890" y="390" width="120" height="25" rx="3" fill="#ffffff" stroke="#4834d4" stroke-width="1"/>
+  <text x="950" y="407" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#4834d4">CloudWatch Logs</text>
+  
+  <rect x="760" y="425" width="120" height="25" rx="3" fill="#ffffff" stroke="#4834d4" stroke-width="1"/>
+  <text x="820" y="442" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#4834d4">CloudWatch Alarms</text>
+  
+  <rect x="890" y="425" width="120" height="25" rx="3" fill="#ffffff" stroke="#4834d4" stroke-width="1"/>
+  <text x="950" y="442" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#4834d4">X-Ray Tracing</text>
+  
+  <rect x="825" y="455" width="120" height="10" rx="2" fill="#ffffff" stroke="#4834d4" stroke-width="1"/>
+  <text x="885" y="463" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" fill="#4834d4">AWS Native</text>
+  
+  <!-- Custom Metrics -->
+  <rect x="1060" y="350" width="300" height="120" rx="5" fill="url(#metricsGradient)" stroke="#4834d4" stroke-width="2"/>
+  <text x="1210" y="375" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="white">Custom Metrics</text>
+  
+  <rect x="1080" y="390" width="120" height="25" rx="3" fill="#ffffff" stroke="#4834d4" stroke-width="1"/>
+  <text x="1140" y="407" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#4834d4">Business Metrics</text>
+  
+  <rect x="1210" y="390" width="120" height="25" rx="3" fill="#ffffff" stroke="#4834d4" stroke-width="1"/>
+  <text x="1270" y="407" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#4834d4">User Analytics</text>
+  
+  <rect x="1080" y="425" width="120" height="25" rx="3" fill="#ffffff" stroke="#4834d4" stroke-width="1"/>
+  <text x="1140" y="442" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#4834d4">Performance KPIs</text>
+  
+  <rect x="1210" y="425" width="120" height="25" rx="3" fill="#ffffff" stroke="#4834d4" stroke-width="1"/>
+  <text x="1270" y="442" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#4834d4">SLA Metrics</text>
+  
+  <rect x="1145" y="455" width="120" height="10" rx="2" fill="#ffffff" stroke="#4834d4" stroke-width="1"/>
+  <text x="1205" y="463" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" fill="#4834d4">Domain Specific</text>
+  
+  <!-- Logging Layer -->
+  <rect x="50" y="520" width="1500" height="200" rx="10" fill="#e0f7fa" stroke="#00d2d3" stroke-width="3"/>
+  <text x="800" y="545" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="#2c3e50">Logging & Log Management</text>
+  
+  <!-- ELK Stack -->
+  <rect x="100" y="570" width="350" height="120" rx="5" fill="url(#logsGradient)" stroke="#00d2d3" stroke-width="2"/>
+  <text x="275" y="595" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="white">ELK Stack</text>
+  
+  <rect x="120" y="610" width="100" height="25" rx="3" fill="#ffffff" stroke="#00d2d3" stroke-width="1"/>
+  <text x="170" y="627" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#00d2d3">Elasticsearch</text>
+  
+  <rect x="230" y="610" width="100" height="25" rx="3" fill="#ffffff" stroke="#00d2d3" stroke-width="1"/>
+  <text x="280" y="627" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#00d2d3">Logstash</text>
+  
+  <rect x="340" y="610" width="100" height="25" rx="3" fill="#ffffff" stroke="#00d2d3" stroke-width="1"/>
+  <text x="390" y="627" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#00d2d3">Kibana</text>
+  
+  <rect x="120" y="645" width="100" height="25" rx="3" fill="#ffffff" stroke="#00d2d3" stroke-width="1"/>
+  <text x="170" y="662" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#00d2d3">Filebeat</text>
+  
+  <rect x="230" y="645" width="100" height="25" rx="3" fill="#ffffff" stroke="#00d2d3" stroke-width="1"/>
+  <text x="280" y="662" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#00d2d3">Metricbeat</text>
+  
+  <rect x="340" y="645" width="100" height="25" rx="3" fill="#ffffff" stroke="#00d2d3" stroke-width="1"/>
+  <text x="390" y="662" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#00d2d3">APM Server</text>
+  
+  <rect x="225" y="675" width="100" height="10" rx="2" fill="#ffffff" stroke="#00d2d3" stroke-width="1"/>
+  <text x="275" y="683" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" fill="#00d2d3">Search & Analytics</text>
+  
+  <!-- Fluentd/Fluent Bit -->
+  <rect x="470" y="570" width="300" height="120" rx="5" fill="url(#logsGradient)" stroke="#00d2d3" stroke-width="2"/>
+  <text x="620" y="595" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="white">Fluentd Ecosystem</text>
+  
+  <rect x="490" y="610" width="120" height="25" rx="3" fill="#ffffff" stroke="#00d2d3" stroke-width="1"/>
+  <text x="550" y="627" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#00d2d3">Fluentd</text>
+  
+  <rect x="620" y="610" width="120" height="25" rx="3" fill="#ffffff" stroke="#00d2d3" stroke-width="1"/>
+  <text x="680" y="627" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#00d2d3">Fluent Bit</text>
+  
+  <rect x="490" y="645" width="120" height="25" rx="3" fill="#ffffff" stroke="#00d2d3" stroke-width="1"/>
+  <text x="550" y="662" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#00d2d3">Log Forwarding</text>
+  
+  <rect x="620" y="645" width="120" height="25" rx="3" fill="#ffffff" stroke="#00d2d3" stroke-width="1"/>
+  <text x="680" y="662" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#00d2d3">Log Processing</text>
+  
+  <rect x="555" y="675" width="120" height="10" rx="2" fill="#ffffff" stroke="#00d2d3" stroke-width="1"/>
+  <text x="615" y="683" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" fill="#00d2d3">Unified Logging</text>
+  
+  <!-- Centralized Logging -->
+  <rect x="790" y="570" width="300" height="120" rx="5" fill="url(#logsGradient)" stroke="#00d2d3" stroke-width="2"/>
+  <text x="940" y="595" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="white">Centralized Logging</text>
+  
+  <rect x="810" y="610" width="120" height="25" rx="3" fill="#ffffff" stroke="#00d2d3" stroke-width="1"/>
+  <text x="870" y="627" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#00d2d3">Application Logs</text>
+  
+  <rect x="940" y="610" width="120" height="25" rx="3" fill="#ffffff" stroke="#00d2d3" stroke-width="1"/>
+  <text x="1000" y="627" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#00d2d3">System Logs</text>
+  
+  <rect x="810" y="645" width="120" height="25" rx="3" fill="#ffffff" stroke="#00d2d3" stroke-width="1"/>
+  <text x="870" y="662" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#00d2d3">Security Logs</text>
+  
+  <rect x="940" y="645" width="120" height="25" rx="3" fill="#ffffff" stroke="#00d2d3" stroke-width="1"/>
+  <text x="1000" y="662" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#00d2d3">Audit Logs</text>
+  
+  <rect x="875" y="675" width="120" height="10" rx="2" fill="#ffffff" stroke="#00d2d3" stroke-width="1"/>
+  <text x="935" y="683" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" fill="#00d2d3">Structured Logging</text>
+  
+  <!-- Log Analysis -->
+  <rect x="1110" y="570" width="300" height="120" rx="5" fill="url(#logsGradient)" stroke="#00d2d3" stroke-width="2"/>
+  <text x="1260" y="595" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="white">Log Analysis</text>
+  
+  <rect x="1130" y="610" width="120" height="25" rx="3" fill="#ffffff" stroke="#00d2d3" stroke-width="1"/>
+  <text x="1190" y="627" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#00d2d3">Pattern Detection</text>
+  
+  <rect x="1260" y="610" width="120" height="25" rx="3" fill="#ffffff" stroke="#00d2d3" stroke-width="1"/>
+  <text x="1320" y="627" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#00d2d3">Anomaly Detection</text>
+  
+  <rect x="1130" y="645" width="120" height="25" rx="3" fill="#ffffff" stroke="#00d2d3" stroke-width="1"/>
+  <text x="1190" y="662" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#00d2d3">Error Tracking</text>
+  
+  <rect x="1260" y="645" width="120" height="25" rx="3" fill="#ffffff" stroke="#00d2d3" stroke-width="1"/>
+  <text x="1320" y="662" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#00d2d3">Log Correlation</text>
+  
+  <rect x="1195" y="675" width="120" height="10" rx="2" fill="#ffffff" stroke="#00d2d3" stroke-width="1"/>
+  <text x="1255" y="683" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" fill="#00d2d3">ML-powered Insights</text>
+  
+  <!-- Distributed Tracing Layer -->
+  <rect x="50" y="740" width="1500" height="180" rx="10" fill="#fce4ec" stroke="#ff9ff3" stroke-width="3"/>
+  <text x="800" y="765" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="#2c3e50">Distributed Tracing</text>
+  
+  <!-- Jaeger -->
+  <rect x="100" y="790" width="300" height="100" rx="5" fill="url(#tracingGradient)" stroke="#ff9ff3" stroke-width="2"/>
+  <text x="250" y="815" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="white">Jaeger</text>
+  
+  <rect x="120" y="830" width="120" height="20" rx="3" fill="#ffffff" stroke="#ff9ff3" stroke-width="1"/>
+  <text x="180" y="844" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="#ff9ff3">Trace Collection</text>
+  
+  <rect x="250" y="830" width="120" height="20" rx="3" fill="#ffffff" stroke="#ff9ff3" stroke-width="1"/>
+  <text x="310" y="844" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="#ff9ff3">Span Analysis</text>
+  
+  <rect x="120" y="860" width="120" height="20" rx="3" fill="#ffffff" stroke="#ff9ff3" stroke-width="1"/>
+  <text x="180" y="874" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="#ff9ff3">Service Map</text>
+  
+  <rect x="250" y="860" width="120" height="20" rx="3" fill="#ffffff" stroke="#ff9ff3" stroke-width="1"/>
+  <text x="310" y="874" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="#ff9ff3">Performance</text>
+  
+  <!-- Zipkin -->
+  <rect x="420" y="790" width="300" height="100" rx="5" fill="url(#tracingGradient)" stroke="#ff9ff3" stroke-width="2"/>
+  <text x="570" y="815" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="white">Zipkin</text>
+  
+  <rect x="440" y="830" width="120" height="20" rx="3" fill="#ffffff" stroke="#ff9ff3" stroke-width="1"/>
+  <text x="500" y="844" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="#ff9ff3">Trace Visualization</text>
+  
+  <rect x="570" y="830" width="120" height="20" rx="3" fill="#ffffff" stroke="#ff9ff3" stroke-width="1"/>
+  <text x="630" y="844" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="#ff9ff3">Latency Analysis</text>
+  
+  <rect x="440" y="860" width="120" height="20" rx="3" fill="#ffffff" stroke="#ff9ff3" stroke-width="1"/>
+  <text x="500" y="874" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="#ff9ff3">Dependency Graph</text>
+  
+  <rect x="570" y="860" width="120" height="20" rx="3" fill="#ffffff" stroke="#ff9ff3" stroke-width="1"/>
+  <text x="630" y="874" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="#ff9ff3">Root Cause</text>
+  
+  <!-- OpenTelemetry -->
+  <rect x="740" y="790" width="300" height="100" rx="5" fill="url(#tracingGradient)" stroke="#ff9ff3" stroke-width="2"/>
+  <text x="890" y="815" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="white">OpenTelemetry</text>
+  
+  <rect x="760" y="830" width="120" height="20" rx="3" fill="#ffffff" stroke="#ff9ff3" stroke-width="1"/>
+  <text x="820" y="844" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="#ff9ff3">Auto-instrumentation</text>
+  
+  <rect x="890" y="830" width="120" height="20" rx="3" fill="#ffffff" stroke="#ff9ff3" stroke-width="1"/>
+  <text x="950" y="844" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="#ff9ff3">Vendor Agnostic</text>
+  
+  <rect x="760" y="860" width="120" height="20" rx="3" fill="#ffffff" stroke="#ff9ff3" stroke-width="1"/>
+  <text x="820" y="874" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="#ff9ff3">Metrics & Traces</text>
+  
+  <rect x="890" y="860" width="120" height="20" rx="3" fill="#ffffff" stroke="#ff9ff3" stroke-width="1"/>
+  <text x="950" y="874" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="#ff9ff3">Standards-based</text>
+  
+  <!-- AWS X-Ray -->
+  <rect x="1060" y="790" width="300" height="100" rx="5" fill="url(#tracingGradient)" stroke="#ff9ff3" stroke-width="2"/>
+  <text x="1210" y="815" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="white">AWS X-Ray</text>
+  
+  <rect x="1080" y="830" width="120" height="20" rx="3" fill="#ffffff" stroke="#ff9ff3" stroke-width="1"/>
+  <text x="1140" y="844" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="#ff9ff3">Service Map</text>
+  
+  <rect x="1210" y="830" width="120" height="20" rx="3" fill="#ffffff" stroke="#ff9ff3" stroke-width="1"/>
+  <text x="1270" y="844" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="#ff9ff3">Error Analysis</text>
+  
+  <rect x="1080" y="860" width="120" height="20" rx="3" fill="#ffffff" stroke="#ff9ff3" stroke-width="1"/>
+  <text x="1140" y="874" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="#ff9ff3">Performance Insights</text>
+  
+  <rect x="1210" y="860" width="120" height="20" rx="3" fill="#ffffff" stroke="#ff9ff3" stroke-width="1"/>
+  <text x="1270" y="874" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="#ff9ff3">AWS Integration</text>
+  
+  <!-- Alerting & Notification Layer -->
+  <rect x="50" y="940" width="1500" height="180" rx="10" fill="#fff3e0" stroke="#ffa726" stroke-width="3"/>
+  <text x="800" y="965" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="#2c3e50">Alerting & Notification</text>
+  
+  <!-- Alert Rules -->
+  <rect x="100" y="990" width="250" height="100" rx="5" fill="url(#alertGradient)" stroke="#ffa726" stroke-width="2"/>
+  <text x="225" y="1015" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="white">Alert Rules</text>
+  
+  <rect x="120" y="1030" width="100" height="18" rx="2" fill="#ffffff" stroke="#ffa726" stroke-width="1"/>
+  <text x="170" y="1043" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="#ffa726">Threshold-based</text>
+  
+  <rect x="230" y="1030" width="100" height="18" rx="2" fill="#ffffff" stroke="#ffa726" stroke-width="1"/>
+  <text x="280" y="1043" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="#ffa726">Anomaly Detection</text>
+  
+  <rect x="120" y="1055" width="100" height="18" rx="2" fill="#ffffff" stroke="#ffa726" stroke-width="1"/>
+  <text x="170" y="1068" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="#ffa726">Composite Rules</text>
+  
+  <rect x="230" y="1055" width="100" height="18" rx="2" fill="#ffffff" stroke="#ffa726" stroke-width="1"/>
+  <text x="280" y="1068" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="#ffa726">ML-based</text>
+  
+  <!-- Notification Channels -->
+  <rect x="370" y="990" width="250" height="100" rx="5" fill="url(#alertGradient)" stroke="#ffa726" stroke-width="2"/>
+  <text x="495" y="1015" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="white">Notification Channels</text>
+  
+  <rect x="390" y="1030" width="100" height="18" rx="2" fill="#ffffff" stroke="#ffa726" stroke-width="1"/>
+  <text x="440" y="1043" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="#ffa726">Slack</text>
+  
+  <rect x="500" y="1030" width="100" height="18" rx="2" fill="#ffffff" stroke="#ffa726" stroke-width="1"/>
+  <text x="550" y="1043" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="#ffa726">Email</text>
+  
+  <rect x="390" y="1055" width="100" height="18" rx="2" fill="#ffffff" stroke="#ffa726" stroke-width="1"/>
+  <text x="440" y="1068" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="#ffa726">SMS</text>
+  
+  <rect x="500" y="1055" width="100" height="18" rx="2" fill="#ffffff" stroke="#ffa726" stroke-width="1"/>
+  <text x="550" y="1068" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="#ffa726">PagerDuty</text>
+  
+  <!-- Incident Management -->
+  <rect x="640" y="990" width="250" height="100" rx="5" fill="url(#alertGradient)" stroke="#ffa726" stroke-width="2"/>
+  <text x="765" y="1015" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="white">Incident Management</text>
+  
+  <rect x="660" y="1030" width="100" height="18" rx="2" fill="#ffffff" stroke="#ffa726" stroke-width="1"/>
+  <text x="710" y="1043" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="#ffa726">Auto-escalation</text>
+  
+  <rect x="770" y="1030" width="100" height="18" rx="2" fill="#ffffff" stroke="#ffa726" stroke-width="1"/>
+  <text x="820" y="1043" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="#ffa726">On-call Rotation</text>
+  
+  <rect x="660" y="1055" width="100" height="18" rx="2" fill="#ffffff" stroke="#ffa726" stroke-width="1"/>
+  <text x="710" y="1068" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="#ffa726">Runbooks</text>
+  
+  <rect x="770" y="1055" width="100" height="18" rx="2" fill="#ffffff" stroke="#ffa726" stroke-width="1"/>
+  <text x="820" y="1068" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="#ffa726">Post-mortems</text>
+  
+  <!-- Alert Fatigue Prevention -->
+  <rect x="910" y="990" width="250" height="100" rx="5" fill="url(#alertGradient)" stroke="#ffa726" stroke-width="2"/>
+  <text x="1035" y="1015" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="white">Alert Optimization</text>
+  
+  <rect x="930" y="1030" width="100" height="18" rx="2" fill="#ffffff" stroke="#ffa726" stroke-width="1"/>
+  <text x="980" y="1043" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="#ffa726">Deduplication</text>
+  
+  <rect x="1040" y="1030" width="100" height="18" rx="2" fill="#ffffff" stroke="#ffa726" stroke-width="1"/>
+  <text x="1090" y="1043" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="#ffa726">Grouping</text>
+  
+  <rect x="930" y="1055" width="100" height="18" rx="2" fill="#ffffff" stroke="#ffa726" stroke-width="1"/>
+  <text x="980" y="1068" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="#ffa726">Suppression</text>
+  
+  <rect x="1040" y="1055" width="100" height="18" rx="2" fill="#ffffff" stroke="#ffa726" stroke-width="1"/>
+  <text x="1090" y="1068" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="#ffa726">Smart Routing</text>
+  
+  <!-- SLI/SLO Management -->
+  <rect x="1180" y="990" width="250" height="100" rx="5" fill="url(#alertGradient)" stroke="#ffa726" stroke-width="2"/>
+  <text x="1305" y="1015" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="white">SLI/SLO Management</text>
+  
+  <rect x="1200" y="1030" width="100" height="18" rx="2" fill="#ffffff" stroke="#ffa726" stroke-width="1"/>
+  <text x="1250" y="1043" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="#ffa726">Error Budget</text>
+  
+  <rect x="1310" y="1030" width="100" height="18" rx="2" fill="#ffffff" stroke="#ffa726" stroke-width="1"/>
+  <text x="1360" y="1043" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="#ffa726">Burn Rate</text>
+  
+  <rect x="1200" y="1055" width="100" height="18" rx="2" fill="#ffffff" stroke="#ffa726" stroke-width="1"/>
+  <text x="1250" y="1068" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="#ffa726">SLO Alerts</text>
+  
+  <rect x="1310" y="1055" width="100" height="18" rx="2" fill="#ffffff" stroke="#ffa726" stroke-width="1"/>
+  <text x="1360" y="1068" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="#ffa726">Reliability</text>
+  
+  <!-- Dashboards & Visualization -->
+  <rect x="50" y="1140" width="1500" height="120" rx="10" fill="#e8f5e8" stroke="#27ae60" stroke-width="3"/>
+  <text x="800" y="1165" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="#2c3e50">Dashboards & Visualization</text>
+  
+  <!-- Grafana -->
+  <rect x="100" y="1180" width="200" height="60" rx="5" fill="#27ae60" stroke="#229954" stroke-width="2"/>
+  <text x="200" y="1200" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="white">Grafana</text>
+  <text x="200" y="1215" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">Custom Dashboards</text>
+  <text x="200" y="1230" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">Multi-source</text>
+  
+  <!-- Kibana -->
+  <rect x="320" y="1180" width="200" height="60" rx="5" fill="#27ae60" stroke="#229954" stroke-width="2"/>
+  <text x="420" y="1200" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="white">Kibana</text>
+  <text x="420" y="1215" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">Log Visualization</text>
+  <text x="420" y="1230" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">Search Interface</text>
+  
+  <!-- CloudWatch Dashboards -->
+  <rect x="540" y="1180" width="200" height="60" rx="5" fill="#27ae60" stroke="#229954" stroke-width="2"/>
+  <text x="640" y="1200" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="white">CloudWatch</text>
+  <text x="640" y="1215" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">AWS Dashboards</text>
+  <text x="640" y="1230" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">Native Integration</text>
+  
+  <!-- Custom Dashboards -->
+  <rect x="760" y="1180" width="200" height="60" rx="5" fill="#27ae60" stroke="#229954" stroke-width="2"/>
+  <text x="860" y="1200" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="white">Custom Dashboards</text>
+  <text x="860" y="1215" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">Business Metrics</text>
+  <text x="860" y="1230" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">Executive Views</text>
+  
+  <!-- Real-time Monitoring -->
+  <rect x="980" y="1180" width="200" height="60" rx="5" fill="#27ae60" stroke="#229954" stroke-width="2"/>
+  <text x="1080" y="1200" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="white">Real-time</text>
+  <text x="1080" y="1215" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">Live Updates</text>
+  <text x="1080" y="1230" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">Streaming Data</text>
+  
+  <!-- Mobile Dashboards -->
+  <rect x="1200" y="1180" width="200" height="60" rx="5" fill="#27ae60" stroke="#229954" stroke-width="2"/>
+  <text x="1300" y="1200" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="white">Mobile</text>
+  <text x="1300" y="1215" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">On-the-go</text>
+  <text x="1300" y="1230" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">Responsive</text>
+  
+  <!-- Key Metrics Summary -->
+  <rect x="50" y="1280" width="1500" height="100" rx="10" fill="#2c3e50" stroke="#34495e" stroke-width="2"/>
+  <text x="800" y="1305" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="white">Key Performance Indicators (KPIs)</text>
+  
+  <!-- KPI Categories -->
+  <text x="150" y="1330" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="white">Availability:</text>
+  <text x="150" y="1345" font-family="Arial, sans-serif" font-size="10" fill="white">• Uptime: 99.99%</text>
+  <text x="150" y="1360" font-family="Arial, sans-serif" font-size="10" fill="white">• MTTR: <15 minutes</text>
+  
+  <text x="350" y="1330" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="white">Performance:</text>
+  <text x="350" y="1345" font-family="Arial, sans-serif" font-size="10" fill="white">• Response Time P95: <100ms</text>
+  <text x="350" y="1360" font-family="Arial, sans-serif" font-size="10" fill="white">• Throughput: 10K req/s</text>
+  
+  <text x="600" y="1330" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="white">Quality:</text>
+  <text x="600" y="1345" font-family="Arial, sans-serif" font-size="10" fill="white">• Error Rate: <0.1%</text>
+  <text x="600" y="1360" font-family="Arial, sans-serif" font-size="10" fill="white">• Success Rate: >99.9%</text>
+  
+  <text x="800" y="1330" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="white">Capacity:</text>
+  <text x="800" y="1345" font-family="Arial, sans-serif" font-size="10" fill="white">• CPU Utilization: <70%</text>
+  <text x="800" y="1360" font-family="Arial, sans-serif" font-size="10" fill="white">• Memory Usage: <80%</text>
+  
+  <text x="1000" y="1330" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="white">Security:</text>
+  <text x="1000" y="1345" font-family="Arial, sans-serif" font-size="10" fill="white">• Failed Auth: <1%</text>
+  <text x="1000" y="1360" font-family="Arial, sans-serif" font-size="10" fill="white">• Threat Detection: Real-time</text>
+  
+  <text x="1250" y="1330" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="white">Business:</text>
+  <text x="1250" y="1345" font-family="Arial, sans-serif" font-size="10" fill="white">• User Satisfaction: >95%</text>
+  <text x="1250" y="1360" font-family="Arial, sans-serif" font-size="10" fill="white">• Feature Adoption: Track</text>
+  
+</svg>

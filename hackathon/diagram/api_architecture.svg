@@ -1,0 +1,512 @@
+<svg width="1600" height="1400" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="apiGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#667eea;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#764ba2;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="serviceGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#4facfe;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#00f2fe;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="gatewayGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#fa709a;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#fee140;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="dbGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#a8edea;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#fed6e3;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="1600" height="1400" fill="#f8fafc"/>
+  
+  <!-- Title -->
+  <text x="800" y="30" text-anchor="middle" font-family="Arial, sans-serif" font-size="24" font-weight="bold" fill="#1e293b">API Architecture - Microservices & Communication</text>
+  
+  <!-- Client Layer -->
+  <rect x="50" y="60" width="1500" height="80" rx="10" fill="#1e293b" stroke="#334155" stroke-width="2"/>
+  <text x="800" y="85" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="white">Client Layer</text>
+  
+  <!-- Client Applications -->
+  <rect x="100" y="100" width="120" height="30" rx="5" fill="#3b82f6" stroke="#2563eb" stroke-width="1"/>
+  <text x="160" y="120" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="white">Web App</text>
+  
+  <rect x="240" y="100" width="120" height="30" rx="5" fill="#3b82f6" stroke="#2563eb" stroke-width="1"/>
+  <text x="300" y="120" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="white">Mobile App</text>
+  
+  <rect x="380" y="100" width="120" height="30" rx="5" fill="#3b82f6" stroke="#2563eb" stroke-width="1"/>
+  <text x="440" y="120" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="white">Desktop App</text>
+  
+  <rect x="520" y="100" width="120" height="30" rx="5" fill="#3b82f6" stroke="#2563eb" stroke-width="1"/>
+  <text x="580" y="120" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="white">Third-party API</text>
+  
+  <rect x="660" y="100" width="120" height="30" rx="5" fill="#3b82f6" stroke="#2563eb" stroke-width="1"/>
+  <text x="720" y="120" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="white">CLI Tools</text>
+  
+  <rect x="800" y="100" width="120" height="30" rx="5" fill="#3b82f6" stroke="#2563eb" stroke-width="1"/>
+  <text x="860" y="120" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="white">SDKs</text>
+  
+  <rect x="940" y="100" width="120" height="30" rx="5" fill="#3b82f6" stroke="#2563eb" stroke-width="1"/>
+  <text x="1000" y="120" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="white">Webhooks</text>
+  
+  <rect x="1080" y="100" width="120" height="30" rx="5" fill="#3b82f6" stroke="#2563eb" stroke-width="1"/>
+  <text x="1140" y="120" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="white">GraphQL</text>
+  
+  <rect x="1220" y="100" width="120" height="30" rx="5" fill="#3b82f6" stroke="#2563eb" stroke-width="1"/>
+  <text x="1280" y="120" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="white">WebSocket</text>
+  
+  <rect x="1360" y="100" width="120" height="30" rx="5" fill="#3b82f6" stroke="#2563eb" stroke-width="1"/>
+  <text x="1420" y="120" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="white">gRPC</text>
+  
+  <!-- API Gateway Layer -->
+  <rect x="50" y="160" width="1500" height="120" rx="10" fill="url(#gatewayGradient)" stroke="#f59e0b" stroke-width="3"/>
+  <text x="800" y="185" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="white">API Gateway Layer</text>
+  
+  <!-- Gateway Components -->
+  <rect x="100" y="200" width="150" height="60" rx="5" fill="#ffffff" stroke="#f59e0b" stroke-width="2"/>
+  <text x="175" y="220" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#92400e">Load Balancer</text>
+  <text x="175" y="235" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#92400e">HAProxy/Nginx</text>
+  <text x="175" y="250" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#92400e">SSL Termination</text>
+  
+  <rect x="270" y="200" width="150" height="60" rx="5" fill="#ffffff" stroke="#f59e0b" stroke-width="2"/>
+  <text x="345" y="220" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#92400e">API Gateway</text>
+  <text x="345" y="235" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#92400e">Kong/AWS API GW</text>
+  <text x="345" y="250" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#92400e">Rate Limiting</text>
+  
+  <rect x="440" y="200" width="150" height="60" rx="5" fill="#ffffff" stroke="#f59e0b" stroke-width="2"/>
+  <text x="515" y="220" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#92400e">Authentication</text>
+  <text x="515" y="235" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#92400e">JWT Validation</text>
+  <text x="515" y="250" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#92400e">OAuth 2.0</text>
+  
+  <rect x="610" y="200" width="150" height="60" rx="5" fill="#ffffff" stroke="#f59e0b" stroke-width="2"/>
+  <text x="685" y="220" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#92400e">Authorization</text>
+  <text x="685" y="235" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#92400e">RBAC</text>
+  <text x="685" y="250" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#92400e">Policy Engine</text>
+  
+  <rect x="780" y="200" width="150" height="60" rx="5" fill="#ffffff" stroke="#f59e0b" stroke-width="2"/>
+  <text x="855" y="220" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#92400e">Request Routing</text>
+  <text x="855" y="235" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#92400e">Service Discovery</text>
+  <text x="855" y="250" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#92400e">Load Balancing</text>
+  
+  <rect x="950" y="200" width="150" height="60" rx="5" fill="#ffffff" stroke="#f59e0b" stroke-width="2"/>
+  <text x="1025" y="220" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#92400e">Monitoring</text>
+  <text x="1025" y="235" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#92400e">Metrics Collection</text>
+  <text x="1025" y="250" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#92400e">Distributed Tracing</text>
+  
+  <rect x="1120" y="200" width="150" height="60" rx="5" fill="#ffffff" stroke="#f59e0b" stroke-width="2"/>
+  <text x="1195" y="220" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#92400e">Caching</text>
+  <text x="1195" y="235" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#92400e">Response Cache</text>
+  <text x="1195" y="250" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#92400e">CDN Integration</text>
+  
+  <rect x="1290" y="200" width="150" height="60" rx="5" fill="#ffffff" stroke="#f59e0b" stroke-width="2"/>
+  <text x="1365" y="220" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#92400e">Security</text>
+  <text x="1365" y="235" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#92400e">WAF</text>
+  <text x="1365" y="250" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#92400e">DDoS Protection</text>
+  
+  <!-- Microservices Layer -->
+  <rect x="50" y="300" width="1500" height="400" rx="10" fill="#f1f5f9" stroke="#64748b" stroke-width="3"/>
+  <text x="800" y="325" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="#334155">Microservices Layer</text>
+  
+  <!-- Authentication Service -->
+  <rect x="100" y="350" width="200" height="120" rx="5" fill="url(#serviceGradient)" stroke="#0ea5e9" stroke-width="2"/>
+  <text x="200" y="375" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="white">Authentication Service</text>
+  
+  <rect x="110" y="390" width="180" height="15" rx="2" fill="#ffffff" stroke="#0ea5e9" stroke-width="1"/>
+  <text x="200" y="402" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="#0369a1">POST /auth/login</text>
+  
+  <rect x="110" y="410" width="180" height="15" rx="2" fill="#ffffff" stroke="#0ea5e9" stroke-width="1"/>
+  <text x="200" y="422" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="#0369a1">POST /auth/register</text>
+  
+  <rect x="110" y="430" width="180" height="15" rx="2" fill="#ffffff" stroke="#0ea5e9" stroke-width="1"/>
+  <text x="200" y="442" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="#0369a1">POST /auth/refresh</text>
+  
+  <rect x="110" y="450" width="180" height="15" rx="2" fill="#ffffff" stroke="#0ea5e9" stroke-width="1"/>
+  <text x="200" y="462" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="#0369a1">DELETE /auth/logout</text>
+  
+  <!-- File Service -->
+  <rect x="320" y="350" width="200" height="120" rx="5" fill="url(#serviceGradient)" stroke="#0ea5e9" stroke-width="2"/>
+  <text x="420" y="375" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="white">File Service</text>
+  
+  <rect x="330" y="390" width="180" height="15" rx="2" fill="#ffffff" stroke="#0ea5e9" stroke-width="1"/>
+  <text x="420" y="402" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="#0369a1">POST /files/upload</text>
+  
+  <rect x="330" y="410" width="180" height="15" rx="2" fill="#ffffff" stroke="#0ea5e9" stroke-width="1"/>
+  <text x="420" y="422" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="#0369a1">GET /files/{id}</text>
+  
+  <rect x="330" y="430" width="180" height="15" rx="2" fill="#ffffff" stroke="#0ea5e9" stroke-width="1"/>
+  <text x="420" y="442" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="#0369a1">DELETE /files/{id}</text>
+  
+  <rect x="330" y="450" width="180" height="15" rx="2" fill="#ffffff" stroke="#0ea5e9" stroke-width="1"/>
+  <text x="420" y="462" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="#0369a1">GET /files/list</text>
+  
+  <!-- Permission Service -->
+  <rect x="540" y="350" width="200" height="120" rx="5" fill="url(#serviceGradient)" stroke="#0ea5e9" stroke-width="2"/>
+  <text x="640" y="375" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="white">Permission Service</text>
+  
+  <rect x="550" y="390" width="180" height="15" rx="2" fill="#ffffff" stroke="#0ea5e9" stroke-width="1"/>
+  <text x="640" y="402" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="#0369a1">POST /permissions/grant</text>
+  
+  <rect x="550" y="410" width="180" height="15" rx="2" fill="#ffffff" stroke="#0ea5e9" stroke-width="1"/>
+  <text x="640" y="422" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="#0369a1">DELETE /permissions/revoke</text>
+  
+  <rect x="550" y="430" width="180" height="15" rx="2" fill="#ffffff" stroke="#0ea5e9" stroke-width="1"/>
+  <text x="640" y="442" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="#0369a1">GET /permissions/check</text>
+  
+  <rect x="550" y="450" width="180" height="15" rx="2" fill="#ffffff" stroke="#0ea5e9" stroke-width="1"/>
+  <text x="640" y="462" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="#0369a1">GET /permissions/list</text>
+  
+  <!-- User Service -->
+  <rect x="760" y="350" width="200" height="120" rx="5" fill="url(#serviceGradient)" stroke="#0ea5e9" stroke-width="2"/>
+  <text x="860" y="375" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="white">User Service</text>
+  
+  <rect x="770" y="390" width="180" height="15" rx="2" fill="#ffffff" stroke="#0ea5e9" stroke-width="1"/>
+  <text x="860" y="402" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="#0369a1">GET /users/profile</text>
+  
+  <rect x="770" y="410" width="180" height="15" rx="2" fill="#ffffff" stroke="#0ea5e9" stroke-width="1"/>
+  <text x="860" y="422" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="#0369a1">PUT /users/profile</text>
+  
+  <rect x="770" y="430" width="180" height="15" rx="2" fill="#ffffff" stroke="#0ea5e9" stroke-width="1"/>
+  <text x="860" y="442" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="#0369a1">GET /users/groups</text>
+  
+  <rect x="770" y="450" width="180" height="15" rx="2" fill="#ffffff" stroke="#0ea5e9" stroke-width="1"/>
+  <text x="860" y="462" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="#0369a1">POST /users/groups</text>
+  
+  <!-- Image Processing Service -->
+  <rect x="980" y="350" width="200" height="120" rx="5" fill="url(#serviceGradient)" stroke="#0ea5e9" stroke-width="2"/>
+  <text x="1080" y="375" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="white">Image Processing</text>
+  
+  <rect x="990" y="390" width="180" height="15" rx="2" fill="#ffffff" stroke="#0ea5e9" stroke-width="1"/>
+  <text x="1080" y="402" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="#0369a1">POST /images/process</text>
+  
+  <rect x="990" y="410" width="180" height="15" rx="2" fill="#ffffff" stroke="#0ea5e9" stroke-width="1"/>
+  <text x="1080" y="422" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="#0369a1">GET /images/variants</text>
+  
+  <rect x="990" y="430" width="180" height="15" rx="2" fill="#ffffff" stroke="#0ea5e9" stroke-width="1"/>
+  <text x="1080" y="442" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="#0369a1">POST /images/optimize</text>
+  
+  <rect x="990" y="450" width="180" height="15" rx="2" fill="#ffffff" stroke="#0ea5e9" stroke-width="1"/>
+  <text x="1080" y="462" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="#0369a1">GET /images/metadata</text>
+  
+  <!-- Notification Service -->
+  <rect x="1200" y="350" width="200" height="120" rx="5" fill="url(#serviceGradient)" stroke="#0ea5e9" stroke-width="2"/>
+  <text x="1300" y="375" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="white">Notification Service</text>
+  
+  <rect x="1210" y="390" width="180" height="15" rx="2" fill="#ffffff" stroke="#0ea5e9" stroke-width="1"/>
+  <text x="1300" y="402" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="#0369a1">POST /notifications/send</text>
+  
+  <rect x="1210" y="410" width="180" height="15" rx="2" fill="#ffffff" stroke="#0ea5e9" stroke-width="1"/>
+  <text x="1300" y="422" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="#0369a1">GET /notifications/list</text>
+  
+  <rect x="1210" y="430" width="180" height="15" rx="2" fill="#ffffff" stroke="#0ea5e9" stroke-width="1"/>
+  <text x="1300" y="442" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="#0369a1">PUT /notifications/read</text>
+  
+  <rect x="1210" y="450" width="180" height="15" rx="2" fill="#ffffff" stroke="#0ea5e9" stroke-width="1"/>
+  <text x="1300" y="462" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="#0369a1">DELETE /notifications/{id}</text>
+  
+  <!-- Search Service -->
+  <rect x="100" y="490" width="200" height="120" rx="5" fill="url(#serviceGradient)" stroke="#0ea5e9" stroke-width="2"/>
+  <text x="200" y="515" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="white">Search Service</text>
+  
+  <rect x="110" y="530" width="180" height="15" rx="2" fill="#ffffff" stroke="#0ea5e9" stroke-width="1"/>
+  <text x="200" y="542" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="#0369a1">GET /search/files</text>
+  
+  <rect x="110" y="550" width="180" height="15" rx="2" fill="#ffffff" stroke="#0ea5e9" stroke-width="1"/>
+  <text x="200" y="562" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="#0369a1">GET /search/users</text>
+  
+  <rect x="110" y="570" width="180" height="15" rx="2" fill="#ffffff" stroke="#0ea5e9" stroke-width="1"/>
+  <text x="200" y="582" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="#0369a1">POST /search/index</text>
+  
+  <rect x="110" y="590" width="180" height="15" rx="2" fill="#ffffff" stroke="#0ea5e9" stroke-width="1"/>
+  <text x="200" y="602" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="#0369a1">GET /search/suggest</text>
+  
+  <!-- Analytics Service -->
+  <rect x="320" y="490" width="200" height="120" rx="5" fill="url(#serviceGradient)" stroke="#0ea5e9" stroke-width="2"/>
+  <text x="420" y="515" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="white">Analytics Service</text>
+  
+  <rect x="330" y="530" width="180" height="15" rx="2" fill="#ffffff" stroke="#0ea5e9" stroke-width="1"/>
+  <text x="420" y="542" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="#0369a1">POST /analytics/events</text>
+  
+  <rect x="330" y="550" width="180" height="15" rx="2" fill="#ffffff" stroke="#0ea5e9" stroke-width="1"/>
+  <text x="420" y="562" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="#0369a1">GET /analytics/reports</text>
+  
+  <rect x="330" y="570" width="180" height="15" rx="2" fill="#ffffff" stroke="#0ea5e9" stroke-width="1"/>
+  <text x="420" y="582" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="#0369a1">GET /analytics/metrics</text>
+  
+  <rect x="330" y="590" width="180" height="15" rx="2" fill="#ffffff" stroke="#0ea5e9" stroke-width="1"/>
+  <text x="420" y="602" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="#0369a1">GET /analytics/dashboard</text>
+  
+  <!-- Audit Service -->
+  <rect x="540" y="490" width="200" height="120" rx="5" fill="url(#serviceGradient)" stroke="#0ea5e9" stroke-width="2"/>
+  <text x="640" y="515" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="white">Audit Service</text>
+  
+  <rect x="550" y="530" width="180" height="15" rx="2" fill="#ffffff" stroke="#0ea5e9" stroke-width="1"/>
+  <text x="640" y="542" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="#0369a1">POST /audit/log</text>
+  
+  <rect x="550" y="550" width="180" height="15" rx="2" fill="#ffffff" stroke="#0ea5e9" stroke-width="1"/>
+  <text x="640" y="562" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="#0369a1">GET /audit/logs</text>
+  
+  <rect x="550" y="570" width="180" height="15" rx="2" fill="#ffffff" stroke="#0ea5e9" stroke-width="1"/>
+  <text x="640" y="582" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="#0369a1">GET /audit/compliance</text>
+  
+  <rect x="550" y="590" width="180" height="15" rx="2" fill="#ffffff" stroke="#0ea5e9" stroke-width="1"/>
+  <text x="640" y="602" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="#0369a1">GET /audit/reports</text>
+  
+  <!-- Backup Service -->
+  <rect x="760" y="490" width="200" height="120" rx="5" fill="url(#serviceGradient)" stroke="#0ea5e9" stroke-width="2"/>
+  <text x="860" y="515" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="white">Backup Service</text>
+  
+  <rect x="770" y="530" width="180" height="15" rx="2" fill="#ffffff" stroke="#0ea5e9" stroke-width="1"/>
+  <text x="860" y="542" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="#0369a1">POST /backup/create</text>
+  
+  <rect x="770" y="550" width="180" height="15" rx="2" fill="#ffffff" stroke="#0ea5e9" stroke-width="1"/>
+  <text x="860" y="562" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="#0369a1">GET /backup/list</text>
+  
+  <rect x="770" y="570" width="180" height="15" rx="2" fill="#ffffff" stroke="#0ea5e9" stroke-width="1"/>
+  <text x="860" y="582" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="#0369a1">POST /backup/restore</text>
+  
+  <rect x="770" y="590" width="180" height="15" rx="2" fill="#ffffff" stroke="#0ea5e9" stroke-width="1"/>
+  <text x="860" y="602" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="#0369a1">DELETE /backup/{id}</text>
+  
+  <!-- Health Check Service -->
+  <rect x="980" y="490" width="200" height="120" rx="5" fill="url(#serviceGradient)" stroke="#0ea5e9" stroke-width="2"/>
+  <text x="1080" y="515" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="white">Health Check</text>
+  
+  <rect x="990" y="530" width="180" height="15" rx="2" fill="#ffffff" stroke="#0ea5e9" stroke-width="1"/>
+  <text x="1080" y="542" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="#0369a1">GET /health</text>
+  
+  <rect x="990" y="550" width="180" height="15" rx="2" fill="#ffffff" stroke="#0ea5e9" stroke-width="1"/>
+  <text x="1080" y="562" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="#0369a1">GET /health/detailed</text>
+  
+  <rect x="990" y="570" width="180" height="15" rx="2" fill="#ffffff" stroke="#0ea5e9" stroke-width="1"/>
+  <text x="1080" y="582" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="#0369a1">GET /metrics</text>
+  
+  <rect x="990" y="590" width="180" height="15" rx="2" fill="#ffffff" stroke="#0ea5e9" stroke-width="1"/>
+  <text x="1080" y="602" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="#0369a1">GET /readiness</text>
+  
+  <!-- Configuration Service -->
+  <rect x="1200" y="490" width="200" height="120" rx="5" fill="url(#serviceGradient)" stroke="#0ea5e9" stroke-width="2"/>
+  <text x="1300" y="515" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="white">Configuration</text>
+  
+  <rect x="1210" y="530" width="180" height="15" rx="2" fill="#ffffff" stroke="#0ea5e9" stroke-width="1"/>
+  <text x="1300" y="542" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="#0369a1">GET /config/settings</text>
+  
+  <rect x="1210" y="550" width="180" height="15" rx="2" fill="#ffffff" stroke="#0ea5e9" stroke-width="1"/>
+  <text x="1300" y="562" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="#0369a1">PUT /config/settings</text>
+  
+  <rect x="1210" y="570" width="180" height="15" rx="2" fill="#ffffff" stroke="#0ea5e9" stroke-width="1"/>
+  <text x="1300" y="582" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="#0369a1">GET /config/features</text>
+  
+  <rect x="1210" y="590" width="180" height="15" rx="2" fill="#ffffff" stroke="#0ea5e9" stroke-width="1"/>
+  <text x="1300" y="602" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="#0369a1">POST /config/reload</text>
+  
+  <!-- Message Queue Layer -->
+  <rect x="50" y="720" width="1500" height="100" rx="10" fill="#fef3c7" stroke="#f59e0b" stroke-width="3"/>
+  <text x="800" y="745" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="#92400e">Message Queue & Event Streaming</text>
+  
+  <!-- Queue Components -->
+  <rect x="100" y="760" width="150" height="40" rx="5" fill="#8b5cf6" stroke="#7c3aed" stroke-width="2"/>
+  <text x="175" y="780" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="white">RabbitMQ</text>
+  <text x="175" y="795" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">Task Queue</text>
+  
+  <rect x="270" y="760" width="150" height="40" rx="5" fill="#8b5cf6" stroke="#7c3aed" stroke-width="2"/>
+  <text x="345" y="780" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="white">Apache Kafka</text>
+  <text x="345" y="795" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">Event Streaming</text>
+  
+  <rect x="440" y="760" width="150" height="40" rx="5" fill="#8b5cf6" stroke="#7c3aed" stroke-width="2"/>
+  <text x="515" y="780" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="white">Redis Pub/Sub</text>
+  <text x="515" y="795" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">Real-time Events</text>
+  
+  <rect x="610" y="760" width="150" height="40" rx="5" fill="#8b5cf6" stroke="#7c3aed" stroke-width="2"/>
+  <text x="685" y="780" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="white">AWS SQS</text>
+  <text x="685" y="795" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">Managed Queue</text>
+  
+  <rect x="780" y="760" width="150" height="40" rx="5" fill="#8b5cf6" stroke="#7c3aed" stroke-width="2"/>
+  <text x="855" y="780" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="white">Event Bus</text>
+  <text x="855" y="795" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">Service Communication</text>
+  
+  <rect x="950" y="760" width="150" height="40" rx="5" fill="#8b5cf6" stroke="#7c3aed" stroke-width="2"/>
+  <text x="1025" y="780" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="white">Dead Letter Queue</text>
+  <text x="1025" y="795" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">Error Handling</text>
+  
+  <rect x="1120" y="760" width="150" height="40" rx="5" fill="#8b5cf6" stroke="#7c3aed" stroke-width="2"/>
+  <text x="1195" y="780" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="white">WebSocket</text>
+  <text x="1195" y="795" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">Real-time Updates</text>
+  
+  <rect x="1290" y="760" width="150" height="40" rx="5" fill="#8b5cf6" stroke="#7c3aed" stroke-width="2"/>
+  <text x="1365" y="780" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="white">Event Sourcing</text>
+  <text x="1365" y="795" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">Audit Trail</text>
+  
+  <!-- Data Layer -->
+  <rect x="50" y="840" width="1500" height="200" rx="10" fill="url(#dbGradient)" stroke="#06b6d4" stroke-width="3"/>
+  <text x="800" y="865" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="#0e7490">Data Layer</text>
+  
+  <!-- Primary Database -->
+  <rect x="100" y="880" width="200" height="80" rx="5" fill="#ffffff" stroke="#06b6d4" stroke-width="2"/>
+  <text x="200" y="900" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#0e7490">PostgreSQL Primary</text>
+  <text x="200" y="915" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#0e7490">ACID Transactions</text>
+  <text x="200" y="930" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#0e7490">User Data, Files</text>
+  <text x="200" y="945" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#0e7490">Permissions, Groups</text>
+  <text x="200" y="955" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" fill="#0e7490">Multi-AZ, Auto-failover</text>
+  
+  <!-- Read Replicas -->
+  <rect x="320" y="880" width="200" height="80" rx="5" fill="#ffffff" stroke="#06b6d4" stroke-width="2"/>
+  <text x="420" y="900" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#0e7490">PostgreSQL Replicas</text>
+  <text x="420" y="915" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#0e7490">Read Scaling</text>
+  <text x="420" y="930" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#0e7490">Analytics Queries</text>
+  <text x="420" y="945" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#0e7490">Reporting</text>
+  <text x="420" y="955" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" fill="#0e7490">Cross-region replicas</text>
+  
+  <!-- Cache Layer -->
+  <rect x="540" y="880" width="200" height="80" rx="5" fill="#ffffff" stroke="#06b6d4" stroke-width="2"/>
+  <text x="640" y="900" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#0e7490">Redis Cluster</text>
+  <text x="640" y="915" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#0e7490">Session Store</text>
+  <text x="640" y="930" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#0e7490">API Response Cache</text>
+  <text x="640" y="945" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#0e7490">Rate Limiting</text>
+  <text x="640" y="955" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" fill="#0e7490">High Availability</text>
+  
+  <!-- Search Engine -->
+  <rect x="760" y="880" width="200" height="80" rx="5" fill="#ffffff" stroke="#06b6d4" stroke-width="2"/>
+  <text x="860" y="900" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#0e7490">Elasticsearch</text>
+  <text x="860" y="915" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#0e7490">Full-text Search</text>
+  <text x="860" y="930" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#0e7490">File Metadata</text>
+  <text x="860" y="945" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#0e7490">User Search</text>
+  <text x="860" y="955" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" fill="#0e7490">Distributed cluster</text>
+  
+  <!-- Time Series DB -->
+  <rect x="980" y="880" width="200" height="80" rx="5" fill="#ffffff" stroke="#06b6d4" stroke-width="2"/>
+  <text x="1080" y="900" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#0e7490">InfluxDB</text>
+  <text x="1080" y="915" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#0e7490">Metrics Storage</text>
+  <text x="1080" y="930" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#0e7490">Performance Data</text>
+  <text x="1080" y="945" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#0e7490">Analytics</text>
+  <text x="1080" y="955" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" fill="#0e7490">Time-based queries</text>
+  
+  <!-- Object Storage -->
+  <rect x="1200" y="880" width="200" height="80" rx="5" fill="#ffffff" stroke="#06b6d4" stroke-width="2"/>
+  <text x="1300" y="900" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#0e7490">Object Storage</text>
+  <text x="1300" y="915" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#0e7490">AWS S3</text>
+  <text x="1300" y="930" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#0e7490">File Storage</text>
+  <text x="1300" y="945" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#0e7490">Image Variants</text>
+  <text x="1300" y="955" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" fill="#0e7490">99.999999999% durability</text>
+  
+  <!-- Backup Storage -->
+  <rect x="100" y="980" width="200" height="40" rx="5" fill="#e2e8f0" stroke="#64748b" stroke-width="2"/>
+  <text x="200" y="1000" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#475569">S3 Glacier</text>
+  <text x="200" y="1015" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#475569">Long-term Backup</text>
+  
+  <!-- Audit Storage -->
+  <rect x="320" y="980" width="200" height="40" rx="5" fill="#e2e8f0" stroke="#64748b" stroke-width="2"/>
+  <text x="420" y="1000" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#475569">Audit Logs DB</text>
+  <text x="420" y="1015" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#475569">Compliance & Security</text>
+  
+  <!-- Configuration Store -->
+  <rect x="540" y="980" width="200" height="40" rx="5" fill="#e2e8f0" stroke="#64748b" stroke-width="2"/>
+  <text x="640" y="1000" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#475569">Config Store</text>
+  <text x="640" y="1015" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#475569">Feature Flags, Settings</text>
+  
+  <!-- Secrets Management -->
+  <rect x="760" y="980" width="200" height="40" rx="5" fill="#e2e8f0" stroke="#64748b" stroke-width="2"/>
+  <text x="860" y="1000" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#475569">AWS Secrets Manager</text>
+  <text x="860" y="1015" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#475569">API Keys, Credentials</text>
+  
+  <!-- Monitoring Storage -->
+  <rect x="980" y="980" width="200" height="40" rx="5" fill="#e2e8f0" stroke="#64748b" stroke-width="2"/>
+  <text x="1080" y="1000" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#475569">Monitoring DB</text>
+  <text x="1080" y="1015" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#475569">Metrics, Alerts</text>
+  
+  <!-- CDN Storage -->
+  <rect x="1200" y="980" width="200" height="40" rx="5" fill="#e2e8f0" stroke="#64748b" stroke-width="2"/>
+  <text x="1300" y="1000" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#475569">CloudFront CDN</text>
+  <text x="1300" y="1015" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#475569">Global Edge Cache</text>
+  
+  <!-- API Communication Patterns -->
+  <rect x="50" y="1060" width="1500" height="120" rx="10" fill="#f0f9ff" stroke="#0284c7" stroke-width="3"/>
+  <text x="800" y="1085" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="#0369a1">Communication Patterns & Protocols</text>
+  
+  <!-- Communication Types -->
+  <rect x="100" y="1100" width="150" height="60" rx="5" fill="#0ea5e9" stroke="#0284c7" stroke-width="2"/>
+  <text x="175" y="1120" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="white">REST API</text>
+  <text x="175" y="1135" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">HTTP/HTTPS</text>
+  <text x="175" y="1150" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">JSON/XML</text>
+  
+  <rect x="270" y="1100" width="150" height="60" rx="5" fill="#0ea5e9" stroke="#0284c7" stroke-width="2"/>
+  <text x="345" y="1120" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="white">GraphQL</text>
+  <text x="345" y="1135" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">Single Endpoint</text>
+  <text x="345" y="1150" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">Flexible Queries</text>
+  
+  <rect x="440" y="1100" width="150" height="60" rx="5" fill="#0ea5e9" stroke="#0284c7" stroke-width="2"/>
+  <text x="515" y="1120" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="white">gRPC</text>
+  <text x="515" y="1135" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">High Performance</text>
+  <text x="515" y="1150" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">Protocol Buffers</text>
+  
+  <rect x="610" y="1100" width="150" height="60" rx="5" fill="#0ea5e9" stroke="#0284c7" stroke-width="2"/>
+  <text x="685" y="1120" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="white">WebSocket</text>
+  <text x="685" y="1135" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">Real-time</text>
+  <text x="685" y="1150" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">Bidirectional</text>
+  
+  <rect x="780" y="1100" width="150" height="60" rx="5" fill="#0ea5e9" stroke="#0284c7" stroke-width="2"/>
+  <text x="855" y="1120" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="white">Server-Sent Events</text>
+  <text x="855" y="1135" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">Push Notifications</text>
+  <text x="855" y="1150" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">Event Streaming</text>
+  
+  <rect x="950" y="1100" width="150" height="60" rx="5" fill="#0ea5e9" stroke="#0284c7" stroke-width="2"/>
+  <text x="1025" y="1120" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="white">Message Queue</text>
+  <text x="1025" y="1135" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">Async Processing</text>
+  <text x="1025" y="1150" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">Decoupling</text>
+  
+  <rect x="1120" y="1100" width="150" height="60" rx="5" fill="#0ea5e9" stroke="#0284c7" stroke-width="2"/>
+  <text x="1195" y="1120" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="white">Event Sourcing</text>
+  <text x="1195" y="1135" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">Event Store</text>
+  <text x="1195" y="1150" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">Audit Trail</text>
+  
+  <rect x="1290" y="1100" width="150" height="60" rx="5" fill="#0ea5e9" stroke="#0284c7" stroke-width="2"/>
+  <text x="1365" y="1120" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="white">CQRS</text>
+  <text x="1365" y="1135" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">Command Query</text>
+  <text x="1365" y="1150" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">Separation</text>
+  
+  <!-- API Standards & Best Practices -->
+  <rect x="50" y="1200" width="1500" height="120" rx="10" fill="#fefce8" stroke="#ca8a04" stroke-width="3"/>
+  <text x="800" y="1225" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="#a16207">API Standards & Best Practices</text>
+  
+  <!-- Standards -->
+  <rect x="100" y="1240" width="200" height="60" rx="5" fill="#fbbf24" stroke="#f59e0b" stroke-width="2"/>
+  <text x="200" y="1260" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="white">OpenAPI 3.0</text>
+  <text x="200" y="1275" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">API Documentation</text>
+  <text x="200" y="1290" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">Swagger UI</text>
+  
+  <rect x="320" y="1240" width="200" height="60" rx="5" fill="#fbbf24" stroke="#f59e0b" stroke-width="2"/>
+  <text x="420" y="1260" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="white">Versioning</text>
+  <text x="420" y="1275" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">Semantic Versioning</text>
+  <text x="420" y="1290" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">Backward Compatibility</text>
+  
+  <rect x="540" y="1240" width="200" height="60" rx="5" fill="#fbbf24" stroke="#f59e0b" stroke-width="2"/>
+  <text x="640" y="1260" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="white">Rate Limiting</text>
+  <text x="640" y="1275" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">Token Bucket</text>
+  <text x="640" y="1290" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">Sliding Window</text>
+  
+  <rect x="760" y="1240" width="200" height="60" rx="5" fill="#fbbf24" stroke="#f59e0b" stroke-width="2"/>
+  <text x="860" y="1260" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="white">Error Handling</text>
+  <text x="860" y="1275" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">HTTP Status Codes</text>
+  <text x="860" y="1290" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">Error Response Format</text>
+  
+  <rect x="980" y="1240" width="200" height="60" rx="5" fill="#fbbf24" stroke="#f59e0b" stroke-width="2"/>
+  <text x="1080" y="1260" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="white">Pagination</text>
+  <text x="1080" y="1275" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">Cursor-based</text>
+  <text x="1080" y="1290" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">Offset-based</text>
+  
+  <rect x="1200" y="1240" width="200" height="60" rx="5" fill="#fbbf24" stroke="#f59e0b" stroke-width="2"/>
+  <text x="1300" y="1260" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="white">Security</text>
+  <text x="1300" y="1275" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">HTTPS Only</text>
+  <text x="1300" y="1290" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">Input Validation</text>
+  
+  <!-- Performance Metrics -->
+  <rect x="50" y="1340" width="1500" height="50" rx="10" fill="#1e293b" stroke="#334155" stroke-width="2"/>
+  <text x="800" y="1365" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="white">Performance Targets & SLAs</text>
+  
+  <text x="150" y="1385" font-family="Arial, sans-serif" font-size="11" fill="white">• Response Time: P95 < 100ms</text>
+  <text x="400" y="1385" font-family="Arial, sans-serif" font-size="11" fill="white">• Throughput: 10,000 req/s</text>
+  <text x="650" y="1385" font-family="Arial, sans-serif" font-size="11" fill="white">• Availability: 99.99%</text>
+  <text x="900" y="1385" font-family="Arial, sans-serif" font-size="11" fill="white">• Error Rate: < 0.1%</text>
+  <text x="1150" y="1385" font-family="Arial, sans-serif" font-size="11" fill="white">• Concurrent Users: 1M+</text>
+  
+</svg>

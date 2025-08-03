@@ -1,0 +1,106 @@
+# File Upload Server - System Architecture Overview
+
+## Architecture Components
+
+### Client Layer
+- **Client Applications**
+  - Web/Mobile/API Clients
+  - Multiple client types supported
+
+### Load Balancing & Gateway Layer
+- **Load Balancer**
+  - HAProxy/Nginx
+  - SSL Termination
+  - Traffic distribution
+
+- **API Gateway**
+  - Rate Limiting
+  - Authentication
+  - Request routing
+
+- **CDN (Content Delivery Network)**
+  - CloudFront
+  - Global Cache
+  - Static content delivery
+
+### Application Layer (Auto-Scaling: 5-50 instances)
+- **Auth Service**
+  - JWT/bcrypt authentication
+  - User authentication and authorization
+
+- **File Service**
+  - Upload/Download operations
+  - File management
+
+- **Permission Service**
+  - Access Control
+  - Permission management
+
+- **User Service**
+  - Profile/Groups management
+  - User data handling
+
+- **Message Queue**
+  - RabbitMQ/Kafka
+  - Asynchronous processing
+
+### Data & Storage Layer
+- **Cache Layer**
+  - Redis Cluster (64GB)
+  - Session Data & Permissions
+  - High-speed data access
+
+- **Database Layer**
+  - PostgreSQL + Read Replicas
+  - PgBouncer Connection Pooling
+  - Persistent data storage
+
+- **Storage Layer**
+  - AWS S3/Google Cloud Storage
+  - Multi-Region Replication
+  - File storage and backup
+
+### Infrastructure & Operations
+- **Monitoring**
+  - Prometheus/Grafana
+  - ELK Stack
+  - System observability
+
+- **Security**
+  - WAF/DDoS Protection
+  - Rate Limiting
+  - Security measures
+
+- **Performance**
+  - 10K login/sec
+  - 5K downloads/sec
+  - Performance optimization
+
+## Performance Targets
+
+### Request Handling
+- **Login**: 10K req/sec (<100ms)
+- **Downloads**: 5K concurrent (<200ms)
+- **Uploads**: 1K concurrent (<500ms)
+- **Permissions**: 50K checks/sec (<10ms)
+- **Sessions**: 100K concurrent
+- **Registration**: 1K req/sec (<150ms)
+
+### File Operations
+- **Peak Upload Rate**: 200 files/sec
+- **Peak Download Rate**: 2K files/sec
+
+## Data Flow
+1. Client requests → Load Balancer
+2. Load Balancer → API Gateway
+3. API Gateway → CDN (for static content)
+4. API Gateway → Application Layer
+5. Application Layer → Cache/Database/Storage as needed
+
+## Scalability Features
+- Auto-scaling application instances (5-50)
+- Horizontal scaling across all layers
+- Multi-region deployment capability
+- Load balancing and traffic distribution
+- Caching at multiple levels
+- Database read replicas for performance

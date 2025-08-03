@@ -1,0 +1,196 @@
+# Database Schema - File Upload System with Access Control
+
+## Core Tables
+
+### users
+**Primary table for user management**
+- **id**: INTEGER PRIMARY KEY
+- **username**: VARCHAR(50) UNIQUE
+- **password_hash**: VARCHAR(255)
+- **role**: VARCHAR(20)
+- **created_at**: TIMESTAMP
+- **last_login**: TIMESTAMP
+- **is_active**: BOOLEAN
+
+### files
+**Central table for file metadata**
+- **id**: INTEGER PRIMARY KEY
+- **owner_id**: INTEGER FK → users.id
+- **filename**: VARCHAR(255)
+- **original_name**: VARCHAR(255)
+- **content_type**: VARCHAR(100)
+- **file_size**: INTEGER
+- **file_path**: VARCHAR(500)
+- **upload_ip**: VARCHAR(45)
+- **user_agent**: TEXT
+- **created_at**: TIMESTAMP
+- **is_deleted**: BOOLEAN
+
+### user_groups
+**Group management for collaborative access**
+- **id**: INTEGER PRIMARY KEY
+- **group_name**: VARCHAR(100)
+- **description**: TEXT
+- **created_by**: INTEGER FK → users.id
+- **created_at**: TIMESTAMP
+
+### group_members
+**Many-to-many relationship between users and groups**
+- **id**: INTEGER PRIMARY KEY
+- **group_id**: INTEGER FK → user_groups.id
+- **user_id**: INTEGER FK → users.id
+- **joined_at**: TIMESTAMP
+
+## Permission Tables
+
+### file_permissions
+**Individual user permissions for files**
+- **id**: INTEGER PRIMARY KEY
+- **file_id**: INTEGER FK → files.id
+- **user_id**: INTEGER FK → users.id
+- **can_read**: BOOLEAN
+- **can_download**: BOOLEAN
+- **can_write**: BOOLEAN
+- **can_share**: BOOLEAN
+- **granted_at**: TIMESTAMP
+
+### group_file_permissions
+**Group-based permissions for files**
+- **id**: INTEGER PRIMARY KEY
+- **file_id**: INTEGER FK → files.id
+- **group_id**: INTEGER FK → user_groups.id
+- **can_read**: BOOLEAN
+- **can_download**: BOOLEAN
+- **can_write**: BOOLEAN
+- **can_share**: BOOLEAN
+- **granted_at**: TIMESTAMP
+
+## Supporting Tables
+
+### image_variants
+**Image processing and variant storage**
+- **id**: INTEGER PRIMARY KEY
+- **original_file_id**: INTEGER FK → files.id
+- **variant_type**: VARCHAR(20) (thumbnail, medium, large)
+- **quality_level**: VARCHAR(10) (low, medium, high)
+- **format**: VARCHAR(10) (jpg, png, webp)
+- **file_path**: VARCHAR(500)
+- **file_size**: INTEGER
+- **width/height**: INTEGER
+
+### activity_logs
+**Audit trail for all file operations**
+- **id**: INTEGER PRIMARY KEY
+- **user_id**: INTEGER FK → users.id
+- **file_id**: INTEGER FK → files.id
+- **action**: VARCHAR(50) (upload, download, share, delete)
+- **ip_address**: VARCHAR(45)
+- **timestamp**: TIMESTAMP
+
+### revoked_tokens
+**JWT token blacklist for security**
+- **id**: INTEGER PRIMARY KEY
+- **token_id**: VARCHAR(255) UNIQUE
+- **user_id**: INTEGER FK → users.id
+- **revoked_at**: TIMESTAMP
+
+## Relationships
+
+### One-to-Many Relationships
+- **users → files**: One user can own many files
+- **users → user_groups**: One user can create many groups
+- **files → image_variants**: One file can have many variants
+- **users → activity_logs**: One user can have many log entries
+- **files → activity_logs**: One file can have many log entries
+- **users → revoked_tokens**: One user can have many revoked tokens
+
+### Many-to-Many Relationships
+- **users ↔ user_groups**: Through group_members table
+- **users ↔ files**: Through file_permissions table
+- **user_groups ↔ files**: Through group_file_permissions table
+
+## Database Indexes & Performance Optimizations
+
+### Primary Indexes
+- **Composite Index**: (user_id, file_id, permission_type)
+  - Optimizes permission checks
+  - Speeds up access control queries
+
+- **File Indexes**:
+  - files.owner_id: Fast owner lookups
+  - files.created_at: Chronological queries
+  - files.content_type: File type filtering
+
+- **Image Variant Index**:
+  - image_variants(original_file_id, variant_type)
+  - Quick variant retrieval
+
+### Performance Strategies
+
+#### Partitioning
+- **activity_logs by timestamp**
+  - Monthly partitions for audit data
+  - Improves query performance
+  - Easier data archival
+
+#### Connection Management
+- **PgBouncer Connection Pooling**
+  - 1000 max connections
+  - Connection reuse
+  - Reduced overhead
+
+#### Query Optimization
+- **Prepared Statements**: Reduce parsing overhead
+- **Query Caching**: Redis for frequent queries
+- **Read Replicas**: Distribute read load
+
+## Security Considerations
+
+### Data Protection
+- **Password Hashing**: bcrypt with salt
+- **Token Management**: JWT with blacklist
+- **Audit Trail**: Complete activity logging
+- **Soft Deletes**: is_deleted flag for recovery
+
+### Access Control
+- **Role-Based Access**: User roles (admin, user, guest)
+- **Granular Permissions**: Read, write, download, share
+- **Group Permissions**: Collaborative access
+- **IP Tracking**: Security monitoring
+
+## Scalability Features
+
+### Horizontal Scaling
+- **Sharding Strategy**: By user_id or file_id
+- **Read Replicas**: Multiple read-only instances
+- **Caching Layer**: Redis for hot data
+
+### Data Archival
+- **Cold Storage**: Move old files to cheaper storage
+- **Log Rotation**: Archive old activity logs
+- **Cleanup Jobs**: Remove expired tokens
+
+## Backup & Recovery
+
+### Backup Strategy
+- **Daily Full Backups**: Complete database dump
+- **Hourly Incremental**: Transaction log backups
+- **Cross-Region Replication**: Disaster recovery
+
+### Recovery Procedures
+- **Point-in-Time Recovery**: Restore to specific timestamp
+- **Table-Level Recovery**: Restore individual tables
+- **Data Validation**: Integrity checks post-recovery
+
+## Monitoring & Maintenance
+
+### Performance Monitoring
+- **Query Performance**: Slow query logging
+- **Index Usage**: Monitor index effectiveness
+- **Connection Metrics**: Pool utilization
+
+### Maintenance Tasks
+- **VACUUM**: Regular table cleanup
+- **REINDEX**: Index rebuilding
+- **ANALYZE**: Update table statistics
+- **Partition Pruning**: Remove old partitions
