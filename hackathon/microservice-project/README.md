@@ -316,7 +316,182 @@ make test-integration
 
 ## CI/CD Pipeline
 
-### Continuous Integration
+### Local CI/CD Pipeline
+
+This project includes a comprehensive local CI/CD pipeline that mirrors the production pipeline. You can run it manually to validate your changes before pushing to the repository.
+
+#### Quick Start
+
+```bash
+# Run the full pipeline
+./scripts/local-cicd.sh full
+
+# Run quick validation (quality + unit tests)
+./scripts/local-cicd.sh quick
+
+# Run specific stages only
+./scripts/local-cicd.sh custom quality,unit,build
+```
+
+#### Available Commands
+
+| Command | Description | Use Case |
+|---------|-------------|----------|
+| `full` | Run complete pipeline (all stages) | Before major releases or comprehensive validation |
+| `quick` | Run quality checks + unit tests | Quick validation during development |
+| `custom <stages>` | Run specific stages | Targeted testing of specific components |
+| `setup-hooks` | Install Git hooks for automatic execution | One-time setup for automatic validation |
+| `install-tools` | Install required CI/CD tools | Initial setup or tool updates |
+| `clean` | Clean up logs and artifacts | Maintenance and cleanup |
+
+#### Pipeline Stages
+
+| Stage | Description | Tools Used | Duration |
+|-------|-------------|------------|----------|
+| **quality** | Code formatting, linting, security scanning | `gofmt`, `golangci-lint`, `gosec`, `nancy` | ~2-3 min |
+| **unit** | Unit tests with race detection and coverage | `go test` with coverage analysis | ~3-5 min |
+| **integration** | Integration tests with real services | Docker Compose + PostgreSQL/Redis | ~5-8 min |
+| **security** | Security-focused test suite | Custom security tests | ~2-3 min |
+| **build** | Build Docker images for all services | Docker + docker-compose | ~5-10 min |
+| **e2e** | End-to-end workflow tests | Full service stack | ~8-12 min |
+| **performance** | Load and performance testing | Benchmark tests | ~3-5 min |
+| **chaos** | Chaos engineering and resilience tests | Fault injection tests | ~5-8 min |
+
+#### Prerequisites
+
+Before running the local CI/CD pipeline, ensure you have:
+
+```bash
+# Required tools
+- Go 1.21+
+- Docker & Docker Compose
+- Git
+
+# Install CI/CD tools (one-time setup)
+./scripts/local-cicd.sh install-tools
+```
+
+#### Usage Examples
+
+```bash
+# 1. Quick development validation
+./scripts/local-cicd.sh quick
+
+# 2. Pre-commit validation
+./scripts/local-cicd.sh custom quality,unit,security
+
+# 3. Pre-release validation
+./scripts/local-cicd.sh full
+
+# 4. Build and test specific components
+./scripts/local-cicd.sh custom build,e2e
+
+# 5. Performance testing only
+./scripts/local-cicd.sh custom performance
+```
+
+#### Automated Git Hooks
+
+Set up automatic pipeline execution on Git operations:
+
+```bash
+# Install Git hooks
+./scripts/local-cicd.sh setup-hooks
+
+# This will:
+# - Run quick pipeline before each push (pre-push hook)
+# - Optionally run full pipeline after commits (post-commit hook)
+```
+
+#### Pipeline Reports
+
+After each run, the pipeline generates:
+
+- **Log files**: `.local-cicd-logs/pipeline_TIMESTAMP.log`
+- **HTML reports**: `.local-cicd-logs/report_TIMESTAMP.html`
+- **Coverage reports**: `coverage.html` (for unit tests)
+
+```bash
+# View latest pipeline report
+open .local-cicd-logs/report_*.html
+
+# View coverage report
+open coverage.html
+
+# Check recent logs
+tail -f .local-cicd-logs/pipeline_*.log
+```
+
+#### Troubleshooting
+
+**Common Issues:**
+
+1. **Docker not running**
+   ```bash
+   # Start Docker Desktop or Docker daemon
+   # Then retry the pipeline
+   ```
+
+2. **Missing tools**
+   ```bash
+   ./scripts/local-cicd.sh install-tools
+   ```
+
+3. **Port conflicts**
+   ```bash
+   # Stop conflicting services
+   docker-compose down
+   # Kill processes using required ports
+   lsof -ti:8081,8082,8083,8085 | xargs kill -9
+   ```
+
+4. **Permission issues**
+   ```bash
+   chmod +x scripts/local-cicd.sh
+   ```
+
+**Pipeline Failure Recovery:**
+
+```bash
+# Clean up and retry
+./scripts/local-cicd.sh clean
+./scripts/local-cicd.sh quick
+
+# Check specific stage logs
+grep -A 10 -B 5 "ERROR" .local-cicd-logs/pipeline_*.log
+```
+
+#### Integration with IDEs
+
+**VS Code Tasks** (`.vscode/tasks.json`):
+```json
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "CI/CD: Quick",
+            "type": "shell",
+            "command": "./scripts/local-cicd.sh quick",
+            "group": "test",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "panel": "new"
+            }
+        },
+        {
+            "label": "CI/CD: Full",
+            "type": "shell",
+            "command": "./scripts/local-cicd.sh full",
+            "group": "test"
+        }
+    ]
+}
+```
+
+### Remote CI/CD Pipeline
+
+#### Continuous Integration
 1. Code quality checks (linting, formatting)
 2. Security scanning (SAST, dependency check)
 3. Unit tests execution
@@ -324,7 +499,7 @@ make test-integration
 5. Build Docker images
 6. Push to registry
 
-### Continuous Deployment
+#### Continuous Deployment
 1. Deploy to staging environment
 2. Run E2E tests
 3. Security tests
