@@ -1,16 +1,16 @@
 package domain
 
 import (
-	"time"
 	"github.com/elotusteam/microservice-project/shared/domain"
+	"time"
 )
 
 // AuthUser represents an authenticated user
 type AuthUser struct {
-	ID       string           `json:"id"`
-	Username string           `json:"username"`
-	Email    string           `json:"email"`
-	Role     domain.UserRole  `json:"role"`
+	ID       string            `json:"id"`
+	Username string            `json:"username"`
+	Email    string            `json:"email"`
+	Role     domain.UserRole   `json:"role"`
 	Status   domain.UserStatus `json:"status"`
 }
 
@@ -74,7 +74,7 @@ type JWTClaims struct {
 	Role      string `json:"role"`
 	TokenID   string `json:"token_id"`
 	TokenType string `json:"token_type"`
-	
+
 	// Standard JWT claims
 	Issuer    string       `json:"iss,omitempty"`
 	Subject   string       `json:"sub,omitempty"`
@@ -115,12 +115,12 @@ type PasswordResetToken struct {
 
 // LoginAttempt represents a login attempt for rate limiting
 type LoginAttempt struct {
-	ID        string    `json:"id"`
-	Identifier string   `json:"identifier"` // username, email, or IP
-	Success   bool      `json:"success"`
-	IPAddress string    `json:"ip_address"`
-	UserAgent string    `json:"user_agent"`
-	Timestamp time.Time `json:"timestamp"`
+	ID         string    `json:"id"`
+	Identifier string    `json:"identifier"` // username, email, or IP
+	Success    bool      `json:"success"`
+	IPAddress  string    `json:"ip_address"`
+	UserAgent  string    `json:"user_agent"`
+	Timestamp  time.Time `json:"timestamp"`
 }
 
 // AuthError represents authentication-specific errors
@@ -135,23 +135,25 @@ func (e *AuthError) Error() string {
 	return e.Message
 }
 
-// Common authentication error codes
+// Common authentication error codes - these are error identifiers, not credentials
+// #nosec G101 -- These are error codes, not hardcoded credentials
 const (
-	ErrCodeInvalidCredentials     = "INVALID_CREDENTIALS"
-	ErrCodeUserNotFound          = "USER_NOT_FOUND"
-	ErrCodeUserAlreadyExists     = "USER_ALREADY_EXISTS"
-	ErrCodeEmailAlreadyExists    = "EMAIL_ALREADY_EXISTS"
-	ErrCodeUsernameAlreadyExists = "USERNAME_ALREADY_EXISTS"
-	ErrCodeInvalidToken          = "INVALID_TOKEN"
-	ErrCodeExpiredToken          = "EXPIRED_TOKEN"
-	ErrCodeRevokedToken          = "REVOKED_TOKEN"
-	ErrCodeInvalidPassword       = "INVALID_PASSWORD"
-	ErrCodeWeakPassword          = "WEAK_PASSWORD"
-	ErrCodeAccountLocked         = "ACCOUNT_LOCKED"
-	ErrCodeAccountInactive       = "ACCOUNT_INACTIVE"
-	ErrCodeTooManyAttempts       = "TOO_MANY_ATTEMPTS"
-	ErrCodePasswordResetRequired = "PASSWORD_RESET_REQUIRED"
-	ErrCodeEmailNotVerified      = "EMAIL_NOT_VERIFIED"
+	// AuthErrInvalidCredentials indicates authentication failed due to wrong credentials
+	AuthErrInvalidCredentials    = "INVALID_CREDENTIALS"
+	AuthErrUserNotFound          = "USER_NOT_FOUND"
+	AuthErrUserAlreadyExists     = "USER_ALREADY_EXISTS"
+	AuthErrEmailAlreadyExists    = "EMAIL_ALREADY_EXISTS"
+	AuthErrUsernameAlreadyExists = "USERNAME_ALREADY_EXISTS"
+	AuthErrInvalidToken          = "INVALID_TOKEN"
+	AuthErrExpiredToken          = "EXPIRED_TOKEN"
+	AuthErrRevokedToken          = "REVOKED_TOKEN"
+	AuthErrInvalidPassword       = "INVALID_PASSWORD"
+	AuthErrWeakPassword          = "WEAK_PASSWORD"
+	AuthErrAccountLocked         = "ACCOUNT_LOCKED"
+	AuthErrAccountInactive       = "ACCOUNT_INACTIVE"
+	AuthErrTooManyAttempts       = "TOO_MANY_ATTEMPTS"
+	AuthErrPasswordResetRequired = "PASSWORD_RESET_REQUIRED"
+	AuthErrEmailNotVerified      = "EMAIL_NOT_VERIFIED"
 )
 
 // NewAuthError creates a new authentication error

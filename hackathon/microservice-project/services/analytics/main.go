@@ -6,11 +6,11 @@ import (
 	"strconv"
 	"time"
 
-	"github.com/gin-gonic/gin"
-	"github.com/google/uuid"
 	"github.com/elotusteam/microservice-project/services/analytics/domain"
 	"github.com/elotusteam/microservice-project/services/analytics/usecases"
 	"github.com/elotusteam/microservice-project/shared/config"
+	"github.com/gin-gonic/gin"
+	"github.com/google/uuid"
 )
 
 func main() {
@@ -200,12 +200,12 @@ func getSystemMetrics(c *gin.Context) {
 
 func getSystemHealth(c *gin.Context) {
 	health := map[string]interface{}{
-		"status":        "healthy",
-		"total_users":   1000,
-		"active_users":  150,
-		"total_files":   5000,
-		"total_events":  10000,
-		"error_rate":    0.5,
+		"status":       "healthy",
+		"total_users":  1000,
+		"active_users": 150,
+		"total_files":  5000,
+		"total_events": 10000,
+		"error_rate":   0.5,
 		"last_updated": time.Now(),
 	}
 
@@ -392,14 +392,14 @@ func deleteReport(c *gin.Context) {
 // Dashboard handlers
 func getDashboardData(c *gin.Context) {
 	dashboard := &usecases.DashboardData{
-		TotalUsers:    1000,
-		ActiveUsers:   150,
-		TotalFiles:    5000,
-		TotalEvents:   10000,
-		TopFiles:      []*domain.FileMetrics{},
-		TopEndpoints:  []*domain.APIMetrics{},
-		RecentErrors:  []*domain.ErrorMetrics{},
-		UserActivity:  []*domain.UserActivity{},
+		TotalUsers:   1000,
+		ActiveUsers:  150,
+		TotalFiles:   5000,
+		TotalEvents:  10000,
+		TopFiles:     []*domain.FileMetrics{},
+		TopEndpoints: []*domain.APIMetrics{},
+		RecentErrors: []*domain.ErrorMetrics{},
+		UserActivity: []*domain.UserActivity{},
 		EventDistribution: map[string]int64{
 			"file_upload":   100,
 			"file_download": 250,
@@ -430,11 +430,11 @@ func getUserDashboard(c *gin.Context) {
 
 func getRealTimeMetrics(c *gin.Context) {
 	metrics := map[string]interface{}{
-		"active_users":    150,
+		"active_users":     150,
 		"requests_per_min": 500,
-		"error_rate":      0.5,
-		"response_time":   120.5,
-		"timestamp":       time.Now(),
+		"error_rate":       0.5,
+		"response_time":    120.5,
+		"timestamp":        time.Now(),
 	}
 
 	c.JSON(http.StatusOK, metrics)

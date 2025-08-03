@@ -6,8 +6,8 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/google/uuid"
 	"github.com/elotusteam/microservice-project/services/analytics/domain"
+	"github.com/google/uuid"
 )
 
 // analyticsService implements the AnalyticsService interface
@@ -47,9 +47,11 @@ func (s *analyticsService) TrackEvent(ctx context.Context, req *TrackEventReques
 func (s *analyticsService) TrackBatchEvents(ctx context.Context, req *TrackBatchEventsRequest) error {
 	events := make([]*domain.Event, len(req.Events))
 	for i, eventReq := range req.Events {
+		// Create local copy to avoid implicit memory aliasing
+		userID := eventReq.UserID
 		event := &domain.Event{
 			ID:        uuid.New(),
-			UserID:    &eventReq.UserID,
+			UserID:    &userID,
 			SessionID: eventReq.SessionID,
 			Type:      eventReq.EventType,
 			Action:    eventReq.Action,
@@ -301,16 +303,16 @@ func (s *analyticsService) GetSystemHealth(ctx context.Context) (map[string]inte
 	}
 
 	health := map[string]interface{}{
-		"status":           "healthy",
-		"total_users":      latest.TotalUsers,
-		"active_users":     latest.ActiveUsers,
-		"new_users":        latest.NewUsers,
-		"total_files":      latest.TotalFiles,
-		"total_events":     latest.TotalEvents,
-		"api_calls":        latest.APICallsCount,
-		"error_rate":       latest.ErrorRate,
-		"response_time":    latest.AverageResponseTime,
-		"last_updated":     latest.Date,
+		"status":        "healthy",
+		"total_users":   latest.TotalUsers,
+		"active_users":  latest.ActiveUsers,
+		"new_users":     latest.NewUsers,
+		"total_files":   latest.TotalFiles,
+		"total_events":  latest.TotalEvents,
+		"api_calls":     latest.APICallsCount,
+		"error_rate":    latest.ErrorRate,
+		"response_time": latest.AverageResponseTime,
+		"last_updated":  latest.Date,
 	}
 
 	// Determine health status based on metrics
@@ -456,7 +458,7 @@ func (s *analyticsService) TrackAPICall(ctx context.Context, endpoint, method st
 		// Calculate new average
 		totalLatency := metrics.AverageLatency*float64(metrics.RequestCount-1) + latencyMs
 		metrics.AverageLatency = totalLatency / float64(metrics.RequestCount)
-		
+
 		if latencyMs < metrics.MinLatency {
 			metrics.MinLatency = latencyMs
 		}
@@ -589,7 +591,9 @@ func (s *analyticsService) GenerateReport(ctx context.Context, req *GenerateRepo
 	if err != nil {
 		report.Status = domain.ReportStatusFailed
 		report.UpdatedAt = time.Now()
-		s.repoManager.Report().Create(ctx, report)
+		if createErr := s.repoManager.Report().Create(ctx, report); createErr != nil {
+			fmt.Printf("Failed to create failed report: %v\n", createErr)
+		}
 		return nil, err
 	}
 
@@ -598,7 +602,9 @@ func (s *analyticsService) GenerateReport(ctx context.Context, req *GenerateRepo
 	if err != nil {
 		report.Status = domain.ReportStatusFailed
 		report.UpdatedAt = time.Now()
-		s.repoManager.Report().Create(ctx, report)
+		if createErr := s.repoManager.Report().Create(ctx, report); createErr != nil {
+			fmt.Printf("Failed to create failed report: %v\n", createErr)
+		}
 		return nil, err
 	}
 

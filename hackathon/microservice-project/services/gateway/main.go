@@ -10,10 +10,10 @@ import (
 	"syscall"
 	"time"
 
-	"github.com/gin-gonic/gin"
 	"github.com/elotusteam/microservice-project/services/gateway/middleware"
 	"github.com/elotusteam/microservice-project/services/gateway/routes"
 	"github.com/elotusteam/microservice-project/shared/config"
+	"github.com/gin-gonic/gin"
 )
 
 func main() {

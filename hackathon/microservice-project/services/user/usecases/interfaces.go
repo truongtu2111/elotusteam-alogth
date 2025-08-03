@@ -4,8 +4,8 @@ import (
 	"context"
 	"time"
 
-	"github.com/google/uuid"
 	userDomain "github.com/elotusteam/microservice-project/services/user/domain"
+	"github.com/google/uuid"
 )
 
 // UserService defines the interface for user management operations
@@ -106,11 +106,11 @@ type ActivityService interface {
 
 // Request/Response DTOs
 type CreateUserRequest struct {
-	Username  string `json:"username" validate:"required,min=3,max=50"`
-	Email     string `json:"email" validate:"required,email"`
-	Password  string `json:"password" validate:"required,min=8"`
-	FirstName string `json:"first_name" validate:"required,min=1,max=50"`
-	LastName  string `json:"last_name" validate:"required,min=1,max=50"`
+	Username  string              `json:"username" validate:"required,min=3,max=50"`
+	Email     string              `json:"email" validate:"required,email"`
+	Password  string              `json:"password" validate:"required,min=8"`
+	FirstName string              `json:"first_name" validate:"required,min=1,max=50"`
+	LastName  string              `json:"last_name" validate:"required,min=1,max=50"`
 	Role      userDomain.UserRole `json:"role,omitempty"`
 }
 
@@ -170,46 +170,46 @@ type ChangePasswordRequest struct {
 }
 
 type UserStats struct {
-	TotalFiles      int64 `json:"total_files"`
-	TotalStorage    int64 `json:"total_storage"`
-	FriendsCount    int64 `json:"friends_count"`
-	FollowersCount  int64 `json:"followers_count"`
-	FollowingCount  int64 `json:"following_count"`
-	GroupsCount     int64 `json:"groups_count"`
-	ActiveSessions  int64 `json:"active_sessions"`
+	TotalFiles     int64 `json:"total_files"`
+	TotalStorage   int64 `json:"total_storage"`
+	FriendsCount   int64 `json:"friends_count"`
+	FollowersCount int64 `json:"followers_count"`
+	FollowingCount int64 `json:"following_count"`
+	GroupsCount    int64 `json:"groups_count"`
+	ActiveSessions int64 `json:"active_sessions"`
 }
 
 type CreateProfileRequest struct {
-	PhoneNumber string                           `json:"phone_number,omitempty"`
-	Address     string                           `json:"address,omitempty"`
-	City        string                           `json:"city,omitempty"`
-	Country     string                           `json:"country,omitempty"`
-	PostalCode  string                           `json:"postal_code,omitempty"`
-	DateOfBirth *time.Time                       `json:"date_of_birth,omitempty"`
-	Gender      string                           `json:"gender,omitempty"`
-	Website     string                           `json:"website,omitempty"`
-	SocialLinks map[string]string                `json:"social_links,omitempty"`
-	Preferences userDomain.UserPreferences       `json:"preferences,omitempty"`
+	PhoneNumber string                     `json:"phone_number,omitempty"`
+	Address     string                     `json:"address,omitempty"`
+	City        string                     `json:"city,omitempty"`
+	Country     string                     `json:"country,omitempty"`
+	PostalCode  string                     `json:"postal_code,omitempty"`
+	DateOfBirth *time.Time                 `json:"date_of_birth,omitempty"`
+	Gender      string                     `json:"gender,omitempty"`
+	Website     string                     `json:"website,omitempty"`
+	SocialLinks map[string]string          `json:"social_links,omitempty"`
+	Preferences userDomain.UserPreferences `json:"preferences,omitempty"`
 }
 
 type UpdateProfileRequest struct {
-	PhoneNumber *string                          `json:"phone_number,omitempty"`
-	Address     *string                          `json:"address,omitempty"`
-	City        *string                          `json:"city,omitempty"`
-	Country     *string                          `json:"country,omitempty"`
-	PostalCode  *string                          `json:"postal_code,omitempty"`
-	DateOfBirth *time.Time                       `json:"date_of_birth,omitempty"`
-	Gender      *string                          `json:"gender,omitempty"`
-	Website     *string                          `json:"website,omitempty"`
-	SocialLinks map[string]string                `json:"social_links,omitempty"`
+	PhoneNumber *string           `json:"phone_number,omitempty"`
+	Address     *string           `json:"address,omitempty"`
+	City        *string           `json:"city,omitempty"`
+	Country     *string           `json:"country,omitempty"`
+	PostalCode  *string           `json:"postal_code,omitempty"`
+	DateOfBirth *time.Time        `json:"date_of_birth,omitempty"`
+	Gender      *string           `json:"gender,omitempty"`
+	Website     *string           `json:"website,omitempty"`
+	SocialLinks map[string]string `json:"social_links,omitempty"`
 }
 
 type CreateGroupRequest struct {
-	Name        string                  `json:"name" validate:"required,min=3,max=100"`
-	Description string                  `json:"description,omitempty"`
-	Type        userDomain.GroupType    `json:"type" validate:"required"`
-	OwnerID     uuid.UUID               `json:"owner_id" validate:"required"`
-	IsPublic    bool                    `json:"is_public"`
+	Name        string               `json:"name" validate:"required,min=3,max=100"`
+	Description string               `json:"description,omitempty"`
+	Type        userDomain.GroupType `json:"type" validate:"required"`
+	OwnerID     uuid.UUID            `json:"owner_id" validate:"required"`
+	IsPublic    bool                 `json:"is_public"`
 }
 
 type CreateGroupResponse struct {
@@ -225,13 +225,13 @@ type UpdateGroupRequest struct {
 }
 
 type ListGroupsRequest struct {
-	Limit    int                   `json:"limit"`
-	Offset   int                   `json:"offset"`
-	SortBy   string                `json:"sort_by"`
-	SortDesc bool                  `json:"sort_desc"`
-	Type     *userDomain.GroupType `json:"type,omitempty"`
-	OwnerID  *uuid.UUID            `json:"owner_id,omitempty"`
-	PublicOnly bool                `json:"public_only"`
+	Limit      int                   `json:"limit"`
+	Offset     int                   `json:"offset"`
+	SortBy     string                `json:"sort_by"`
+	SortDesc   bool                  `json:"sort_desc"`
+	Type       *userDomain.GroupType `json:"type,omitempty"`
+	OwnerID    *uuid.UUID            `json:"owner_id,omitempty"`
+	PublicOnly bool                  `json:"public_only"`
 }
 
 type ListGroupsResponse struct {
@@ -265,15 +265,15 @@ type JoinGroupRequest struct {
 }
 
 type JoinGroupResponse struct {
-	Membership *userDomain.UserGroupMembership `json:"membership"`
-	RequiresApproval bool                      `json:"requires_approval"`
+	Membership       *userDomain.UserGroupMembership `json:"membership"`
+	RequiresApproval bool                            `json:"requires_approval"`
 }
 
 type GetGroupMembersRequest struct {
-	Limit  int                              `json:"limit"`
-	Offset int                              `json:"offset"`
-	Role   *userDomain.GroupMemberRole      `json:"role,omitempty"`
-	Status *userDomain.MembershipStatus     `json:"status,omitempty"`
+	Limit  int                          `json:"limit"`
+	Offset int                          `json:"offset"`
+	Role   *userDomain.GroupMemberRole  `json:"role,omitempty"`
+	Status *userDomain.MembershipStatus `json:"status,omitempty"`
 }
 
 type GetGroupMembersResponse struct {
@@ -327,9 +327,9 @@ type GetConnectionsResponse struct {
 }
 
 type ConnectionStats struct {
-	FriendsCount   int64 `json:"friends_count"`
-	FollowersCount int64 `json:"followers_count"`
-	FollowingCount int64 `json:"following_count"`
+	FriendsCount    int64 `json:"friends_count"`
+	FollowersCount  int64 `json:"followers_count"`
+	FollowingCount  int64 `json:"following_count"`
 	PendingRequests int64 `json:"pending_requests"`
 }
 

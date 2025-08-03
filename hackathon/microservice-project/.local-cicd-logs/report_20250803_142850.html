@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Local CI/CD Pipeline Report</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .header { background-color: #f0f0f0; padding: 20px; border-radius: 5px; }
+        .stage { margin: 20px 0; padding: 15px; border-left: 4px solid #007cba; }
+        .success { border-left-color: #28a745; }
+        .warning { border-left-color: #ffc107; }
+        .error { border-left-color: #dc3545; }
+        .timestamp { color: #666; font-size: 0.9em; }
+        pre { background-color: #f8f9fa; padding: 10px; border-radius: 3px; overflow-x: auto; }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Local CI/CD Pipeline Report</h1>
+        <p class="timestamp">Generated: Sun Aug  3 14:29:55 +07 2025</p>
+        <p>Git Commit: 875f88c24ea34911c24a05b72f0ffcabd3c95056</p>
+        <p>Branch: main</p>
+    </div>
+    
+    <div class="stage">
+        <h2>Pipeline Summary</h2>
+        <p>Log file: <code>/Users/macbookpro2017/Documents/GitHub/elotusteam-alogth/hackathon/microservice-project/.local-cicd-logs/pipeline_20250803_142850.log</code></p>
+        <p>Coverage report: <code>coverage.html</code> (if generated)</p>
+    </div>
+    
+    <div class="stage">
+        <h2>Recent Log Output</h2>
+        <pre>    --- PASS: TestErrorScenarios/UnauthorizedAccess (0.00s)
+    --- PASS: TestErrorScenarios/DuplicateRegistration (0.00s)
+    --- PASS: TestErrorScenarios/InvalidFileUpload (0.79s)
+    --- PASS: TestErrorScenarios/ServiceRecovery (0.00s)
+FAIL
+FAIL	github.com/elotusteam/microservice-project/tests/e2e	1.470s
+FAIL
+[0;31m[ERROR][0m End-to-end tests failed
+[0;34m[INFO][0m Running: Stopping all services
+Command: docker-compose down
+time="2025-08-03T14:29:52+07:00" level=warning msg="/Users/macbookpro2017/Documents/GitHub/elotusteam-alogth/hackathon/microservice-project/docker-compose.yml: the attribute `version` is obsolete, it will be ignored, please remove it to avoid potential confusion"
+Cannot connect to the Docker daemon at unix:///Users/macbookpro2017/.orbstack/run/docker.sock. Is the docker daemon running?
+[0;31m[ERROR][0m Stopping all services failed
+[0;35m[STAGE][0m Stage 7: Performance Tests
+[0;34m[INFO][0m Running: Performance tests (short mode)
+Command: go test -v -short ./tests/performance/...
+=== RUN   TestAuthenticationLoad
+    load_test.go:42: Skipping load test in short mode
+--- SKIP: TestAuthenticationLoad (0.00s)
+=== RUN   TestFileUploadLoad
+    load_test.go:73: Skipping load test in short mode
+--- SKIP: TestFileUploadLoad (0.00s)
+=== RUN   TestUserCreationLoad
+    load_test.go:102: Skipping load test in short mode
+--- SKIP: TestUserCreationLoad (0.00s)
+PASS
+ok  	github.com/elotusteam/microservice-project/tests/performance	0.644s
+[0;32m[SUCCESS][0m Performance tests (short mode) completed
+[0;35m[STAGE][0m Stage 8: Chaos Engineering Tests
+[0;34m[INFO][0m Running: Chaos engineering tests (short mode)
+Command: go test -v -short ./tests/chaos/...
+=== RUN   TestCircuitBreakerResilience
+    resilience_test.go:132: Skipping chaos test in short mode
+--- SKIP: TestCircuitBreakerResilience (0.00s)
+=== RUN   TestRetryMechanism
+    resilience_test.go:184: Skipping chaos test in short mode
+--- SKIP: TestRetryMechanism (0.00s)
+=== RUN   TestNetworkChaos
+    resilience_test.go:255: Skipping chaos test in short mode
+--- SKIP: TestNetworkChaos (0.00s)
+=== RUN   TestInfrastructureChaos
+    resilience_test.go:299: Skipping chaos test in short mode
+--- SKIP: TestInfrastructureChaos (0.00s)
+=== RUN   TestFaultTolerance
+    resilience_test.go:376: Skipping chaos test in short mode
+--- SKIP: TestFaultTolerance (0.00s)
+PASS
+ok  	github.com/elotusteam/microservice-project/tests/chaos	0.640s
+[0;32m[SUCCESS][0m Chaos engineering tests (short mode) completed
+[0;35m[STAGE][0m Generating Pipeline Report</pre>
+    </div>
+</body>
+</html>

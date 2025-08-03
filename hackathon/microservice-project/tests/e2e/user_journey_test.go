@@ -522,31 +522,41 @@ func isServiceHealthy(t *testing.T, service string) bool {
 func mockAuthHandler(w http.ResponseWriter, r *http.Request) {
 	if strings.Contains(r.URL.Path, "health") {
 		w.WriteHeader(http.StatusOK)
-		w.Write([]byte(`{"status":"healthy"}`))
+		if _, err := w.Write([]byte(`{"status":"healthy"}`)); err != nil {
+			fmt.Printf("Warning: Failed to write response: %v\n", err)
+		}
 		return
 	}
 
 	if strings.Contains(r.URL.Path, "login") {
 		// Check for invalid credentials
 		var loginData map[string]interface{}
-		json.NewDecoder(r.Body).Decode(&loginData)
-		
+		if err := json.NewDecoder(r.Body).Decode(&loginData); err != nil {
+			fmt.Printf("Warning: Failed to decode login data: %v\n", err)
+		}
+
 		if email, ok := loginData["email"].(string); ok {
 			if email == "nonexistent@example.com" {
 				w.WriteHeader(http.StatusUnauthorized)
-				w.Write([]byte(`{"error":"Invalid credentials"}`))
+				if _, err := w.Write([]byte(`{"error":"Invalid credentials"}`)); err != nil {
+					fmt.Printf("Warning: Failed to write response: %v\n", err)
+				}
 				return
 			}
 		}
-		
+
 		w.WriteHeader(http.StatusOK)
-		w.Write([]byte(`{"token":"mock-jwt-token"}`))
+		if _, err := w.Write([]byte(`{"token":"mock-jwt-token"}`)); err != nil {
+			fmt.Printf("Warning: Failed to write response: %v\n", err)
+		}
 		return
 	}
 
 	if strings.Contains(r.URL.Path, "logout") {
 		w.WriteHeader(http.StatusOK)
-		w.Write([]byte(`{"message":"logged out"}`))
+		if _, err := w.Write([]byte(`{"message":"logged out"}`)); err != nil {
+			fmt.Printf("Warning: Failed to write response: %v\n", err)
+		}
 		return
 	}
 
@@ -559,26 +569,34 @@ var registeredUsers = make(map[string]bool)
 func mockUserHandler(w http.ResponseWriter, r *http.Request) {
 	if strings.Contains(r.URL.Path, "health") {
 		w.WriteHeader(http.StatusOK)
-		w.Write([]byte(`{"status":"healthy"}`))
+		if _, err := w.Write([]byte(`{"status":"healthy"}`)); err != nil {
+			fmt.Printf("Warning: Failed to write response: %v\n", err)
+		}
 		return
 	}
 
 	if r.Method == "POST" && r.URL.Path == "/api/users" {
 		// Check for duplicate registration
 		var userData map[string]interface{}
-		json.NewDecoder(r.Body).Decode(&userData)
-		
+		if err := json.NewDecoder(r.Body).Decode(&userData); err != nil {
+			fmt.Printf("Warning: Failed to decode user data: %v\n", err)
+		}
+
 		if email, ok := userData["email"].(string); ok {
 			if registeredUsers[email] {
 				w.WriteHeader(http.StatusConflict)
-				w.Write([]byte(`{"error":"User already exists"}`))
+				if _, err := w.Write([]byte(`{"error":"User already exists"}`)); err != nil {
+					fmt.Printf("Warning: Failed to write response: %v\n", err)
+				}
 				return
 			}
 			registeredUsers[email] = true
 		}
-		
+
 		w.WriteHeader(http.StatusCreated)
-		w.Write([]byte(`{"id":"user-123","message":"user created"}`))
+		if _, err := w.Write([]byte(`{"id":"user-123","message":"user created"}`)); err != nil {
+			fmt.Printf("Warning: Failed to write response: %v\n", err)
+		}
 		return
 	}
 
@@ -587,18 +605,24 @@ func mockUserHandler(w http.ResponseWriter, r *http.Request) {
 		auth := r.Header.Get("Authorization")
 		if auth == "Bearer invalid-token" {
 			w.WriteHeader(http.StatusUnauthorized)
-			w.Write([]byte(`{"error":"Unauthorized"}`))
+			if _, err := w.Write([]byte(`{"error":"Unauthorized"}`)); err != nil {
+				fmt.Printf("Warning: Failed to write response: %v\n", err)
+			}
 			return
 		}
-		
+
 		if r.Method == "GET" {
 			w.WriteHeader(http.StatusOK)
-			w.Write([]byte(`{"id":"user-123","name":"John Doe","email":"john.doe@example.com"}`))
+			if _, err := w.Write([]byte(`{"id":"user-123","name":"John Doe","email":"john.doe@example.com"}`)); err != nil {
+				fmt.Printf("Warning: Failed to write response: %v\n", err)
+			}
 			return
 		}
 		if r.Method == "PUT" {
 			w.WriteHeader(http.StatusOK)
-			w.Write([]byte(`{"message":"profile updated"}`))
+			if _, err := w.Write([]byte(`{"message":"profile updated"}`)); err != nil {
+				fmt.Printf("Warning: Failed to write response: %v\n", err)
+			}
 			return
 		}
 	}
@@ -613,7 +637,9 @@ var fileCounter = 0
 func mockFileHandler(w http.ResponseWriter, r *http.Request) {
 	if strings.Contains(r.URL.Path, "health") {
 		w.WriteHeader(http.StatusOK)
-		w.Write([]byte(`{"status":"healthy"}`))
+		if _, err := w.Write([]byte(`{"status":"healthy"}`)); err != nil {
+			fmt.Printf("Warning: Failed to write response: %v\n", err)
+		}
 		return
 	}
 
@@ -624,28 +650,32 @@ func mockFileHandler(w http.ResponseWriter, r *http.Request) {
 			file, header, err := r.FormFile("file")
 			if err == nil {
 				defer file.Close()
-				
+
 				// Check for malicious file extensions
 				if strings.HasSuffix(header.Filename, ".js") {
 					w.WriteHeader(http.StatusRequestEntityTooLarge)
-					w.Write([]byte(`{"error":"Malicious file type not allowed"}`))
+					if _, err := w.Write([]byte(`{"error":"Malicious file type not allowed"}`)); err != nil {
+						fmt.Printf("Warning: failed to write response: %v\n", err)
+					}
 					return
 				}
-				
+
 				// Check for oversized files
 				if header.Size > 50*1024*1024 { // 50MB limit
 					w.WriteHeader(http.StatusRequestEntityTooLarge)
-					w.Write([]byte(`{"error":"File too large"}`))
+					if _, err := w.Write([]byte(`{"error":"File too large"}`)); err != nil {
+						fmt.Printf("Warning: failed to write response: %v\n", err)
+					}
 					return
 				}
 			}
 		}
-		
+
 		// Extract user from token (simplified)
 		token := r.Header.Get("Authorization")
 		fileCounter++
 		fileID := fmt.Sprintf("file-%d", fileCounter)
-		
+
 		// Store file for this user
 		if userFiles[token] == nil {
 			userFiles[token] = make([]map[string]interface{}, 0)
@@ -654,9 +684,11 @@ func mockFileHandler(w http.ResponseWriter, r *http.Request) {
 			"id":       fileID,
 			"filename": r.FormValue("filename"),
 		})
-		
+
 		w.WriteHeader(http.StatusOK)
-		w.Write([]byte(fmt.Sprintf(`{"id":"%s","message":"file uploaded"}`, fileID)))
+		if _, err := w.Write([]byte(fmt.Sprintf(`{"id":"%s","message":"file uploaded"}`, fileID))); err != nil {
+			fmt.Printf("Warning: failed to write response: %v\n", err)
+		}
 		return
 	}
 
@@ -666,22 +698,28 @@ func mockFileHandler(w http.ResponseWriter, r *http.Request) {
 		if files == nil {
 			files = make([]map[string]interface{}, 0)
 		}
-		
+
 		filesJSON, _ := json.Marshal(files)
 		w.WriteHeader(http.StatusOK)
-		w.Write([]byte(fmt.Sprintf(`{"files":%s}`, string(filesJSON))))
+		if _, err := w.Write([]byte(fmt.Sprintf(`{"files":%s}`, string(filesJSON)))); err != nil {
+			fmt.Printf("Warning: failed to write response: %v\n", err)
+		}
 		return
 	}
 
 	if r.Method == "GET" && strings.Contains(r.URL.Path, "files/") {
 		w.WriteHeader(http.StatusOK)
-		w.Write([]byte("test file content"))
+		if _, err := w.Write([]byte("test file content")); err != nil {
+			fmt.Printf("Warning: failed to write response: %v\n", err)
+		}
 		return
 	}
 
 	if r.Method == "DELETE" {
 		w.WriteHeader(http.StatusOK)
-		w.Write([]byte(`{"message":"file deleted"}`))
+		if _, err := w.Write([]byte(`{"message":"file deleted"}`)); err != nil {
+			fmt.Printf("Warning: failed to write response: %v\n", err)
+		}
 		return
 	}
 

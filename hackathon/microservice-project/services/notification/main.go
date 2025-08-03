@@ -10,11 +10,11 @@ import (
 	"syscall"
 	"time"
 
-	"github.com/gin-gonic/gin"
-	"github.com/google/uuid"
 	"github.com/elotusteam/microservice-project/services/notification/domain"
 	"github.com/elotusteam/microservice-project/services/notification/usecases"
 	"github.com/elotusteam/microservice-project/shared/config"
+	"github.com/gin-gonic/gin"
+	"github.com/google/uuid"
 )
 
 func main() {
@@ -82,8 +82,12 @@ func main() {
 
 	// Create HTTP server
 	server := &http.Server{
-		Addr:    fmt.Sprintf(":%d", cfg.Server.Port),
-		Handler: router,
+		Addr:              fmt.Sprintf(":%d", cfg.Server.Port),
+		Handler:           router,
+		ReadHeaderTimeout: 30 * time.Second,
+		ReadTimeout:       60 * time.Second,
+		WriteTimeout:      60 * time.Second,
+		IdleTimeout:       120 * time.Second,
 	}
 
 	// Start server in a goroutine
@@ -131,7 +135,7 @@ func sendNotification(c *gin.Context) {
 
 func sendBulkNotifications(c *gin.Context) {
 	var req struct {
-		UserIDs      []uuid.UUID                    `json:"user_ids"`
+		UserIDs      []uuid.UUID                      `json:"user_ids"`
 		Notification usecases.SendNotificationRequest `json:"notification"`
 	}
 	if err := c.ShouldBindJSON(&req); err != nil {
@@ -162,7 +166,7 @@ func getNotifications(c *gin.Context) {
 func getNotificationByID(c *gin.Context) {
 	notificationID := c.Param("id")
 	userID := c.Query("user_id")
-	
+
 	if userID == "" {
 		c.JSON(http.StatusBadRequest, gin.H{"error": "user_id is required"})
 		return
@@ -191,7 +195,7 @@ func markAsRead(c *gin.Context) {
 func deleteNotification(c *gin.Context) {
 	notificationID := c.Param("id")
 	userID := c.Query("user_id")
-	
+
 	if userID == "" {
 		c.JSON(http.StatusBadRequest, gin.H{"error": "user_id is required"})
 		return
@@ -247,7 +251,7 @@ func createTemplate(c *gin.Context) {
 
 func getTemplate(c *gin.Context) {
 	templateID := c.Param("id")
-	
+
 	c.JSON(http.StatusOK, gin.H{
 		"id":   templateID,
 		"name": "Sample Template",
@@ -257,7 +261,7 @@ func getTemplate(c *gin.Context) {
 
 func updateTemplate(c *gin.Context) {
 	templateID := c.Param("id")
-	
+
 	c.JSON(http.StatusOK, gin.H{
 		"id":      templateID,
 		"message": "Template updated successfully",
@@ -266,7 +270,7 @@ func updateTemplate(c *gin.Context) {
 
 func deleteTemplate(c *gin.Context) {
 	templateID := c.Param("id")
-	
+
 	c.JSON(http.StatusOK, gin.H{
 		"message": fmt.Sprintf("Template %s deleted", templateID),
 	})

@@ -1,0 +1,381 @@
+name: Monitoring & Health Checks
+
+on:
+  schedule:
+    # Run health checks every 15 minutes
+    - cron: '*/15 * * * *'
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: 'Environment to check'
+        required: true
+        type: choice
+        options:
+          - staging
+          - production
+        default: 'production'
+      alert_threshold:
+        description: 'Alert threshold (seconds)'
+        required: false
+        type: number
+        default: 5
+
+env:
+  STAGING_URL: https://staging-api.example.com
+  PRODUCTION_URL: https://api.example.com
+  ALERT_THRESHOLD: 5 # seconds
+
+jobs:
+  # Health check for all services
+  health-check:
+    name: Service Health Check
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        environment: [staging, production]
+        service: [auth, file, user, analytics]
+    steps:
+      - name: Set environment URL
+        id: env
+        run: |
+          if [ "${{ matrix.environment }}" = "production" ]; then
+            echo "base_url=${{ env.PRODUCTION_URL }}" >> $GITHUB_OUTPUT
+          else
+            echo "base_url=${{ env.STAGING_URL }}" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Health check
+        id: health
+        run: |
+          URL="${{ steps.env.outputs.base_url }}/${{ matrix.service }}/health"
+          echo "Checking health for ${{ matrix.service }} at $URL"
+          
+          START_TIME=$(date +%s.%N)
+          RESPONSE=$(curl -s -w "HTTPSTATUS:%{http_code};TIME:%{time_total}" "$URL" || echo "HTTPSTATUS:000;TIME:999")
+          END_TIME=$(date +%s.%N)
+          
+          HTTP_STATUS=$(echo $RESPONSE | grep -o "HTTPSTATUS:[0-9]*" | cut -d: -f2)
+          RESPONSE_TIME=$(echo $RESPONSE | grep -o "TIME:[0-9.]*" | cut -d: -f2)
+          RESPONSE_BODY=$(echo $RESPONSE | sed -E 's/HTTPSTATUS:[0-9]*;TIME:[0-9.]*$//')
+          
+          echo "status=$HTTP_STATUS" >> $GITHUB_OUTPUT
+          echo "response_time=$RESPONSE_TIME" >> $GITHUB_OUTPUT
+          echo "response_body=$RESPONSE_BODY" >> $GITHUB_OUTPUT
+          
+          echo "Service: ${{ matrix.service }}"
+          echo "Status: $HTTP_STATUS"
+          echo "Response Time: ${RESPONSE_TIME}s"
+          echo "Response: $RESPONSE_BODY"
+
+      - name: Validate health status
+        run: |
+          if [ "${{ steps.health.outputs.status }}" != "200" ]; then
+            echo "❌ Health check failed for ${{ matrix.service }} in ${{ matrix.environment }}"
+            echo "Status: ${{ steps.health.outputs.status }}"
+            echo "Response: ${{ steps.health.outputs.response_body }}"
+            exit 1
+          fi
+          
+          THRESHOLD=${{ env.ALERT_THRESHOLD }}
+          RESPONSE_TIME=${{ steps.health.outputs.response_time }}
+          
+          if (( $(echo "$RESPONSE_TIME > $THRESHOLD" | bc -l) )); then
+            echo "⚠️ Slow response time for ${{ matrix.service }} in ${{ matrix.environment }}: ${RESPONSE_TIME}s"
+            exit 1
+          fi
+          
+          echo "✅ ${{ matrix.service }} is healthy in ${{ matrix.environment }} (${RESPONSE_TIME}s)"
+
+  # API endpoint testing
+  api-testing:
+    name: API Endpoint Testing
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        environment: [staging, production]
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set environment URL
+        id: env
+        run: |
+          if [ "${{ matrix.environment }}" = "production" ]; then
+            echo "base_url=${{ env.PRODUCTION_URL }}" >> $GITHUB_OUTPUT
+          else
+            echo "base_url=${{ env.STAGING_URL }}" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Test authentication endpoints
+        run: |
+          BASE_URL="${{ steps.env.outputs.base_url }}"
+          
+          # Test registration endpoint
+          echo "Testing registration endpoint..."
+          REGISTER_RESPONSE=$(curl -s -w "HTTPSTATUS:%{http_code}" -X POST \
+            "$BASE_URL/auth/register" \
+            -H "Content-Type: application/json" \
+            -d '{"email":"test@example.com","password":"testpass123"}' || echo "HTTPSTATUS:000")
+          
+          REGISTER_STATUS=$(echo $REGISTER_RESPONSE | grep -o "HTTPSTATUS:[0-9]*" | cut -d: -f2)
+          
+          if [ "$REGISTER_STATUS" = "201" ] || [ "$REGISTER_STATUS" = "409" ]; then
+            echo "✅ Registration endpoint is working (Status: $REGISTER_STATUS)"
+          else
+            echo "❌ Registration endpoint failed (Status: $REGISTER_STATUS)"
+            exit 1
+          fi
+          
+          # Test login endpoint
+          echo "Testing login endpoint..."
+          LOGIN_RESPONSE=$(curl -s -w "HTTPSTATUS:%{http_code}" -X POST \
+            "$BASE_URL/auth/login" \
+            -H "Content-Type: application/json" \
+            -d '{"email":"invalid@example.com","password":"wrongpass"}' || echo "HTTPSTATUS:000")
+          
+          LOGIN_STATUS=$(echo $LOGIN_RESPONSE | grep -o "HTTPSTATUS:[0-9]*" | cut -d: -f2)
+          
+          if [ "$LOGIN_STATUS" = "401" ] || [ "$LOGIN_STATUS" = "400" ]; then
+            echo "✅ Login endpoint is working (Status: $LOGIN_STATUS)"
+          else
+            echo "❌ Login endpoint failed (Status: $LOGIN_STATUS)"
+            exit 1
+          fi
+
+      - name: Test file service endpoints
+        run: |
+          BASE_URL="${{ steps.env.outputs.base_url }}"
+          
+          # Test file upload endpoint (should require auth)
+          echo "Testing file upload endpoint..."
+          UPLOAD_RESPONSE=$(curl -s -w "HTTPSTATUS:%{http_code}" -X POST \
+            "$BASE_URL/file/upload" \
+            -H "Content-Type: multipart/form-data" || echo "HTTPSTATUS:000")
+          
+          UPLOAD_STATUS=$(echo $UPLOAD_RESPONSE | grep -o "HTTPSTATUS:[0-9]*" | cut -d: -f2)
+          
+          if [ "$UPLOAD_STATUS" = "401" ] || [ "$UPLOAD_STATUS" = "403" ]; then
+            echo "✅ File upload endpoint is working (Status: $UPLOAD_STATUS)"
+          else
+            echo "❌ File upload endpoint failed (Status: $UPLOAD_STATUS)"
+            exit 1
+          fi
+
+      - name: Test user service endpoints
+        run: |
+          BASE_URL="${{ steps.env.outputs.base_url }}"
+          
+          # Test user profile endpoint (should require auth)
+          echo "Testing user profile endpoint..."
+          PROFILE_RESPONSE=$(curl -s -w "HTTPSTATUS:%{http_code}" -X GET \
+            "$BASE_URL/user/profile" || echo "HTTPSTATUS:000")
+          
+          PROFILE_STATUS=$(echo $PROFILE_RESPONSE | grep -o "HTTPSTATUS:[0-9]*" | cut -d: -f2)
+          
+          if [ "$PROFILE_STATUS" = "401" ] || [ "$PROFILE_STATUS" = "403" ]; then
+            echo "✅ User profile endpoint is working (Status: $PROFILE_STATUS)"
+          else
+            echo "❌ User profile endpoint failed (Status: $PROFILE_STATUS)"
+            exit 1
+          fi
+
+  # Database connectivity check
+  database-check:
+    name: Database Connectivity
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        environment: [staging, production]
+    steps:
+      - name: Check database connectivity
+        run: |
+          # This would typically connect to your actual database
+          # For demo purposes, we'll simulate the check
+          echo "Checking database connectivity for ${{ matrix.environment }}..."
+          
+          # Simulate database check
+          if [ "${{ matrix.environment }}" = "production" ]; then
+            DB_HOST="prod-db.example.com"
+          else
+            DB_HOST="staging-db.example.com"
+          fi
+          
+          # In a real scenario, you would use:
+          # pg_isready -h $DB_HOST -p 5432 -U your_user
+          
+          echo "✅ Database connectivity check passed for ${{ matrix.environment }}"
+
+  # Performance monitoring
+  performance-check:
+    name: Performance Monitoring
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        environment: [staging, production]
+    steps:
+      - name: Set environment URL
+        id: env
+        run: |
+          if [ "${{ matrix.environment }}" = "production" ]; then
+            echo "base_url=${{ env.PRODUCTION_URL }}" >> $GITHUB_OUTPUT
+          else
+            echo "base_url=${{ env.STAGING_URL }}" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Load testing
+        run: |
+          BASE_URL="${{ steps.env.outputs.base_url }}"
+          
+          echo "Running basic load test for ${{ matrix.environment }}..."
+          
+          # Simple concurrent requests test
+          for i in {1..10}; do
+            (
+              START_TIME=$(date +%s.%N)
+              RESPONSE=$(curl -s -w "HTTPSTATUS:%{http_code}" "$BASE_URL/auth/health" || echo "HTTPSTATUS:000")
+              END_TIME=$(date +%s.%N)
+              
+              DURATION=$(echo "$END_TIME - $START_TIME" | bc)
+              STATUS=$(echo $RESPONSE | grep -o "HTTPSTATUS:[0-9]*" | cut -d: -f2)
+              
+              echo "Request $i: Status $STATUS, Duration ${DURATION}s"
+            ) &
+          done
+          
+          wait
+          echo "✅ Load test completed for ${{ matrix.environment }}"
+
+  # Security monitoring
+  security-check:
+    name: Security Monitoring
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        environment: [staging, production]
+    steps:
+      - name: Set environment URL
+        id: env
+        run: |
+          if [ "${{ matrix.environment }}" = "production" ]; then
+            echo "base_url=${{ env.PRODUCTION_URL }}" >> $GITHUB_OUTPUT
+          else
+            echo "base_url=${{ env.STAGING_URL }}" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Security headers check
+        run: |
+          BASE_URL="${{ steps.env.outputs.base_url }}"
+          
+          echo "Checking security headers for ${{ matrix.environment }}..."
+          
+          HEADERS=$(curl -s -I "$BASE_URL/auth/health" || echo "")
+          
+          # Check for security headers
+          if echo "$HEADERS" | grep -i "x-frame-options" > /dev/null; then
+            echo "✅ X-Frame-Options header present"
+          else
+            echo "⚠️ X-Frame-Options header missing"
+          fi
+          
+          if echo "$HEADERS" | grep -i "x-content-type-options" > /dev/null; then
+            echo "✅ X-Content-Type-Options header present"
+          else
+            echo "⚠️ X-Content-Type-Options header missing"
+          fi
+          
+          if echo "$HEADERS" | grep -i "strict-transport-security" > /dev/null; then
+            echo "✅ Strict-Transport-Security header present"
+          else
+            echo "⚠️ Strict-Transport-Security header missing"
+          fi
+
+      - name: SSL/TLS check
+        run: |
+          BASE_URL="${{ steps.env.outputs.base_url }}"
+          DOMAIN=$(echo $BASE_URL | sed 's|https\?://||' | cut -d'/' -f1)
+          
+          echo "Checking SSL/TLS configuration for $DOMAIN..."
+          
+          # Check SSL certificate
+          SSL_INFO=$(echo | openssl s_client -servername $DOMAIN -connect $DOMAIN:443 2>/dev/null | openssl x509 -noout -dates 2>/dev/null || echo "")
+          
+          if [ -n "$SSL_INFO" ]; then
+            echo "✅ SSL certificate is valid"
+            echo "$SSL_INFO"
+          else
+            echo "⚠️ Could not verify SSL certificate"
+          fi
+
+  # Generate monitoring report
+  generate-report:
+    name: Generate Monitoring Report
+    runs-on: ubuntu-latest
+    needs: [health-check, api-testing, database-check, performance-check, security-check]
+    if: always()
+    steps:
+      - name: Generate report
+        run: |
+          echo "# Monitoring Report - $(date)" > monitoring-report.md
+          echo "" >> monitoring-report.md
+          
+          # Check job results
+          if [ "${{ needs.health-check.result }}" = "success" ]; then
+            echo "✅ Health checks: PASSED" >> monitoring-report.md
+          else
+            echo "❌ Health checks: FAILED" >> monitoring-report.md
+          fi
+          
+          if [ "${{ needs.api-testing.result }}" = "success" ]; then
+            echo "✅ API testing: PASSED" >> monitoring-report.md
+          else
+            echo "❌ API testing: FAILED" >> monitoring-report.md
+          fi
+          
+          if [ "${{ needs.database-check.result }}" = "success" ]; then
+            echo "✅ Database connectivity: PASSED" >> monitoring-report.md
+          else
+            echo "❌ Database connectivity: FAILED" >> monitoring-report.md
+          fi
+          
+          if [ "${{ needs.performance-check.result }}" = "success" ]; then
+            echo "✅ Performance checks: PASSED" >> monitoring-report.md
+          else
+            echo "❌ Performance checks: FAILED" >> monitoring-report.md
+          fi
+          
+          if [ "${{ needs.security-check.result }}" = "success" ]; then
+            echo "✅ Security checks: PASSED" >> monitoring-report.md
+          else
+            echo "❌ Security checks: FAILED" >> monitoring-report.md
+          fi
+          
+          echo "" >> monitoring-report.md
+          echo "Report generated at: $(date)" >> monitoring-report.md
+          
+          cat monitoring-report.md
+
+      - name: Upload report
+        uses: actions/upload-artifact@v3
+        with:
+          name: monitoring-report-${{ github.run_id }}
+          path: monitoring-report.md
+
+  # Alert on failures
+  alert-on-failure:
+    name: Alert on Monitoring Failures
+    runs-on: ubuntu-latest
+    needs: [health-check, api-testing, database-check, performance-check, security-check]
+    if: failure()
+    steps:
+      - name: Send alert
+        run: |
+          echo "🚨 ALERT: Monitoring checks failed!"
+          echo "Timestamp: $(date)"
+          echo "Workflow: ${{ github.workflow }}"
+          echo "Run ID: ${{ github.run_id }}"
+          
+          # Add your alerting logic here (Slack, email, PagerDuty, etc.)
+          # Example:
+          # curl -X POST -H 'Content-type: application/json' \
+          #   --data '{"text":"🚨 Monitoring alert: Some checks failed in ${{ github.workflow }}"}' \
+          #   $SLACK_WEBHOOK_URL

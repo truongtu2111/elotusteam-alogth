@@ -7,16 +7,16 @@ import (
 
 // Message represents a generic message for inter-service communication
 type Message struct {
-	ID          string            `json:"id"`
-	Type        string            `json:"type"`
-	Payload     interface{}       `json:"payload"`
-	Headers     map[string]string `json:"headers"`
-	Timestamp   time.Time         `json:"timestamp"`
-	CorrelationID string          `json:"correlation_id"`
-	ReplyTo     string            `json:"reply_to,omitempty"`
-	Expiration  *time.Time        `json:"expiration,omitempty"`
-	RetryCount  int               `json:"retry_count"`
-	MaxRetries  int               `json:"max_retries"`
+	ID            string            `json:"id"`
+	Type          string            `json:"type"`
+	Payload       interface{}       `json:"payload"`
+	Headers       map[string]string `json:"headers"`
+	Timestamp     time.Time         `json:"timestamp"`
+	CorrelationID string            `json:"correlation_id"`
+	ReplyTo       string            `json:"reply_to,omitempty"`
+	Expiration    *time.Time        `json:"expiration,omitempty"`
+	RetryCount    int               `json:"retry_count"`
+	MaxRetries    int               `json:"max_retries"`
 }
 
 // Response represents a response message
@@ -52,19 +52,19 @@ func (f MessageHandlerFunc) Handle(ctx context.Context, msg *Message) (*Response
 type SyncCommunicator interface {
 	// Send sends a message and waits for a response
 	Send(ctx context.Context, destination string, msg *Message) (*Response, error)
-	
+
 	// SendWithTimeout sends a message with a specific timeout
 	SendWithTimeout(ctx context.Context, destination string, msg *Message, timeout time.Duration) (*Response, error)
-	
+
 	// RegisterHandler registers a handler for a specific message type
 	RegisterHandler(messageType string, handler MessageHandler) error
-	
+
 	// Start starts the communicator
 	Start(ctx context.Context) error
-	
+
 	// Stop stops the communicator
 	Stop(ctx context.Context) error
-	
+
 	// Health checks the health of the communicator
 	Health(ctx context.Context) error
 }
@@ -73,19 +73,19 @@ type SyncCommunicator interface {
 type AsyncCommunicator interface {
 	// Publish publishes a message to a topic/queue
 	Publish(ctx context.Context, topic string, msg *Message) error
-	
+
 	// Subscribe subscribes to a topic/queue with a handler
 	Subscribe(ctx context.Context, topic string, handler MessageHandler) error
-	
+
 	// Unsubscribe unsubscribes from a topic/queue
 	Unsubscribe(ctx context.Context, topic string) error
-	
+
 	// Start starts the communicator
 	Start(ctx context.Context) error
-	
+
 	// Stop stops the communicator
 	Stop(ctx context.Context) error
-	
+
 	// Health checks the health of the communicator
 	Health(ctx context.Context) error
 }
@@ -94,16 +94,16 @@ type AsyncCommunicator interface {
 type EventBus interface {
 	// PublishEvent publishes an event
 	PublishEvent(ctx context.Context, event *Event) error
-	
+
 	// SubscribeToEvent subscribes to an event type
 	SubscribeToEvent(ctx context.Context, eventType string, handler EventHandler) error
-	
+
 	// UnsubscribeFromEvent unsubscribes from an event type
 	UnsubscribeFromEvent(ctx context.Context, eventType string) error
-	
+
 	// Start starts the event bus
 	Start(ctx context.Context) error
-	
+
 	// Stop stops the event bus
 	Stop(ctx context.Context) error
 }
@@ -139,10 +139,10 @@ func (f EventHandlerFunc) Handle(ctx context.Context, event *Event) error {
 type CircuitBreaker interface {
 	// Execute executes a function with circuit breaker protection
 	Execute(ctx context.Context, fn func() error) error
-	
+
 	// State returns the current state of the circuit breaker
 	State() CircuitBreakerState
-	
+
 	// Reset resets the circuit breaker to closed state
 	Reset()
 }
@@ -196,17 +196,17 @@ func DefaultRetryPolicy() *RetryPolicy {
 
 // CommunicationConfig holds configuration for communication
 type CommunicationConfig struct {
-	Type                string                 `json:"type"` // "grpc", "http", "rabbitmq", "kafka", etc.
-	Endpoints           []string               `json:"endpoints"`
-	Timeout             time.Duration          `json:"timeout"`
-	RetryPolicy         *RetryPolicy           `json:"retry_policy"`
-	CircuitBreaker      *CircuitBreakerConfig  `json:"circuit_breaker"`
-	TLS                 *TLSConfig             `json:"tls"`
-	Authentication      *AuthConfig            `json:"authentication"`
-	Compression         bool                   `json:"compression"`
-	MaxMessageSize      int64                  `json:"max_message_size"`
-	ConnectionPoolSize  int                    `json:"connection_pool_size"`
-	AdditionalSettings  map[string]interface{} `json:"additional_settings"`
+	Type               string                 `json:"type"` // "grpc", "http", "rabbitmq", "kafka", etc.
+	Endpoints          []string               `json:"endpoints"`
+	Timeout            time.Duration          `json:"timeout"`
+	RetryPolicy        *RetryPolicy           `json:"retry_policy"`
+	CircuitBreaker     *CircuitBreakerConfig  `json:"circuit_breaker"`
+	TLS                *TLSConfig             `json:"tls"`
+	Authentication     *AuthConfig            `json:"authentication"`
+	Compression        bool                   `json:"compression"`
+	MaxMessageSize     int64                  `json:"max_message_size"`
+	ConnectionPoolSize int                    `json:"connection_pool_size"`
+	AdditionalSettings map[string]interface{} `json:"additional_settings"`
 }
 
 // CircuitBreakerConfig holds circuit breaker configuration
@@ -236,13 +236,13 @@ type AuthConfig struct {
 type CommunicationFactory interface {
 	// CreateSyncCommunicator creates a synchronous communicator
 	CreateSyncCommunicator(config *CommunicationConfig) (SyncCommunicator, error)
-	
+
 	// CreateAsyncCommunicator creates an asynchronous communicator
 	CreateAsyncCommunicator(config *CommunicationConfig) (AsyncCommunicator, error)
-	
+
 	// CreateEventBus creates an event bus
 	CreateEventBus(config *CommunicationConfig) (EventBus, error)
-	
+
 	// CreateCircuitBreaker creates a circuit breaker
 	CreateCircuitBreaker(config *CircuitBreakerConfig) (CircuitBreaker, error)
 }
@@ -251,16 +251,16 @@ type CommunicationFactory interface {
 type Metrics interface {
 	// IncrementMessagesSent increments the messages sent counter
 	IncrementMessagesSent(destination string, messageType string)
-	
+
 	// IncrementMessagesReceived increments the messages received counter
 	IncrementMessagesReceived(source string, messageType string)
-	
+
 	// IncrementErrors increments the error counter
 	IncrementErrors(operation string, errorType string)
-	
+
 	// RecordLatency records the latency of an operation
 	RecordLatency(operation string, duration time.Duration)
-	
+
 	// RecordMessageSize records the size of a message
 	RecordMessageSize(messageType string, size int64)
 }
@@ -269,16 +269,16 @@ type Metrics interface {
 type Logger interface {
 	// Debug logs a debug message
 	Debug(msg string, fields ...interface{})
-	
+
 	// Info logs an info message
 	Info(msg string, fields ...interface{})
-	
+
 	// Warn logs a warning message
 	Warn(msg string, fields ...interface{})
-	
+
 	// Error logs an error message
 	Error(msg string, fields ...interface{})
-	
+
 	// WithFields returns a logger with additional fields
 	WithFields(fields map[string]interface{}) Logger
 }

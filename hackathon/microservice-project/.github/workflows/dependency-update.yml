@@ -1,0 +1,174 @@
+name: Dependency Updates & Security Monitoring
+
+on:
+  schedule:
+    # Run daily at 2 AM UTC
+    - cron: '0 2 * * *'
+  workflow_dispatch:
+
+jobs:
+  # Update Go dependencies
+  update-go-dependencies:
+    name: Update Go Dependencies
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Set up Go
+        uses: actions/setup-go@v4
+        with:
+          go-version: '1.21'
+
+      - name: Update dependencies
+        run: |
+          go get -u ./...
+          go mod tidy
+
+      - name: Run tests after update
+        run: |
+          go test ./tests/unit/...
+          go test ./tests/integration/...
+
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v5
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          commit-message: 'chore: update Go dependencies'
+          title: 'chore: update Go dependencies'
+          body: |
+            This PR updates Go dependencies to their latest versions.
+            
+            Changes:
+            - Updated all Go modules to latest versions
+            - Ran tests to ensure compatibility
+            
+            Please review and merge if all checks pass.
+          branch: chore/update-go-dependencies
+          delete-branch: true
+
+  # Security vulnerability scan
+  security-scan:
+    name: Security Vulnerability Scan
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Go
+        uses: actions/setup-go@v4
+        with:
+          go-version: '1.21'
+
+      - name: Install security tools
+        run: |
+          go install github.com/sonatypecommunity/nancy@latest
+          go install github.com/securecodewarrior/gosec/v2/cmd/gosec@latest
+
+      - name: Run Nancy vulnerability scan
+        run: |
+          go list -json -m all | nancy sleuth --output=json > nancy-report.json
+        continue-on-error: true
+
+      - name: Run Gosec security scan
+        run: |
+          gosec -fmt json -out gosec-report.json ./...
+        continue-on-error: true
+
+      - name: Upload security reports
+        uses: actions/upload-artifact@v3
+        with:
+          name: security-reports
+          path: |
+            nancy-report.json
+            gosec-report.json
+
+      - name: Check for critical vulnerabilities
+        run: |
+          if [ -f nancy-report.json ]; then
+            CRITICAL_COUNT=$(jq '.vulnerable | length' nancy-report.json)
+            if [ "$CRITICAL_COUNT" -gt 0 ]; then
+              echo "Found $CRITICAL_COUNT critical vulnerabilities!"
+              jq '.vulnerable' nancy-report.json
+              exit 1
+            fi
+          fi
+
+  # Docker image security scan
+  docker-security-scan:
+    name: Docker Security Scan
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        service: [auth, file, user, analytics]
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Build Docker image
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          file: ./services/${{ matrix.service }}/Dockerfile
+          tags: ${{ matrix.service }}:security-scan
+          load: true
+
+      - name: Run Trivy vulnerability scanner
+        uses: aquasecurity/trivy-action@master
+        with:
+          image-ref: '${{ matrix.service }}:security-scan'
+          format: 'sarif'
+          output: 'trivy-results-${{ matrix.service }}.sarif'
+
+      - name: Upload Trivy scan results
+        uses: github/codeql-action/upload-sarif@v2
+        with:
+          sarif_file: 'trivy-results-${{ matrix.service }}.sarif'
+
+  # License compliance check
+  license-check:
+    name: License Compliance Check
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Go
+        uses: actions/setup-go@v4
+        with:
+          go-version: '1.21'
+
+      - name: Install go-licenses
+        run: go install github.com/google/go-licenses@latest
+
+      - name: Check licenses
+        run: |
+          go-licenses check ./...
+          go-licenses report ./... > licenses-report.txt
+
+      - name: Upload license report
+        uses: actions/upload-artifact@v3
+        with:
+          name: license-report
+          path: licenses-report.txt
+
+  # Notify security team
+  notify-security:
+    name: Notify Security Team
+    runs-on: ubuntu-latest
+    needs: [security-scan, docker-security-scan]
+    if: failure()
+    steps:
+      - name: Send security alert
+        run: |
+          echo "Security vulnerabilities detected!"
+          echo "Please check the security scan results."
+          # Add notification logic (Slack, email, etc.)
+          # curl -X POST -H 'Content-type: application/json' \
+          #   --data '{"text":"🚨 Security vulnerabilities detected in microservice project!"}' \
+          #   ${{ secrets.SLACK_WEBHOOK_URL }}

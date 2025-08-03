@@ -2,17 +2,17 @@ package usecases
 
 import (
 	"context"
-	"crypto/md5"
+	"crypto/sha256"
 	"fmt"
 	"io"
 	"path/filepath"
 	"strings"
 	"time"
 
-	"github.com/google/uuid"
 	fileDomain "github.com/elotusteam/microservice-project/services/file/domain"
 	"github.com/elotusteam/microservice-project/shared/config"
 	"github.com/elotusteam/microservice-project/shared/utils"
+	"github.com/google/uuid"
 )
 
 // fileService implements the FileService interface
@@ -73,7 +73,9 @@ func (s *fileService) UploadFile(ctx context.Context, req *UploadFileRequest) (*
 	}
 
 	// Reset file reader
-	req.File.Seek(0, 0)
+	if _, err := req.File.Seek(0, 0); err != nil {
+		return nil, fmt.Errorf("failed to reset file reader: %w", err)
+	}
 
 	// Check for duplicate files
 	if !req.Overwrite {
@@ -382,7 +384,7 @@ func (s *fileService) generateFilePath(userID uuid.UUID, filename string) string
 }
 
 func (s *fileService) calculateChecksum(file io.Reader) (string, error) {
-	hash := md5.New()
+	hash := sha256.New()
 	_, err := io.Copy(hash, file)
 	if err != nil {
 		return "", err

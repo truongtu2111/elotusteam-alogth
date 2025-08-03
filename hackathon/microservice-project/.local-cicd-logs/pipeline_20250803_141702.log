@@ -1,0 +1,556 @@
+[0;34m[INFO][0m Starting Local CI/CD Pipeline
+[0;34m[INFO][0m Project: microservice-project
+[0;34m[INFO][0m Git Commit: 875f88c
+[0;34m[INFO][0m Branch: main
+[0;34m[INFO][0m Timestamp: Sun Aug  3 14:17:02 +07 2025
+[0;34m[INFO][0m Log file: /Users/macbookpro2017/Documents/GitHub/elotusteam-alogth/hackathon/microservice-project/.local-cicd-logs/pipeline_20250803_141702.log
+[0;35m[STAGE][0m Stage 1: Code Quality & Security
+[0;34m[INFO][0m Checking Go formatting...
+[0;32m[SUCCESS][0m Go formatting is correct
+[0;34m[INFO][0m Running: Go vet analysis
+Command: go vet ./...
+# github.com/elotusteam/microservice-project/services/auth/infrastructure
+vet: services/auth/infrastructure/repositories.go:752:38: method MockLoginAttemptRepository.GetAttemptsByTimeRange already declared at services/auth/infrastructure/repositories.go:648:38
+# github.com/elotusteam/microservice-project/services/auth/usecases
+vet: services/auth/usecases/auth_service.go:105:42: undefined: domain.ErrCodeTooManyAttempts
+[0;31m[ERROR][0m Go vet analysis failed
+[0;34m[INFO][0m Running: Linting with golangci-lint
+Command: golangci-lint run
+services/auth/infrastructure/repositories.go:1: : # github.com/elotusteam/microservice-project/services/auth/infrastructure
+services/auth/infrastructure/repositories.go:752:38: method MockLoginAttemptRepository.GetAttemptsByTimeRange already declared at services/auth/infrastructure/repositories.go:648:38 (typecheck)
+package infrastructure
+services/auth/usecases/auth_service.go:1: : # github.com/elotusteam/microservice-project/services/auth/usecases
+services/auth/usecases/auth_service.go:105:42: undefined: domain.ErrCodeTooManyAttempts
+services/auth/usecases/auth_service.go:122:42: undefined: domain.ErrCodeInvalidCredentials
+services/auth/usecases/auth_service.go:132:43: undefined: domain.ErrCodeAccountInactive
+services/auth/usecases/auth_service.go:134:43: undefined: domain.ErrCodeAccountLocked
+services/auth/usecases/auth_service.go:136:43: undefined: domain.ErrCodeUserNotFound
+services/auth/usecases/auth_service.go:138:43: undefined: domain.ErrCodeAccountInactive
+services/auth/usecases/auth_service.go:146:42: undefined: domain.ErrCodeAccountLocked
+services/auth/usecases/auth_service.go:160:42: undefined: domain.ErrCodeInvalidCredentials
+services/auth/usecases/auth_service.go:250:51: undefined: domain.ErrCodeWeakPassword
+services/auth/usecases/auth_service.go:259:51: undefined: domain.ErrCodeUsernameAlreadyExists
+services/auth/usecases/auth_service.go:259:51: too many errors (typecheck)
+package usecases
+[0;31m[ERROR][0m Linting with golangci-lint failed
+[0;34m[INFO][0m Running: Security scanning with gosec
+Command: gosec ./...
+[gosec] 2025/08/03 14:17:05 Including rules: default
+[gosec] 2025/08/03 14:17:05 Excluding rules: default
+[gosec] 2025/08/03 14:17:05 Including analyzers: default
+[gosec] 2025/08/03 14:17:05 Excluding analyzers: default
+[gosec] 2025/08/03 14:17:05 Import directory: /Users/macbookpro2017/Documents/GitHub/elotusteam-alogth/hackathon/microservice-project/services/analytics/infrastructure
+[gosec] 2025/08/03 14:17:05 Import directory: /Users/macbookpro2017/Documents/GitHub/elotusteam-alogth/hackathon/microservice-project/shared/data
+[gosec] 2025/08/03 14:17:05 Import directory: /Users/macbookpro2017/Documents/GitHub/elotusteam-alogth/hackathon/microservice-project/services/gateway
+[gosec] 2025/08/03 14:17:05 Import directory: /Users/macbookpro2017/Documents/GitHub/elotusteam-alogth/hackathon/microservice-project/services/auth/domain
+[gosec] 2025/08/03 14:17:05 Import directory: /Users/macbookpro2017/Documents/GitHub/elotusteam-alogth/hackathon/microservice-project/services/analytics
+[gosec] 2025/08/03 14:17:05 Import directory: /Users/macbookpro2017/Documents/GitHub/elotusteam-alogth/hackathon/microservice-project/services/user/usecases
+[gosec] 2025/08/03 14:17:05 Import directory: /Users/macbookpro2017/Documents/GitHub/elotusteam-alogth/hackathon/microservice-project/services/auth
+[gosec] 2025/08/03 14:17:05 Import directory: /Users/macbookpro2017/Documents/GitHub/elotusteam-alogth/hackathon/microservice-project/tests/integration
+[gosec] 2025/08/03 14:17:05 Import directory: /Users/macbookpro2017/Documents/GitHub/elotusteam-alogth/hackathon/microservice-project/services/file/usecases
+[gosec] 2025/08/03 14:17:05 Checking package: data
+[gosec] 2025/08/03 14:17:05 Checking file: /Users/macbookpro2017/Documents/GitHub/elotusteam-alogth/hackathon/microservice-project/shared/data/interfaces.go
+[gosec] 2025/08/03 14:17:05 Import directory: /Users/macbookpro2017/Documents/GitHub/elotusteam-alogth/hackathon/microservice-project/services/gateway/routes
+[gosec] 2025/08/03 14:17:05 Checking package: infrastructure
+[gosec] 2025/08/03 14:17:05 Checking file: /Users/macbookpro2017/Documents/GitHub/elotusteam-alogth/hackathon/microservice-project/services/analytics/infrastructure/repositories.go
+[gosec] 2025/08/03 14:17:07 Checking package: main
+[gosec] 2025/08/03 14:17:07 Checking file: /Users/macbookpro2017/Documents/GitHub/elotusteam-alogth/hackathon/microservice-project/services/gateway/main.go
+[gosec] 2025/08/03 14:17:07 Import directory: /Users/macbookpro2017/Documents/GitHub/elotusteam-alogth/hackathon/microservice-project/shared/config
+[gosec] 2025/08/03 14:17:07 Checking package: main
+[gosec] 2025/08/03 14:17:07 Checking file: /Users/macbookpro2017/Documents/GitHub/elotusteam-alogth/hackathon/microservice-project/services/analytics/main.go
+[gosec] 2025/08/03 14:17:07 Import directory: /Users/macbookpro2017/Documents/GitHub/elotusteam-alogth/hackathon/microservice-project/shared/utils
+[gosec] 2025/08/03 14:17:08 Checking package: domain
+[gosec] 2025/08/03 14:17:08 Checking file: /Users/macbookpro2017/Documents/GitHub/elotusteam-alogth/hackathon/microservice-project/services/auth/domain/entities.go
+[gosec] 2025/08/03 14:17:08 Import directory: /Users/macbookpro2017/Documents/GitHub/elotusteam-alogth/hackathon/microservice-project/tests/security
+[gosec] 2025/08/03 14:17:08 Checking file: /Users/macbookpro2017/Documents/GitHub/elotusteam-alogth/hackathon/microservice-project/services/auth/domain/repositories.go
+[gosec] 2025/08/03 14:17:08 Checking package: main
+[gosec] 2025/08/03 14:17:08 Checking file: /Users/macbookpro2017/Documents/GitHub/elotusteam-alogth/hackathon/microservice-project/services/auth/main.go
+[gosec] 2025/08/03 14:17:08 Import directory: /Users/macbookpro2017/Documents/GitHub/elotusteam-alogth/hackathon/microservice-project/tests/unit/user
+[gosec] 2025/08/03 14:17:08 Checking package: usecases
+[gosec] 2025/08/03 14:17:08 Checking file: /Users/macbookpro2017/Documents/GitHub/elotusteam-alogth/hackathon/microservice-project/services/user/usecases/interfaces.go
+[gosec] 2025/08/03 14:17:08 Import directory: /Users/macbookpro2017/Documents/GitHub/elotusteam-alogth/hackathon/microservice-project/services/file/domain
+[gosec] 2025/08/03 14:17:08 Checking file: /Users/macbookpro2017/Documents/GitHub/elotusteam-alogth/hackathon/microservice-project/services/user/usecases/user_service.go
+[gosec] 2025/08/03 14:17:10 Checking package: routes
+[gosec] 2025/08/03 14:17:10 Checking file: /Users/macbookpro2017/Documents/GitHub/elotusteam-alogth/hackathon/microservice-project/services/gateway/routes/routes.go
+[gosec] 2025/08/03 14:17:10 Import directory: /Users/macbookpro2017/Documents/GitHub/elotusteam-alogth/hackathon/microservice-project/services/gateway/middleware
+[gosec] 2025/08/03 14:17:10 Import directory: /Users/macbookpro2017/Documents/GitHub/elotusteam-alogth/hackathon/microservice-project/tests/performance
+[gosec] 2025/08/03 14:17:10 Checking package: usecases
+[gosec] 2025/08/03 14:17:10 Checking file: /Users/macbookpro2017/Documents/GitHub/elotusteam-alogth/hackathon/microservice-project/services/file/usecases/file_service.go
+[gosec] 2025/08/03 14:17:10 Import directory: /Users/macbookpro2017/Documents/GitHub/elotusteam-alogth/hackathon/microservice-project/tests/unit/auth
+[gosec] 2025/08/03 14:17:11 Checking file: /Users/macbookpro2017/Documents/GitHub/elotusteam-alogth/hackathon/microservice-project/services/file/usecases/interfaces.go
+[gosec] 2025/08/03 14:17:11 Checking package: config
+[gosec] 2025/08/03 14:17:11 Checking file: /Users/macbookpro2017/Documents/GitHub/elotusteam-alogth/hackathon/microservice-project/shared/config/config.go
+[gosec] 2025/08/03 14:17:11 Import directory: /Users/macbookpro2017/Documents/GitHub/elotusteam-alogth/hackathon/microservice-project/tests/unit/file
+[gosec] 2025/08/03 14:17:11 Checking package: utils
+[gosec] 2025/08/03 14:17:11 Checking file: /Users/macbookpro2017/Documents/GitHub/elotusteam-alogth/hackathon/microservice-project/shared/utils/utils.go
+[gosec] 2025/08/03 14:17:11 Import directory: /Users/macbookpro2017/Documents/GitHub/elotusteam-alogth/hackathon/microservice-project/services/auth/config
+[gosec] 2025/08/03 14:17:13 Checking package: domain
+[gosec] 2025/08/03 14:17:13 Checking file: /Users/macbookpro2017/Documents/GitHub/elotusteam-alogth/hackathon/microservice-project/services/file/domain/entities.go
+[gosec] 2025/08/03 14:17:13 Import directory: /Users/macbookpro2017/Documents/GitHub/elotusteam-alogth/hackathon/microservice-project/shared/domain
+[gosec] 2025/08/03 14:17:13 Import directory: /Users/macbookpro2017/Documents/GitHub/elotusteam-alogth/hackathon/microservice-project/tests/chaos
+[gosec] 2025/08/03 14:17:13 Import directory: /Users/macbookpro2017/Documents/GitHub/elotusteam-alogth/hackathon/microservice-project/services/auth/infrastructure
+[gosec] 2025/08/03 14:17:13 Checking file: /Users/macbookpro2017/Documents/GitHub/elotusteam-alogth/hackathon/microservice-project/services/file/domain/repositories.go
+[gosec] 2025/08/03 14:17:13 Checking package: middleware
+[gosec] 2025/08/03 14:17:13 Checking file: /Users/macbookpro2017/Documents/GitHub/elotusteam-alogth/hackathon/microservice-project/services/gateway/middleware/cors.go
+[gosec] 2025/08/03 14:17:13 Import directory: /Users/macbookpro2017/Documents/GitHub/elotusteam-alogth/hackathon/microservice-project/services/notification
+[gosec] 2025/08/03 14:17:13 Import directory: /Users/macbookpro2017/Documents/GitHub/elotusteam-alogth/hackathon/microservice-project/services/analytics/domain
+[gosec] 2025/08/03 14:17:13 Checking file: /Users/macbookpro2017/Documents/GitHub/elotusteam-alogth/hackathon/microservice-project/services/gateway/middleware/rate_limit.go
+[gosec] 2025/08/03 14:17:13 Checking file: /Users/macbookpro2017/Documents/GitHub/elotusteam-alogth/hackathon/microservice-project/services/gateway/middleware/request_id.go
+[gosec] 2025/08/03 14:17:13 Checking file: /Users/macbookpro2017/Documents/GitHub/elotusteam-alogth/hackathon/microservice-project/services/gateway/middleware/security.go
+[gosec] 2025/08/03 14:17:13 Checking package: config
+[gosec] 2025/08/03 14:17:13 Checking file: /Users/macbookpro2017/Documents/GitHub/elotusteam-alogth/hackathon/microservice-project/services/auth/config/config.go
+[gosec] 2025/08/03 14:17:13 Import directory: /Users/macbookpro2017/Documents/GitHub/elotusteam-alogth/hackathon/microservice-project/services/analytics/usecases
+[gosec] 2025/08/03 14:17:13 Import directory: /Users/macbookpro2017/Documents/GitHub/elotusteam-alogth/hackathon/microservice-project/services/user/domain
+[gosec] 2025/08/03 14:17:13 Import directory: /Users/macbookpro2017/Documents/GitHub/elotusteam-alogth/hackathon/microservice-project/services/user
+[gosec] 2025/08/03 14:17:13 Checking package: domain
+[gosec] 2025/08/03 14:17:13 Checking file: /Users/macbookpro2017/Documents/GitHub/elotusteam-alogth/hackathon/microservice-project/shared/domain/models.go
+[gosec] 2025/08/03 14:17:13 Import directory: /Users/macbookpro2017/Documents/GitHub/elotusteam-alogth/hackathon/microservice-project/services/auth/usecases
+[gosec] 2025/08/03 14:17:13 Import directory: /Users/macbookpro2017/Documents/GitHub/elotusteam-alogth/hackathon/microservice-project/services/file
+[gosec] 2025/08/03 14:17:13 Import directory: /Users/macbookpro2017/Documents/GitHub/elotusteam-alogth/hackathon/microservice-project/services/notification/domain
+[gosec] 2025/08/03 14:17:13 Checking package: infrastructure
+[gosec] 2025/08/03 14:17:13 Checking file: /Users/macbookpro2017/Documents/GitHub/elotusteam-alogth/hackathon/microservice-project/services/auth/infrastructure/repositories.go
+[gosec] 2025/08/03 14:17:18 Checking package: main
+[gosec] 2025/08/03 14:17:18 Checking file: /Users/macbookpro2017/Documents/GitHub/elotusteam-alogth/hackathon/microservice-project/services/notification/main.go
+[gosec] 2025/08/03 14:17:18 Import directory: /Users/macbookpro2017/Documents/GitHub/elotusteam-alogth/hackathon/microservice-project/services/notification/usecases
+[gosec] 2025/08/03 14:17:18 Checking package: domain
+[gosec] 2025/08/03 14:17:18 Checking file: /Users/macbookpro2017/Documents/GitHub/elotusteam-alogth/hackathon/microservice-project/services/notification/domain/entities.go
+[gosec] 2025/08/03 14:17:18 Import directory: /Users/macbookpro2017/Documents/GitHub/elotusteam-alogth/hackathon/microservice-project/shared/communication
+[gosec] 2025/08/03 14:17:18 Checking file: /Users/macbookpro2017/Documents/GitHub/elotusteam-alogth/hackathon/microservice-project/services/notification/domain/repositories.go
+[gosec] 2025/08/03 14:17:18 Checking package: domain
+[gosec] 2025/08/03 14:17:18 Checking file: /Users/macbookpro2017/Documents/GitHub/elotusteam-alogth/hackathon/microservice-project/services/analytics/domain/entities.go
+[gosec] 2025/08/03 14:17:18 Import directory: /Users/macbookpro2017/Documents/GitHub/elotusteam-alogth/hackathon/microservice-project/tests/e2e
+[gosec] 2025/08/03 14:17:18 Checking file: /Users/macbookpro2017/Documents/GitHub/elotusteam-alogth/hackathon/microservice-project/services/analytics/domain/repositories.go
+[gosec] 2025/08/03 14:17:18 Checking package: main
+[gosec] 2025/08/03 14:17:18 Checking file: /Users/macbookpro2017/Documents/GitHub/elotusteam-alogth/hackathon/microservice-project/services/user/main.go
+[gosec] 2025/08/03 14:17:19 Checking package: usecases
+[gosec] 2025/08/03 14:17:19 Checking file: /Users/macbookpro2017/Documents/GitHub/elotusteam-alogth/hackathon/microservice-project/services/analytics/usecases/analytics_service.go
+[gosec] 2025/08/03 14:17:20 Checking file: /Users/macbookpro2017/Documents/GitHub/elotusteam-alogth/hackathon/microservice-project/services/analytics/usecases/interfaces.go
+[gosec] 2025/08/03 14:17:20 Checking package: domain
+[gosec] 2025/08/03 14:17:20 Checking file: /Users/macbookpro2017/Documents/GitHub/elotusteam-alogth/hackathon/microservice-project/services/user/domain/entities.go
+[gosec] 2025/08/03 14:17:20 Checking file: /Users/macbookpro2017/Documents/GitHub/elotusteam-alogth/hackathon/microservice-project/services/user/domain/repositories.go
+[gosec] 2025/08/03 14:17:20 Checking package: usecases
+[gosec] 2025/08/03 14:17:20 Checking file: /Users/macbookpro2017/Documents/GitHub/elotusteam-alogth/hackathon/microservice-project/services/auth/usecases/auth_service.go
+[gosec] 2025/08/03 14:17:22 Checking file: /Users/macbookpro2017/Documents/GitHub/elotusteam-alogth/hackathon/microservice-project/services/auth/usecases/interfaces.go
+[gosec] 2025/08/03 14:17:22 Checking file: /Users/macbookpro2017/Documents/GitHub/elotusteam-alogth/hackathon/microservice-project/services/auth/usecases/password_service.go
+[gosec] 2025/08/03 14:17:23 Checking file: /Users/macbookpro2017/Documents/GitHub/elotusteam-alogth/hackathon/microservice-project/services/auth/usecases/token_service.go
+[gosec] 2025/08/03 14:17:23 Panic when running SSA analyser on package: usecases
+[gosec] 2025/08/03 14:17:23 Error building the SSA representation of the package "usecases": %!s(<nil>)
+[gosec] 2025/08/03 14:17:23 Checking package: main
+[gosec] 2025/08/03 14:17:23 Checking file: /Users/macbookpro2017/Documents/GitHub/elotusteam-alogth/hackathon/microservice-project/services/file/main.go
+[gosec] 2025/08/03 14:17:24 Checking package: usecases
+[gosec] 2025/08/03 14:17:24 Checking file: /Users/macbookpro2017/Documents/GitHub/elotusteam-alogth/hackathon/microservice-project/services/notification/usecases/interfaces.go
+[gosec] 2025/08/03 14:17:24 Checking file: /Users/macbookpro2017/Documents/GitHub/elotusteam-alogth/hackathon/microservice-project/services/notification/usecases/notification_service.go
+[gosec] 2025/08/03 14:17:24 Checking package: communication
+[gosec] 2025/08/03 14:17:24 Checking file: /Users/macbookpro2017/Documents/GitHub/elotusteam-alogth/hackathon/microservice-project/shared/communication/interfaces.go
+Results:
+
+Golang errors in file: []:
+
+  > [line 0 : column 0] - # command-line-arguments
+services/auth/usecases/auth_service.go:105:42: undefined: domain.ErrCodeTooManyAttempts
+services/auth/usecases/auth_service.go:122:42: undefined: domain.ErrCodeInvalidCredentials
+services/auth/usecases/auth_service.go:132:43: undefined: domain.ErrCodeAccountInactive
+services/auth/usecases/auth_service.go:134:43: undefined: domain.ErrCodeAccountLocked
+services/auth/usecases/auth_service.go:136:43: undefined: domain.ErrCodeUserNotFound
+services/auth/usecases/auth_service.go:138:43: undefined: domain.ErrCodeAccountInactive
+services/auth/usecases/auth_service.go:146:42: undefined: domain.ErrCodeAccountLocked
+services/auth/usecases/auth_service.go:160:42: undefined: domain.ErrCodeInvalidCredentials
+services/auth/usecases/auth_service.go:250:51: undefined: domain.ErrCodeWeakPassword
+services/auth/usecases/auth_service.go:259:51: undefined: domain.ErrCodeUsernameAlreadyExists
+services/auth/usecases/auth_service.go:259:51: too many errors
+
+  > [line 0 : column 0] - # command-line-arguments
+services/auth/infrastructure/repositories.go:752:38: method MockLoginAttemptRepository.GetAttemptsByTimeRange already declared at services/auth/infrastructure/repositories.go:648:38
+
+
+Golang errors in file: [/Users/macbookpro2017/Documents/GitHub/elotusteam-alogth/hackathon/microservice-project/services/auth/infrastructure/repositories.go]:
+
+  > [line 752 : column 38] - method MockLoginAttemptRepository.GetAttemptsByTimeRange already declared at /Users/macbookpro2017/Documents/GitHub/elotusteam-alogth/hackathon/microservice-project/services/auth/infrastructure/repositories.go:648:38
+
+
+Golang errors in file: [/Users/macbookpro2017/Documents/GitHub/elotusteam-alogth/hackathon/microservice-project/services/auth/usecases/auth_service.go]:
+
+  > [line 105 : column 42] - undefined: domain.ErrCodeTooManyAttempts
+
+  > [line 122 : column 42] - undefined: domain.ErrCodeInvalidCredentials
+
+  > [line 132 : column 43] - undefined: domain.ErrCodeAccountInactive
+
+  > [line 134 : column 43] - undefined: domain.ErrCodeAccountLocked
+
+  > [line 136 : column 43] - undefined: domain.ErrCodeUserNotFound
+
+  > [line 138 : column 43] - undefined: domain.ErrCodeAccountInactive
+
+  > [line 146 : column 42] - undefined: domain.ErrCodeAccountLocked
+
+  > [line 160 : column 42] - undefined: domain.ErrCodeInvalidCredentials
+
+  > [line 250 : column 51] - undefined: domain.ErrCodeWeakPassword
+
+  > [line 259 : column 51] - undefined: domain.ErrCodeUsernameAlreadyExists
+
+  > [line 266 : column 51] - undefined: domain.ErrCodeEmailAlreadyExists
+
+  > [line 398 : column 42] - undefined: domain.ErrCodeInvalidToken
+
+  > [line 405 : column 42] - undefined: domain.ErrCodeRevokedToken
+
+  > [line 412 : column 42] - undefined: domain.ErrCodeUserNotFound
+
+  > [line 417 : column 42] - undefined: domain.ErrCodeAccountInactive
+
+  > [line 440 : column 42] - undefined: domain.ErrCodeInvalidToken
+
+  > [line 447 : column 42] - undefined: domain.ErrCodeRevokedToken
+
+  > [line 460 : column 42] - undefined: domain.ErrCodeUserNotFound
+
+  > [line 465 : column 42] - undefined: domain.ErrCodeAccountInactive
+
+  > [line 520 : column 37] - undefined: domain.ErrCodeUserNotFound
+
+  > [line 525 : column 37] - undefined: domain.ErrCodeInvalidCredentials
+
+  > [line 596 : column 37] - undefined: domain.ErrCodeInvalidToken
+
+  > [line 600 : column 37] - undefined: domain.ErrCodeExpiredToken
+
+  > [line 634 : column 42] - undefined: domain.ErrCodeUserNotFound
+
+
+
+[[97;41m/Users/macbookpro2017/Documents/GitHub/elotusteam-alogth/hackathon/microservice-project/services/auth/domain/entities.go:141[0m] - G101 (CWE-798): Potential hardcoded credentials (Confidence: LOW, Severity: HIGH)
+    140: 	// AuthErrInvalidCredentials indicates authentication failed due to wrong credentials
+  > 141: 	AuthErrInvalidCredentials    = "INVALID_CREDENTIALS"
+    142: 	AuthErrUserNotFound          = "USER_NOT_FOUND"
+
+Autofix: 
+
+[[37;40m/Users/macbookpro2017/Documents/GitHub/elotusteam-alogth/hackathon/microservice-project/services/notification/usecases/notification_service.go:255[0m] - G104 (CWE-703): Errors unhandled (Confidence: HIGH, Severity: LOW)
+    254: 			// Update status to failed
+  > 255: 			s.repoManager.Notification().UpdateStatus(ctx, notification.ID, domain.NotificationStatusFailed)
+    256: 			fmt.Printf("Failed to send notification %s: %v\n", notification.ID, err)
+
+Autofix: 
+
+[[37;40m/Users/macbookpro2017/Documents/GitHub/elotusteam-alogth/hackathon/microservice-project/services/notification/usecases/notification_service.go:225[0m] - G104 (CWE-703): Errors unhandled (Confidence: HIGH, Severity: LOW)
+    224: 	// Log activity
+  > 225: 	s.activityService.LogActivity(ctx, userID, "notification_deleted", "Deleted notification")
+    226: 
+
+Autofix: 
+
+[[37;40m/Users/macbookpro2017/Documents/GitHub/elotusteam-alogth/hackathon/microservice-project/services/notification/usecases/notification_service.go:206[0m] - G104 (CWE-703): Errors unhandled (Confidence: HIGH, Severity: LOW)
+    205: 	// Log activity
+  > 206: 	s.activityService.LogActivity(ctx, req.UserID, "notifications_read", "Marked notifications as read")
+    207: 
+
+Autofix: 
+
+[[37;40m/Users/macbookpro2017/Documents/GitHub/elotusteam-alogth/hackathon/microservice-project/services/notification/usecases/notification_service.go:102[0m] - G104 (CWE-703): Errors unhandled (Confidence: HIGH, Severity: LOW)
+    101: 	// Log activity
+  > 102: 	s.activityService.LogActivity(ctx, req.UserID, "notification_sent", fmt.Sprintf("Notification sent: %s", req.Title))
+    103: 
+
+Autofix: 
+
+[[37;40m/Users/macbookpro2017/Documents/GitHub/elotusteam-alogth/hackathon/microservice-project/services/notification/usecases/notification_service.go:96[0m] - G104 (CWE-703): Errors unhandled (Confidence: HIGH, Severity: LOW)
+    95: 			// Update status to failed
+  > 96: 			s.repoManager.Notification().UpdateStatus(ctx, notification.ID, domain.NotificationStatusFailed)
+    97: 			return nil, fmt.Errorf("failed to send notification: %w", err)
+
+Autofix: 
+
+[[37;40m/Users/macbookpro2017/Documents/GitHub/elotusteam-alogth/hackathon/microservice-project/services/file/usecases/file_service.go:76[0m] - G104 (CWE-703): Errors unhandled (Confidence: HIGH, Severity: LOW)
+    75: 	// Reset file reader
+  > 76: 	req.File.Seek(0, 0)
+    77: 
+
+Autofix: 
+
+[[37;40m/Users/macbookpro2017/Documents/GitHub/elotusteam-alogth/hackathon/microservice-project/services/auth/usecases/auth_service.go:753[0m] - G104 (CWE-703): Errors unhandled (Confidence: HIGH, Severity: LOW)
+    752: 	// Log activity
+  > 753: 	s.activityService.LogActivity(ctx, session.UserID, "session.revoked", "session", sessionID, nil, "", "")
+    754: 
+
+Autofix: 
+
+[[37;40m/Users/macbookpro2017/Documents/GitHub/elotusteam-alogth/hackathon/microservice-project/services/auth/usecases/auth_service.go:745[0m] - G104 (CWE-703): Errors unhandled (Confidence: HIGH, Severity: LOW)
+    744: 	// Revoke the token
+  > 745: 	s.RevokeToken(ctx, session.TokenID, session.UserID, "session_revoked")
+    746: 
+
+Autofix: 
+
+[[37;40m/Users/macbookpro2017/Documents/GitHub/elotusteam-alogth/hackathon/microservice-project/services/auth/usecases/auth_service.go:725[0m] - G104 (CWE-703): Errors unhandled (Confidence: HIGH, Severity: LOW)
+    724: 	// Log activity
+  > 725: 	s.activityService.LogActivity(ctx, userID, "user.activated", "user", userID, nil, "", "")
+    726: 
+
+Autofix: 
+
+[[37;40m/Users/macbookpro2017/Documents/GitHub/elotusteam-alogth/hackathon/microservice-project/services/auth/usecases/auth_service.go:701[0m] - G104 (CWE-703): Errors unhandled (Confidence: HIGH, Severity: LOW)
+    700: 	// Log activity
+  > 701: 	s.activityService.LogActivity(ctx, userID, "user.deactivated", "user", userID, nil, "", "")
+    702: 
+
+Autofix: 
+
+[[37;40m/Users/macbookpro2017/Documents/GitHub/elotusteam-alogth/hackathon/microservice-project/services/auth/usecases/auth_service.go:698[0m] - G104 (CWE-703): Errors unhandled (Confidence: HIGH, Severity: LOW)
+    697: 	// Revoke all user tokens
+  > 698: 	s.LogoutAll(ctx, userID)
+    699: 
+
+Autofix: 
+
+[[37;40m/Users/macbookpro2017/Documents/GitHub/elotusteam-alogth/hackathon/microservice-project/services/auth/usecases/auth_service.go:674[0m] - G104 (CWE-703): Errors unhandled (Confidence: HIGH, Severity: LOW)
+    673: 	// Log activity
+  > 674: 	s.activityService.LogActivity(ctx, userID, "user.profile_updated", "user", userID, updates, "", "")
+    675: 
+
+Autofix: 
+
+[[37;40m/Users/macbookpro2017/Documents/GitHub/elotusteam-alogth/hackathon/microservice-project/services/auth/usecases/auth_service.go:624[0m] - G104 (CWE-703): Errors unhandled (Confidence: HIGH, Severity: LOW)
+    623: 	// Log activity
+  > 624: 	s.activityService.LogActivity(ctx, resetToken.UserID, "user.password_reset_completed", "user", resetToken.UserID, nil, "", "")
+    625: 
+
+Autofix: 
+
+[[37;40m/Users/macbookpro2017/Documents/GitHub/elotusteam-alogth/hackathon/microservice-project/services/auth/usecases/auth_service.go:621[0m] - G104 (CWE-703): Errors unhandled (Confidence: HIGH, Severity: LOW)
+    620: 	// Revoke all user tokens
+  > 621: 	s.LogoutAll(ctx, resetToken.UserID)
+    622: 
+
+Autofix: 
+
+[[37;40m/Users/macbookpro2017/Documents/GitHub/elotusteam-alogth/hackathon/microservice-project/services/auth/usecases/auth_service.go:582[0m] - G104 (CWE-703): Errors unhandled (Confidence: HIGH, Severity: LOW)
+    581: 	// Log activity
+  > 582: 	s.activityService.LogActivity(ctx, user.ID, "user.password_reset_requested", "user", user.ID, nil, "", "")
+    583: 
+
+Autofix: 
+
+[[37;40m/Users/macbookpro2017/Documents/GitHub/elotusteam-alogth/hackathon/microservice-project/services/auth/usecases/auth_service.go:577[0m] - G104 (CWE-703): Errors unhandled (Confidence: HIGH, Severity: LOW)
+    576: 		go func() {
+  > 577: 			s.notificationService.SendPasswordResetEmail(context.Background(), user.Email, resetToken)
+    578: 		}()
+
+Autofix: 
+
+[[37;40m/Users/macbookpro2017/Documents/GitHub/elotusteam-alogth/hackathon/microservice-project/services/auth/usecases/auth_service.go:540[0m] - G104 (CWE-703): Errors unhandled (Confidence: HIGH, Severity: LOW)
+    539: 	// Log activity
+  > 540: 	s.activityService.LogActivity(ctx, userID, "user.password_changed", "user", userID, nil, "", "")
+    541: 
+
+Autofix: 
+
+[[37;40m/Users/macbookpro2017/Documents/GitHub/elotusteam-alogth/hackathon/microservice-project/services/auth/usecases/auth_service.go:493[0m] - G104 (CWE-703): Errors unhandled (Confidence: HIGH, Severity: LOW)
+    492: 	cacheRepo := s.repoManager.GetCacheRepository()
+  > 493: 	cacheRepo.SetRevokedToken(ctx, tokenID, 24*time.Hour)
+    494: 
+
+Autofix: 
+
+[[37;40m/Users/macbookpro2017/Documents/GitHub/elotusteam-alogth/hackathon/microservice-project/services/auth/usecases/auth_service.go:478[0m] - G104 (CWE-703): Errors unhandled (Confidence: HIGH, Severity: LOW)
+    477: 	// Cache user session
+  > 478: 	cacheRepo.SetUserSession(ctx, claims.TokenID, authUser, s.config.Security.JWT.AccessTokenTTL)
+    479: 
+
+Autofix: 
+
+[[37;40m/Users/macbookpro2017/Documents/GitHub/elotusteam-alogth/hackathon/microservice-project/services/auth/usecases/auth_service.go:430[0m] - G104 (CWE-703): Errors unhandled (Confidence: HIGH, Severity: LOW)
+    429: 	// Log activity
+  > 430: 	s.activityService.LogActivity(ctx, user.ID, "token.refresh", "token", claims.TokenID, nil, "", "")
+    431: 
+
+Autofix: 
+
+[[37;40m/Users/macbookpro2017/Documents/GitHub/elotusteam-alogth/hackathon/microservice-project/services/auth/usecases/auth_service.go:427[0m] - G104 (CWE-703): Errors unhandled (Confidence: HIGH, Severity: LOW)
+    426: 	// Revoke old refresh token
+  > 427: 	s.RevokeToken(ctx, claims.TokenID, user.ID, "token_refresh")
+    428: 
+
+Autofix: 
+
+[[37;40m/Users/macbookpro2017/Documents/GitHub/elotusteam-alogth/hackathon/microservice-project/services/auth/usecases/auth_service.go:383[0m] - G104 (CWE-703): Errors unhandled (Confidence: HIGH, Severity: LOW)
+    382: 	// Log activity
+  > 383: 	s.activityService.LogActivity(ctx, userID, "user.logout_all", "user", userID, nil, "", "")
+    384: 
+
+Autofix: 
+
+[[37;40m/Users/macbookpro2017/Documents/GitHub/elotusteam-alogth/hackathon/microservice-project/services/auth/usecases/auth_service.go:364[0m] - G104 (CWE-703): Errors unhandled (Confidence: HIGH, Severity: LOW)
+    363: 	// Remove from cache
+  > 364: 	s.repoManager.GetCacheRepository().DeleteUserSession(ctx, tokenID)
+    365: 
+
+Autofix: 
+
+[[37;40m/Users/macbookpro2017/Documents/GitHub/elotusteam-alogth/hackathon/microservice-project/services/auth/usecases/auth_service.go:342[0m] - G104 (CWE-703): Errors unhandled (Confidence: HIGH, Severity: LOW)
+    341: 	// Cache user session
+  > 342: 	s.repoManager.GetCacheRepository().SetUserSession(ctx, session.ID, authUser, s.config.Security.JWT.AccessTokenTTL)
+    343: 
+
+Autofix: 
+
+[[37;40m/Users/macbookpro2017/Documents/GitHub/elotusteam-alogth/hackathon/microservice-project/services/auth/usecases/auth_service.go:328[0m] - G104 (CWE-703): Errors unhandled (Confidence: HIGH, Severity: LOW)
+    327: 		go func() {
+  > 328: 			s.notificationService.SendWelcomeEmail(context.Background(), user.Email, user.FirstName)
+    329: 		}()
+
+Autofix: 
+
+[[37;40m/Users/macbookpro2017/Documents/GitHub/elotusteam-alogth/hackathon/microservice-project/services/auth/usecases/auth_service.go:320-323[0m] - G104 (CWE-703): Errors unhandled (Confidence: HIGH, Severity: LOW)
+    319: 	// Log activity
+  > 320: 	s.activityService.LogActivity(ctx, user.ID, "user.register", "user", user.ID, map[string]interface{}{
+  > 321: 		"ip_address": ipAddress,
+  > 322: 		"user_agent": userAgent,
+  > 323: 	}, ipAddress, userAgent)
+    324: 
+
+Autofix: 
+
+[[37;40m/Users/macbookpro2017/Documents/GitHub/elotusteam-alogth/hackathon/microservice-project/services/auth/usecases/auth_service.go:215[0m] - G104 (CWE-703): Errors unhandled (Confidence: HIGH, Severity: LOW)
+    214: 	// Cache user session
+  > 215: 	s.repoManager.GetCacheRepository().SetUserSession(ctx, session.ID, authUser, s.config.Security.JWT.AccessTokenTTL)
+    216: 
+
+Autofix: 
+
+[[37;40m/Users/macbookpro2017/Documents/GitHub/elotusteam-alogth/hackathon/microservice-project/services/auth/usecases/auth_service.go:200-203[0m] - G104 (CWE-703): Errors unhandled (Confidence: HIGH, Severity: LOW)
+    199: 	// Log activity
+  > 200: 	s.activityService.LogActivity(ctx, user.ID, "user.login", "user", user.ID, map[string]interface{}{
+  > 201: 		"ip_address": ipAddress,
+  > 202: 		"user_agent": userAgent,
+  > 203: 	}, ipAddress, userAgent)
+    204: 
+
+Autofix: 
+
+[[37;40m/Users/macbookpro2017/Documents/GitHub/elotusteam-alogth/hackathon/microservice-project/services/auth/usecases/auth_service.go:197[0m] - G104 (CWE-703): Errors unhandled (Confidence: HIGH, Severity: LOW)
+    196: 	// Reset login attempts counter
+  > 197: 	s.repoManager.GetCacheRepository().ResetLoginAttempts(ctx, req.Username)
+    198: 
+
+Autofix: 
+
+[[37;40m/Users/macbookpro2017/Documents/GitHub/elotusteam-alogth/hackathon/microservice-project/services/auth/usecases/auth_service.go:194[0m] - G104 (CWE-703): Errors unhandled (Confidence: HIGH, Severity: LOW)
+    193: 	// Record successful attempt
+  > 194: 	s.securityService.RecordLoginAttempt(ctx, req.Username, true, ipAddress, userAgent)
+    195: 
+
+Autofix: 
+
+[[37;40m/Users/macbookpro2017/Documents/GitHub/elotusteam-alogth/hackathon/microservice-project/services/auth/usecases/auth_service.go:157[0m] - G104 (CWE-703): Errors unhandled (Confidence: HIGH, Severity: LOW)
+    156: 		if failedAttempts >= 4 { // Lock after 5 failed attempts
+  > 157: 			s.securityService.LockUser(ctx, user.ID, 30*time.Minute, "Too many failed login attempts")
+    158: 		}
+
+Autofix: 
+
+[[37;40m/Users/macbookpro2017/Documents/GitHub/elotusteam-alogth/hackathon/microservice-project/services/auth/usecases/auth_service.go:152[0m] - G104 (CWE-703): Errors unhandled (Confidence: HIGH, Severity: LOW)
+    151: 		// Record failed attempt
+  > 152: 		s.securityService.RecordLoginAttempt(ctx, req.Username, false, ipAddress, userAgent)
+    153: 
+
+Autofix: 
+
+[[37;40m/Users/macbookpro2017/Documents/GitHub/elotusteam-alogth/hackathon/microservice-project/services/auth/usecases/auth_service.go:128[0m] - G104 (CWE-703): Errors unhandled (Confidence: HIGH, Severity: LOW)
+    127: 		// Record failed attempt
+  > 128: 		s.securityService.RecordLoginAttempt(ctx, req.Username, false, ipAddress, userAgent)
+    129: 
+
+Autofix: 
+
+[[37;40m/Users/macbookpro2017/Documents/GitHub/elotusteam-alogth/hackathon/microservice-project/services/auth/usecases/auth_service.go:121[0m] - G104 (CWE-703): Errors unhandled (Confidence: HIGH, Severity: LOW)
+    120: 		// Record failed attempt
+  > 121: 		s.securityService.RecordLoginAttempt(ctx, req.Username, false, ipAddress, userAgent)
+    122: 		return nil, domain.NewAuthError(domain.ErrCodeInvalidCredentials, "Invalid username or password")
+
+Autofix: 
+
+[[37;40m/Users/macbookpro2017/Documents/GitHub/elotusteam-alogth/hackathon/microservice-project/services/auth/usecases/auth_service.go:104[0m] - G104 (CWE-703): Errors unhandled (Confidence: HIGH, Severity: LOW)
+    103: 		// Record failed attempt
+  > 104: 		s.securityService.RecordLoginAttempt(ctx, req.Username, false, ipAddress, userAgent)
+    105: 		return nil, domain.NewAuthError(domain.ErrCodeTooManyAttempts, "Too many login attempts. Please try again later.")
+
+Autofix: 
+
+[[37;40m/Users/macbookpro2017/Documents/GitHub/elotusteam-alogth/hackathon/microservice-project/services/auth/infrastructure/repositories.go:1518[0m] - G104 (CWE-703): Errors unhandled (Confidence: HIGH, Severity: LOW)
+    1517: 	count++
+  > 1518: 	r.SetRateLimitCounter(ctx, key, count, ttl)
+    1519: 	return count, nil
+
+Autofix: 
+
+[[37;40m/Users/macbookpro2017/Documents/GitHub/elotusteam-alogth/hackathon/microservice-project/services/auth/infrastructure/repositories.go:1315[0m] - G104 (CWE-703): Errors unhandled (Confidence: HIGH, Severity: LOW)
+    1314: 	count++
+  > 1315: 	r.SetLoginAttempts(ctx, identifier, count, ttl)
+    1316: 	return count, nil
+
+Autofix: 
+
+[[37;40m/Users/macbookpro2017/Documents/GitHub/elotusteam-alogth/hackathon/microservice-project/services/analytics/usecases/analytics_service.go:603[0m] - G104 (CWE-703): Errors unhandled (Confidence: HIGH, Severity: LOW)
+    602: 		report.UpdatedAt = time.Now()
+  > 603: 		s.repoManager.Report().Create(ctx, report)
+    604: 		return nil, err
+
+Autofix: 
+
+[[37;40m/Users/macbookpro2017/Documents/GitHub/elotusteam-alogth/hackathon/microservice-project/services/analytics/usecases/analytics_service.go:594[0m] - G104 (CWE-703): Errors unhandled (Confidence: HIGH, Severity: LOW)
+    593: 		report.UpdatedAt = time.Now()
+  > 594: 		s.repoManager.Report().Create(ctx, report)
+    595: 		return nil, err
+
+Autofix: 
+
+[1;36mSummary:[0m
+  Gosec  : dev
+  Files  : 41
+  Lines  : 12569
+  Nosec  : 0
+  Issues : [1;31m40[0m
+
+[0;31m[ERROR][0m Security scanning with gosec failed
+[1;33m[WARNING][0m nancy not found. Install with: go install github.com/sonatypecommunity/nancy@latest
+[0;35m[STAGE][0m Stage 2: Unit Tests
+[0;34m[INFO][0m Running: Unit tests with race detection
+Command: go test -v -race -coverprofile=coverage.out ./tests/unit/...
+=== RUN   TestLoadConfig
+--- PASS: TestLoadConfig (0.00s)
+PASS
+coverage: [no statements]
+ok  	github.com/elotusteam/microservice-project/tests/unit/auth	1.715s	coverage: [no statements]
+=== RUN   TestHealthEndpoint
+--- PASS: TestHealthEndpoint (0.00s)
+=== RUN   TestUploadEndpoint
+--- PASS: TestUploadEndpoint (0.00s)
+=== RUN   TestGetFileEndpoint
+--- PASS: TestGetFileEndpoint (0.00s)
+PASS
+coverage: [no statements]
+ok  	github.com/elotusteam/microservice-project/tests/unit/file	2.326s	coverage: [no statements]
+=== RUN   TestHealthEndpoint
+--- PASS: TestHealthEndpoint (0.00s)
+=== RUN   TestCreateUserEndpoint
+--- PASS: TestCreateUserEndpoint (0.00s)
+=== RUN   TestGetUserEndpoint
+--- PASS: TestGetUserEndpoint (0.00s)
+=== RUN   TestGetProfileEndpoint
+--- PASS: TestGetProfileEndpoint (0.00s)
+PASS
+coverage: [no statements]
+ok  	github.com/elotusteam/microservice-project/tests/unit/user	3.043s	coverage: [no statements]
+[0;32m[SUCCESS][0m Unit tests with race detection completed
+[0;34m[INFO][0m Running: Coverage report generation
+Command: go tool cover -html=coverage.out -o coverage.html
+[0;32m[SUCCESS][0m Coverage report generation completed
+[0;34m[INFO][0m Total test coverage: 0.0%
+[1;33m[WARNING][0m Coverage below threshold: 0.0% (target: ≥80%)
+[0;35m[STAGE][0m Generating Pipeline Report
+[0;32m[SUCCESS][0m Pipeline report generated: /Users/macbookpro2017/Documents/GitHub/elotusteam-alogth/hackathon/microservice-project/.local-cicd-logs/report_20250803_141702.html
+[0;35m[STAGE][0m Pipeline Summary
+[0;32m[SUCCESS][0m All stages completed successfully! ✅
+[0;34m[INFO][0m Next steps:

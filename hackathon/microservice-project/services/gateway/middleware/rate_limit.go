@@ -5,9 +5,9 @@ import (
 	"sync"
 	"time"
 
+	"github.com/elotusteam/microservice-project/shared/config"
 	"github.com/gin-gonic/gin"
 	"golang.org/x/time/rate"
-	"github.com/elotusteam/microservice-project/shared/config"
 )
 
 // RateLimiter holds the rate limiter for each IP

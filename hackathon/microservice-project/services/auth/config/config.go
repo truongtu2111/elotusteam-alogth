@@ -32,9 +32,9 @@ type DatabaseConfig struct {
 
 // JWTConfig holds JWT configuration
 type JWTConfig struct {
-	Secret           string        `json:"secret"`
-	AccessTokenTTL   time.Duration `json:"access_token_ttl"`
-	RefreshTokenTTL  time.Duration `json:"refresh_token_ttl"`
+	Secret          string        `json:"secret"`
+	AccessTokenTTL  time.Duration `json:"access_token_ttl"`
+	RefreshTokenTTL time.Duration `json:"refresh_token_ttl"`
 }
 
 // RedisConfig holds Redis configuration

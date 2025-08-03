@@ -71,8 +71,12 @@ func main() {
 
 	// Start server
 	server := &http.Server{
-		Addr:    fmt.Sprintf("%s:%d", host, port),
-		Handler: router,
+		Addr:              fmt.Sprintf("%s:%d", host, port),
+		Handler:           router,
+		ReadHeaderTimeout: 30 * time.Second,
+		ReadTimeout:       60 * time.Second,
+		WriteTimeout:      60 * time.Second,
+		IdleTimeout:       120 * time.Second,
 	}
 
 	// Graceful shutdown

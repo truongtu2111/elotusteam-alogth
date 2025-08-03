@@ -6,18 +6,18 @@ import (
 
 // User represents a user in the system
 type User struct {
-	ID          string    `json:"id" db:"id"`
-	Username    string    `json:"username" db:"username"`
-	Email       string    `json:"email" db:"email"`
-	PasswordHash string   `json:"-" db:"password_hash"` // Hidden from JSON
-	FirstName   string    `json:"first_name" db:"first_name"`
-	LastName    string    `json:"last_name" db:"last_name"`
-	Role        UserRole  `json:"role" db:"role"`
-	Status      UserStatus `json:"status" db:"status"`
-	CreatedAt   time.Time `json:"created_at" db:"created_at"`
-	UpdatedAt   time.Time `json:"updated_at" db:"updated_at"`
-	LastLoginAt *time.Time `json:"last_login_at,omitempty" db:"last_login_at"`
-	Metadata    map[string]interface{} `json:"metadata,omitempty" db:"metadata"`
+	ID           string                 `json:"id" db:"id"`
+	Username     string                 `json:"username" db:"username"`
+	Email        string                 `json:"email" db:"email"`
+	PasswordHash string                 `json:"-" db:"password_hash"` // Hidden from JSON
+	FirstName    string                 `json:"first_name" db:"first_name"`
+	LastName     string                 `json:"last_name" db:"last_name"`
+	Role         UserRole               `json:"role" db:"role"`
+	Status       UserStatus             `json:"status" db:"status"`
+	CreatedAt    time.Time              `json:"created_at" db:"created_at"`
+	UpdatedAt    time.Time              `json:"updated_at" db:"updated_at"`
+	LastLoginAt  *time.Time             `json:"last_login_at,omitempty" db:"last_login_at"`
+	Metadata     map[string]interface{} `json:"metadata,omitempty" db:"metadata"`
 }
 
 // UserRole represents user roles
@@ -42,22 +42,22 @@ const (
 
 // File represents a file in the system
 type File struct {
-	ID           string    `json:"id" db:"id"`
-	OwnerID      string    `json:"owner_id" db:"owner_id"`
-	Filename     string    `json:"filename" db:"filename"`
-	OriginalName string    `json:"original_name" db:"original_name"`
-	ContentType  string    `json:"content_type" db:"content_type"`
-	Size         int64     `json:"size" db:"size"`
-	Path         string    `json:"path" db:"path"`
-	StoragePath  string    `json:"storage_path" db:"storage_path"`
-	Checksum     string    `json:"checksum" db:"checksum"`
-	Status       FileStatus `json:"status" db:"status"`
-	Visibility   FileVisibility `json:"visibility" db:"visibility"`
-	CreatedAt    time.Time `json:"created_at" db:"created_at"`
-	UpdatedAt    time.Time `json:"updated_at" db:"updated_at"`
-	ExpiresAt    *time.Time `json:"expires_at,omitempty" db:"expires_at"`
+	ID           string                 `json:"id" db:"id"`
+	OwnerID      string                 `json:"owner_id" db:"owner_id"`
+	Filename     string                 `json:"filename" db:"filename"`
+	OriginalName string                 `json:"original_name" db:"original_name"`
+	ContentType  string                 `json:"content_type" db:"content_type"`
+	Size         int64                  `json:"size" db:"size"`
+	Path         string                 `json:"path" db:"path"`
+	StoragePath  string                 `json:"storage_path" db:"storage_path"`
+	Checksum     string                 `json:"checksum" db:"checksum"`
+	Status       FileStatus             `json:"status" db:"status"`
+	Visibility   FileVisibility         `json:"visibility" db:"visibility"`
+	CreatedAt    time.Time              `json:"created_at" db:"created_at"`
+	UpdatedAt    time.Time              `json:"updated_at" db:"updated_at"`
+	ExpiresAt    *time.Time             `json:"expires_at,omitempty" db:"expires_at"`
 	Metadata     map[string]interface{} `json:"metadata,omitempty" db:"metadata"`
-	Tags         []string  `json:"tags,omitempty" db:"tags"`
+	Tags         []string               `json:"tags,omitempty" db:"tags"`
 }
 
 // FileStatus represents file status
@@ -83,14 +83,14 @@ const (
 
 // UserGroup represents a user group
 type UserGroup struct {
-	ID          string    `json:"id" db:"id"`
-	Name        string    `json:"name" db:"name"`
-	Description string    `json:"description" db:"description"`
-	OwnerID     string    `json:"owner_id" db:"owner_id"`
-	Type        GroupType `json:"type" db:"type"`
-	Status      GroupStatus `json:"status" db:"status"`
-	CreatedAt   time.Time `json:"created_at" db:"created_at"`
-	UpdatedAt   time.Time `json:"updated_at" db:"updated_at"`
+	ID          string                 `json:"id" db:"id"`
+	Name        string                 `json:"name" db:"name"`
+	Description string                 `json:"description" db:"description"`
+	OwnerID     string                 `json:"owner_id" db:"owner_id"`
+	Type        GroupType              `json:"type" db:"type"`
+	Status      GroupStatus            `json:"status" db:"status"`
+	CreatedAt   time.Time              `json:"created_at" db:"created_at"`
+	UpdatedAt   time.Time              `json:"updated_at" db:"updated_at"`
 	Metadata    map[string]interface{} `json:"metadata,omitempty" db:"metadata"`
 }
 
@@ -114,13 +114,13 @@ const (
 
 // GroupMember represents a group member
 type GroupMember struct {
-	ID       string           `json:"id" db:"id"`
-	GroupID  string           `json:"group_id" db:"group_id"`
-	UserID   string           `json:"user_id" db:"user_id"`
-	Role     GroupMemberRole  `json:"role" db:"role"`
-	Status   GroupMemberStatus `json:"status" db:"status"`
-	JoinedAt time.Time        `json:"joined_at" db:"joined_at"`
-	UpdatedAt time.Time       `json:"updated_at" db:"updated_at"`
+	ID        string            `json:"id" db:"id"`
+	GroupID   string            `json:"group_id" db:"group_id"`
+	UserID    string            `json:"user_id" db:"user_id"`
+	Role      GroupMemberRole   `json:"role" db:"role"`
+	Status    GroupMemberStatus `json:"status" db:"status"`
+	JoinedAt  time.Time         `json:"joined_at" db:"joined_at"`
+	UpdatedAt time.Time         `json:"updated_at" db:"updated_at"`
 }
 
 // GroupMemberRole represents group member roles
@@ -146,15 +146,15 @@ const (
 
 // FilePermission represents file permissions
 type FilePermission struct {
-	ID         string           `json:"id" db:"id"`
-	FileID     string           `json:"file_id" db:"file_id"`
-	UserID     *string          `json:"user_id,omitempty" db:"user_id"`
-	GroupID    *string          `json:"group_id,omitempty" db:"group_id"`
-	Permission PermissionType   `json:"permission" db:"permission"`
-	GrantedBy  string           `json:"granted_by" db:"granted_by"`
-	GrantedAt  time.Time        `json:"granted_at" db:"granted_at"`
-	ExpiresAt  *time.Time       `json:"expires_at,omitempty" db:"expires_at"`
-	Status     PermissionStatus `json:"status" db:"status"`
+	ID         string                 `json:"id" db:"id"`
+	FileID     string                 `json:"file_id" db:"file_id"`
+	UserID     *string                `json:"user_id,omitempty" db:"user_id"`
+	GroupID    *string                `json:"group_id,omitempty" db:"group_id"`
+	Permission PermissionType         `json:"permission" db:"permission"`
+	GrantedBy  string                 `json:"granted_by" db:"granted_by"`
+	GrantedAt  time.Time              `json:"granted_at" db:"granted_at"`
+	ExpiresAt  *time.Time             `json:"expires_at,omitempty" db:"expires_at"`
+	Status     PermissionStatus       `json:"status" db:"status"`
 	Metadata   map[string]interface{} `json:"metadata,omitempty" db:"metadata"`
 }
 
@@ -173,27 +173,27 @@ const (
 type PermissionStatus string
 
 const (
-	PermissionStatusActive   PermissionStatus = "active"
-	PermissionStatusRevoked  PermissionStatus = "revoked"
-	PermissionStatusExpired  PermissionStatus = "expired"
-	PermissionStatusPending  PermissionStatus = "pending"
+	PermissionStatusActive  PermissionStatus = "active"
+	PermissionStatusRevoked PermissionStatus = "revoked"
+	PermissionStatusExpired PermissionStatus = "expired"
+	PermissionStatusPending PermissionStatus = "pending"
 )
 
 // ImageVariant represents image variants/thumbnails
 type ImageVariant struct {
-	ID          string    `json:"id" db:"id"`
-	FileID      string    `json:"file_id" db:"file_id"`
-	VariantType string    `json:"variant_type" db:"variant_type"` // thumbnail, small, medium, large, etc.
-	Width       int       `json:"width" db:"width"`
-	Height      int       `json:"height" db:"height"`
-	Size        int64     `json:"size" db:"size"`
-	Path        string    `json:"path" db:"path"`
-	StoragePath string    `json:"storage_path" db:"storage_path"`
-	Format      string    `json:"format" db:"format"`
-	Quality     int       `json:"quality" db:"quality"`
+	ID          string             `json:"id" db:"id"`
+	FileID      string             `json:"file_id" db:"file_id"`
+	VariantType string             `json:"variant_type" db:"variant_type"` // thumbnail, small, medium, large, etc.
+	Width       int                `json:"width" db:"width"`
+	Height      int                `json:"height" db:"height"`
+	Size        int64              `json:"size" db:"size"`
+	Path        string             `json:"path" db:"path"`
+	StoragePath string             `json:"storage_path" db:"storage_path"`
+	Format      string             `json:"format" db:"format"`
+	Quality     int                `json:"quality" db:"quality"`
 	Status      ImageVariantStatus `json:"status" db:"status"`
-	CreatedAt   time.Time `json:"created_at" db:"created_at"`
-	UpdatedAt   time.Time `json:"updated_at" db:"updated_at"`
+	CreatedAt   time.Time          `json:"created_at" db:"created_at"`
+	UpdatedAt   time.Time          `json:"updated_at" db:"updated_at"`
 }
 
 // ImageVariantStatus represents image variant status
@@ -208,16 +208,16 @@ const (
 
 // ActivityLog represents system activity logs
 type ActivityLog struct {
-	ID          string    `json:"id" db:"id"`
-	UserID      *string   `json:"user_id,omitempty" db:"user_id"`
-	Action      string    `json:"action" db:"action"`
-	ResourceType string   `json:"resource_type" db:"resource_type"`
-	ResourceID  *string   `json:"resource_id,omitempty" db:"resource_id"`
-	Details     map[string]interface{} `json:"details,omitempty" db:"details"`
-	IPAddress   string    `json:"ip_address" db:"ip_address"`
-	UserAgent   string    `json:"user_agent" db:"user_agent"`
-	Timestamp   time.Time `json:"timestamp" db:"timestamp"`
-	Status      ActivityStatus `json:"status" db:"status"`
+	ID           string                 `json:"id" db:"id"`
+	UserID       *string                `json:"user_id,omitempty" db:"user_id"`
+	Action       string                 `json:"action" db:"action"`
+	ResourceType string                 `json:"resource_type" db:"resource_type"`
+	ResourceID   *string                `json:"resource_id,omitempty" db:"resource_id"`
+	Details      map[string]interface{} `json:"details,omitempty" db:"details"`
+	IPAddress    string                 `json:"ip_address" db:"ip_address"`
+	UserAgent    string                 `json:"user_agent" db:"user_agent"`
+	Timestamp    time.Time              `json:"timestamp" db:"timestamp"`
+	Status       ActivityStatus         `json:"status" db:"status"`
 }
 
 // ActivityStatus represents activity status
@@ -241,26 +241,26 @@ type RevokedToken struct {
 
 // PasswordResetToken represents a password reset token
 type PasswordResetToken struct {
-	ID        string    `json:"id" db:"id"`
-	UserID    string    `json:"user_id" db:"user_id"`
-	Token     string    `json:"token" db:"token"`
-	Used      bool      `json:"used" db:"used"`
-	CreatedAt time.Time `json:"created_at" db:"created_at"`
-	ExpiresAt time.Time `json:"expires_at" db:"expires_at"`
+	ID        string     `json:"id" db:"id"`
+	UserID    string     `json:"user_id" db:"user_id"`
+	Token     string     `json:"token" db:"token"`
+	Used      bool       `json:"used" db:"used"`
+	CreatedAt time.Time  `json:"created_at" db:"created_at"`
+	ExpiresAt time.Time  `json:"expires_at" db:"expires_at"`
 	UsedAt    *time.Time `json:"used_at,omitempty" db:"used_at"`
 }
 
 // Session represents user sessions
 type Session struct {
-	ID        string    `json:"id" db:"id"`
-	UserID    string    `json:"user_id" db:"user_id"`
-	TokenID   string    `json:"token_id" db:"token_id"`
-	IPAddress string    `json:"ip_address" db:"ip_address"`
-	UserAgent string    `json:"user_agent" db:"user_agent"`
-	CreatedAt time.Time `json:"created_at" db:"created_at"`
-	ExpiresAt time.Time `json:"expires_at" db:"expires_at"`
-	LastUsedAt time.Time `json:"last_used_at" db:"last_used_at"`
-	Status    SessionStatus `json:"status" db:"status"`
+	ID         string        `json:"id" db:"id"`
+	UserID     string        `json:"user_id" db:"user_id"`
+	TokenID    string        `json:"token_id" db:"token_id"`
+	IPAddress  string        `json:"ip_address" db:"ip_address"`
+	UserAgent  string        `json:"user_agent" db:"user_agent"`
+	CreatedAt  time.Time     `json:"created_at" db:"created_at"`
+	ExpiresAt  time.Time     `json:"expires_at" db:"expires_at"`
+	LastUsedAt time.Time     `json:"last_used_at" db:"last_used_at"`
+	Status     SessionStatus `json:"status" db:"status"`
 }
 
 // SessionStatus represents session status
@@ -274,19 +274,19 @@ const (
 
 // UploadSession represents file upload sessions for chunked uploads
 type UploadSession struct {
-	ID           string    `json:"id" db:"id"`
-	UserID       string    `json:"user_id" db:"user_id"`
-	Filename     string    `json:"filename" db:"filename"`
-	ContentType  string    `json:"content_type" db:"content_type"`
-	TotalSize    int64     `json:"total_size" db:"total_size"`
-	ChunkSize    int64     `json:"chunk_size" db:"chunk_size"`
-	TotalChunks  int       `json:"total_chunks" db:"total_chunks"`
-	UploadedChunks []int   `json:"uploaded_chunks" db:"uploaded_chunks"`
-	Status       UploadSessionStatus `json:"status" db:"status"`
-	CreatedAt    time.Time `json:"created_at" db:"created_at"`
-	UpdatedAt    time.Time `json:"updated_at" db:"updated_at"`
-	ExpiresAt    time.Time `json:"expires_at" db:"expires_at"`
-	Metadata     map[string]interface{} `json:"metadata,omitempty" db:"metadata"`
+	ID             string                 `json:"id" db:"id"`
+	UserID         string                 `json:"user_id" db:"user_id"`
+	Filename       string                 `json:"filename" db:"filename"`
+	ContentType    string                 `json:"content_type" db:"content_type"`
+	TotalSize      int64                  `json:"total_size" db:"total_size"`
+	ChunkSize      int64                  `json:"chunk_size" db:"chunk_size"`
+	TotalChunks    int                    `json:"total_chunks" db:"total_chunks"`
+	UploadedChunks []int                  `json:"uploaded_chunks" db:"uploaded_chunks"`
+	Status         UploadSessionStatus    `json:"status" db:"status"`
+	CreatedAt      time.Time              `json:"created_at" db:"created_at"`
+	UpdatedAt      time.Time              `json:"updated_at" db:"updated_at"`
+	ExpiresAt      time.Time              `json:"expires_at" db:"expires_at"`
+	Metadata       map[string]interface{} `json:"metadata,omitempty" db:"metadata"`
 }
 
 // UploadSessionStatus represents upload session status
@@ -302,37 +302,37 @@ const (
 
 // Notification represents system notifications
 type Notification struct {
-	ID        string           `json:"id" db:"id"`
-	UserID    string           `json:"user_id" db:"user_id"`
-	Type      NotificationType `json:"type" db:"type"`
-	Title     string           `json:"title" db:"title"`
-	Message   string           `json:"message" db:"message"`
+	ID        string                 `json:"id" db:"id"`
+	UserID    string                 `json:"user_id" db:"user_id"`
+	Type      NotificationType       `json:"type" db:"type"`
+	Title     string                 `json:"title" db:"title"`
+	Message   string                 `json:"message" db:"message"`
 	Data      map[string]interface{} `json:"data,omitempty" db:"data"`
-	Status    NotificationStatus `json:"status" db:"status"`
-	CreatedAt time.Time        `json:"created_at" db:"created_at"`
-	ReadAt    *time.Time       `json:"read_at,omitempty" db:"read_at"`
+	Status    NotificationStatus     `json:"status" db:"status"`
+	CreatedAt time.Time              `json:"created_at" db:"created_at"`
+	ReadAt    *time.Time             `json:"read_at,omitempty" db:"read_at"`
 }
 
 // NotificationType represents notification types
 type NotificationType string
 
 const (
-	NotificationTypeFileUploaded   NotificationType = "file_uploaded"
-	NotificationTypeFileShared     NotificationType = "file_shared"
-	NotificationTypeFileDeleted    NotificationType = "file_deleted"
+	NotificationTypeFileUploaded      NotificationType = "file_uploaded"
+	NotificationTypeFileShared        NotificationType = "file_shared"
+	NotificationTypeFileDeleted       NotificationType = "file_deleted"
 	NotificationTypePermissionGranted NotificationType = "permission_granted"
 	NotificationTypePermissionRevoked NotificationType = "permission_revoked"
-	NotificationTypeGroupInvite    NotificationType = "group_invite"
-	NotificationTypeSystemAlert    NotificationType = "system_alert"
-	NotificationTypeSecurityAlert  NotificationType = "security_alert"
+	NotificationTypeGroupInvite       NotificationType = "group_invite"
+	NotificationTypeSystemAlert       NotificationType = "system_alert"
+	NotificationTypeSecurityAlert     NotificationType = "security_alert"
 )
 
 // NotificationStatus represents notification status
 type NotificationStatus string
 
 const (
-	NotificationStatusUnread NotificationStatus = "unread"
-	NotificationStatusRead   NotificationStatus = "read"
+	NotificationStatusUnread  NotificationStatus = "unread"
+	NotificationStatusRead    NotificationStatus = "read"
 	NotificationStatusDeleted NotificationStatus = "deleted"
 )
 
@@ -404,38 +404,38 @@ type Metrics struct {
 
 // Event represents domain events
 type Event struct {
-	ID          string                 `json:"id"`
-	Type        string                 `json:"type"`
-	Source      string                 `json:"source"`
-	Subject     string                 `json:"subject"`
-	Data        map[string]interface{} `json:"data"`
-	Timestamp   time.Time              `json:"timestamp"`
-	Version     string                 `json:"version"`
-	CorrelationID string               `json:"correlation_id,omitempty"`
+	ID            string                 `json:"id"`
+	Type          string                 `json:"type"`
+	Source        string                 `json:"source"`
+	Subject       string                 `json:"subject"`
+	Data          map[string]interface{} `json:"data"`
+	Timestamp     time.Time              `json:"timestamp"`
+	Version       string                 `json:"version"`
+	CorrelationID string                 `json:"correlation_id,omitempty"`
 }
 
 // Common event types
 const (
-	EventTypeUserCreated           = "user.created"
-	EventTypeUserUpdated           = "user.updated"
-	EventTypeUserDeleted           = "user.deleted"
-	EventTypeFileUploaded          = "file.uploaded"
-	EventTypeFileDeleted           = "file.deleted"
-	EventTypeFileShared            = "file.shared"
-	EventTypePermissionGranted     = "permission.granted"
-	EventTypePermissionRevoked     = "permission.revoked"
-	EventTypeGroupCreated          = "group.created"
-	EventTypeGroupMemberAdded      = "group.member.added"
-	EventTypeGroupMemberRemoved    = "group.member.removed"
-	EventTypeImageProcessingStarted = "image.processing.started"
+	EventTypeUserCreated              = "user.created"
+	EventTypeUserUpdated              = "user.updated"
+	EventTypeUserDeleted              = "user.deleted"
+	EventTypeFileUploaded             = "file.uploaded"
+	EventTypeFileDeleted              = "file.deleted"
+	EventTypeFileShared               = "file.shared"
+	EventTypePermissionGranted        = "permission.granted"
+	EventTypePermissionRevoked        = "permission.revoked"
+	EventTypeGroupCreated             = "group.created"
+	EventTypeGroupMemberAdded         = "group.member.added"
+	EventTypeGroupMemberRemoved       = "group.member.removed"
+	EventTypeImageProcessingStarted   = "image.processing.started"
 	EventTypeImageProcessingCompleted = "image.processing.completed"
-	EventTypeImageProcessingFailed = "image.processing.failed"
+	EventTypeImageProcessingFailed    = "image.processing.failed"
 )
 
 // Error represents domain errors
 type Error struct {
-	Code    string `json:"code"`
-	Message string `json:"message"`
+	Code    string                 `json:"code"`
+	Message string                 `json:"message"`
 	Details map[string]interface{} `json:"details,omitempty"`
 }
 
@@ -446,18 +446,18 @@ func (e *Error) Error() string {
 
 // Common error codes
 const (
-	ErrorCodeValidation      = "VALIDATION_ERROR"
-	ErrorCodeNotFound        = "NOT_FOUND"
-	ErrorCodeUnauthorized    = "UNAUTHORIZED"
-	ErrorCodeForbidden       = "FORBIDDEN"
-	ErrorCodeConflict        = "CONFLICT"
-	ErrorCodeInternalError   = "INTERNAL_ERROR"
-	ErrorCodeServiceUnavailable = "SERVICE_UNAVAILABLE"
-	ErrorCodeRateLimitExceeded = "RATE_LIMIT_EXCEEDED"
-	ErrorCodeInvalidToken    = "INVALID_TOKEN"
-	ErrorCodeExpiredToken    = "EXPIRED_TOKEN"
+	ErrorCodeValidation              = "VALIDATION_ERROR"
+	ErrorCodeNotFound                = "NOT_FOUND"
+	ErrorCodeUnauthorized            = "UNAUTHORIZED"
+	ErrorCodeForbidden               = "FORBIDDEN"
+	ErrorCodeConflict                = "CONFLICT"
+	ErrorCodeInternalError           = "INTERNAL_ERROR"
+	ErrorCodeServiceUnavailable      = "SERVICE_UNAVAILABLE"
+	ErrorCodeRateLimitExceeded       = "RATE_LIMIT_EXCEEDED"
+	ErrorCodeInvalidToken            = "INVALID_TOKEN"
+	ErrorCodeExpiredToken            = "EXPIRED_TOKEN"
 	ErrorCodeInsufficientPermissions = "INSUFFICIENT_PERMISSIONS"
-	ErrorCodeFileTooLarge    = "FILE_TOO_LARGE"
-	ErrorCodeUnsupportedFileType = "UNSUPPORTED_FILE_TYPE"
-	ErrorCodeStorageQuotaExceeded = "STORAGE_QUOTA_EXCEEDED"
+	ErrorCodeFileTooLarge            = "FILE_TOO_LARGE"
+	ErrorCodeUnsupportedFileType     = "UNSUPPORTED_FILE_TYPE"
+	ErrorCodeStorageQuotaExceeded    = "STORAGE_QUOTA_EXCEEDED"
 )

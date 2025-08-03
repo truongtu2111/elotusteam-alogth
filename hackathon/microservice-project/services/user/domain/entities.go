@@ -1,31 +1,31 @@
 package domain
 
 import (
-	"time"
 	"github.com/google/uuid"
+	"time"
 )
 
 // User represents a user entity in the system
 type User struct {
-	ID          uuid.UUID `json:"id" db:"id"`
-	Username    string    `json:"username" db:"username"`
-	Email       string    `json:"email" db:"email"`
-	PasswordHash string   `json:"-" db:"password_hash"`
-	FirstName   string    `json:"first_name" db:"first_name"`
-	LastName    string    `json:"last_name" db:"last_name"`
-	DisplayName string    `json:"display_name" db:"display_name"`
-	Avatar      string    `json:"avatar" db:"avatar"`
-	Bio         string    `json:"bio" db:"bio"`
-	Timezone    string    `json:"timezone" db:"timezone"`
-	Language    string    `json:"language" db:"language"`
-	Status      UserStatus `json:"status" db:"status"`
-	Role        UserRole  `json:"role" db:"role"`
-	EmailVerified bool    `json:"email_verified" db:"email_verified"`
+	ID              uuid.UUID  `json:"id" db:"id"`
+	Username        string     `json:"username" db:"username"`
+	Email           string     `json:"email" db:"email"`
+	PasswordHash    string     `json:"-" db:"password_hash"`
+	FirstName       string     `json:"first_name" db:"first_name"`
+	LastName        string     `json:"last_name" db:"last_name"`
+	DisplayName     string     `json:"display_name" db:"display_name"`
+	Avatar          string     `json:"avatar" db:"avatar"`
+	Bio             string     `json:"bio" db:"bio"`
+	Timezone        string     `json:"timezone" db:"timezone"`
+	Language        string     `json:"language" db:"language"`
+	Status          UserStatus `json:"status" db:"status"`
+	Role            UserRole   `json:"role" db:"role"`
+	EmailVerified   bool       `json:"email_verified" db:"email_verified"`
 	EmailVerifiedAt *time.Time `json:"email_verified_at,omitempty" db:"email_verified_at"`
-	LastLoginAt *time.Time `json:"last_login_at,omitempty" db:"last_login_at"`
-	CreatedAt   time.Time `json:"created_at" db:"created_at"`
-	UpdatedAt   time.Time `json:"updated_at" db:"updated_at"`
-	DeletedAt   *time.Time `json:"deleted_at,omitempty" db:"deleted_at"`
+	LastLoginAt     *time.Time `json:"last_login_at,omitempty" db:"last_login_at"`
+	CreatedAt       time.Time  `json:"created_at" db:"created_at"`
+	UpdatedAt       time.Time  `json:"updated_at" db:"updated_at"`
+	DeletedAt       *time.Time `json:"deleted_at,omitempty" db:"deleted_at"`
 }
 
 // UserStatus represents the status of a user
@@ -43,27 +43,27 @@ const (
 type UserRole string
 
 const (
-	UserRoleUser      UserRole = "user"
-	UserRoleModerator UserRole = "moderator"
-	UserRoleAdmin     UserRole = "admin"
+	UserRoleUser       UserRole = "user"
+	UserRoleModerator  UserRole = "moderator"
+	UserRoleAdmin      UserRole = "admin"
 	UserRoleSuperAdmin UserRole = "super_admin"
 )
 
 // UserProfile represents extended user profile information
 type UserProfile struct {
-	UserID      uuid.UUID `json:"user_id" db:"user_id"`
-	PhoneNumber string    `json:"phone_number" db:"phone_number"`
-	Address     string    `json:"address" db:"address"`
-	City        string    `json:"city" db:"city"`
-	Country     string    `json:"country" db:"country"`
-	PostalCode  string    `json:"postal_code" db:"postal_code"`
-	DateOfBirth *time.Time `json:"date_of_birth,omitempty" db:"date_of_birth"`
-	Gender      string    `json:"gender" db:"gender"`
-	Website     string    `json:"website" db:"website"`
+	UserID      uuid.UUID         `json:"user_id" db:"user_id"`
+	PhoneNumber string            `json:"phone_number" db:"phone_number"`
+	Address     string            `json:"address" db:"address"`
+	City        string            `json:"city" db:"city"`
+	Country     string            `json:"country" db:"country"`
+	PostalCode  string            `json:"postal_code" db:"postal_code"`
+	DateOfBirth *time.Time        `json:"date_of_birth,omitempty" db:"date_of_birth"`
+	Gender      string            `json:"gender" db:"gender"`
+	Website     string            `json:"website" db:"website"`
 	SocialLinks map[string]string `json:"social_links" db:"social_links"`
 	Preferences UserPreferences   `json:"preferences" db:"preferences"`
-	CreatedAt   time.Time `json:"created_at" db:"created_at"`
-	UpdatedAt   time.Time `json:"updated_at" db:"updated_at"`
+	CreatedAt   time.Time         `json:"created_at" db:"created_at"`
+	UpdatedAt   time.Time         `json:"updated_at" db:"updated_at"`
 }
 
 // UserPreferences represents user preferences
@@ -77,20 +77,20 @@ type UserPreferences struct {
 
 // NotificationPreferences represents notification preferences
 type NotificationPreferences struct {
-	Email    bool `json:"email"`
-	SMS      bool `json:"sms"`
-	Push     bool `json:"push"`
-	InApp    bool `json:"in_app"`
+	Email     bool `json:"email"`
+	SMS       bool `json:"sms"`
+	Push      bool `json:"push"`
+	InApp     bool `json:"in_app"`
 	Marketing bool `json:"marketing"`
 }
 
 // PrivacyPreferences represents privacy preferences
 type PrivacyPreferences struct {
-	ProfileVisibility string `json:"profile_visibility"` // public, friends, private
-	ShowEmail         bool   `json:"show_email"`
-	ShowPhone         bool   `json:"show_phone"`
-	AllowMessages     bool   `json:"allow_messages"`
-	AllowFriendRequests bool `json:"allow_friend_requests"`
+	ProfileVisibility   string `json:"profile_visibility"` // public, friends, private
+	ShowEmail           bool   `json:"show_email"`
+	ShowPhone           bool   `json:"show_phone"`
+	AllowMessages       bool   `json:"allow_messages"`
+	AllowFriendRequests bool   `json:"allow_friend_requests"`
 }
 
 // UserGroup represents a user group
@@ -117,23 +117,23 @@ const (
 
 // UserGroupMembership represents a user's membership in a group
 type UserGroupMembership struct {
-	ID       uuid.UUID        `json:"id" db:"id"`
-	UserID   uuid.UUID        `json:"user_id" db:"user_id"`
-	GroupID  uuid.UUID        `json:"group_id" db:"group_id"`
-	Role     GroupMemberRole  `json:"role" db:"role"`
-	Status   MembershipStatus `json:"status" db:"status"`
-	JoinedAt time.Time        `json:"joined_at" db:"joined_at"`
-	UpdatedAt time.Time       `json:"updated_at" db:"updated_at"`
+	ID        uuid.UUID        `json:"id" db:"id"`
+	UserID    uuid.UUID        `json:"user_id" db:"user_id"`
+	GroupID   uuid.UUID        `json:"group_id" db:"group_id"`
+	Role      GroupMemberRole  `json:"role" db:"role"`
+	Status    MembershipStatus `json:"status" db:"status"`
+	JoinedAt  time.Time        `json:"joined_at" db:"joined_at"`
+	UpdatedAt time.Time        `json:"updated_at" db:"updated_at"`
 }
 
 // GroupMemberRole represents a member's role in a group
 type GroupMemberRole string
 
 const (
-	GroupMemberRoleMember     GroupMemberRole = "member"
-	GroupMemberRoleModerator  GroupMemberRole = "moderator"
-	GroupMemberRoleAdmin      GroupMemberRole = "admin"
-	GroupMemberRoleOwner      GroupMemberRole = "owner"
+	GroupMemberRoleMember    GroupMemberRole = "member"
+	GroupMemberRoleModerator GroupMemberRole = "moderator"
+	GroupMemberRoleAdmin     GroupMemberRole = "admin"
+	GroupMemberRoleOwner     GroupMemberRole = "owner"
 )
 
 // MembershipStatus represents the status of a group membership
@@ -163,13 +163,13 @@ type UserSession struct {
 
 // UserConnection represents a connection between users (friends, followers, etc.)
 type UserConnection struct {
-	ID           uuid.UUID        `json:"id" db:"id"`
-	RequesterID  uuid.UUID        `json:"requester_id" db:"requester_id"`
-	AddresseeID  uuid.UUID        `json:"addressee_id" db:"addressee_id"`
-	Type         ConnectionType   `json:"type" db:"type"`
-	Status       ConnectionStatus `json:"status" db:"status"`
-	CreatedAt    time.Time        `json:"created_at" db:"created_at"`
-	UpdatedAt    time.Time        `json:"updated_at" db:"updated_at"`
+	ID          uuid.UUID        `json:"id" db:"id"`
+	RequesterID uuid.UUID        `json:"requester_id" db:"requester_id"`
+	AddresseeID uuid.UUID        `json:"addressee_id" db:"addressee_id"`
+	Type        ConnectionType   `json:"type" db:"type"`
+	Status      ConnectionStatus `json:"status" db:"status"`
+	CreatedAt   time.Time        `json:"created_at" db:"created_at"`
+	UpdatedAt   time.Time        `json:"updated_at" db:"updated_at"`
 }
 
 // ConnectionType represents the type of connection between users

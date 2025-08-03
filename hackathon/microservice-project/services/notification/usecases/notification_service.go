@@ -5,21 +5,21 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/google/uuid"
 	"github.com/elotusteam/microservice-project/services/notification/domain"
 	"github.com/elotusteam/microservice-project/shared/config"
+	"github.com/google/uuid"
 )
 
 // notificationService implements the NotificationService interface
 type notificationService struct {
-	repoManager         domain.RepositoryManager
-	templateService     NotificationTemplateService
-	preferenceService   NotificationPreferenceService
-	emailService        EmailService
-	smsService          SMSService
-	pushService         PushService
-	activityService     ActivityService
-	config              *config.Config
+	repoManager       domain.RepositoryManager
+	templateService   NotificationTemplateService
+	preferenceService NotificationPreferenceService
+	emailService      EmailService
+	smsService        SMSService
+	pushService       PushService
+	activityService   ActivityService
+	config            *config.Config
 }
 
 // NewNotificationService creates a new notification service instance
@@ -34,14 +34,14 @@ func NewNotificationService(
 	config *config.Config,
 ) NotificationService {
 	return &notificationService{
-		repoManager:         repoManager,
-		templateService:     templateService,
-		preferenceService:   preferenceService,
-		emailService:        emailService,
-		smsService:          smsService,
-		pushService:         pushService,
-		activityService:     activityService,
-		config:              config,
+		repoManager:       repoManager,
+		templateService:   templateService,
+		preferenceService: preferenceService,
+		emailService:      emailService,
+		smsService:        smsService,
+		pushService:       pushService,
+		activityService:   activityService,
+		config:            config,
 	}
 }
 
@@ -52,7 +52,7 @@ func (s *notificationService) SendNotification(ctx context.Context, req *SendNot
 	if err != nil {
 		return nil, fmt.Errorf("failed to check notification preferences: %w", err)
 	}
-	
+
 	if !canSend {
 		return &SendNotificationResponse{
 			Status:  "skipped",
@@ -62,14 +62,14 @@ func (s *notificationService) SendNotification(ctx context.Context, req *SendNot
 
 	// Create notification entity
 	notification := &domain.Notification{
-		ID:       uuid.New(),
-		UserID:   req.UserID,
-		Type:     req.Type,
-		Title:    req.Title,
-		Message:  req.Message,
-		Data:     req.Data,
-		Status:   domain.NotificationStatusPending,
-		Priority: req.Priority,
+		ID:        uuid.New(),
+		UserID:    req.UserID,
+		Type:      req.Type,
+		Title:     req.Title,
+		Message:   req.Message,
+		Data:      req.Data,
+		Status:    domain.NotificationStatusPending,
+		Priority:  req.Priority,
 		CreatedAt: time.Now(),
 		UpdatedAt: time.Now(),
 	}
@@ -93,13 +93,17 @@ func (s *notificationService) SendNotification(ctx context.Context, req *SendNot
 		err = s.sendNotificationNow(ctx, notification)
 		if err != nil {
 			// Update status to failed
-			s.repoManager.Notification().UpdateStatus(ctx, notification.ID, domain.NotificationStatusFailed)
+			if updateErr := s.repoManager.Notification().UpdateStatus(ctx, notification.ID, domain.NotificationStatusFailed); updateErr != nil {
+				fmt.Printf("Failed to update notification status: %v\n", updateErr)
+			}
 			return nil, fmt.Errorf("failed to send notification: %w", err)
 		}
 	}
 
 	// Log activity
-	s.activityService.LogActivity(ctx, req.UserID, "notification_sent", fmt.Sprintf("Notification sent: %s", req.Title))
+	if logErr := s.activityService.LogActivity(ctx, req.UserID, "notification_sent", fmt.Sprintf("Notification sent: %s", req.Title)); logErr != nil {
+		fmt.Printf("Failed to log activity: %v\n", logErr)
+	}
 
 	return &SendNotificationResponse{
 		NotificationID: notification.ID,
@@ -113,7 +117,7 @@ func (s *notificationService) SendBulkNotifications(ctx context.Context, userIDs
 	for _, userID := range userIDs {
 		bulkReq := *req
 		bulkReq.UserID = userID
-		
+
 		_, err := s.SendNotification(ctx, &bulkReq)
 		if err != nil {
 			// Log error but continue with other users
@@ -203,7 +207,9 @@ func (s *notificationService) MarkAsRead(ctx context.Context, req *MarkAsReadReq
 	}
 
 	// Log activity
-	s.activityService.LogActivity(ctx, req.UserID, "notifications_read", "Marked notifications as read")
+	if logErr := s.activityService.LogActivity(ctx, req.UserID, "notifications_read", "Marked notifications as read"); logErr != nil {
+		fmt.Printf("Failed to log activity: %v\n", logErr)
+	}
 
 	return nil
 }
@@ -222,7 +228,9 @@ func (s *notificationService) DeleteNotification(ctx context.Context, userID, no
 	}
 
 	// Log activity
-	s.activityService.LogActivity(ctx, userID, "notification_deleted", "Deleted notification")
+	if logErr := s.activityService.LogActivity(ctx, userID, "notification_deleted", "Deleted notification"); logErr != nil {
+		fmt.Printf("Failed to log activity: %v\n", logErr)
+	}
 
 	return nil
 }
@@ -252,7 +260,9 @@ func (s *notificationService) ProcessPendingNotifications(ctx context.Context) e
 		err = s.sendNotificationNow(ctx, notification)
 		if err != nil {
 			// Update status to failed
-			s.repoManager.Notification().UpdateStatus(ctx, notification.ID, domain.NotificationStatusFailed)
+			if updateErr := s.repoManager.Notification().UpdateStatus(ctx, notification.ID, domain.NotificationStatusFailed); updateErr != nil {
+				fmt.Printf("Failed to update notification status: %v\n", updateErr)
+			}
 			fmt.Printf("Failed to send notification %s: %v\n", notification.ID, err)
 		}
 	}
@@ -281,7 +291,7 @@ func (s *notificationService) sendEmailNotification(ctx context.Context, notific
 	// For now, we'll use a placeholder email address
 	// In a real implementation, you'd get the user's email from the user service
 	email := "user@example.com"
-	
+
 	err := s.emailService.SendEmail(ctx, email, notification.Title, notification.Message)
 	if err != nil {
 		return err
@@ -298,7 +308,7 @@ func (s *notificationService) sendEmailNotification(ctx context.Context, notific
 func (s *notificationService) sendSMSNotification(ctx context.Context, notification *domain.Notification) error {
 	// For now, we'll use a placeholder phone number
 	phone := "+1234567890"
-	
+
 	err := s.smsService.SendSMS(ctx, phone, notification.Message)
 	if err != nil {
 		return err
@@ -315,7 +325,7 @@ func (s *notificationService) sendSMSNotification(ctx context.Context, notificat
 func (s *notificationService) sendPushNotification(ctx context.Context, notification *domain.Notification) error {
 	// For now, we'll use a placeholder device token
 	deviceToken := "device_token_placeholder"
-	
+
 	err := s.pushService.SendPushNotification(ctx, deviceToken, notification.Title, notification.Message, notification.Data)
 	if err != nil {
 		return err

@@ -7,8 +7,8 @@ import (
 	"time"
 
 	authDomain "github.com/elotusteam/microservice-project/services/auth/domain"
-	sharedDomain "github.com/elotusteam/microservice-project/shared/domain"
 	"github.com/elotusteam/microservice-project/shared/data"
+	sharedDomain "github.com/elotusteam/microservice-project/shared/domain"
 )
 
 // CacheItem represents a cached item with expiration
@@ -19,26 +19,26 @@ type CacheItem struct {
 
 // MockRepositoryManager implements authDomain.RepositoryManager for testing/demo purposes
 type MockRepositoryManager struct {
-	users         map[string]*sharedDomain.User
-	sessions      map[string]*sharedDomain.Session
-	revokedTokens map[string]*sharedDomain.RevokedToken
-	loginAttempts map[string][]*authDomain.LoginAttempt
+	users          map[string]*sharedDomain.User
+	sessions       map[string]*sharedDomain.Session
+	revokedTokens  map[string]*sharedDomain.RevokedToken
+	loginAttempts  map[string][]*authDomain.LoginAttempt
 	passwordResets map[string]*authDomain.PasswordResetToken
-	activityLogs  map[string]*sharedDomain.ActivityLog
-	cache         map[string]CacheItem
-	mu            sync.RWMutex
+	activityLogs   map[string]*sharedDomain.ActivityLog
+	cache          map[string]CacheItem
+	mu             sync.RWMutex
 }
 
 // NewMockRepositoryManager creates a new mock repository manager
 func NewMockRepositoryManager() authDomain.RepositoryManager {
 	return &MockRepositoryManager{
-		users:         make(map[string]*sharedDomain.User),
-		sessions:      make(map[string]*sharedDomain.Session),
-		revokedTokens: make(map[string]*sharedDomain.RevokedToken),
-		loginAttempts: make(map[string][]*authDomain.LoginAttempt),
+		users:          make(map[string]*sharedDomain.User),
+		sessions:       make(map[string]*sharedDomain.Session),
+		revokedTokens:  make(map[string]*sharedDomain.RevokedToken),
+		loginAttempts:  make(map[string][]*authDomain.LoginAttempt),
 		passwordResets: make(map[string]*authDomain.PasswordResetToken),
-		activityLogs:  make(map[string]*sharedDomain.ActivityLog),
-		cache:         make(map[string]CacheItem),
+		activityLogs:   make(map[string]*sharedDomain.ActivityLog),
+		cache:          make(map[string]CacheItem),
 	}
 }
 
@@ -88,12 +88,16 @@ func (m *MockRepositoryManager) WithTransaction(ctx context.Context, fn func(tx 
 	if err != nil {
 		return err
 	}
-	defer tx.Rollback()
-	
+	defer func() {
+		if err := tx.Rollback(); err != nil {
+			fmt.Printf("Warning: Failed to rollback transaction: %v\n", err)
+		}
+	}()
+
 	if err := fn(tx); err != nil {
 		return err
 	}
-	
+
 	return tx.Commit()
 }
 
@@ -188,12 +192,12 @@ func (r *MockUserRepository) Delete(ctx context.Context, id string) error {
 func (r *MockUserRepository) List(ctx context.Context, pagination *data.Pagination) (*data.PaginatedResult, error) {
 	r.manager.mu.RLock()
 	defer r.manager.mu.RUnlock()
-	
+
 	users := make([]*sharedDomain.User, 0, len(r.manager.users))
 	for _, user := range r.manager.users {
 		users = append(users, user)
 	}
-	
+
 	return &data.PaginatedResult{
 		Data:  users,
 		Total: int64(len(users)),
@@ -231,12 +235,12 @@ func (r *MockUserRepository) ExistsByUsername(ctx context.Context, username stri
 func (r *MockUserRepository) Search(ctx context.Context, criteria map[string]interface{}, pagination *data.Pagination) (*data.PaginatedResult, error) {
 	r.manager.mu.RLock()
 	defer r.manager.mu.RUnlock()
-	
+
 	users := make([]*sharedDomain.User, 0, len(r.manager.users))
 	for _, user := range r.manager.users {
 		users = append(users, user)
 	}
-	
+
 	return &data.PaginatedResult{
 		Data:  users,
 		Total: int64(len(users)),
@@ -328,8 +332,6 @@ func (r *MockUserRepository) CountUsers(ctx context.Context) (int64, error) {
 	return int64(len(r.manager.users)), nil
 }
 
-
-
 func (r *MockUserRepository) Health(ctx context.Context) error {
 	return nil
 }
@@ -349,8 +351,6 @@ func (r *MockUserRepository) GetActiveUserCount(ctx context.Context) (int64, err
 	}
 	return count, nil
 }
-
-
 
 // MockSessionRepository implements domain.SessionRepository
 type MockSessionRepository struct {
@@ -704,6 +704,99 @@ func (r *MockLoginAttemptRepository) CountAttemptsByIP(ctx context.Context, ipAd
 	return count, nil
 }
 
+func (r *MockLoginAttemptRepository) GetRecentAttempts(ctx context.Context, identifier string, since time.Time) ([]*authDomain.LoginAttempt, error) {
+	r.manager.mu.RLock()
+	defer r.manager.mu.RUnlock()
+	var recentAttempts []*authDomain.LoginAttempt
+	if attempts, exists := r.manager.loginAttempts[identifier]; exists {
+		for _, attempt := range attempts {
+			if attempt.Timestamp.After(since) {
+				recentAttempts = append(recentAttempts, attempt)
+			}
+		}
+	}
+	return recentAttempts, nil
+}
+
+func (r *MockLoginAttemptRepository) GetFailedAttempts(ctx context.Context, identifier string, since time.Time) ([]*authDomain.LoginAttempt, error) {
+	r.manager.mu.RLock()
+	defer r.manager.mu.RUnlock()
+	var failedAttempts []*authDomain.LoginAttempt
+	if attempts, exists := r.manager.loginAttempts[identifier]; exists {
+		for _, attempt := range attempts {
+			if !attempt.Success && attempt.Timestamp.After(since) {
+				failedAttempts = append(failedAttempts, attempt)
+			}
+		}
+	}
+	return failedAttempts, nil
+}
+
+func (r *MockLoginAttemptRepository) GetSuccessfulAttempts(ctx context.Context, identifier string, since time.Time) ([]*authDomain.LoginAttempt, error) {
+	r.manager.mu.RLock()
+	defer r.manager.mu.RUnlock()
+	var successfulAttempts []*authDomain.LoginAttempt
+	if attempts, exists := r.manager.loginAttempts[identifier]; exists {
+		for _, attempt := range attempts {
+			if attempt.Success && attempt.Timestamp.After(since) {
+				successfulAttempts = append(successfulAttempts, attempt)
+			}
+		}
+	}
+	return successfulAttempts, nil
+}
+
+func (r *MockLoginAttemptRepository) GetAttemptsByTimeRange(ctx context.Context, start, end time.Time, pagination *data.Pagination) (*data.PaginatedResult, error) {
+	r.manager.mu.RLock()
+	defer r.manager.mu.RUnlock()
+	var filtered []*authDomain.LoginAttempt
+	for _, attempts := range r.manager.loginAttempts {
+		for _, attempt := range attempts {
+			if attempt.Timestamp.After(start) && attempt.Timestamp.Before(end) {
+				filtered = append(filtered, attempt)
+			}
+		}
+	}
+	// Apply pagination
+	start_idx := (pagination.Page - 1) * pagination.PageSize
+	end_idx := start_idx + pagination.PageSize
+	if start_idx > len(filtered) {
+		start_idx = len(filtered)
+	}
+	if end_idx > len(filtered) {
+		end_idx = len(filtered)
+	}
+	paginatedData := filtered[start_idx:end_idx]
+	totalPages := (len(filtered) + pagination.PageSize - 1) / pagination.PageSize
+	return &data.PaginatedResult{
+		Data:       paginatedData,
+		Total:      int64(len(filtered)),
+		Page:       pagination.Page,
+		PageSize:   pagination.PageSize,
+		TotalPages: totalPages,
+		HasNext:    pagination.Page < totalPages,
+		HasPrev:    pagination.Page > 1,
+	}, nil
+}
+
+func (r *MockLoginAttemptRepository) GetSuspiciousActivity(ctx context.Context, threshold int, since time.Time) ([]*authDomain.LoginAttempt, error) {
+	r.manager.mu.RLock()
+	defer r.manager.mu.RUnlock()
+	var suspicious []*authDomain.LoginAttempt
+	for _, attempts := range r.manager.loginAttempts {
+		failedCount := 0
+		for _, attempt := range attempts {
+			if !attempt.Success && attempt.Timestamp.After(since) {
+				failedCount++
+				if failedCount >= threshold {
+					suspicious = append(suspicious, attempt)
+				}
+			}
+		}
+	}
+	return suspicious, nil
+}
+
 func (r *MockLoginAttemptRepository) DeleteOldAttempts(ctx context.Context, before time.Time) error {
 	r.manager.mu.Lock()
 	defer r.manager.mu.Unlock()
@@ -738,9 +831,13 @@ func (r *MockLoginAttemptRepository) CleanupOldAttempts(ctx context.Context, max
 	return deletedCount, nil
 }
 
-// MockPasswordResetRepository implements domain.PasswordResetRepository
+// MockPasswordResetRepository implements domain.PasswordResetTokenRepository
 type MockPasswordResetRepository struct {
 	manager *MockRepositoryManager
+}
+
+func (r *MockPasswordResetRepository) IsValidToken(ctx context.Context, token string) (bool, error) {
+	return false, nil
 }
 
 func (r *MockPasswordResetRepository) Create(ctx context.Context, token *authDomain.PasswordResetToken) error {
@@ -851,6 +948,8 @@ func (r *MockPasswordResetRepository) GetByUserID(ctx context.Context, userID st
 type MockActivityLogRepository struct {
 	manager *MockRepositoryManager
 }
+
+// Remove duplicate method - keeping the one with correct signature below
 
 func (r *MockActivityLogRepository) Create(ctx context.Context, log *sharedDomain.ActivityLog) error {
 	r.manager.mu.Lock()
@@ -1038,12 +1137,40 @@ func (r *MockActivityLogRepository) GetSecurityEvents(ctx context.Context, since
 	}, nil
 }
 
-func (r *MockActivityLogRepository) GetUserActivity(ctx context.Context, userID string, pagination *data.Pagination) (*data.PaginatedResult, error) {
+func (r *MockActivityLogRepository) GetUserActivity(ctx context.Context, userID string, since time.Time) (map[string]int64, error) {
+	r.manager.mu.RLock()
+	defer r.manager.mu.RUnlock()
+	activityCount := make(map[string]int64)
+	for _, log := range r.manager.activityLogs {
+		if log.UserID != nil && *log.UserID == userID && log.Timestamp.After(since) {
+			activityCount[log.Action]++
+		}
+	}
+	return activityCount, nil
+}
+
+func (r *MockActivityLogRepository) Search(ctx context.Context, criteria map[string]interface{}, pagination *data.Pagination) (*data.PaginatedResult, error) {
 	r.manager.mu.RLock()
 	defer r.manager.mu.RUnlock()
 	var filtered []*sharedDomain.ActivityLog
 	for _, log := range r.manager.activityLogs {
-		if log.UserID == userID {
+		// Simple search implementation - match any criteria
+		matches := true
+		for key, value := range criteria {
+			switch key {
+			case "action":
+				if log.Action != value.(string) {
+					matches = false
+					break
+				}
+			case "user_id":
+				if log.UserID == nil || *log.UserID != value.(string) {
+					matches = false
+					break
+				}
+			}
+		}
+		if matches {
 			filtered = append(filtered, log)
 		}
 	}
@@ -1182,7 +1309,9 @@ func (r *MockCacheRepository) GetLoginAttempts(ctx context.Context, identifier s
 func (r *MockCacheRepository) IncrementLoginAttempts(ctx context.Context, identifier string, ttl time.Duration) (int, error) {
 	count, _ := r.GetLoginAttempts(ctx, identifier)
 	count++
-	r.SetLoginAttempts(ctx, identifier, count, ttl)
+	if err := r.SetLoginAttempts(ctx, identifier, count, ttl); err != nil {
+		return 0, fmt.Errorf("failed to set login attempts: %w", err)
+	}
 	return count, nil
 }
 
@@ -1385,7 +1514,9 @@ func (r *MockCacheRepository) GetRateLimitCounter(ctx context.Context, key strin
 func (r *MockCacheRepository) IncrementRateLimitCounter(ctx context.Context, key string, ttl time.Duration) (int, error) {
 	count, _ := r.GetRateLimitCounter(ctx, key)
 	count++
-	r.SetRateLimitCounter(ctx, key, count, ttl)
+	if err := r.SetRateLimitCounter(ctx, key, count, ttl); err != nil {
+		return 0, fmt.Errorf("failed to set rate limit counter: %w", err)
+	}
 	return count, nil
 }
 

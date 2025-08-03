@@ -312,9 +312,9 @@ func validateFileUpload(content []byte, mimeType, filename string) error {
 
 	// Check filename for malicious patterns
 	if strings.Contains(filename, "<script>") ||
-	   strings.Contains(filename, "../") ||
-	   strings.Contains(filename, "\x00") ||
-	   strings.HasSuffix(filename, ".exe") {
+		strings.Contains(filename, "../") ||
+		strings.Contains(filename, "\x00") ||
+		strings.HasSuffix(filename, ".exe") {
 		return fmt.Errorf("invalid filename")
 	}
 

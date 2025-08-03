@@ -13,46 +13,46 @@ type Config struct {
 	Environment string `json:"environment"`
 	LogLevel    string `json:"log_level"`
 	Debug       bool   `json:"debug"`
-	
+
 	// Server configuration
 	Server ServerConfig `json:"server"`
-	
+
 	// Database configuration
 	Database DatabaseConfig `json:"database"`
-	
+
 	// Cache configuration
 	Cache CacheConfig `json:"cache"`
-	
+
 	// Storage configuration
 	Storage StorageConfig `json:"storage"`
-	
+
 	// Message queue configuration
 	MessageQueue MessageQueueConfig `json:"message_queue"`
-	
+
 	// Search configuration
 	Search SearchConfig `json:"search"`
-	
+
 	// Monitoring configuration
 	Monitoring MonitoringConfig `json:"monitoring"`
-	
+
 	// Security configuration
 	Security SecurityConfig `json:"security"`
-	
+
 	// Rate limiting configuration
 	RateLimit RateLimitConfig `json:"rate_limit"`
-	
+
 	// File upload configuration
 	FileUpload FileUploadConfig `json:"file_upload"`
-	
+
 	// Image processing configuration
 	ImageProcessing ImageProcessingConfig `json:"image_processing"`
-	
+
 	// Notification configuration
 	Notification NotificationConfig `json:"notification"`
-	
+
 	// External services configuration
 	ExternalServices ExternalServicesConfig `json:"external_services"`
-	
+
 	// Microservices configuration
 	Services ServicesConfig `json:"services"`
 }
@@ -88,7 +88,7 @@ type DatabaseConfig struct {
 	QueryTimeout       time.Duration `json:"query_timeout"`
 	MigrationsPath     string        `json:"migrations_path"`
 	AutoMigrate        bool          `json:"auto_migrate"`
-	
+
 	// Read replicas configuration
 	ReadReplicas []DatabaseReplicaConfig `json:"read_replicas"`
 }
@@ -99,25 +99,25 @@ type DatabaseReplicaConfig struct {
 	Port     int    `json:"port"`
 	Database string `json:"database"`
 	Username string `json:"username"`
-	Password string `json:"-"` // Hidden from JSON
+	Password string `json:"-"`      // Hidden from JSON
 	Weight   int    `json:"weight"` // Load balancing weight
 }
 
 // CacheConfig holds cache configuration
 type CacheConfig struct {
-	Driver      string        `json:"driver"` // redis, memcached, in-memory
-	Host        string        `json:"host"`
-	Port        int           `json:"port"`
-	Password    string        `json:"-"` // Hidden from JSON
-	Database    int           `json:"database"`
-	PoolSize    int           `json:"pool_size"`
-	MinIdleConns int          `json:"min_idle_conns"`
-	DialTimeout time.Duration `json:"dial_timeout"`
-	ReadTimeout time.Duration `json:"read_timeout"`
+	Driver       string        `json:"driver"` // redis, memcached, in-memory
+	Host         string        `json:"host"`
+	Port         int           `json:"port"`
+	Password     string        `json:"-"` // Hidden from JSON
+	Database     int           `json:"database"`
+	PoolSize     int           `json:"pool_size"`
+	MinIdleConns int           `json:"min_idle_conns"`
+	DialTimeout  time.Duration `json:"dial_timeout"`
+	ReadTimeout  time.Duration `json:"read_timeout"`
 	WriteTimeout time.Duration `json:"write_timeout"`
-	IdleTimeout time.Duration `json:"idle_timeout"`
-	DefaultTTL  time.Duration `json:"default_ttl"`
-	
+	IdleTimeout  time.Duration `json:"idle_timeout"`
+	DefaultTTL   time.Duration `json:"default_ttl"`
+
 	// Cluster configuration for Redis Cluster
 	Cluster CacheClusterConfig `json:"cluster"`
 }
@@ -137,19 +137,19 @@ type StorageConfig struct {
 	AccessKey string `json:"access_key"`
 	SecretKey string `json:"-"` // Hidden from JSON
 	UseSSL    bool   `json:"use_ssl"`
-	
+
 	// Local storage configuration
 	LocalPath string `json:"local_path"`
-	
+
 	// CDN configuration
 	CDN CDNConfig `json:"cdn"`
 }
 
 // CDNConfig holds CDN configuration
 type CDNConfig struct {
-	Enabled    bool   `json:"enabled"`
-	BaseURL    string `json:"base_url"`
-	SigningKey string `json:"-"` // Hidden from JSON
+	Enabled    bool          `json:"enabled"`
+	BaseURL    string        `json:"base_url"`
+	SigningKey string        `json:"-"` // Hidden from JSON
 	TTL        time.Duration `json:"ttl"`
 }
 
@@ -161,38 +161,38 @@ type MessageQueueConfig struct {
 	Username string `json:"username"`
 	Password string `json:"-"` // Hidden from JSON
 	VHost    string `json:"vhost"`
-	
+
 	// Kafka specific configuration
 	Kafka KafkaConfig `json:"kafka"`
-	
+
 	// RabbitMQ specific configuration
 	RabbitMQ RabbitMQConfig `json:"rabbitmq"`
-	
+
 	// Redis specific configuration
 	Redis RedisConfig `json:"redis"`
-	
+
 	// AWS SQS specific configuration
 	SQS SQSConfig `json:"sqs"`
 }
 
 // KafkaConfig holds Kafka configuration
 type KafkaConfig struct {
-	Brokers       []string      `json:"brokers"`
-	GroupID       string        `json:"group_id"`
-	RetryMax      int           `json:"retry_max"`
-	RetryBackoff  time.Duration `json:"retry_backoff"`
-	FlushTimeout  time.Duration `json:"flush_timeout"`
-	BatchSize     int           `json:"batch_size"`
-	CompressionType string      `json:"compression_type"`
+	Brokers         []string      `json:"brokers"`
+	GroupID         string        `json:"group_id"`
+	RetryMax        int           `json:"retry_max"`
+	RetryBackoff    time.Duration `json:"retry_backoff"`
+	FlushTimeout    time.Duration `json:"flush_timeout"`
+	BatchSize       int           `json:"batch_size"`
+	CompressionType string        `json:"compression_type"`
 }
 
 // RabbitMQConfig holds RabbitMQ configuration
 type RabbitMQConfig struct {
-	Exchange     string `json:"exchange"`
-	ExchangeType string `json:"exchange_type"`
-	Durable      bool   `json:"durable"`
-	AutoDelete   bool   `json:"auto_delete"`
-	PrefetchCount int   `json:"prefetch_count"`
+	Exchange      string `json:"exchange"`
+	ExchangeType  string `json:"exchange_type"`
+	Durable       bool   `json:"durable"`
+	AutoDelete    bool   `json:"auto_delete"`
+	PrefetchCount int    `json:"prefetch_count"`
 }
 
 // RedisConfig holds Redis configuration for message queue
@@ -205,12 +205,12 @@ type RedisConfig struct {
 
 // SQSConfig holds AWS SQS configuration
 type SQSConfig struct {
-	Region          string `json:"region"`
-	AccessKeyID     string `json:"access_key_id"`
-	SecretAccessKey string `json:"-"` // Hidden from JSON
-	QueueURL        string `json:"queue_url"`
-	VisibilityTimeout int  `json:"visibility_timeout"`
-	WaitTimeSeconds   int  `json:"wait_time_seconds"`
+	Region            string `json:"region"`
+	AccessKeyID       string `json:"access_key_id"`
+	SecretAccessKey   string `json:"-"` // Hidden from JSON
+	QueueURL          string `json:"queue_url"`
+	VisibilityTimeout int    `json:"visibility_timeout"`
+	WaitTimeSeconds   int    `json:"wait_time_seconds"`
 }
 
 // SearchConfig holds search engine configuration
@@ -222,45 +222,45 @@ type SearchConfig struct {
 	Index    string   `json:"index"`
 	Shards   int      `json:"shards"`
 	Replicas int      `json:"replicas"`
-	
+
 	// Elasticsearch specific configuration
 	Elasticsearch ElasticsearchConfig `json:"elasticsearch"`
 }
 
 // ElasticsearchConfig holds Elasticsearch configuration
 type ElasticsearchConfig struct {
-	Version        string        `json:"version"`
-	Sniff          bool          `json:"sniff"`
-	Healthcheck    bool          `json:"healthcheck"`
-	RetryOnStatus  []int         `json:"retry_on_status"`
-	MaxRetries     int           `json:"max_retries"`
-	RetryBackoff   time.Duration `json:"retry_backoff"`
-	Timeout        time.Duration `json:"timeout"`
+	Version       string        `json:"version"`
+	Sniff         bool          `json:"sniff"`
+	Healthcheck   bool          `json:"healthcheck"`
+	RetryOnStatus []int         `json:"retry_on_status"`
+	MaxRetries    int           `json:"max_retries"`
+	RetryBackoff  time.Duration `json:"retry_backoff"`
+	Timeout       time.Duration `json:"timeout"`
 }
 
 // MonitoringConfig holds monitoring configuration
 type MonitoringConfig struct {
 	Enabled bool `json:"enabled"`
-	
+
 	// Metrics configuration
 	Metrics MetricsConfig `json:"metrics"`
-	
+
 	// Tracing configuration
 	Tracing TracingConfig `json:"tracing"`
-	
+
 	// Logging configuration
 	Logging LoggingConfig `json:"logging"`
-	
+
 	// Health check configuration
 	HealthCheck HealthCheckConfig `json:"health_check"`
 }
 
 // MetricsConfig holds metrics configuration
 type MetricsConfig struct {
-	Enabled   bool   `json:"enabled"`
-	Provider  string `json:"provider"` // prometheus, datadog, newrelic
-	Endpoint  string `json:"endpoint"`
-	Namespace string `json:"namespace"`
+	Enabled   bool          `json:"enabled"`
+	Provider  string        `json:"provider"` // prometheus, datadog, newrelic
+	Endpoint  string        `json:"endpoint"`
+	Namespace string        `json:"namespace"`
 	Interval  time.Duration `json:"interval"`
 }
 
@@ -279,9 +279,9 @@ type LoggingConfig struct {
 	Format     string `json:"format"` // json, text
 	Output     string `json:"output"` // stdout, file, syslog
 	FilePath   string `json:"file_path"`
-	MaxSize    int    `json:"max_size"`    // MB
+	MaxSize    int    `json:"max_size"` // MB
 	MaxBackups int    `json:"max_backups"`
-	MaxAge     int    `json:"max_age"`     // days
+	MaxAge     int    `json:"max_age"` // days
 	Compress   bool   `json:"compress"`
 }
 
@@ -297,39 +297,39 @@ type HealthCheckConfig struct {
 type SecurityConfig struct {
 	// JWT configuration
 	JWT JWTConfig `json:"jwt"`
-	
+
 	// Password configuration
 	Password PasswordConfig `json:"password"`
-	
+
 	// Encryption configuration
 	Encryption EncryptionConfig `json:"encryption"`
-	
+
 	// API key configuration
 	APIKey APIKeyConfig `json:"api_key"`
 }
 
 // JWTConfig holds JWT configuration
 type JWTConfig struct {
-	SecretKey        string        `json:"-"` // Hidden from JSON
-	Issuer           string        `json:"issuer"`
-	Audience         string        `json:"audience"`
-	AccessTokenTTL   time.Duration `json:"access_token_ttl"`
-	RefreshTokenTTL  time.Duration `json:"refresh_token_ttl"`
-	Algorithm        string        `json:"algorithm"`
-	PublicKeyPath    string        `json:"public_key_path"`
-	PrivateKeyPath   string        `json:"private_key_path"`
+	SecretKey       string        `json:"-"` // Hidden from JSON
+	Issuer          string        `json:"issuer"`
+	Audience        string        `json:"audience"`
+	AccessTokenTTL  time.Duration `json:"access_token_ttl"`
+	RefreshTokenTTL time.Duration `json:"refresh_token_ttl"`
+	Algorithm       string        `json:"algorithm"`
+	PublicKeyPath   string        `json:"public_key_path"`
+	PrivateKeyPath  string        `json:"private_key_path"`
 }
 
 // PasswordConfig holds password configuration
 type PasswordConfig struct {
-	MinLength        int           `json:"min_length"`
-	RequireUppercase bool          `json:"require_uppercase"`
-	RequireLowercase bool          `json:"require_lowercase"`
-	RequireNumbers   bool          `json:"require_numbers"`
-	RequireSymbols   bool          `json:"require_symbols"`
-	RequireSpecialChars bool       `json:"require_special_chars"`
-	BcryptCost       int           `json:"bcrypt_cost"`
-	ResetTokenTTL    time.Duration `json:"reset_token_ttl"`
+	MinLength           int           `json:"min_length"`
+	RequireUppercase    bool          `json:"require_uppercase"`
+	RequireLowercase    bool          `json:"require_lowercase"`
+	RequireNumbers      bool          `json:"require_numbers"`
+	RequireSymbols      bool          `json:"require_symbols"`
+	RequireSpecialChars bool          `json:"require_special_chars"`
+	BcryptCost          int           `json:"bcrypt_cost"`
+	ResetTokenTTL       time.Duration `json:"reset_token_ttl"`
 }
 
 // EncryptionConfig holds encryption configuration
@@ -351,16 +351,16 @@ type APIKeyConfig struct {
 // RateLimitConfig holds rate limiting configuration
 type RateLimitConfig struct {
 	Enabled bool `json:"enabled"`
-	
+
 	// Global rate limits
 	Global RateLimitRule `json:"global"`
-	
+
 	// Per-user rate limits
 	PerUser RateLimitRule `json:"per_user"`
-	
+
 	// Per-IP rate limits
 	PerIP RateLimitRule `json:"per_ip"`
-	
+
 	// API-specific rate limits
 	API map[string]RateLimitRule `json:"api"`
 }
@@ -374,27 +374,27 @@ type RateLimitRule struct {
 
 // FileUploadConfig holds file upload configuration
 type FileUploadConfig struct {
-	MaxFileSize      int64    `json:"max_file_size"`      // bytes
-	MaxTotalSize     int64    `json:"max_total_size"`     // bytes per user
-	AllowedMimeTypes []string `json:"allowed_mime_types"`
-	AllowedExtensions []string `json:"allowed_extensions"`
-	ChunkSize        int64    `json:"chunk_size"`         // bytes
-	UploadTimeout    time.Duration `json:"upload_timeout"`
-	TempDir          string   `json:"temp_dir"`
-	VirusScanEnabled bool     `json:"virus_scan_enabled"`
+	MaxFileSize       int64         `json:"max_file_size"`  // bytes
+	MaxTotalSize      int64         `json:"max_total_size"` // bytes per user
+	AllowedMimeTypes  []string      `json:"allowed_mime_types"`
+	AllowedExtensions []string      `json:"allowed_extensions"`
+	ChunkSize         int64         `json:"chunk_size"` // bytes
+	UploadTimeout     time.Duration `json:"upload_timeout"`
+	TempDir           string        `json:"temp_dir"`
+	VirusScanEnabled  bool          `json:"virus_scan_enabled"`
 }
 
 // ImageProcessingConfig holds image processing configuration
 type ImageProcessingConfig struct {
-	Enabled     bool     `json:"enabled"`
-	MaxWidth    int      `json:"max_width"`
-	MaxHeight   int      `json:"max_height"`
-	Quality     int      `json:"quality"`
-	Formats     []string `json:"formats"`
-	Thumbnails  []ThumbnailConfig `json:"thumbnails"`
-	Watermark   WatermarkConfig   `json:"watermark"`
-	Workers     int      `json:"workers"`
-	QueueSize   int      `json:"queue_size"`
+	Enabled    bool              `json:"enabled"`
+	MaxWidth   int               `json:"max_width"`
+	MaxHeight  int               `json:"max_height"`
+	Quality    int               `json:"quality"`
+	Formats    []string          `json:"formats"`
+	Thumbnails []ThumbnailConfig `json:"thumbnails"`
+	Watermark  WatermarkConfig   `json:"watermark"`
+	Workers    int               `json:"workers"`
+	QueueSize  int               `json:"queue_size"`
 }
 
 // ThumbnailConfig holds thumbnail configuration
@@ -418,57 +418,57 @@ type WatermarkConfig struct {
 // NotificationConfig holds notification configuration
 type NotificationConfig struct {
 	Enabled bool `json:"enabled"`
-	
+
 	// Email configuration
 	Email EmailConfig `json:"email"`
-	
+
 	// SMS configuration
 	SMS SMSConfig `json:"sms"`
-	
+
 	// Push notification configuration
 	Push PushConfig `json:"push"`
-	
+
 	// WebSocket configuration
 	WebSocket WebSocketConfig `json:"websocket"`
 }
 
 // EmailConfig holds email configuration
 type EmailConfig struct {
-	Enabled    bool   `json:"enabled"`
-	Provider   string `json:"provider"` // smtp, sendgrid, ses, mailgun
-	Host       string `json:"host"`
-	Port       int    `json:"port"`
-	Username   string `json:"username"`
-	Password   string `json:"-"` // Hidden from JSON
-	FromEmail  string `json:"from_email"`
-	FromName   string `json:"from_name"`
-	TLS        bool   `json:"tls"`
-	APIKey     string `json:"-"` // Hidden from JSON
+	Enabled   bool   `json:"enabled"`
+	Provider  string `json:"provider"` // smtp, sendgrid, ses, mailgun
+	Host      string `json:"host"`
+	Port      int    `json:"port"`
+	Username  string `json:"username"`
+	Password  string `json:"-"` // Hidden from JSON
+	FromEmail string `json:"from_email"`
+	FromName  string `json:"from_name"`
+	TLS       bool   `json:"tls"`
+	APIKey    string `json:"-"` // Hidden from JSON
 }
 
 // SMSConfig holds SMS configuration
 type SMSConfig struct {
-	Enabled   bool   `json:"enabled"`
-	Provider  string `json:"provider"` // twilio, aws-sns, nexmo
+	Enabled    bool   `json:"enabled"`
+	Provider   string `json:"provider"` // twilio, aws-sns, nexmo
 	AccountSID string `json:"account_sid"`
-	AuthToken string `json:"-"` // Hidden from JSON
+	AuthToken  string `json:"-"` // Hidden from JSON
 	FromNumber string `json:"from_number"`
 }
 
 // PushConfig holds push notification configuration
 type PushConfig struct {
 	Enabled bool `json:"enabled"`
-	
+
 	// Firebase configuration
 	Firebase FirebaseConfig `json:"firebase"`
-	
+
 	// Apple Push Notification configuration
 	APNS APNSConfig `json:"apns"`
 }
 
 // FirebaseConfig holds Firebase configuration
 type FirebaseConfig struct {
-	ProjectID      string `json:"project_id"`
+	ProjectID       string `json:"project_id"`
 	CredentialsPath string `json:"credentials_path"`
 }
 
@@ -483,33 +483,33 @@ type APNSConfig struct {
 
 // WebSocketConfig holds WebSocket configuration
 type WebSocketConfig struct {
-	Enabled     bool          `json:"enabled"`
-	Path        string        `json:"path"`
-	Origins     []string      `json:"origins"`
-	PingPeriod  time.Duration `json:"ping_period"`
-	PongWait    time.Duration `json:"pong_wait"`
-	WriteWait   time.Duration `json:"write_wait"`
-	BufferSize  int           `json:"buffer_size"`
+	Enabled    bool          `json:"enabled"`
+	Path       string        `json:"path"`
+	Origins    []string      `json:"origins"`
+	PingPeriod time.Duration `json:"ping_period"`
+	PongWait   time.Duration `json:"pong_wait"`
+	WriteWait  time.Duration `json:"write_wait"`
+	BufferSize int           `json:"buffer_size"`
 }
 
 // ExternalServicesConfig holds external services configuration
 type ExternalServicesConfig struct {
 	// Virus scanning service
 	VirusScanner VirusScannerConfig `json:"virus_scanner"`
-	
+
 	// Geolocation service
 	Geolocation GeolocationConfig `json:"geolocation"`
-	
+
 	// Analytics service
 	Analytics AnalyticsConfig `json:"analytics"`
 }
 
 // VirusScannerConfig holds virus scanner configuration
 type VirusScannerConfig struct {
-	Enabled  bool   `json:"enabled"`
-	Provider string `json:"provider"` // clamav, virustotal
-	Endpoint string `json:"endpoint"`
-	APIKey   string `json:"-"` // Hidden from JSON
+	Enabled  bool          `json:"enabled"`
+	Provider string        `json:"provider"` // clamav, virustotal
+	Endpoint string        `json:"endpoint"`
+	APIKey   string        `json:"-"` // Hidden from JSON
 	Timeout  time.Duration `json:"timeout"`
 }
 
@@ -517,7 +517,7 @@ type VirusScannerConfig struct {
 type GeolocationConfig struct {
 	Enabled  bool   `json:"enabled"`
 	Provider string `json:"provider"` // maxmind, ipapi
-	APIKey   string `json:"-"` // Hidden from JSON
+	APIKey   string `json:"-"`        // Hidden from JSON
 	Database string `json:"database"`
 }
 
@@ -525,7 +525,7 @@ type GeolocationConfig struct {
 type AnalyticsConfig struct {
 	Enabled  bool   `json:"enabled"`
 	Provider string `json:"provider"` // google-analytics, mixpanel, amplitude
-	APIKey   string `json:"-"` // Hidden from JSON
+	APIKey   string `json:"-"`        // Hidden from JSON
 	Endpoint string `json:"endpoint"`
 }
 
@@ -541,9 +541,9 @@ type ServicesConfig struct {
 
 // ServiceConfig holds individual service configuration
 type ServiceConfig struct {
-	BaseURL string `json:"base_url"`
+	BaseURL string        `json:"base_url"`
 	Timeout time.Duration `json:"timeout"`
-	Retries int `json:"retries"`
+	Retries int           `json:"retries"`
 }
 
 // LoadConfig loads configuration from environment variables
@@ -553,7 +553,7 @@ func LoadConfig() (*Config, error) {
 		LogLevel:    getEnv("LOG_LEVEL", "info"),
 		Debug:       getEnvBool("DEBUG", false),
 	}
-	
+
 	// Load server configuration
 	config.Server = ServerConfig{
 		Host:            getEnv("SERVER_HOST", "0.0.0.0"),
@@ -568,7 +568,7 @@ func LoadConfig() (*Config, error) {
 		CORSEnabled:     getEnvBool("SERVER_CORS_ENABLED", true),
 		CORSOrigins:     getEnvSlice("SERVER_CORS_ORIGINS", []string{"*"}),
 	}
-	
+
 	// Load database configuration
 	config.Database = DatabaseConfig{
 		Driver:             getEnv("DB_DRIVER", "postgres"),
@@ -586,7 +586,7 @@ func LoadConfig() (*Config, error) {
 		MigrationsPath:     getEnv("DB_MIGRATIONS_PATH", "./migrations"),
 		AutoMigrate:        getEnvBool("DB_AUTO_MIGRATE", true),
 	}
-	
+
 	// Load cache configuration
 	config.Cache = CacheConfig{
 		Driver:       getEnv("CACHE_DRIVER", "redis"),
@@ -602,7 +602,7 @@ func LoadConfig() (*Config, error) {
 		IdleTimeout:  getEnvDuration("CACHE_IDLE_TIMEOUT", 5*time.Minute),
 		DefaultTTL:   getEnvDuration("CACHE_DEFAULT_TTL", 1*time.Hour),
 	}
-	
+
 	// Load storage configuration
 	config.Storage = StorageConfig{
 		Driver:    getEnv("STORAGE_DRIVER", "local"),
@@ -614,7 +614,7 @@ func LoadConfig() (*Config, error) {
 		UseSSL:    getEnvBool("STORAGE_USE_SSL", true),
 		LocalPath: getEnv("STORAGE_LOCAL_PATH", "./uploads"),
 	}
-	
+
 	// Load JWT configuration
 	config.Security.JWT = JWTConfig{
 		SecretKey:       getEnv("JWT_SECRET_KEY", "your-secret-key"),
@@ -626,19 +626,19 @@ func LoadConfig() (*Config, error) {
 		PublicKeyPath:   getEnv("JWT_PUBLIC_KEY_PATH", ""),
 		PrivateKeyPath:  getEnv("JWT_PRIVATE_KEY_PATH", ""),
 	}
-	
+
 	// Load file upload configuration
 	config.FileUpload = FileUploadConfig{
-		MaxFileSize:      getEnvInt64("FILE_UPLOAD_MAX_FILE_SIZE", 100*1024*1024), // 100MB
-		MaxTotalSize:     getEnvInt64("FILE_UPLOAD_MAX_TOTAL_SIZE", 1024*1024*1024), // 1GB
-		AllowedMimeTypes: getEnvSlice("FILE_UPLOAD_ALLOWED_MIME_TYPES", []string{"image/*", "application/pdf", "text/*"}),
+		MaxFileSize:       getEnvInt64("FILE_UPLOAD_MAX_FILE_SIZE", 100*1024*1024),   // 100MB
+		MaxTotalSize:      getEnvInt64("FILE_UPLOAD_MAX_TOTAL_SIZE", 1024*1024*1024), // 1GB
+		AllowedMimeTypes:  getEnvSlice("FILE_UPLOAD_ALLOWED_MIME_TYPES", []string{"image/*", "application/pdf", "text/*"}),
 		AllowedExtensions: getEnvSlice("FILE_UPLOAD_ALLOWED_EXTENSIONS", []string{".jpg", ".jpeg", ".png", ".gif", ".pdf", ".txt", ".doc", ".docx"}),
-		ChunkSize:        getEnvInt64("FILE_UPLOAD_CHUNK_SIZE", 5*1024*1024), // 5MB
-		UploadTimeout:    getEnvDuration("FILE_UPLOAD_TIMEOUT", 10*time.Minute),
-		TempDir:          getEnv("FILE_UPLOAD_TEMP_DIR", "/tmp"),
-		VirusScanEnabled: getEnvBool("FILE_UPLOAD_VIRUS_SCAN_ENABLED", false),
+		ChunkSize:         getEnvInt64("FILE_UPLOAD_CHUNK_SIZE", 5*1024*1024), // 5MB
+		UploadTimeout:     getEnvDuration("FILE_UPLOAD_TIMEOUT", 10*time.Minute),
+		TempDir:           getEnv("FILE_UPLOAD_TEMP_DIR", "/tmp"),
+		VirusScanEnabled:  getEnvBool("FILE_UPLOAD_VIRUS_SCAN_ENABLED", false),
 	}
-	
+
 	// Load services configuration
 	config.Services = ServicesConfig{
 		User: ServiceConfig{
@@ -672,7 +672,7 @@ func LoadConfig() (*Config, error) {
 			Retries: getEnvInt("AUTH_SERVICE_RETRIES", 3),
 		},
 	}
-	
+
 	return config, nil
 }
 
@@ -759,14 +759,14 @@ func (c *Config) Validate() error {
 	if c.Security.JWT.SecretKey == "" || c.Security.JWT.SecretKey == "your-secret-key" {
 		return fmt.Errorf("JWT secret key must be set and not use default value")
 	}
-	
+
 	if c.Database.Password == "" && c.Environment == "production" {
 		return fmt.Errorf("database password must be set in production")
 	}
-	
+
 	if c.FileUpload.MaxFileSize <= 0 {
 		return fmt.Errorf("max file size must be greater than 0")
 	}
-	
+
 	return nil
 }

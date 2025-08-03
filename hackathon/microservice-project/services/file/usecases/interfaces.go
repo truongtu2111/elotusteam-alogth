@@ -6,8 +6,8 @@ import (
 	"mime/multipart"
 	"time"
 
-	"github.com/google/uuid"
 	fileDomain "github.com/elotusteam/microservice-project/services/file/domain"
+	"github.com/google/uuid"
 )
 
 // FileService defines the interface for file management operations
@@ -87,18 +87,18 @@ type ActivityService interface {
 
 // Request/Response DTOs
 type UploadFileRequest struct {
-	UserID      uuid.UUID
-	File        multipart.File
-	Header      *multipart.FileHeader
-	Metadata    map[string]interface{}
-	Overwrite   bool
-	Versioning  bool
+	UserID     uuid.UUID
+	File       multipart.File
+	Header     *multipart.FileHeader
+	Metadata   map[string]interface{}
+	Overwrite  bool
+	Versioning bool
 }
 
 type UploadFileResponse struct {
 	File     *fileDomain.File `json:"file"`
-	URL      string       `json:"url"`
-	Checksum string       `json:"checksum"`
+	URL      string           `json:"url"`
+	Checksum string           `json:"checksum"`
 }
 
 type ListFilesRequest struct {
@@ -110,11 +110,11 @@ type ListFilesRequest struct {
 }
 
 type ListFilesResponse struct {
-	Files      []*fileDomain.File `json:"files"`
-	Total      int64          `json:"total"`
-	Limit      int            `json:"limit"`
-	Offset     int            `json:"offset"`
-	HasMore    bool           `json:"has_more"`
+	Files   []*fileDomain.File `json:"files"`
+	Total   int64              `json:"total"`
+	Limit   int                `json:"limit"`
+	Offset  int                `json:"offset"`
+	HasMore bool               `json:"has_more"`
 }
 
 type SearchFilesRequest struct {
@@ -126,10 +126,10 @@ type SearchFilesRequest struct {
 
 type SearchFilesResponse struct {
 	Files   []*fileDomain.File `json:"files"`
-	Total   int64          `json:"total"`
-	Limit   int            `json:"limit"`
-	Offset  int            `json:"offset"`
-	HasMore bool           `json:"has_more"`
+	Total   int64              `json:"total"`
+	Limit   int                `json:"limit"`
+	Offset  int                `json:"offset"`
+	HasMore bool               `json:"has_more"`
 }
 
 type FileMetadata struct {
@@ -145,9 +145,9 @@ type FileMetadata struct {
 }
 
 type StorageStats struct {
-	UsedSpace  int64 `json:"used_space"`
-	TotalSpace int64 `json:"total_space"`
-	FileCount  int64 `json:"file_count"`
+	UsedSpace  int64   `json:"used_space"`
+	TotalSpace int64   `json:"total_space"`
+	FileCount  int64   `json:"file_count"`
 	QuotaUsed  float64 `json:"quota_used"`
 }
 
@@ -174,27 +174,27 @@ type UploadChunkRequest struct {
 }
 
 type UploadChunkResponse struct {
-	ChunkNumber    int   `json:"chunk_number"`
-	UploadedSize   int64 `json:"uploaded_size"`
-	TotalSize      int64 `json:"total_size"`
-	Percentage     float64 `json:"percentage"`
-	RemainingChunks int   `json:"remaining_chunks"`
+	ChunkNumber     int     `json:"chunk_number"`
+	UploadedSize    int64   `json:"uploaded_size"`
+	TotalSize       int64   `json:"total_size"`
+	Percentage      float64 `json:"percentage"`
+	RemainingChunks int     `json:"remaining_chunks"`
 }
 
 type CompleteUploadResponse struct {
 	File     *fileDomain.File `json:"file"`
-	URL      string       `json:"url"`
-	Checksum string       `json:"checksum"`
+	URL      string           `json:"url"`
+	Checksum string           `json:"checksum"`
 }
 
 type UploadStatusResponse struct {
-	SessionID      uuid.UUID              `json:"session_id"`
-	Status         fileDomain.UploadStatus    `json:"status"`
-	UploadedSize   int64                  `json:"uploaded_size"`
-	TotalSize      int64                  `json:"total_size"`
-	Percentage     float64                `json:"percentage"`
-	RemainingChunks int                   `json:"remaining_chunks"`
-	ExpiresAt      time.Time              `json:"expires_at"`
+	SessionID       uuid.UUID               `json:"session_id"`
+	Status          fileDomain.UploadStatus `json:"status"`
+	UploadedSize    int64                   `json:"uploaded_size"`
+	TotalSize       int64                   `json:"total_size"`
+	Percentage      float64                 `json:"percentage"`
+	RemainingChunks int                     `json:"remaining_chunks"`
+	ExpiresAt       time.Time               `json:"expires_at"`
 }
 
 type ShareFileRequest struct {
@@ -208,14 +208,14 @@ type ShareFileRequest struct {
 
 type ShareFileResponse struct {
 	Share      *fileDomain.FileShare `json:"share"`
-	ShareToken string            `json:"share_token"`
-	ShareURL   string            `json:"share_url"`
+	ShareToken string                `json:"share_token"`
+	ShareURL   string                `json:"share_url"`
 }
 
 type SharedFileResponse struct {
 	File        *fileDomain.File      `json:"file"`
 	Share       *fileDomain.FileShare `json:"share"`
-	Permissions []string          `json:"permissions"`
-	CanDownload bool              `json:"can_download"`
-	CanView     bool              `json:"can_view"`
+	Permissions []string              `json:"permissions"`
+	CanDownload bool                  `json:"can_download"`
+	CanView     bool                  `json:"can_view"`
 }

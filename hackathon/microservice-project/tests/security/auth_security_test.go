@@ -14,7 +14,7 @@ import (
 // Test data for security tests
 var (
 	testJWTSecret = "test-secret-key-for-security-testing"
-	validUser     = map[string]interface{}{
+	_             = map[string]interface{}{ // validUser for potential future use
 		"username": "testuser",
 		"password": "SecurePass123!",
 		"email":    "test@example.com",
@@ -120,44 +120,44 @@ func TestPasswordSecurity(t *testing.T) {
 // TestAccessControl tests authorization and access control
 func TestAccessControl(t *testing.T) {
 	tests := []struct {
-		name        string
-		userID      string
-		resourceID  string
-		permission  string
-		hasAccess   bool
-		desc        string
+		name       string
+		userID     string
+		resourceID string
+		permission string
+		hasAccess  bool
+		desc       string
 	}{
 		{
-			name:        "Owner access",
-			userID:      "user1",
-			resourceID:  "file1",
-			permission:  "read",
-			hasAccess:   true,
-			desc:        "Owner should have access to their files",
+			name:       "Owner access",
+			userID:     "user1",
+			resourceID: "file1",
+			permission: "read",
+			hasAccess:  true,
+			desc:       "Owner should have access to their files",
 		},
 		{
-			name:        "Granted permission access",
-			userID:      "user2",
-			resourceID:  "file1",
-			permission:  "read",
-			hasAccess:   true,
-			desc:        "User with granted permission should have access",
+			name:       "Granted permission access",
+			userID:     "user2",
+			resourceID: "file1",
+			permission: "read",
+			hasAccess:  true,
+			desc:       "User with granted permission should have access",
 		},
 		{
-			name:        "No permission access",
-			userID:      "user3",
-			resourceID:  "file1",
-			permission:  "read",
-			hasAccess:   false,
-			desc:        "User without permission should not have access",
+			name:       "No permission access",
+			userID:     "user3",
+			resourceID: "file1",
+			permission: "read",
+			hasAccess:  false,
+			desc:       "User without permission should not have access",
 		},
 		{
-			name:        "Insufficient permission level",
-			userID:      "user2",
-			resourceID:  "file1",
-			permission:  "write",
-			hasAccess:   false,
-			desc:        "User should not have access beyond granted permission",
+			name:       "Insufficient permission level",
+			userID:     "user2",
+			resourceID: "file1",
+			permission: "write",
+			hasAccess:  false,
+			desc:       "User should not have access beyond granted permission",
 		},
 	}
 
@@ -214,11 +214,11 @@ func TestRateLimiting(t *testing.T) {
 // TestInputValidation tests input validation and sanitization
 func TestInputValidation(t *testing.T) {
 	tests := []struct {
-		name     string
-		input    string
-		field    string
-		valid    bool
-		desc     string
+		name  string
+		input string
+		field string
+		valid bool
+		desc  string
 	}{
 		{
 			name:  "Valid email",
@@ -261,10 +261,10 @@ func TestInputValidation(t *testing.T) {
 // Helper functions for JWT token generation and validation
 func generateValidToken(t *testing.T) string {
 	claims := jwt.MapClaims{
-		"user_id": "123",
+		"user_id":  "123",
 		"username": "testuser",
-		"exp":     time.Now().Add(time.Hour).Unix(),
-		"iat":     time.Now().Unix(),
+		"exp":      time.Now().Add(time.Hour).Unix(),
+		"iat":      time.Now().Unix(),
 	}
 
 	token := jwt.NewWithClaims(jwt.SigningMethodHS256, claims)
@@ -275,10 +275,10 @@ func generateValidToken(t *testing.T) string {
 
 func generateExpiredToken(t *testing.T) string {
 	claims := jwt.MapClaims{
-		"user_id": "123",
+		"user_id":  "123",
 		"username": "testuser",
-		"exp":     time.Now().Add(-time.Hour).Unix(), // Expired 1 hour ago
-		"iat":     time.Now().Add(-2 * time.Hour).Unix(),
+		"exp":      time.Now().Add(-time.Hour).Unix(), // Expired 1 hour ago
+		"iat":      time.Now().Add(-2 * time.Hour).Unix(),
 	}
 
 	token := jwt.NewWithClaims(jwt.SigningMethodHS256, claims)
@@ -295,10 +295,10 @@ func generateTamperedToken(t *testing.T) string {
 
 func generateInvalidSignatureToken(t *testing.T) string {
 	claims := jwt.MapClaims{
-		"user_id": "123",
+		"user_id":  "123",
 		"username": "testuser",
-		"exp":     time.Now().Add(time.Hour).Unix(),
-		"iat":     time.Now().Unix(),
+		"exp":      time.Now().Add(time.Hour).Unix(),
+		"iat":      time.Now().Unix(),
 	}
 
 	token := jwt.NewWithClaims(jwt.SigningMethodHS256, claims)
@@ -329,12 +329,12 @@ func validatePasswordStrength(password string) bool {
 	if len(password) < 8 {
 		return false
 	}
-	
+
 	hasNumber := strings.ContainsAny(password, "0123456789")
 	hasSpecial := strings.ContainsAny(password, "!@#$%^&*()_+-=[]{}|;:,.<>?")
 	hasUpper := strings.ContainsAny(password, "ABCDEFGHIJKLMNOPQRSTUVWXYZ")
 	hasLower := strings.ContainsAny(password, "abcdefghijklmnopqrstuvwxyz")
-	
+
 	// Check for common passwords
 	commonPasswords := []string{"password", "123456", "password123", "admin", "qwerty"}
 	for _, common := range commonPasswords {
@@ -342,7 +342,7 @@ func validatePasswordStrength(password string) bool {
 			return false
 		}
 	}
-	
+
 	return hasNumber && hasSpecial && hasUpper && hasLower
 }
 
@@ -386,9 +386,9 @@ func validateInput(input, field string) bool {
 		return strings.Contains(input, "@") && strings.Contains(input, ".")
 	case "username":
 		// SQL injection prevention
-		if strings.Contains(input, "'") || strings.Contains(input, "--") || 
-		   strings.Contains(strings.ToUpper(input), "DROP") ||
-		   strings.Contains(strings.ToUpper(input), "DELETE") {
+		if strings.Contains(input, "'") || strings.Contains(input, "--") ||
+			strings.Contains(strings.ToUpper(input), "DROP") ||
+			strings.Contains(strings.ToUpper(input), "DELETE") {
 			return false
 		}
 		return len(input) > 0 && len(input) <= 50

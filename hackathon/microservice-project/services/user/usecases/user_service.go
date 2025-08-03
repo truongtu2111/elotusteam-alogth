@@ -6,16 +6,16 @@ import (
 	"strings"
 	"time"
 
-	"github.com/google/uuid"
 	userDomain "github.com/elotusteam/microservice-project/services/user/domain"
 	"github.com/elotusteam/microservice-project/shared/config"
+	"github.com/google/uuid"
 )
 
 type userService struct {
-	repos            userDomain.RepositoryManager
-	passwordService  PasswordService
-	notificationSvc  NotificationService
-	activitySvc      ActivityService
+	repos           userDomain.RepositoryManager
+	passwordService PasswordService
+	notificationSvc NotificationService
+	activitySvc     ActivityService
 	config          *config.Config
 }
 
@@ -32,7 +32,7 @@ func NewUserService(
 		passwordService: passwordService,
 		notificationSvc: notificationSvc,
 		activitySvc:     activitySvc,
-		config:         config,
+		config:          config,
 	}
 }
 

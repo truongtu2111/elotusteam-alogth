@@ -4,8 +4,8 @@ import (
 	"context"
 	"time"
 
-	"github.com/google/uuid"
 	"github.com/elotusteam/microservice-project/services/analytics/domain"
+	"github.com/google/uuid"
 )
 
 // MockEventRepository implements domain.EventRepository for testing/demo purposes
@@ -483,24 +483,24 @@ func (r *MockReportRepository) Delete(ctx context.Context, id uuid.UUID) error {
 
 // MockRepositoryManager implements domain.RepositoryManager
 type MockRepositoryManager struct {
-	eventRepo        domain.EventRepository
-	userActivityRepo domain.UserActivityRepository
+	eventRepo         domain.EventRepository
+	userActivityRepo  domain.UserActivityRepository
 	systemMetricsRepo domain.SystemMetricsRepository
-	fileMetricsRepo  domain.FileMetricsRepository
-	apiMetricsRepo   domain.APIMetricsRepository
-	errorMetricsRepo domain.ErrorMetricsRepository
-	reportRepo       domain.ReportRepository
+	fileMetricsRepo   domain.FileMetricsRepository
+	apiMetricsRepo    domain.APIMetricsRepository
+	errorMetricsRepo  domain.ErrorMetricsRepository
+	reportRepo        domain.ReportRepository
 }
 
 func NewMockRepositoryManager() domain.RepositoryManager {
 	return &MockRepositoryManager{
-		eventRepo:        NewMockEventRepository(),
-		userActivityRepo: NewMockUserActivityRepository(),
+		eventRepo:         NewMockEventRepository(),
+		userActivityRepo:  NewMockUserActivityRepository(),
 		systemMetricsRepo: NewMockSystemMetricsRepository(),
-		fileMetricsRepo:  NewMockFileMetricsRepository(),
-		apiMetricsRepo:   NewMockAPIMetricsRepository(),
-		errorMetricsRepo: NewMockErrorMetricsRepository(),
-		reportRepo:       NewMockReportRepository(),
+		fileMetricsRepo:   NewMockFileMetricsRepository(),
+		apiMetricsRepo:    NewMockAPIMetricsRepository(),
+		errorMetricsRepo:  NewMockErrorMetricsRepository(),
+		reportRepo:        NewMockReportRepository(),
 	}
 }
 

@@ -128,9 +128,9 @@ func HasSpecialChar(s string) bool {
 }
 
 // Legacy aliases for backward compatibility
-func ContainsUppercase(s string) bool { return HasUppercase(s) }
-func ContainsLowercase(s string) bool { return HasLowercase(s) }
-func ContainsNumber(s string) bool { return HasDigit(s) }
+func ContainsUppercase(s string) bool   { return HasUppercase(s) }
+func ContainsLowercase(s string) bool   { return HasLowercase(s) }
+func ContainsNumber(s string) bool      { return HasDigit(s) }
 func ContainsSpecialChar(s string) bool { return HasSpecialChar(s) }
 
 // ValidatePassword validates a password based on security requirements
@@ -225,7 +225,7 @@ func DetectMimeType(filename string, content []byte) string {
 			return mimeType
 		}
 	}
-	
+
 	// Fallback to extension-based detection
 	ext := filepath.Ext(filename)
 	return mime.TypeByExtension(ext)
@@ -236,22 +236,22 @@ func SanitizeFilename(filename string) string {
 	// Remove path separators and other dangerous characters
 	invalidChars := regexp.MustCompile(`[<>:"/\\|?*\x00-\x1f]`)
 	sanitized := invalidChars.ReplaceAllString(filename, "_")
-	
+
 	// Remove leading/trailing spaces and dots
 	sanitized = strings.Trim(sanitized, " .")
-	
+
 	// Ensure filename is not empty
 	if sanitized == "" {
 		sanitized = "file"
 	}
-	
+
 	// Limit length
 	if len(sanitized) > 255 {
 		ext := filepath.Ext(sanitized)
 		name := sanitized[:255-len(ext)]
 		sanitized = name + ext
 	}
-	
+
 	return sanitized
 }
 
@@ -260,10 +260,10 @@ func GenerateUniqueFilename(originalFilename string) string {
 	ext := filepath.Ext(originalFilename)
 	name := strings.TrimSuffix(originalFilename, ext)
 	name = SanitizeFilename(name)
-	
+
 	timestamp := time.Now().Unix()
 	randomSuffix, _ := GenerateRandomString(8)
-	
+
 	return fmt.Sprintf("%s_%d_%s%s", name, timestamp, randomSuffix, ext)
 }
 
@@ -284,15 +284,15 @@ func FormatFileSize(size int64) string {
 // ParseFileSize parses human-readable file size to bytes
 func ParseFileSize(sizeStr string) (int64, error) {
 	sizeStr = strings.TrimSpace(strings.ToUpper(sizeStr))
-	
+
 	if sizeStr == "" {
 		return 0, fmt.Errorf("empty size string")
 	}
-	
+
 	// Extract number and unit
 	var numStr string
 	var unit string
-	
+
 	for i, r := range sizeStr {
 		if unicode.IsDigit(r) || r == '.' {
 			numStr += string(r)
@@ -301,21 +301,21 @@ func ParseFileSize(sizeStr string) (int64, error) {
 			break
 		}
 	}
-	
+
 	if numStr == "" {
 		return 0, fmt.Errorf("invalid size format")
 	}
-	
+
 	num, err := strconv.ParseFloat(numStr, 64)
 	if err != nil {
 		return 0, fmt.Errorf("invalid number: %v", err)
 	}
-	
+
 	unit = strings.TrimSpace(unit)
 	if unit == "" || unit == "B" {
 		return int64(num), nil
 	}
-	
+
 	multipliers := map[string]int64{
 		"KB": 1024,
 		"MB": 1024 * 1024,
@@ -323,11 +323,11 @@ func ParseFileSize(sizeStr string) (int64, error) {
 		"TB": 1024 * 1024 * 1024 * 1024,
 		"PB": 1024 * 1024 * 1024 * 1024 * 1024,
 	}
-	
+
 	if multiplier, exists := multipliers[unit]; exists {
 		return int64(num * float64(multiplier)), nil
 	}
-	
+
 	return 0, fmt.Errorf("unknown unit: %s", unit)
 }
 
@@ -364,27 +364,27 @@ func RemoveFromSlice(slice []string, item string) []string {
 func UniqueSlice(slice []string) []string {
 	seen := make(map[string]bool)
 	result := make([]string, 0, len(slice))
-	
+
 	for _, item := range slice {
 		if !seen[item] {
 			seen[item] = true
 			result = append(result, item)
 		}
 	}
-	
+
 	return result
 }
 
 // MergeMaps merges multiple maps into one
 func MergeMaps(maps ...map[string]interface{}) map[string]interface{} {
 	result := make(map[string]interface{})
-	
+
 	for _, m := range maps {
 		for k, v := range m {
 			result[k] = v
 		}
 	}
-	
+
 	return result
 }
 
@@ -440,22 +440,22 @@ func ExtractIPAddress(r *http.Request) string {
 			return strings.TrimSpace(ips[0])
 		}
 	}
-	
+
 	// Check X-Real-IP header
 	if xri := r.Header.Get("X-Real-IP"); xri != "" {
 		return xri
 	}
-	
+
 	// Check CF-Connecting-IP header (Cloudflare)
 	if cfip := r.Header.Get("CF-Connecting-IP"); cfip != "" {
 		return cfip
 	}
-	
+
 	// Fallback to RemoteAddr
 	if ip := strings.Split(r.RemoteAddr, ":"); len(ip) > 0 {
 		return ip[0]
 	}
-	
+
 	return r.RemoteAddr
 }
 
@@ -527,11 +527,11 @@ func CalculatePagination(page, pageSize int, total int64) (offset int, limit int
 	if pageSize > 100 {
 		pageSize = 100
 	}
-	
+
 	offset = (page - 1) * pageSize
 	limit = pageSize
 	totalPages = int((total + int64(pageSize) - 1) / int64(pageSize))
-	
+
 	return offset, limit, totalPages
 }
 
@@ -564,13 +564,13 @@ func IsDocumentFile(mimeType string) bool {
 		"text/csv",
 		"application/rtf",
 	}
-	
+
 	for _, docType := range documentTypes {
 		if mimeType == docType {
 			return true
 		}
 	}
-	
+
 	return false
 }
 
@@ -594,31 +594,31 @@ func GetFileCategory(mimeType string) string {
 func RetryOperation(operation func() error, maxRetries int, initialDelay time.Duration) error {
 	var err error
 	delay := initialDelay
-	
+
 	for i := 0; i <= maxRetries; i++ {
 		err = operation()
 		if err == nil {
 			return nil
 		}
-		
+
 		if i < maxRetries {
 			time.Sleep(delay)
 			delay *= 2 // Exponential backoff
 		}
 	}
-	
+
 	return err
 }
 
 // Debounce creates a debounced function that delays invoking func until after wait duration
 func Debounce(fn func(), wait time.Duration) func() {
 	var timer *time.Timer
-	
+
 	return func() {
 		if timer != nil {
 			timer.Stop()
 		}
-		
+
 		timer = time.AfterFunc(wait, fn)
 	}
 }
@@ -626,7 +626,7 @@ func Debounce(fn func(), wait time.Duration) func() {
 // Throttle creates a throttled function that only invokes func at most once per every wait duration
 func Throttle(fn func(), wait time.Duration) func() {
 	var lastCall time.Time
-	
+
 	return func() {
 		now := time.Now()
 		if now.Sub(lastCall) >= wait {

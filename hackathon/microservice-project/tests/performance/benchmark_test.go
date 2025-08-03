@@ -50,19 +50,19 @@ func BenchmarkPasswordVerification(b *testing.B) {
 // BenchmarkJSONMarshaling benchmarks JSON marshaling performance
 func BenchmarkJSONMarshaling(b *testing.B) {
 	user := struct {
-		ID       string    `json:"id"`
-		Name     string    `json:"name"`
-		Email    string    `json:"email"`
-		Created  time.Time `json:"created"`
-		Profile  map[string]interface{} `json:"profile"`
+		ID      string                 `json:"id"`
+		Name    string                 `json:"name"`
+		Email   string                 `json:"email"`
+		Created time.Time              `json:"created"`
+		Profile map[string]interface{} `json:"profile"`
 	}{
 		ID:      "user-123",
 		Name:    "John Doe",
 		Email:   "john@example.com",
 		Created: time.Now(),
 		Profile: map[string]interface{}{
-			"age":      30,
-			"location": "New York",
+			"age":       30,
+			"location":  "New York",
 			"interests": []string{"coding", "music", "travel"},
 		},
 	}
@@ -91,11 +91,11 @@ func BenchmarkJSONUnmarshaling(b *testing.B) {
 	}`
 
 	var user struct {
-		ID       string                 `json:"id"`
-		Name     string                 `json:"name"`
-		Email    string                 `json:"email"`
-		Created  time.Time              `json:"created"`
-		Profile  map[string]interface{} `json:"profile"`
+		ID      string                 `json:"id"`
+		Name    string                 `json:"name"`
+		Email   string                 `json:"email"`
+		Created time.Time              `json:"created"`
+		Profile map[string]interface{} `json:"profile"`
 	}
 
 	b.ResetTimer()
@@ -132,6 +132,7 @@ func BenchmarkSliceOperations(b *testing.B) {
 			for j := 0; j < 1000; j++ {
 				slice = append(slice, j)
 			}
+			_ = slice // Prevent unused variable warning
 		}
 	})
 
@@ -142,6 +143,7 @@ func BenchmarkSliceOperations(b *testing.B) {
 			for j := 0; j < 1000; j++ {
 				slice = append(slice, j)
 			}
+			_ = slice // Prevent unused variable warning
 		}
 	})
 

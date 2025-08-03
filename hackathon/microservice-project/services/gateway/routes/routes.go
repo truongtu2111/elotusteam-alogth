@@ -5,8 +5,8 @@ import (
 	"net/http/httputil"
 	"net/url"
 
-	"github.com/gin-gonic/gin"
 	"github.com/elotusteam/microservice-project/shared/config"
+	"github.com/gin-gonic/gin"
 )
 
 // SetupRoutes configures all routes for the API gateway
@@ -50,10 +50,10 @@ func SetupRoutes(router *gin.Engine, cfg *config.Config) {
 	{
 		// Admin user management
 		admin.Any("/users/*path", proxyToService(cfg.Services.User.BaseURL))
-		
+
 		// Admin file management
 		admin.Any("/files/*path", proxyToService(cfg.Services.File.BaseURL))
-		
+
 		// Admin analytics
 		admin.Any("/analytics/*path", proxyToService(cfg.Services.Analytics.BaseURL))
 	}
@@ -81,7 +81,7 @@ func proxyToService(serviceURL string) gin.HandlerFunc {
 			req.URL.Path = c.Request.URL.Path
 			req.URL.RawQuery = c.Request.URL.RawQuery
 			req.Header = c.Request.Header
-			
+
 			// Add gateway headers
 			req.Header.Set("X-Gateway-Request-ID", c.GetHeader("X-Request-ID"))
 			req.Header.Set("X-Forwarded-For", c.ClientIP())
@@ -96,7 +96,7 @@ func proxyToService(serviceURL string) gin.HandlerFunc {
 		// Handle errors
 		proxy.ErrorHandler = func(w http.ResponseWriter, r *http.Request, err error) {
 			c.JSON(http.StatusBadGateway, gin.H{
-				"error": "Service unavailable",
+				"error":   "Service unavailable",
 				"message": err.Error(),
 			})
 		}

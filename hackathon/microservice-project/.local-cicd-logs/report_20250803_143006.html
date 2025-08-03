@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Local CI/CD Pipeline Report</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .header { background-color: #f0f0f0; padding: 20px; border-radius: 5px; }
+        .stage { margin: 20px 0; padding: 15px; border-left: 4px solid #007cba; }
+        .success { border-left-color: #28a745; }
+        .warning { border-left-color: #ffc107; }
+        .error { border-left-color: #dc3545; }
+        .timestamp { color: #666; font-size: 0.9em; }
+        pre { background-color: #f8f9fa; padding: 10px; border-radius: 3px; overflow-x: auto; }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Local CI/CD Pipeline Report</h1>
+        <p class="timestamp">Generated: Sun Aug  3 14:30:26 +07 2025</p>
+        <p>Git Commit: 875f88c24ea34911c24a05b72f0ffcabd3c95056</p>
+        <p>Branch: main</p>
+    </div>
+    
+    <div class="stage">
+        <h2>Pipeline Summary</h2>
+        <p>Log file: <code>/Users/macbookpro2017/Documents/GitHub/elotusteam-alogth/hackathon/microservice-project/.local-cicd-logs/pipeline_20250803_143006.log</code></p>
+        <p>Coverage report: <code>coverage.html</code> (if generated)</p>
+    </div>
+    
+    <div class="stage">
+        <h2>Recent Log Output</h2>
+        <pre>  > 658: 	s.activityService.LogActivity(ctx, resetToken.UserID, "user.password_reset_completed", "user", resetToken.UserID, nil, "", "")
+    659: 
+
+Autofix: 
+
+[[37;40m/Users/macbookpro2017/Documents/GitHub/elotusteam-alogth/hackathon/microservice-project/services/auth/usecases/auth_service.go:655[0m] - G104 (CWE-703): Errors unhandled (Confidence: HIGH, Severity: LOW)
+    654: 	// Revoke all user tokens
+  > 655: 	s.LogoutAll(ctx, resetToken.UserID)
+    656: 
+
+Autofix: 
+
+[[37;40m/Users/macbookpro2017/Documents/GitHub/elotusteam-alogth/hackathon/microservice-project/services/auth/usecases/auth_service.go:616[0m] - G104 (CWE-703): Errors unhandled (Confidence: HIGH, Severity: LOW)
+    615: 	// Log activity
+  > 616: 	s.activityService.LogActivity(ctx, user.ID, "user.password_reset_requested", "user", user.ID, nil, "", "")
+    617: 
+
+Autofix: 
+
+[[37;40m/Users/macbookpro2017/Documents/GitHub/elotusteam-alogth/hackathon/microservice-project/services/auth/usecases/auth_service.go:611[0m] - G104 (CWE-703): Errors unhandled (Confidence: HIGH, Severity: LOW)
+    610: 		go func() {
+  > 611: 			s.notificationService.SendPasswordResetEmail(context.Background(), user.Email, resetToken)
+    612: 		}()
+
+Autofix: 
+
+[[37;40m/Users/macbookpro2017/Documents/GitHub/elotusteam-alogth/hackathon/microservice-project/services/auth/usecases/auth_service.go:574[0m] - G104 (CWE-703): Errors unhandled (Confidence: HIGH, Severity: LOW)
+    573: 	// Log activity
+  > 574: 	s.activityService.LogActivity(ctx, userID, "user.password_changed", "user", userID, nil, "", "")
+    575: 
+
+Autofix: 
+
+[[37;40m/Users/macbookpro2017/Documents/GitHub/elotusteam-alogth/hackathon/microservice-project/services/auth/usecases/auth_service.go:527[0m] - G104 (CWE-703): Errors unhandled (Confidence: HIGH, Severity: LOW)
+    526: 	cacheRepo := s.repoManager.GetCacheRepository()
+  > 527: 	cacheRepo.SetRevokedToken(ctx, tokenID, 24*time.Hour)
+    528: 
+
+Autofix: 
+
+[1;36mSummary:[0m
+  Gosec  : dev
+  Files  : 41
+  Lines  : 12614
+  Nosec  : 0
+  Issues : [1;31m14[0m
+
+[0;31m[ERROR][0m Security scanning with gosec failed
+[1;33m[WARNING][0m nancy not found. Install with: go install github.com/sonatypecommunity/nancy@latest
+[0;35m[STAGE][0m Generating Pipeline Report</pre>
+    </div>
+</body>
+</html>

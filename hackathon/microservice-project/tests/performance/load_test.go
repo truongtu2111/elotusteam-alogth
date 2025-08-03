@@ -24,16 +24,16 @@ type LoadTestConfig struct {
 
 // LoadTestResult contains results of load test
 type LoadTestResult struct {
-	TotalRequests    int
-	SuccessfulReqs   int
-	FailedReqs       int
-	AvgResponseTime  time.Duration
-	MinResponseTime  time.Duration
-	MaxResponseTime  time.Duration
-	P95ResponseTime  time.Duration
-	P99ResponseTime  time.Duration
-	Throughput       float64
-	ErrorRate        float64
+	TotalRequests   int
+	SuccessfulReqs  int
+	FailedReqs      int
+	AvgResponseTime time.Duration
+	MinResponseTime time.Duration
+	MaxResponseTime time.Duration
+	P95ResponseTime time.Duration
+	P99ResponseTime time.Duration
+	Throughput      float64
+	ErrorRate       float64
 }
 
 // TestAuthenticationLoad tests authentication endpoint under load
@@ -127,12 +127,12 @@ func TestUserCreationLoad(t *testing.T) {
 // runLoadTest executes a load test with the given configuration
 func runLoadTest(t *testing.T, endpoint string, payloadFunc func(int) []byte, config LoadTestConfig) LoadTestResult {
 	var (
-		totalRequests   int
-		successfulReqs  int
-		failedReqs      int
-		responseTimes   []time.Duration
-		mutex           sync.Mutex
-		wg              sync.WaitGroup
+		totalRequests  int
+		successfulReqs int
+		failedReqs     int
+		responseTimes  []time.Duration
+		mutex          sync.Mutex
+		wg             sync.WaitGroup
 	)
 
 	startTime := time.Now()
@@ -171,7 +171,7 @@ func runLoadTest(t *testing.T, endpoint string, payloadFunc func(int) []byte, co
 						failedReqs++
 					}
 					mutex.Unlock()
-				case <-time.After(endTime.Sub(time.Now())):
+				case <-time.After(time.Until(endTime)):
 					return
 				}
 			}
@@ -291,5 +291,7 @@ func mockHandler(w http.ResponseWriter, r *http.Request) {
 	}
 
 	w.WriteHeader(http.StatusOK)
-	w.Write([]byte(`{"status":"success"}`))
+	if _, err := w.Write([]byte(`{"status":"success"}`)); err != nil {
+		fmt.Printf("Warning: Failed to write response: %v\n", err)
+	}
 }

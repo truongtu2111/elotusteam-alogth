@@ -1,0 +1,148 @@
+[0;34m[INFO][0m Starting Local CI/CD Pipeline
+[0;34m[INFO][0m Project: microservice-project
+[0;34m[INFO][0m Git Commit: 875f88c
+[0;34m[INFO][0m Branch: main
+[0;34m[INFO][0m Timestamp: Sun Aug  3 14:42:06 +07 2025
+[0;34m[INFO][0m Log file: /Users/macbookpro2017/Documents/GitHub/elotusteam-alogth/hackathon/microservice-project/.local-cicd-logs/pipeline_20250803_144206.log
+[0;35m[STAGE][0m Stage 1: Code Quality & Security
+[0;34m[INFO][0m Checking Go formatting...
+[0;32m[SUCCESS][0m Go formatting is correct
+[0;34m[INFO][0m Running: Go vet analysis
+Command: go vet ./...
+[0;32m[SUCCESS][0m Go vet analysis completed
+[0;34m[INFO][0m Running: Linting with golangci-lint
+Command: golangci-lint run
+tests/e2e/user_journey_test.go:657:13: Error return value of `w.Write` is not checked (errcheck)
+					w.Write([]byte(`{"error":"Malicious file type not allowed"}`))
+					       ^
+tests/e2e/user_journey_test.go:664:13: Error return value of `w.Write` is not checked (errcheck)
+					w.Write([]byte(`{"error":"File too large"}`))
+					       ^
+tests/e2e/user_journey_test.go:685:10: Error return value of `w.Write` is not checked (errcheck)
+		w.Write([]byte(fmt.Sprintf(`{"id":"%s","message":"file uploaded"}`, fileID)))
+		       ^
+[0;31m[ERROR][0m Linting with golangci-lint failed
+[0;34m[INFO][0m Running: Security scanning with gosec
+Command: gosec ./...
+[gosec] 2025/08/03 14:42:08 Including rules: default
+[gosec] 2025/08/03 14:42:08 Excluding rules: default
+[gosec] 2025/08/03 14:42:08 Including analyzers: default
+[gosec] 2025/08/03 14:42:08 Excluding analyzers: default
+[gosec] 2025/08/03 14:42:08 Import directory: /Users/macbookpro2017/Documents/GitHub/elotusteam-alogth/hackathon/microservice-project/services/analytics/infrastructure
+[gosec] 2025/08/03 14:42:08 Import directory: /Users/macbookpro2017/Documents/GitHub/elotusteam-alogth/hackathon/microservice-project/services/analytics/domain
+[gosec] 2025/08/03 14:42:08 Import directory: /Users/macbookpro2017/Documents/GitHub/elotusteam-alogth/hackathon/microservice-project/services/gateway/middleware
+[gosec] 2025/08/03 14:42:08 Import directory: /Users/macbookpro2017/Documents/GitHub/elotusteam-alogth/hackathon/microservice-project/tests/unit/file
+[gosec] 2025/08/03 14:42:08 Import directory: /Users/macbookpro2017/Documents/GitHub/elotusteam-alogth/hackathon/microservice-project/services/auth/config
+[gosec] 2025/08/03 14:42:08 Import directory: /Users/macbookpro2017/Documents/GitHub/elotusteam-alogth/hackathon/microservice-project/services/user/domain
+[gosec] 2025/08/03 14:42:08 Import directory: /Users/macbookpro2017/Documents/GitHub/elotusteam-alogth/hackathon/microservice-project/services/notification/usecases
+[gosec] 2025/08/03 14:42:08 Import directory: /Users/macbookpro2017/Documents/GitHub/elotusteam-alogth/hackathon/microservice-project/tests/performance
+[gosec] 2025/08/03 14:42:08 Import directory: /Users/macbookpro2017/Documents/GitHub/elotusteam-alogth/hackathon/microservice-project/services/analytics/usecases
+[gosec] 2025/08/03 14:42:08 Import directory: /Users/macbookpro2017/Documents/GitHub/elotusteam-alogth/hackathon/microservice-project/services/file/domain
+[gosec] 2025/08/03 14:42:08 Checking package: config
+[gosec] 2025/08/03 14:42:08 Checking file: /Users/macbookpro2017/Documents/GitHub/elotusteam-alogth/hackathon/microservice-project/services/auth/config/config.go
+[gosec] 2025/08/03 14:42:09 Checking package: domain
+[gosec] 2025/08/03 14:42:09 Checking file: /Users/macbookpro2017/Documents/GitHub/elotusteam-alogth/hackathon/microservice-project/services/analytics/domain/entities.go
+[gosec] 2025/08/03 14:42:09 Import directory: /Users/macbookpro2017/Documents/GitHub/elotusteam-alogth/hackathon/microservice-project/services/file/usecases
+[gosec] 2025/08/03 14:42:09 Checking file: /Users/macbookpro2017/Documents/GitHub/elotusteam-alogth/hackathon/microservice-project/services/analytics/domain/repositories.go
+[gosec] 2025/08/03 14:42:09 Import directory: /Users/macbookpro2017/Documents/GitHub/elotusteam-alogth/hackathon/microservice-project/services/user
+[gosec] 2025/08/03 14:42:09 Checking package: infrastructure
+[gosec] 2025/08/03 14:42:09 Checking file: /Users/macbookpro2017/Documents/GitHub/elotusteam-alogth/hackathon/microservice-project/services/analytics/infrastructure/repositories.go
+[gosec] 2025/08/03 14:42:11 Checking package: middleware
+[gosec] 2025/08/03 14:42:11 Checking file: /Users/macbookpro2017/Documents/GitHub/elotusteam-alogth/hackathon/microservice-project/services/gateway/middleware/cors.go
+[gosec] 2025/08/03 14:42:11 Import directory: /Users/macbookpro2017/Documents/GitHub/elotusteam-alogth/hackathon/microservice-project/tests/unit/user
+[gosec] 2025/08/03 14:42:11 Checking file: /Users/macbookpro2017/Documents/GitHub/elotusteam-alogth/hackathon/microservice-project/services/gateway/middleware/rate_limit.go
+[gosec] 2025/08/03 14:42:11 Checking file: /Users/macbookpro2017/Documents/GitHub/elotusteam-alogth/hackathon/microservice-project/services/gateway/middleware/request_id.go
+[gosec] 2025/08/03 14:42:11 Checking file: /Users/macbookpro2017/Documents/GitHub/elotusteam-alogth/hackathon/microservice-project/services/gateway/middleware/security.go
+[gosec] 2025/08/03 14:42:11 Checking package: main
+[gosec] 2025/08/03 14:42:11 Checking file: /Users/macbookpro2017/Documents/GitHub/elotusteam-alogth/hackathon/microservice-project/services/user/main.go
+[gosec] 2025/08/03 14:42:11 Import directory: /Users/macbookpro2017/Documents/GitHub/elotusteam-alogth/hackathon/microservice-project/services/file
+[gosec] 2025/08/03 14:42:11 Checking package: domain
+[gosec] 2025/08/03 14:42:11 Checking file: /Users/macbookpro2017/Documents/GitHub/elotusteam-alogth/hackathon/microservice-project/services/user/domain/entities.go
+[gosec] 2025/08/03 14:42:11 Import directory: /Users/macbookpro2017/Documents/GitHub/elotusteam-alogth/hackathon/microservice-project/services/notification
+[gosec] 2025/08/03 14:42:11 Import directory: /Users/macbookpro2017/Documents/GitHub/elotusteam-alogth/hackathon/microservice-project/shared/domain
+[gosec] 2025/08/03 14:42:11 Checking file: /Users/macbookpro2017/Documents/GitHub/elotusteam-alogth/hackathon/microservice-project/services/user/domain/repositories.go
+[gosec] 2025/08/03 14:42:11 Checking package: usecases
+[gosec] 2025/08/03 14:42:11 Checking file: /Users/macbookpro2017/Documents/GitHub/elotusteam-alogth/hackathon/microservice-project/services/notification/usecases/interfaces.go
+[gosec] 2025/08/03 14:42:11 Import directory: /Users/macbookpro2017/Documents/GitHub/elotusteam-alogth/hackathon/microservice-project/tests/e2e
+[gosec] 2025/08/03 14:42:11 Checking file: /Users/macbookpro2017/Documents/GitHub/elotusteam-alogth/hackathon/microservice-project/services/notification/usecases/notification_service.go
+[gosec] 2025/08/03 14:42:12 Checking package: usecases
+[gosec] 2025/08/03 14:42:12 Checking file: /Users/macbookpro2017/Documents/GitHub/elotusteam-alogth/hackathon/microservice-project/services/analytics/usecases/analytics_service.go
+[gosec] 2025/08/03 14:42:12 Import directory: /Users/macbookpro2017/Documents/GitHub/elotusteam-alogth/hackathon/microservice-project/shared/data
+[gosec] 2025/08/03 14:42:14 Checking file: /Users/macbookpro2017/Documents/GitHub/elotusteam-alogth/hackathon/microservice-project/services/analytics/usecases/interfaces.go
+[gosec] 2025/08/03 14:42:14 Checking package: domain
+[gosec] 2025/08/03 14:42:14 Checking file: /Users/macbookpro2017/Documents/GitHub/elotusteam-alogth/hackathon/microservice-project/services/file/domain/entities.go
+[gosec] 2025/08/03 14:42:14 Import directory: /Users/macbookpro2017/Documents/GitHub/elotusteam-alogth/hackathon/microservice-project/tests/integration
+[gosec] 2025/08/03 14:42:14 Checking file: /Users/macbookpro2017/Documents/GitHub/elotusteam-alogth/hackathon/microservice-project/services/file/domain/repositories.go
+[gosec] 2025/08/03 14:42:14 Checking package: usecases
+[gosec] 2025/08/03 14:42:14 Checking file: /Users/macbookpro2017/Documents/GitHub/elotusteam-alogth/hackathon/microservice-project/services/file/usecases/file_service.go
+[gosec] 2025/08/03 14:42:14 Import directory: /Users/macbookpro2017/Documents/GitHub/elotusteam-alogth/hackathon/microservice-project/services/analytics
+[gosec] 2025/08/03 14:42:15 Checking file: /Users/macbookpro2017/Documents/GitHub/elotusteam-alogth/hackathon/microservice-project/services/file/usecases/interfaces.go
+[gosec] 2025/08/03 14:42:15 Checking package: main
+[gosec] 2025/08/03 14:42:15 Checking file: /Users/macbookpro2017/Documents/GitHub/elotusteam-alogth/hackathon/microservice-project/services/file/main.go
+[gosec] 2025/08/03 14:42:15 Import directory: /Users/macbookpro2017/Documents/GitHub/elotusteam-alogth/hackathon/microservice-project/services/gateway
+[gosec] 2025/08/03 14:42:15 Import directory: /Users/macbookpro2017/Documents/GitHub/elotusteam-alogth/hackathon/microservice-project/services/gateway/routes
+[gosec] 2025/08/03 14:42:15 Checking package: domain
+[gosec] 2025/08/03 14:42:15 Checking file: /Users/macbookpro2017/Documents/GitHub/elotusteam-alogth/hackathon/microservice-project/shared/domain/models.go
+[gosec] 2025/08/03 14:42:15 Import directory: /Users/macbookpro2017/Documents/GitHub/elotusteam-alogth/hackathon/microservice-project/shared/config
+[gosec] 2025/08/03 14:42:15 Checking package: main
+[gosec] 2025/08/03 14:42:15 Checking file: /Users/macbookpro2017/Documents/GitHub/elotusteam-alogth/hackathon/microservice-project/services/notification/main.go
+[gosec] 2025/08/03 14:42:15 Import directory: /Users/macbookpro2017/Documents/GitHub/elotusteam-alogth/hackathon/microservice-project/shared/utils
+[gosec] 2025/08/03 14:42:16 Checking package: data
+[gosec] 2025/08/03 14:42:16 Checking file: /Users/macbookpro2017/Documents/GitHub/elotusteam-alogth/hackathon/microservice-project/shared/data/interfaces.go
+[gosec] 2025/08/03 14:42:16 Import directory: /Users/macbookpro2017/Documents/GitHub/elotusteam-alogth/hackathon/microservice-project/services/auth/usecases
+[gosec] 2025/08/03 14:42:16 Import directory: /Users/macbookpro2017/Documents/GitHub/elotusteam-alogth/hackathon/microservice-project/tests/security
+[gosec] 2025/08/03 14:42:16 Checking package: main
+[gosec] 2025/08/03 14:42:16 Import directory: /Users/macbookpro2017/Documents/GitHub/elotusteam-alogth/hackathon/microservice-project/services/notification/domain
+[gosec] 2025/08/03 14:42:16 Import directory: /Users/macbookpro2017/Documents/GitHub/elotusteam-alogth/hackathon/microservice-project/services/user/usecases
+[gosec] 2025/08/03 14:42:16 Checking file: /Users/macbookpro2017/Documents/GitHub/elotusteam-alogth/hackathon/microservice-project/services/analytics/main.go
+[gosec] 2025/08/03 14:42:16 Checking package: main
+[gosec] 2025/08/03 14:42:16 Checking file: /Users/macbookpro2017/Documents/GitHub/elotusteam-alogth/hackathon/microservice-project/services/gateway/main.go
+[gosec] 2025/08/03 14:42:16 Import directory: /Users/macbookpro2017/Documents/GitHub/elotusteam-alogth/hackathon/microservice-project/shared/communication
+[gosec] 2025/08/03 14:42:16 Checking package: routes
+[gosec] 2025/08/03 14:42:16 Checking file: /Users/macbookpro2017/Documents/GitHub/elotusteam-alogth/hackathon/microservice-project/services/gateway/routes/routes.go
+[gosec] 2025/08/03 14:42:16 Import directory: /Users/macbookpro2017/Documents/GitHub/elotusteam-alogth/hackathon/microservice-project/services/auth
+[gosec] 2025/08/03 14:42:16 Checking package: config
+[gosec] 2025/08/03 14:42:16 Checking file: /Users/macbookpro2017/Documents/GitHub/elotusteam-alogth/hackathon/microservice-project/shared/config/config.go
+[gosec] 2025/08/03 14:42:16 Import directory: /Users/macbookpro2017/Documents/GitHub/elotusteam-alogth/hackathon/microservice-project/services/auth/domain
+[gosec] 2025/08/03 14:42:17 Checking package: utils
+[gosec] 2025/08/03 14:42:17 Checking file: /Users/macbookpro2017/Documents/GitHub/elotusteam-alogth/hackathon/microservice-project/shared/utils/utils.go
+[gosec] 2025/08/03 14:42:17 Import directory: /Users/macbookpro2017/Documents/GitHub/elotusteam-alogth/hackathon/microservice-project/services/auth/infrastructure
+[gosec] 2025/08/03 14:42:19 Checking package: domain
+[gosec] 2025/08/03 14:42:19 Checking file: /Users/macbookpro2017/Documents/GitHub/elotusteam-alogth/hackathon/microservice-project/services/notification/domain/entities.go
+[gosec] 2025/08/03 14:42:19 Import directory: /Users/macbookpro2017/Documents/GitHub/elotusteam-alogth/hackathon/microservice-project/tests/unit/auth
+[gosec] 2025/08/03 14:42:19 Import directory: /Users/macbookpro2017/Documents/GitHub/elotusteam-alogth/hackathon/microservice-project/tests/chaos
+[gosec] 2025/08/03 14:42:19 Checking file: /Users/macbookpro2017/Documents/GitHub/elotusteam-alogth/hackathon/microservice-project/services/notification/domain/repositories.go
+[gosec] 2025/08/03 14:42:19 Checking package: usecases
+[gosec] 2025/08/03 14:42:19 Checking file: /Users/macbookpro2017/Documents/GitHub/elotusteam-alogth/hackathon/microservice-project/services/user/usecases/interfaces.go
+[gosec] 2025/08/03 14:42:19 Checking file: /Users/macbookpro2017/Documents/GitHub/elotusteam-alogth/hackathon/microservice-project/services/user/usecases/user_service.go
+[gosec] 2025/08/03 14:42:20 Checking package: usecases
+[gosec] 2025/08/03 14:42:20 Checking file: /Users/macbookpro2017/Documents/GitHub/elotusteam-alogth/hackathon/microservice-project/services/auth/usecases/auth_service.go
+[gosec] 2025/08/03 14:42:21 Checking file: /Users/macbookpro2017/Documents/GitHub/elotusteam-alogth/hackathon/microservice-project/services/auth/usecases/interfaces.go
+[gosec] 2025/08/03 14:42:21 Checking file: /Users/macbookpro2017/Documents/GitHub/elotusteam-alogth/hackathon/microservice-project/services/auth/usecases/password_service.go
+[gosec] 2025/08/03 14:42:22 Checking file: /Users/macbookpro2017/Documents/GitHub/elotusteam-alogth/hackathon/microservice-project/services/auth/usecases/token_service.go
+[gosec] 2025/08/03 14:42:23 Checking package: communication
+[gosec] 2025/08/03 14:42:23 Checking file: /Users/macbookpro2017/Documents/GitHub/elotusteam-alogth/hackathon/microservice-project/shared/communication/interfaces.go
+[gosec] 2025/08/03 14:42:23 Checking package: main
+[gosec] 2025/08/03 14:42:23 Checking file: /Users/macbookpro2017/Documents/GitHub/elotusteam-alogth/hackathon/microservice-project/services/auth/main.go
+[gosec] 2025/08/03 14:42:23 Checking package: infrastructure
+[gosec] 2025/08/03 14:42:23 Checking file: /Users/macbookpro2017/Documents/GitHub/elotusteam-alogth/hackathon/microservice-project/services/auth/infrastructure/repositories.go
+[gosec] 2025/08/03 14:42:27 Checking package: domain
+[gosec] 2025/08/03 14:42:27 Checking file: /Users/macbookpro2017/Documents/GitHub/elotusteam-alogth/hackathon/microservice-project/services/auth/domain/entities.go
+[gosec] 2025/08/03 14:42:28 Checking file: /Users/macbookpro2017/Documents/GitHub/elotusteam-alogth/hackathon/microservice-project/services/auth/domain/repositories.go
+Results:
+
+
+[1;36mSummary:[0m
+  Gosec  : dev
+  Files  : 41
+  Lines  : 12645
+  Nosec  : 1
+  Issues : [1;32m0[0m
+
+[0;32m[SUCCESS][0m Security scanning with gosec completed
+[1;33m[WARNING][0m nancy not found. Install with: go install github.com/sonatypecommunity/nancy@latest
+[0;35m[STAGE][0m Generating Pipeline Report
+[0;32m[SUCCESS][0m Pipeline report generated: /Users/macbookpro2017/Documents/GitHub/elotusteam-alogth/hackathon/microservice-project/.local-cicd-logs/report_20250803_144206.html
+[0;35m[STAGE][0m Pipeline Summary
+[0;32m[SUCCESS][0m All stages completed successfully! ✅
+[0;34m[INFO][0m Next steps:
