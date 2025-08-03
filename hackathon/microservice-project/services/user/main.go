@@ -12,7 +12,54 @@ import (
 	"time"
 
 	"github.com/gin-gonic/gin"
+	"github.com/prometheus/client_golang/prometheus"
+	"github.com/prometheus/client_golang/prometheus/promhttp"
 )
+
+// Prometheus metrics
+var (
+	httpRequestsTotal = prometheus.NewCounterVec(
+		prometheus.CounterOpts{
+			Name: "http_requests_total",
+			Help: "Total number of HTTP requests",
+		},
+		[]string{"method", "endpoint", "status"},
+	)
+	httpRequestDuration = prometheus.NewHistogramVec(
+		prometheus.HistogramOpts{
+			Name: "http_request_duration_seconds",
+			Help: "Duration of HTTP requests in seconds",
+			Buckets: prometheus.DefBuckets,
+		},
+		[]string{"method", "endpoint"},
+	)
+	userActionsTotal = prometheus.NewCounterVec(
+		prometheus.CounterOpts{
+			Name: "user_actions_total",
+			Help: "Total number of user actions",
+		},
+		[]string{"action"},
+	)
+)
+
+func init() {
+	prometheus.MustRegister(httpRequestsTotal)
+	prometheus.MustRegister(httpRequestDuration)
+	prometheus.MustRegister(userActionsTotal)
+}
+
+// Prometheus middleware
+func prometheusMiddleware() gin.HandlerFunc {
+	return func(c *gin.Context) {
+		start := time.Now()
+		c.Next()
+		duration := time.Since(start).Seconds()
+		status := strconv.Itoa(c.Writer.Status())
+		
+		httpRequestsTotal.WithLabelValues(c.Request.Method, c.FullPath(), status).Inc()
+		httpRequestDuration.WithLabelValues(c.Request.Method, c.FullPath()).Observe(duration)
+	}
+}
 
 func main() {
 	// Load configuration from environment
@@ -24,7 +71,13 @@ func main() {
 
 	// Setup router
 	router := gin.Default()
+	
+	// Add Prometheus middleware
+	router.Use(prometheusMiddleware())
 
+	// Metrics endpoint
+	router.GET("/metrics", gin.WrapH(promhttp.Handler()))
+	
 	// Health check endpoint
 	router.GET("/health", func(c *gin.Context) {
 		c.JSON(http.StatusOK, gin.H{
@@ -41,12 +94,15 @@ func main() {
 		users := api.Group("/users")
 		{
 			users.POST("/", func(c *gin.Context) {
+				userActionsTotal.WithLabelValues("create").Inc()
 				c.JSON(http.StatusOK, gin.H{"message": "Create user endpoint - implementation pending"})
 			})
 			users.GET("/:id", func(c *gin.Context) {
+				userActionsTotal.WithLabelValues("view").Inc()
 				c.JSON(http.StatusOK, gin.H{"message": "Get user endpoint - implementation pending"})
 			})
 			users.PUT("/:id", func(c *gin.Context) {
+				userActionsTotal.WithLabelValues("update").Inc()
 				c.JSON(http.StatusOK, gin.H{"message": "Update user endpoint - implementation pending"})
 			})
 			users.DELETE("/:id", func(c *gin.Context) {

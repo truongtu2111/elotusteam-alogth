@@ -12,7 +12,54 @@ import (
 	"time"
 
 	"github.com/gin-gonic/gin"
+	"github.com/prometheus/client_golang/prometheus"
+	"github.com/prometheus/client_golang/prometheus/promhttp"
 )
+
+// Prometheus metrics
+var (
+	httpRequestsTotal = prometheus.NewCounterVec(
+		prometheus.CounterOpts{
+			Name: "http_requests_total",
+			Help: "Total number of HTTP requests",
+		},
+		[]string{"method", "endpoint", "status"},
+	)
+	httpRequestDuration = prometheus.NewHistogramVec(
+		prometheus.HistogramOpts{
+			Name: "http_request_duration_seconds",
+			Help: "Duration of HTTP requests in seconds",
+			Buckets: prometheus.DefBuckets,
+		},
+		[]string{"method", "endpoint"},
+	)
+	fileUploadsTotal = prometheus.NewCounterVec(
+		prometheus.CounterOpts{
+			Name: "file_uploads_total",
+			Help: "Total number of file uploads",
+		},
+		[]string{"status"},
+	)
+)
+
+func init() {
+	prometheus.MustRegister(httpRequestsTotal)
+	prometheus.MustRegister(httpRequestDuration)
+	prometheus.MustRegister(fileUploadsTotal)
+}
+
+// Prometheus middleware
+func prometheusMiddleware() gin.HandlerFunc {
+	return func(c *gin.Context) {
+		start := time.Now()
+		c.Next()
+		duration := time.Since(start).Seconds()
+		status := strconv.Itoa(c.Writer.Status())
+		
+		httpRequestsTotal.WithLabelValues(c.Request.Method, c.FullPath(), status).Inc()
+		httpRequestDuration.WithLabelValues(c.Request.Method, c.FullPath()).Observe(duration)
+	}
+}
 
 func main() {
 	// Load configuration from environment
@@ -24,7 +71,13 @@ func main() {
 
 	// Setup router
 	router := gin.Default()
+	
+	// Add Prometheus middleware
+	router.Use(prometheusMiddleware())
 
+	// Metrics endpoint
+	router.GET("/metrics", gin.WrapH(promhttp.Handler()))
+	
 	// Health check endpoint
 	router.GET("/health", func(c *gin.Context) {
 		c.JSON(http.StatusOK, gin.H{
@@ -41,6 +94,8 @@ func main() {
 		files := api.Group("/files")
 		{
 			files.POST("/upload", func(c *gin.Context) {
+				// Simulate file upload logic
+				fileUploadsTotal.WithLabelValues("success").Inc()
 				c.JSON(http.StatusOK, gin.H{"message": "Upload endpoint - implementation pending"})
 			})
 			files.GET("/:id", func(c *gin.Context) {

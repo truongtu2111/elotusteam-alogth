@@ -1,0 +1,81 @@
+# Database Migration Environments Configuration
+
+# Development Environment
+development:
+  host: localhost
+  port: 5432
+  database: microservice_dev
+  username: dev_user
+  password_env: DB_DEV_PASSWORD
+  ssl_mode: disable
+  max_connections: 10
+  connection_timeout: 30
+  migration_timeout: 300
+  backup_required: false
+  auto_rollback_on_failure: true
+
+# Staging Environment
+staging:
+  host: staging-db.internal
+  port: 5432
+  database: microservice_staging
+  username: staging_user
+  password_env: DB_STAGING_PASSWORD
+  ssl_mode: require
+  max_connections: 20
+  connection_timeout: 30
+  migration_timeout: 600
+  backup_required: true
+  auto_rollback_on_failure: true
+  validation_required: true
+  performance_monitoring: true
+
+# Production Environment
+production:
+  host: prod-db.internal
+  port: 5432
+  database: microservice_prod
+  username: prod_user
+  password_env: DB_PROD_PASSWORD
+  ssl_mode: require
+  max_connections: 50
+  connection_timeout: 60
+  migration_timeout: 1800
+  backup_required: true
+  auto_rollback_on_failure: false
+  validation_required: true
+  performance_monitoring: true
+  maintenance_window_required: true
+  approval_required: true
+
+# Migration Settings
+migration_settings:
+  history_table: migration_history
+  lock_table: migration_locks
+  batch_size: 1000
+  parallel_execution: false
+  dry_run_available: true
+  checksum_validation: true
+  
+# Monitoring Configuration
+monitoring:
+  prometheus_metrics: true
+  log_level: info
+  alert_on_failure: true
+  alert_on_long_running: true
+  max_execution_time: 3600
+  
+# Backup Configuration
+backup:
+  retention_days: 30
+  compression: true
+  encryption: true
+  storage_location: s3://migration-backups/
+  
+# Security Settings
+security:
+  audit_logging: true
+  access_control: rbac
+  encryption_at_rest: true
+  encryption_in_transit: true
+  sensitive_data_masking: true

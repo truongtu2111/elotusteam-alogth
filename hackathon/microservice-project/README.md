@@ -354,7 +354,7 @@ This project includes a comprehensive local CI/CD pipeline that mirrors the prod
 | **security** | Security-focused test suite | Custom security tests | ~2-3 min |
 | **build** | Build Docker images for all services | Docker + docker-compose | ~5-10 min |
 | **e2e** | End-to-end workflow tests | Full service stack | ~8-12 min |
-| **performance** | Load and performance testing | Benchmark tests | ~3-5 min |
+| **performance** | Load and performance testing with profiling | Benchmark tests + `pprof` CPU/memory profiling | ~5-8 min |
 | **chaos** | Chaos engineering and resilience tests | Fault injection tests | ~5-8 min |
 
 #### Prerequisites
@@ -449,6 +449,82 @@ tail -f .local-cicd-logs/pipeline_*.log
    ```bash
    chmod +x scripts/local-cicd.sh
    ```
+
+## Performance Profiling
+
+### Overview
+The CI/CD pipeline includes comprehensive performance profiling to identify bottlenecks and optimize service performance.
+
+### Profiling Features
+
+#### Automated Profiling in CI/CD
+- **CPU Profiling**: Identifies functions consuming the most CPU time
+- **Memory Profiling**: Tracks memory allocation patterns and potential leaks
+- **Goroutine Profiling**: Monitors concurrent execution and potential deadlocks
+- **Service Profiling**: Real-time profiling of running services via pprof endpoints
+
+#### Enable Profiling in Services
+```bash
+# Enable profiling endpoints in all services
+./scripts/enable-profiling.sh enable
+
+# Check profiling status
+./scripts/enable-profiling.sh status
+
+# Disable profiling (restore backups)
+./scripts/enable-profiling.sh disable
+```
+
+#### Run Performance Tests with Profiling
+```bash
+# Run full performance suite with profiling
+./scripts/local-cicd.sh custom performance
+
+# Run dedicated performance test runner
+./scripts/run-performance-tests.sh
+
+# Run specific profiling tests
+go test -v -run="TestProfiling" ./tests/performance/...
+```
+
+#### Access Profiling Data
+
+**Live Service Profiling** (when services are running):
+```bash
+# CPU profile (30 seconds)
+curl http://localhost:6060/debug/pprof/profile?seconds=30 -o cpu.prof
+
+# Memory heap profile
+curl http://localhost:6060/debug/pprof/heap -o heap.prof
+
+# Goroutine profile
+curl http://localhost:6060/debug/pprof/goroutine -o goroutine.prof
+
+# Interactive web interface
+go tool pprof -http=:8080 cpu.prof
+```
+
+**Generated Reports** (after CI/CD run):
+- `profiles/cpu_profile.txt` - CPU usage analysis
+- `profiles/mem_profile.txt` - Memory allocation analysis
+- `profiles/performance_analysis.md` - Comprehensive performance report
+- `profiles/*.svg` - Visual profiling graphs
+
+#### Performance Thresholds
+The pipeline automatically checks for:
+- **CPU Usage**: Functions using >10% CPU time
+- **Memory**: Allocations >10MB
+- **Goroutines**: Count >1000 per service
+- **Response Time**: Requests >100ms
+- **Error Rate**: >5% failure rate
+
+#### Performance Optimization Workflow
+1. **Run profiling**: `./scripts/local-cicd.sh custom performance`
+2. **Analyze reports**: Review `profiles/performance_analysis.md`
+3. **Identify bottlenecks**: Check CPU/memory profiles
+4. **Optimize code**: Focus on high-impact functions
+5. **Verify improvements**: Re-run profiling tests
+6. **Monitor continuously**: Set up alerts for regressions
 
 **Pipeline Failure Recovery:**
 

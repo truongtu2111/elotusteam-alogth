@@ -1,0 +1,167 @@
+global:
+  smtp_smarthost: 'localhost:587'
+  smtp_from: 'alerts@microservice-project.com'
+  smtp_auth_username: 'alerts@microservice-project.com'
+  smtp_auth_password: 'your-email-password'
+  slack_api_url: 'https://hooks.slack.com/services/YOUR/SLACK/WEBHOOK'
+
+# Templates for alert notifications
+templates:
+  - '/etc/alertmanager/templates/*.tmpl'
+
+# Route configuration
+route:
+  group_by: ['alertname', 'cluster', 'service']
+  group_wait: 10s
+  group_interval: 10s
+  repeat_interval: 1h
+  receiver: 'default-receiver'
+  routes:
+    # Critical alerts go to on-call immediately
+    - match:
+        severity: critical
+      receiver: 'critical-alerts'
+      group_wait: 0s
+      repeat_interval: 5m
+    
+    # Infrastructure team alerts
+    - match:
+        team: infrastructure
+      receiver: 'infrastructure-team'
+      group_interval: 5m
+    
+    # Backend team alerts
+    - match:
+        team: backend
+      receiver: 'backend-team'
+      group_interval: 5m
+    
+    # Database team alerts
+    - match:
+        team: database
+      receiver: 'database-team'
+      group_interval: 5m
+    
+    # Security team alerts
+    - match:
+        team: security
+      receiver: 'security-team'
+      group_interval: 2m
+    
+    # Product team alerts
+    - match:
+        team: product
+      receiver: 'product-team'
+      group_interval: 15m
+
+# Inhibition rules to prevent alert spam
+inhibit_rules:
+  - source_match:
+      severity: 'critical'
+    target_match:
+      severity: 'warning'
+    equal: ['alertname', 'cluster', 'service']
+
+# Receiver configurations
+receivers:
+  - name: 'default-receiver'
+    slack_configs:
+      - api_url: 'https://hooks.slack.com/services/YOUR/SLACK/WEBHOOK'
+        channel: '#alerts-general'
+        title: 'Microservice Alert'
+        text: '{{ range .Alerts }}{{ .Annotations.summary }}\n{{ .Annotations.description }}{{ end }}'
+        send_resolved: true
+
+  - name: 'critical-alerts'
+    slack_configs:
+      - api_url: 'https://hooks.slack.com/services/YOUR/SLACK/WEBHOOK'
+        channel: '#alerts-critical'
+        title: '🚨 CRITICAL ALERT 🚨'
+        text: '{{ range .Alerts }}{{ .Annotations.summary }}\n{{ .Annotations.description }}{{ end }}'
+        send_resolved: true
+    email_configs:
+      - to: 'oncall@microservice-project.com'
+        subject: '🚨 CRITICAL: {{ .GroupLabels.alertname }}'
+        body: |
+          {{ range .Alerts }}
+          Alert: {{ .Annotations.summary }}
+          Description: {{ .Annotations.description }}
+          Severity: {{ .Labels.severity }}
+          Service: {{ .Labels.job }}
+          Instance: {{ .Labels.instance }}
+          {{ end }}
+    webhook_configs:
+      - url: 'https://api.pagerduty.com/integration/YOUR_INTEGRATION_KEY/enqueue'
+        send_resolved: true
+
+  - name: 'infrastructure-team'
+    slack_configs:
+      - api_url: 'https://hooks.slack.com/services/YOUR/SLACK/WEBHOOK'
+        channel: '#team-infrastructure'
+        title: '⚠️ Infrastructure Alert'
+        text: '{{ range .Alerts }}{{ .Annotations.summary }}\n{{ .Annotations.description }}{{ end }}'
+        send_resolved: true
+    email_configs:
+      - to: 'infrastructure@microservice-project.com'
+        subject: 'Infrastructure Alert: {{ .GroupLabels.alertname }}'
+        body: |
+          {{ range .Alerts }}
+          Alert: {{ .Annotations.summary }}
+          Description: {{ .Annotations.description }}
+          Severity: {{ .Labels.severity }}
+          Instance: {{ .Labels.instance }}
+          {{ end }}
+
+  - name: 'backend-team'
+    slack_configs:
+      - api_url: 'https://hooks.slack.com/services/YOUR/SLACK/WEBHOOK'
+        channel: '#team-backend'
+        title: '🔧 Backend Alert'
+        text: '{{ range .Alerts }}{{ .Annotations.summary }}\n{{ .Annotations.description }}{{ end }}'
+        send_resolved: true
+    email_configs:
+      - to: 'backend@microservice-project.com'
+        subject: 'Backend Alert: {{ .GroupLabels.alertname }}'
+
+  - name: 'database-team'
+    slack_configs:
+      - api_url: 'https://hooks.slack.com/services/YOUR/SLACK/WEBHOOK'
+        channel: '#team-database'
+        title: '🗄️ Database Alert'
+        text: '{{ range .Alerts }}{{ .Annotations.summary }}\n{{ .Annotations.description }}{{ end }}'
+        send_resolved: true
+    email_configs:
+      - to: 'database@microservice-project.com'
+        subject: 'Database Alert: {{ .GroupLabels.alertname }}'
+
+  - name: 'security-team'
+    slack_configs:
+      - api_url: 'https://hooks.slack.com/services/YOUR/SLACK/WEBHOOK'
+        channel: '#team-security'
+        title: '🔒 Security Alert'
+        text: '{{ range .Alerts }}{{ .Annotations.summary }}\n{{ .Annotations.description }}{{ end }}'
+        send_resolved: true
+    email_configs:
+      - to: 'security@microservice-project.com'
+        subject: '🔒 SECURITY ALERT: {{ .GroupLabels.alertname }}'
+        body: |
+          {{ range .Alerts }}
+          SECURITY ALERT
+          Alert: {{ .Annotations.summary }}
+          Description: {{ .Annotations.description }}
+          Severity: {{ .Labels.severity }}
+          Service: {{ .Labels.job }}
+          Instance: {{ .Labels.instance }}
+          Time: {{ .StartsAt }}
+          {{ end }}
+
+  - name: 'product-team'
+    slack_configs:
+      - api_url: 'https://hooks.slack.com/services/YOUR/SLACK/WEBHOOK'
+        channel: '#team-product'
+        title: '📊 Product Metrics Alert'
+        text: '{{ range .Alerts }}{{ .Annotations.summary }}\n{{ .Annotations.description }}{{ end }}'
+        send_resolved: true
+    email_configs:
+      - to: 'product@microservice-project.com'
+        subject: 'Product Metrics Alert: {{ .GroupLabels.alertname }}'

@@ -11,7 +11,61 @@ import (
 	"github.com/elotusteam/microservice-project/shared/config"
 	"github.com/gin-gonic/gin"
 	"github.com/google/uuid"
+	"github.com/prometheus/client_golang/prometheus"
+	"github.com/prometheus/client_golang/prometheus/promhttp"
 )
+
+// Prometheus metrics
+var (
+	httpRequestsTotal = prometheus.NewCounterVec(
+		prometheus.CounterOpts{
+			Name: "http_requests_total",
+			Help: "Total number of HTTP requests",
+		},
+		[]string{"method", "endpoint", "status"},
+	)
+	httpRequestDuration = prometheus.NewHistogramVec(
+		prometheus.HistogramOpts{
+			Name: "http_request_duration_seconds",
+			Help: "Duration of HTTP requests in seconds",
+			Buckets: prometheus.DefBuckets,
+		},
+		[]string{"method", "endpoint"},
+	)
+	analyticsEventsTotal = prometheus.NewCounterVec(
+		prometheus.CounterOpts{
+			Name: "analytics_events_total",
+			Help: "Total number of analytics events",
+		},
+		[]string{"event_type"},
+	)
+	analyticsReportsGenerated = prometheus.NewCounter(
+		prometheus.CounterOpts{
+			Name: "analytics_reports_generated_total",
+			Help: "Total number of analytics reports generated",
+		},
+	)
+)
+
+func init() {
+	prometheus.MustRegister(httpRequestsTotal)
+	prometheus.MustRegister(httpRequestDuration)
+	prometheus.MustRegister(analyticsEventsTotal)
+	prometheus.MustRegister(analyticsReportsGenerated)
+}
+
+// Prometheus middleware
+func prometheusMiddleware() gin.HandlerFunc {
+	return func(c *gin.Context) {
+		start := time.Now()
+		c.Next()
+		duration := time.Since(start).Seconds()
+		status := strconv.Itoa(c.Writer.Status())
+		
+		httpRequestsTotal.WithLabelValues(c.Request.Method, c.FullPath(), status).Inc()
+		httpRequestDuration.WithLabelValues(c.Request.Method, c.FullPath()).Observe(duration)
+	}
+}
 
 func main() {
 	// Load configuration (for future use)
@@ -22,6 +76,9 @@ func main() {
 
 	// Initialize Gin router
 	r := gin.Default()
+	
+	// Add Prometheus middleware
+	r.Use(prometheusMiddleware())
 
 	// Add CORS middleware
 	r.Use(func(c *gin.Context) {
@@ -35,6 +92,9 @@ func main() {
 		c.Next()
 	})
 
+	// Metrics endpoint
+	r.GET("/metrics", gin.WrapH(promhttp.Handler()))
+	
 	// Health check endpoint
 	r.GET("/health", func(c *gin.Context) {
 		c.JSON(http.StatusOK, gin.H{"status": "healthy", "service": "analytics"})
@@ -104,6 +164,9 @@ func trackEvent(c *gin.Context) {
 		return
 	}
 
+	// Increment analytics events counter
+	analyticsEventsTotal.WithLabelValues(string(req.EventType)).Inc()
+	
 	// Mock implementation - in real app, would use actual service
 	c.JSON(http.StatusCreated, gin.H{"message": "Event tracked successfully"})
 }
@@ -333,6 +396,9 @@ func generateReport(c *gin.Context) {
 		return
 	}
 
+	// Increment reports generated counter
+	analyticsReportsGenerated.Inc()
+	
 	// Mock report generation
 	report := &domain.Report{
 		ID:          uuid.New(),

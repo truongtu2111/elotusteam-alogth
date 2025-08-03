@@ -1,0 +1,46 @@
+apiVersion: 1
+
+providers:
+  # System and Infrastructure Dashboards
+  - name: 'system-dashboards'
+    orgId: 1
+    folder: 'System Monitoring'
+    type: file
+    disableDeletion: false
+    updateIntervalSeconds: 10
+    allowUiUpdates: true
+    options:
+      path: /etc/grafana/provisioning/dashboards/system
+
+  # Application and Business Dashboards
+  - name: 'application-dashboards'
+    orgId: 1
+    folder: 'Application Monitoring'
+    type: file
+    disableDeletion: false
+    updateIntervalSeconds: 10
+    allowUiUpdates: true
+    options:
+      path: /etc/grafana/provisioning/dashboards/application
+
+  # Performance and Profiling Dashboards
+  - name: 'performance-dashboards'
+    orgId: 1
+    folder: 'Performance Monitoring'
+    type: file
+    disableDeletion: false
+    updateIntervalSeconds: 10
+    allowUiUpdates: true
+    options:
+      path: /etc/grafana/provisioning/dashboards/performance
+
+  # Alert and SLA Dashboards
+  - name: 'alert-dashboards'
+    orgId: 1
+    folder: 'Alerts & SLA'
+    type: file
+    disableDeletion: false
+    updateIntervalSeconds: 10
+    allowUiUpdates: true
+    options:
+      path: /etc/grafana/provisioning/dashboards/alerts

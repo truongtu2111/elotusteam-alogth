@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Local CI/CD Pipeline Report</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .header { background-color: #f0f0f0; padding: 20px; border-radius: 5px; }
+        .stage { margin: 20px 0; padding: 15px; border-left: 4px solid #007cba; }
+        .success { border-left-color: #28a745; }
+        .warning { border-left-color: #ffc107; }
+        .error { border-left-color: #dc3545; }
+        .timestamp { color: #666; font-size: 0.9em; }
+        pre { background-color: #f8f9fa; padding: 10px; border-radius: 3px; overflow-x: auto; }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Local CI/CD Pipeline Report</h1>
+        <p class="timestamp">Generated: Sun Aug  3 15:22:05 +07 2025</p>
+        <p>Git Commit: 3c4ae73bf2962891c381cfcbfb9cc696620dd89b</p>
+        <p>Branch: main</p>
+    </div>
+    
+    <div class="stage">
+        <h2>Pipeline Summary</h2>
+        <p>Log file: <code>/Users/macbookpro2017/Documents/GitHub/elotusteam-alogth/hackathon/microservice-project/.local-cicd-logs/pipeline_20250803_152125.log</code></p>
+        <p>Coverage report: <code>coverage.html</code> (if generated)</p>
+    </div>
+    
+    <div class="stage">
+        <h2>Recent Log Output</h2>
+        <pre>BenchmarkMapOperations/PreAllocated-8         	    6270	    188104 ns/op	   71081 B/op	    1746 allocs/op
+BenchmarkStringOperations
+BenchmarkStringOperations/Concatenation
+BenchmarkStringOperations/Concatenation-8     	   39054	     30973 ns/op	   31551 B/op	     199 allocs/op
+BenchmarkStringOperations/StringBuilder
+BenchmarkStringOperations/StringBuilder-8     	   80823	     14851 ns/op	    3394 B/op	     106 allocs/op
+BenchmarkCryptoOperations
+BenchmarkCryptoOperations/RandomGeneration1024B
+BenchmarkCryptoOperations/RandomGeneration1024B-8         	  126982	      9486 ns/op	    1024 B/op	       1 allocs/op
+BenchmarkCryptoOperations/RandomGeneration4096B
+BenchmarkCryptoOperations/RandomGeneration4096B-8         	   30402	     39391 ns/op	    4096 B/op	       1 allocs/op
+BenchmarkCryptoOperations/RandomGeneration16384B
+BenchmarkCryptoOperations/RandomGeneration16384B-8        	    7812	    155377 ns/op	   16384 B/op	       1 allocs/op
+BenchmarkGoroutineCreation
+BenchmarkGoroutineCreation/SimpleGoroutine
+BenchmarkGoroutineCreation/SimpleGoroutine-8              	 1317601	       923.5 ns/op	     112 B/op	       2 allocs/op
+BenchmarkGoroutineCreation/WorkerPool
+BenchmarkGoroutineCreation/WorkerPool-8                   	 5360706	       210.7 ns/op	       0 B/op	       0 allocs/op
+BenchmarkMemoryUsage
+BenchmarkMemoryUsage/MemoryIntensive
+BenchmarkMemoryUsage/MemoryIntensive-8                    	    2685	    438244 ns/op	         3.495 bytes/op	 1024008 B/op	    1000 allocs/op
+BenchmarkConcurrentAccess
+BenchmarkConcurrentAccess/ChannelCommunication
+BenchmarkConcurrentAccess/ChannelCommunication-8          	11375576	       102.9 ns/op	       0 B/op	       0 allocs/op
+PASS
+ok  	github.com/elotusteam/microservice-project/tests/performance	36.863s
+[0;32m[SUCCESS][0m Performance tests with profiling completed
+[0;34m[INFO][0m Generating CPU profile report...
+[0;34m[INFO][0m Running: CPU profile text report
+Command: go tool pprof -text /Users/macbookpro2017/Documents/GitHub/elotusteam-alogth/hackathon/microservice-project/profiles/cpu.prof > /Users/macbookpro2017/Documents/GitHub/elotusteam-alogth/hackathon/microservice-project/profiles/cpu_profile.txt
+[0;32m[SUCCESS][0m CPU profile text report completed
+[0;34m[INFO][0m Running: CPU profile SVG report
+Command: go tool pprof -svg /Users/macbookpro2017/Documents/GitHub/elotusteam-alogth/hackathon/microservice-project/profiles/cpu.prof > /Users/macbookpro2017/Documents/GitHub/elotusteam-alogth/hackathon/microservice-project/profiles/cpu_profile.svg
+failed to execute dot. Is Graphviz installed? Error: exec: "dot": executable file not found in $PATH
+[0;31m[ERROR][0m CPU profile SVG report failed
+[0;34m[INFO][0m Generating memory profile report...
+[0;34m[INFO][0m Running: Memory profile text report
+Command: go tool pprof -text /Users/macbookpro2017/Documents/GitHub/elotusteam-alogth/hackathon/microservice-project/profiles/mem.prof > /Users/macbookpro2017/Documents/GitHub/elotusteam-alogth/hackathon/microservice-project/profiles/mem_profile.txt
+[0;32m[SUCCESS][0m Memory profile text report completed
+[0;34m[INFO][0m Running: Memory profile SVG report
+Command: go tool pprof -svg /Users/macbookpro2017/Documents/GitHub/elotusteam-alogth/hackathon/microservice-project/profiles/mem.prof > /Users/macbookpro2017/Documents/GitHub/elotusteam-alogth/hackathon/microservice-project/profiles/mem_profile.svg
+failed to execute dot. Is Graphviz installed? Error: exec: "dot": executable file not found in $PATH
+[0;31m[ERROR][0m Memory profile SVG report failed
+[0;34m[INFO][0m Analyzing performance metrics...
+[0;32m[SUCCESS][0m Performance analysis report generated: /Users/macbookpro2017/Documents/GitHub/elotusteam-alogth/hackathon/microservice-project/profiles/performance_analysis.md
+[0;34m[INFO][0m Checking for common performance issues...
+[1;33m[WARNING][0m High CPU usage detected in some functions (>10%)
+[1;33m[WARNING][0m Large memory allocations detected (>10MB)
+[1;33m[WARNING][0m Performance issues detected. Review the analysis report for details.
+[0;35m[STAGE][0m Generating Pipeline Report</pre>
+    </div>
+</body>
+</html>
