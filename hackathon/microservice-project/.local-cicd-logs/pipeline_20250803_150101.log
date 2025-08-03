@@ -1,0 +1,17 @@
+[0;34m[INFO][0m Starting Local CI/CD Pipeline
+[0;34m[INFO][0m Project: microservice-project
+[0;34m[INFO][0m Git Commit: 1505d78
+[0;34m[INFO][0m Branch: main
+[0;34m[INFO][0m Timestamp: Sun Aug  3 15:01:01 +07 2025
+[0;34m[INFO][0m Log file: /Users/macbookpro2017/Documents/GitHub/elotusteam-alogth/hackathon/microservice-project/.local-cicd-logs/pipeline_20250803_150101.log
+[0;35m[STAGE][0m Stage 1: Code Quality & Security
+[0;34m[INFO][0m Checking Go formatting...
+[1;33m[WARNING][0m Go formatting issues found. Running gofmt...
+[0;34m[INFO][0m Running: Go formatting fix
+Command: gofmt -w .
+[0;32m[SUCCESS][0m Go formatting fix completed
+[0;34m[INFO][0m Running: Go vet analysis
+Command: go vet ./...
+[0;32m[SUCCESS][0m Go vet analysis completed
+[0;34m[INFO][0m Running: Linting with golangci-lint
+Command: golangci-lint run

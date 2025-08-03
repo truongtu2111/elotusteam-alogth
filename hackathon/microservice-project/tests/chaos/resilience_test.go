@@ -24,12 +24,12 @@ const (
 
 // CircuitBreaker implements a simple circuit breaker pattern
 type CircuitBreaker struct {
-	maxFailures   int
-	timeout       time.Duration
-	failureCount  int64
-	lastFailTime  time.Time
-	state         CircuitBreakerState
-	mutex         sync.RWMutex
+	maxFailures  int
+	timeout      time.Duration
+	failureCount int64
+	lastFailTime time.Time
+	state        CircuitBreakerState
+	mutex        sync.RWMutex
 }
 
 // NewCircuitBreaker creates a new circuit breaker
@@ -318,7 +318,7 @@ func TestInfrastructureChaos(t *testing.T) {
 
 		successRate := float64(successCount) / float64(totalOperations)
 		t.Logf("Database operations: Success rate: %.2f%% (%d/%d)", successRate*100, successCount, totalOperations)
-		
+
 		// With circuit breaker, we should have some protection
 		assert.True(t, successRate > 0.3, "Circuit breaker should provide some protection")
 	})
@@ -337,7 +337,7 @@ func TestInfrastructureChaos(t *testing.T) {
 
 		successRate := float64(successCount) / float64(memoryIntensiveOperations)
 		t.Logf("Memory intensive operations: Success rate: %.2f%% (%d/%d)", successRate*100, successCount, memoryIntensiveOperations)
-		
+
 		// Most operations should succeed unless system is under extreme pressure
 		assert.True(t, successRate > 0.5, "Most memory operations should succeed")
 	})
@@ -364,7 +364,7 @@ func TestInfrastructureChaos(t *testing.T) {
 
 		successRate := float64(atomic.LoadInt64(&successCount)) / float64(totalOperations)
 		t.Logf("CPU intensive operations: Success rate: %.2f%% (%d/%d)", successRate*100, atomic.LoadInt64(&successCount), totalOperations)
-		
+
 		// Operations should complete even under CPU pressure
 		assert.True(t, successRate > 0.7, "Most CPU operations should succeed")
 	})
@@ -395,7 +395,7 @@ func TestFaultTolerance(t *testing.T) {
 
 		successRate := float64(successfulChains) / float64(totalRequests)
 		t.Logf("Service chain success rate: %.2f%% (%d/%d)", successRate*100, successfulChains, totalRequests)
-		
+
 		// Even with failures, some requests should succeed
 		assert.True(t, successRate > 0.4, "Service chain should have reasonable success rate")
 	})
@@ -436,7 +436,7 @@ func TestFaultTolerance(t *testing.T) {
 		wg.Wait()
 
 		t.Logf("Bulkhead results: %+v", results)
-		
+
 		// Critical operations should have high success rate
 		assert.True(t, float64(results["critical"])/50 > 0.9, "Critical operations should succeed")
 		// Background operations can fail more
@@ -510,7 +510,7 @@ func simulateServiceChain(services []*MockService) bool {
 		if rand.Float64() < service.failureRate {
 			return false
 		}
-		
+
 		// Simulate dependency failures affecting this service
 		for range service.dependencies {
 			if rand.Float64() < 0.1 { // 10% chance dependency affects this service

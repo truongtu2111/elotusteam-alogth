@@ -17,11 +17,11 @@ import (
 
 // passwordService implements PasswordService interface
 type passwordService struct {
-	config                    *config.Config
-	userRepo                  domain.UserRepository
-	passwordResetTokenRepo    domain.PasswordResetTokenRepository
-	activityLogRepo           domain.ActivityLogRepository
-	notificationService       NotificationService
+	config                 *config.Config
+	userRepo               domain.UserRepository
+	passwordResetTokenRepo domain.PasswordResetTokenRepository
+	activityLogRepo        domain.ActivityLogRepository
+	notificationService    NotificationService
 }
 
 // NewPasswordService creates a new password service
@@ -33,11 +33,11 @@ func NewPasswordService(
 	notificationService NotificationService,
 ) PasswordService {
 	return &passwordService{
-		config:                    config,
-		userRepo:                  userRepo,
-		passwordResetTokenRepo:    passwordResetTokenRepo,
-		activityLogRepo:           activityLogRepo,
-		notificationService:       notificationService,
+		config:                 config,
+		userRepo:               userRepo,
+		passwordResetTokenRepo: passwordResetTokenRepo,
+		activityLogRepo:        activityLogRepo,
+		notificationService:    notificationService,
 	}
 }
 
