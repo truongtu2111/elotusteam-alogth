@@ -24,10 +24,10 @@ func NewInMemoryCache() FeatureFlagCache {
 	cache := &InMemoryCache{
 		data: make(map[string]*cacheEntry),
 	}
-	
+
 	// Start cleanup goroutine
 	go cache.cleanup()
-	
+
 	return cache
 }
 

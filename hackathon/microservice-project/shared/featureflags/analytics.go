@@ -316,11 +316,11 @@ func (a *InMemoryAnalytics) GetFlagMetrics(ctx context.Context, flagID string, s
 	dailyBreakdown := make(map[string]map[string]int64)
 
 	for _, event := range a.events {
-		if event.FlagID == flagID && 
-		   event.Timestamp.After(startDate) && 
-		   event.Timestamp.Before(endDate) &&
-		   event.EventType == "evaluation" {
-			
+		if event.FlagID == flagID &&
+			event.Timestamp.After(startDate) &&
+			event.Timestamp.Before(endDate) &&
+			event.EventType == "evaluation" {
+
 			totalEvaluations++
 			if event.Result {
 				enabledCount++
@@ -384,10 +384,10 @@ func (a *InMemoryAnalytics) GetFlagUsage(ctx context.Context, flagID string, sta
 	userCounts := make(map[string]int64)
 
 	for _, event := range a.events {
-		if event.FlagID == flagID && 
-		   event.Timestamp.After(startDate) && 
-		   event.Timestamp.Before(endDate) {
-			
+		if event.FlagID == flagID &&
+			event.Timestamp.After(startDate) &&
+			event.Timestamp.Before(endDate) {
+
 			serviceBreakdown[event.Service]++
 			eventTypeBreakdown[event.EventType]++
 			if event.UserID != "" {

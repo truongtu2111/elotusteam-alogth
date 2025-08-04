@@ -41,9 +41,9 @@ func DefaultMiddlewareConfig() *MiddlewareConfig {
 		DefaultServiceName:  "unknown",
 		EnableLogging:       true,
 		EnableMetrics:       true,
-		SkipPaths:          []string{"/health", "/metrics", "/ping"},
-		RequiredFlags:      []string{},
-		HeaderPrefix:       "X-Feature-Flag-",
+		SkipPaths:           []string{"/health", "/metrics", "/ping"},
+		RequiredFlags:       []string{},
+		HeaderPrefix:        "X-Feature-Flag-",
 	}
 }
 
@@ -193,7 +193,7 @@ func (m *GinMiddleware) VariantHandler(flagID string, handlers map[string]gin.Ha
 	return func(c *gin.Context) {
 		userContext := m.extractUserContext(c)
 		variant, _ := m.manager.GetVariant(c.Request.Context(), flagID, userContext)
-		
+
 		if handler, exists := handlers[variant]; exists {
 			handler(c)
 		} else if defaultHandler != nil {

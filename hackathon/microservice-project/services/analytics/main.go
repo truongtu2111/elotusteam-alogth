@@ -26,8 +26,8 @@ var (
 	)
 	httpRequestDuration = prometheus.NewHistogramVec(
 		prometheus.HistogramOpts{
-			Name: "http_request_duration_seconds",
-			Help: "Duration of HTTP requests in seconds",
+			Name:    "http_request_duration_seconds",
+			Help:    "Duration of HTTP requests in seconds",
 			Buckets: prometheus.DefBuckets,
 		},
 		[]string{"method", "endpoint"},
@@ -61,7 +61,7 @@ func prometheusMiddleware() gin.HandlerFunc {
 		c.Next()
 		duration := time.Since(start).Seconds()
 		status := strconv.Itoa(c.Writer.Status())
-		
+
 		httpRequestsTotal.WithLabelValues(c.Request.Method, c.FullPath(), status).Inc()
 		httpRequestDuration.WithLabelValues(c.Request.Method, c.FullPath()).Observe(duration)
 	}
@@ -76,7 +76,7 @@ func main() {
 
 	// Initialize Gin router
 	r := gin.Default()
-	
+
 	// Add Prometheus middleware
 	r.Use(prometheusMiddleware())
 
@@ -94,7 +94,7 @@ func main() {
 
 	// Metrics endpoint
 	r.GET("/metrics", gin.WrapH(promhttp.Handler()))
-	
+
 	// Health check endpoint
 	r.GET("/health", func(c *gin.Context) {
 		c.JSON(http.StatusOK, gin.H{"status": "healthy", "service": "analytics"})
@@ -166,7 +166,7 @@ func trackEvent(c *gin.Context) {
 
 	// Increment analytics events counter
 	analyticsEventsTotal.WithLabelValues(string(req.EventType)).Inc()
-	
+
 	// Mock implementation - in real app, would use actual service
 	c.JSON(http.StatusCreated, gin.H{"message": "Event tracked successfully"})
 }
@@ -398,7 +398,7 @@ func generateReport(c *gin.Context) {
 
 	// Increment reports generated counter
 	analyticsReportsGenerated.Inc()
-	
+
 	// Mock report generation
 	report := &domain.Report{
 		ID:          uuid.New(),

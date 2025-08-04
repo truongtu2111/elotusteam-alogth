@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Local CI/CD Pipeline Report</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .header { background-color: #f0f0f0; padding: 20px; border-radius: 5px; }
+        .stage { margin: 20px 0; padding: 15px; border-left: 4px solid #007cba; }
+        .success { border-left-color: #28a745; }
+        .warning { border-left-color: #ffc107; }
+        .error { border-left-color: #dc3545; }
+        .timestamp { color: #666; font-size: 0.9em; }
+        pre { background-color: #f8f9fa; padding: 10px; border-radius: 3px; overflow-x: auto; }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Local CI/CD Pipeline Report</h1>
+        <p class="timestamp">Generated: Mon Aug  4 07:34:20 +07 2025</p>
+        <p>Git Commit: 572c85e2dfffc7f4a17915182426a74cca8f56c2</p>
+        <p>Branch: main</p>
+    </div>
+    
+    <div class="stage">
+        <h2>Pipeline Summary</h2>
+        <p>Log file: <code>/Users/macbookpro2017/Documents/GitHub/elotusteam-alogth/hackathon/microservice-project/.local-cicd-logs/pipeline_20250804_072452.log</code></p>
+        <p>Coverage report: <code>coverage.html</code> (if generated)</p>
+    </div>
+    
+    <div class="stage">
+        <h2>Recent Log Output</h2>
+        <pre>BenchmarkMemoryUsage/MemoryIntensive
+BenchmarkMemoryUsage/MemoryIntensive-8                    	    3466	    300607 ns/op	5322199675046030 bytes/op	 1024001 B/op	    1000 allocs/op
+BenchmarkConcurrentAccess
+BenchmarkConcurrentAccess/ChannelCommunication
+BenchmarkConcurrentAccess/ChannelCommunication-8          	 9403482	       128.3 ns/op	       0 B/op	       0 allocs/op
+PASS
+ok  	github.com/elotusteam/microservice-project/tests/performance	35.657s
+[0;32m[SUCCESS][0m Performance tests with profiling completed
+[0;34m[INFO][0m Generating CPU profile report...
+[0;34m[INFO][0m Running: CPU profile text report
+Command: go tool pprof -text /Users/macbookpro2017/Documents/GitHub/elotusteam-alogth/hackathon/microservice-project/profiles/cpu.prof > /Users/macbookpro2017/Documents/GitHub/elotusteam-alogth/hackathon/microservice-project/profiles/cpu_profile.txt
+[0;32m[SUCCESS][0m CPU profile text report completed
+[0;34m[INFO][0m Running: CPU profile SVG report
+Command: go tool pprof -svg /Users/macbookpro2017/Documents/GitHub/elotusteam-alogth/hackathon/microservice-project/profiles/cpu.prof > /Users/macbookpro2017/Documents/GitHub/elotusteam-alogth/hackathon/microservice-project/profiles/cpu_profile.svg
+[0;32m[SUCCESS][0m CPU profile SVG report completed
+[0;34m[INFO][0m Generating memory profile report...
+[0;34m[INFO][0m Running: Memory profile text report
+Command: go tool pprof -text /Users/macbookpro2017/Documents/GitHub/elotusteam-alogth/hackathon/microservice-project/profiles/mem.prof > /Users/macbookpro2017/Documents/GitHub/elotusteam-alogth/hackathon/microservice-project/profiles/mem_profile.txt
+[0;32m[SUCCESS][0m Memory profile text report completed
+[0;34m[INFO][0m Running: Memory profile SVG report
+Command: go tool pprof -svg /Users/macbookpro2017/Documents/GitHub/elotusteam-alogth/hackathon/microservice-project/profiles/mem.prof > /Users/macbookpro2017/Documents/GitHub/elotusteam-alogth/hackathon/microservice-project/profiles/mem_profile.svg
+[0;32m[SUCCESS][0m Memory profile SVG report completed
+[0;34m[INFO][0m Analyzing performance metrics...
+[0;32m[SUCCESS][0m Performance analysis report generated: /Users/macbookpro2017/Documents/GitHub/elotusteam-alogth/hackathon/microservice-project/profiles/performance_analysis.md
+[0;34m[INFO][0m Checking for common performance issues...
+[1;33m[WARNING][0m High CPU usage detected in some functions (>10%)
+[1;33m[WARNING][0m Large memory allocations detected (>10MB)
+[1;33m[WARNING][0m Performance issues detected. Review the analysis report for details.
+[0;35m[STAGE][0m Stage 8: Chaos Engineering Tests
+[0;34m[INFO][0m Running: Chaos engineering tests (short mode)
+Command: go test -v -short ./tests/chaos/...
+=== RUN   TestCircuitBreakerResilience
+    resilience_test.go:132: Skipping chaos test in short mode
+--- SKIP: TestCircuitBreakerResilience (0.00s)
+=== RUN   TestRetryMechanism
+    resilience_test.go:184: Skipping chaos test in short mode
+--- SKIP: TestRetryMechanism (0.00s)
+=== RUN   TestNetworkChaos
+    resilience_test.go:255: Skipping chaos test in short mode
+--- SKIP: TestNetworkChaos (0.00s)
+=== RUN   TestInfrastructureChaos
+    resilience_test.go:299: Skipping chaos test in short mode
+--- SKIP: TestInfrastructureChaos (0.00s)
+=== RUN   TestFaultTolerance
+    resilience_test.go:376: Skipping chaos test in short mode
+--- SKIP: TestFaultTolerance (0.00s)
+PASS
+ok  	github.com/elotusteam/microservice-project/tests/chaos	(cached)
+[0;32m[SUCCESS][0m Chaos engineering tests (short mode) completed
+[0;35m[STAGE][0m Generating Pipeline Report</pre>
+    </div>
+</body>
+</html>

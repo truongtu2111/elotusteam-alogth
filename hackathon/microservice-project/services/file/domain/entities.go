@@ -81,3 +81,28 @@ type FileVersion struct {
 	Checksum  string    `json:"checksum" db:"checksum"`
 	CreatedAt time.Time `json:"created_at" db:"created_at"`
 }
+
+// ImageVariant represents different image sizes and qualities
+type ImageVariant struct {
+	ID          string             `json:"id" db:"id"`
+	FileID      uuid.UUID          `json:"file_id" db:"file_id"`
+	VariantType string             `json:"variant_type" db:"variant_type"`
+	Width       int                `json:"width" db:"width"`
+	Height      int                `json:"height" db:"height"`
+	Size        int64              `json:"size" db:"size"`
+	Path        string             `json:"path" db:"path"`
+	Format      string             `json:"format" db:"format"`
+	Quality     int                `json:"quality" db:"quality"`
+	Status      ImageVariantStatus `json:"status" db:"status"`
+	CreatedAt   time.Time          `json:"created_at" db:"created_at"`
+	UpdatedAt   time.Time          `json:"updated_at" db:"updated_at"`
+}
+
+// ImageVariantStatus represents the status of an image variant
+type ImageVariantStatus string
+
+const (
+	ImageVariantStatusProcessing ImageVariantStatus = "processing"
+	ImageVariantStatusReady      ImageVariantStatus = "ready"
+	ImageVariantStatusError      ImageVariantStatus = "error"
+)

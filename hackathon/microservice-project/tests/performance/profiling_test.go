@@ -17,11 +17,11 @@ import (
 
 // ProfilingConfig defines configuration for profiling tests
 type ProfilingConfig struct {
-	Duration        time.Duration
-	ConcurrentUsers int
-	RequestsPerUser int
-	ProfileCPU      bool
-	ProfileMemory   bool
+	Duration         time.Duration
+	ConcurrentUsers  int
+	RequestsPerUser  int
+	ProfileCPU       bool
+	ProfileMemory    bool
 	ProfileGoroutine bool
 }
 
@@ -32,11 +32,11 @@ func TestServiceProfiling(t *testing.T) {
 	}
 
 	config := ProfilingConfig{
-		Duration:        60 * time.Second,
-		ConcurrentUsers: 50,
-		RequestsPerUser: 100,
-		ProfileCPU:      true,
-		ProfileMemory:   true,
+		Duration:         60 * time.Second,
+		ConcurrentUsers:  50,
+		RequestsPerUser:  100,
+		ProfileCPU:       true,
+		ProfileMemory:    true,
 		ProfileGoroutine: true,
 	}
 
@@ -100,7 +100,7 @@ func TestMemoryLeakDetection(t *testing.T) {
 		// Simulate service operations that might leak memory
 		data := make([]byte, 1024*1024) // 1MB allocation
 		_ = data
-		
+
 		// Simulate some processing
 		time.Sleep(time.Millisecond)
 	}
@@ -115,15 +115,24 @@ func TestMemoryLeakDetection(t *testing.T) {
 	finalAlloc := m2.Alloc
 
 	// Check for memory leaks
-	memoryIncrease := finalAlloc - baselineAlloc
-	memoryIncreasePercent := float64(memoryIncrease) / float64(baselineAlloc) * 100
-
-	t.Logf("Baseline memory: %d bytes", baselineAlloc)
-	t.Logf("Final memory: %d bytes", finalAlloc)
-	t.Logf("Memory increase: %d bytes (%.2f%%)", memoryIncrease, memoryIncreasePercent)
+	var memoryIncreasePercent float64
+	if finalAlloc >= baselineAlloc {
+		memoryIncrease := finalAlloc - baselineAlloc
+		memoryIncreasePercent = float64(memoryIncrease) / float64(baselineAlloc) * 100
+		t.Logf("Baseline memory: %d bytes", baselineAlloc)
+		t.Logf("Final memory: %d bytes", finalAlloc)
+		t.Logf("Memory increase: %d bytes (%.2f%%)", memoryIncrease, memoryIncreasePercent)
+	} else {
+		memoryDecrease := baselineAlloc - finalAlloc
+		memoryIncreasePercent = -float64(memoryDecrease) / float64(baselineAlloc) * 100
+		t.Logf("Baseline memory: %d bytes", baselineAlloc)
+		t.Logf("Final memory: %d bytes", finalAlloc)
+		t.Logf("Memory decrease: %d bytes (%.2f%%)", memoryDecrease, -memoryIncreasePercent)
+	}
 
 	// Assert memory increase is within acceptable limits (< 10%)
-	assert.True(t, memoryIncreasePercent < 10.0, 
+	// Note: Memory decrease (negative increase) is acceptable
+	assert.True(t, memoryIncreasePercent < 10.0,
 		"Memory increase %.2f%% exceeds threshold of 10%%", memoryIncreasePercent)
 }
 
@@ -168,7 +177,7 @@ func TestGoroutineLeakDetection(t *testing.T) {
 	t.Logf("Goroutine increase: %d", goroutineIncrease)
 
 	// Assert goroutine count is within acceptable limits (< 10 extra)
-	assert.True(t, goroutineIncrease < 10, 
+	assert.True(t, goroutineIncrease < 10,
 		"Goroutine increase %d exceeds threshold of 10", goroutineIncrease)
 }
 
@@ -239,7 +248,7 @@ func TestCPUUsageUnderLoad(t *testing.T) {
 		t.Logf("CPU samples collected: %d", len(cpuSamples))
 
 		// Assert CPU usage is reasonable (< 90%)
-		assert.True(t, avgCPU < 90.0, 
+		assert.True(t, avgCPU < 90.0,
 			"Average CPU usage %.2f%% exceeds threshold of 90%%", avgCPU)
 	}
 }
@@ -247,12 +256,12 @@ func TestCPUUsageUnderLoad(t *testing.T) {
 // runProfilingLoadTest runs a load test while collecting profiling data
 func runProfilingLoadTest(t *testing.T, config ProfilingConfig) map[string]interface{} {
 	var (
-		totalRequests int64
+		totalRequests  int64
 		successfulReqs int64
-		failedReqs    int64
-		responseTimes []time.Duration
-		mu           sync.Mutex
-		wg           sync.WaitGroup
+		failedReqs     int64
+		responseTimes  []time.Duration
+		mu             sync.Mutex
+		wg             sync.WaitGroup
 	)
 
 	startTime := time.Now()
@@ -266,10 +275,10 @@ func runProfilingLoadTest(t *testing.T, config ProfilingConfig) map[string]inter
 
 			for j := 0; j < config.RequestsPerUser && time.Now().Before(endTime); j++ {
 				reqStart := time.Now()
-				
+
 				// Simulate HTTP request
 				resp := simulateHTTPRequest()
-				
+
 				reqDuration := time.Since(reqStart)
 
 				mu.Lock()
@@ -291,11 +300,11 @@ func runProfilingLoadTest(t *testing.T, config ProfilingConfig) map[string]inter
 	wg.Wait()
 
 	return map[string]interface{}{
-		"total_requests":   totalRequests,
-		"successful_reqs":  successfulReqs,
-		"failed_reqs":      failedReqs,
-		"response_times":   responseTimes,
-		"duration":         time.Since(startTime),
+		"total_requests":  totalRequests,
+		"successful_reqs": successfulReqs,
+		"failed_reqs":     failedReqs,
+		"response_times":  responseTimes,
+		"duration":        time.Since(startTime),
 	}
 }
 
@@ -303,7 +312,7 @@ func runProfilingLoadTest(t *testing.T, config ProfilingConfig) map[string]inter
 func simulateHTTPRequest() *http.Response {
 	// Simulate various response times and status codes
 	time.Sleep(time.Duration(10+rand.Intn(50)) * time.Millisecond)
-	
+
 	statusCode := 200
 	if rand.Float32() < 0.05 { // 5% error rate
 		statusCode = 500
@@ -349,7 +358,7 @@ func analyzeProfilingResults(t *testing.T, results map[string]interface{}, confi
 	// Memory usage check
 	var m runtime.MemStats
 	runtime.ReadMemStats(&m)
-	t.Logf("Memory Usage: Alloc=%d KB, TotalAlloc=%d KB, Sys=%d KB, NumGC=%d", 
+	t.Logf("Memory Usage: Alloc=%d KB, TotalAlloc=%d KB, Sys=%d KB, NumGC=%d",
 		m.Alloc/1024, m.TotalAlloc/1024, m.Sys/1024, m.NumGC)
 
 	// Goroutine count check

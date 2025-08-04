@@ -1,154 +1,147 @@
 File: performance.test
 Type: cpu
-Time: Aug 3, 2025 at 3:29pm (+07)
-Duration: 35.10s, Total samples = 57.88s (164.90%)
-Showing nodes accounting for 52.79s, 91.21% of 57.88s total
-Dropped 343 nodes (cum <= 0.29s)
+Time: Aug 4, 2025 at 8:12am (+07)
+Duration: 38.20s, Total samples = 63.26s (165.61%)
+Showing nodes accounting for 58.55s, 92.55% of 63.26s total
+Dropped 326 nodes (cum <= 0.32s)
       flat  flat%   sum%        cum   cum%
-    12.30s 21.25% 21.25%     12.30s 21.25%  runtime.usleep
-     6.52s 11.26% 32.52%      6.52s 11.26%  runtime.pthread_cond_wait
-     5.32s  9.19% 41.71%      5.32s  9.19%  runtime.kevent
-     4.94s  8.53% 50.24%      4.94s  8.53%  runtime.pthread_cond_signal
-     4.34s  7.50% 57.74%      4.62s  7.98%  golang.org/x/crypto/blowfish.encryptBlock
-     3.69s  6.38% 64.12%      3.70s  6.39%  syscall.syscall
-     1.95s  3.37% 67.48%      1.95s  3.37%  runtime.pthread_kill
-     1.89s  3.27% 70.75%      1.89s  3.27%  runtime.madvise
-     1.55s  2.68% 73.43%      1.55s  2.68%  runtime.procyield
-     1.39s  2.40% 75.83%      1.39s  2.40%  runtime.pthread_mutex_lock
-     1.38s  2.38% 78.21%      1.59s  2.75%  github.com/elotusteam/microservice-project/tests/performance.BenchmarkSliceOperations.func2
-     1.22s  2.11% 80.32%      1.33s  2.30%  github.com/elotusteam/microservice-project/tests/performance.BenchmarkSliceOperations.func3
-     1.14s  1.97% 82.29%      1.14s  1.97%  runtime.memmove
-     0.61s  1.05% 83.34%      0.61s  1.05%  runtime.asyncPreempt
-     0.56s  0.97% 84.31%      0.56s  0.97%  runtime.pthread_cond_timedwait_relative_np
-     0.45s  0.78% 85.09%      2.39s  4.13%  runtime.mallocgc
-     0.45s  0.78% 85.87%      0.48s  0.83%  runtime.scanblock
-     0.42s  0.73% 86.59%      0.42s  0.73%  runtime.memclrNoHeapPointers
-     0.39s  0.67% 87.27%      0.39s  0.67%  runtime.pthread_mutex_unlock
-     0.35s   0.6% 87.87%      0.99s  1.71%  runtime.scanobject
-     0.31s  0.54% 88.41%     13.80s 23.84%  runtime.lock2
-     0.21s  0.36% 88.77%      0.53s  0.92%  fmt.(*pp).doPrintf
-     0.19s  0.33% 89.10%      3.04s  5.25%  runtime.unlock2
-     0.14s  0.24% 89.34%      4.77s  8.24%  golang.org/x/crypto/blowfish.ExpandKey
-     0.06s   0.1% 89.44%      0.67s  1.16%  encoding/json.(*decodeState).object
-     0.06s   0.1% 89.55%      0.31s  0.54%  github.com/elotusteam/microservice-project/tests/performance.BenchmarkSliceOperations.func1
-     0.05s 0.086% 89.63%      0.52s   0.9%  encoding/json.mapEncoder.encode
-     0.05s 0.086% 89.72%      1.20s  2.07%  fmt.Sprintf
-     0.05s 0.086% 89.81%      0.53s  0.92%  runtime.(*mcache).refill
-     0.05s 0.086% 89.89%      0.37s  0.64%  runtime.(*sweepLocked).sweep
-     0.05s 0.086% 89.98%      5.57s  9.62%  runtime.chanrecv
-     0.04s 0.069% 90.05%      0.88s  1.52%  encoding/json.structEncoder.encode
-     0.04s 0.069% 90.12%      0.62s  1.07%  github.com/elotusteam/microservice-project/tests/performance.BenchmarkStringOperations.func2
-     0.04s 0.069% 90.19%      0.42s  0.73%  runtime.deductAssistCredit
-     0.04s 0.069% 90.26%      0.34s  0.59%  runtime.gcFlushBgCredit
-     0.04s 0.069% 90.32%      8.48s 14.65%  runtime.selectgo
-     0.03s 0.052% 90.38%      1.68s  2.90%  runtime.(*mheap).allocSpan
-     0.03s 0.052% 90.43%      0.58s  1.00%  runtime.gcAssistAlloc1
-     0.03s 0.052% 90.48%      0.80s  1.38%  runtime.markroot
-     0.03s 0.052% 90.53%      7.05s 12.18%  runtime.sellock
-     0.03s 0.052% 90.58%      0.32s  0.55%  runtime.slicebytetostring
-     0.03s 0.052% 90.64%      0.79s  1.36%  runtime.stealWork
-     0.02s 0.035% 90.67%      8.50s 14.69%  github.com/elotusteam/microservice-project/tests/performance.BenchmarkConcurrentAccess.func1.1
-     0.02s 0.035% 90.70%      1.83s  3.16%  runtime.(*gcWork).balance
-     0.02s 0.035% 90.74%      0.55s  0.95%  runtime.(*mcache).nextFree
-     0.02s 0.035% 90.77%      0.42s  0.73%  runtime.(*mcentral).cacheSpan
-     0.02s 0.035% 90.81%      7.39s 12.77%  runtime.findRunnable
-     0.02s 0.035% 90.84%      0.39s  0.67%  runtime.growslice
-     0.02s 0.035% 90.88%      7.09s 12.25%  runtime.park_m
-     0.02s 0.035% 90.91%      0.72s  1.24%  runtime.typedmemmove
-     0.01s 0.017% 90.93%      0.89s  1.54%  encoding/json.(*encodeState).reflectValue
-     0.01s 0.017% 90.95%      0.98s  1.69%  encoding/json.Marshal
-     0.01s 0.017% 90.96%      1.38s  2.38%  github.com/elotusteam/microservice-project/tests/performance.BenchmarkGoroutineCreation.func2
-     0.01s 0.017% 90.98%      1.09s  1.88%  github.com/elotusteam/microservice-project/tests/performance.BenchmarkMemoryAllocation.func1
-     0.01s 0.017% 91.00%      0.30s  0.52%  runtime.(*mcentral).grow
-     0.01s 0.017% 91.02%      0.32s  0.55%  runtime.(*mheap).alloc
-     0.01s 0.017% 91.03%      1.65s  2.85%  runtime.(*mheap).alloc.func1
-     0.01s 0.017% 91.05%      0.66s  1.14%  runtime.(*sweepLocked).sweep.(*mheap).freeSpan.func3
-     0.01s 0.017% 91.07%      1.93s  3.33%  runtime.gcBgMarkWorker
-     0.01s 0.017% 91.09%      3.62s  6.25%  runtime.gcDrain
-     0.01s 0.017% 91.10%      0.46s  0.79%  runtime.gcDrainN
-     0.01s 0.017% 91.12%      0.47s  0.81%  runtime.markrootBlock
-     0.01s 0.017% 91.14%      1.52s  2.63%  runtime.morestack
-     0.01s 0.017% 91.15%      3.87s  6.69%  runtime.notewakeup
-     0.01s 0.017% 91.17%      1.34s  2.32%  runtime.selunlock
-     0.01s 0.017% 91.19%      0.46s  0.79%  runtime.sweepone
-     0.01s 0.017% 91.21%      3.51s  6.06%  runtime.wakep
-         0     0% 91.21%      3.70s  6.39%  crypto/rand.(*reader).Read
-         0     0% 91.21%      3.69s  6.38%  crypto/rand.Read
-         0     0% 91.21%      3.70s  6.39%  crypto/rand.init.0.batched.func1
-         0     0% 91.21%      0.67s  1.16%  encoding/json.(*decodeState).unmarshal
-         0     0% 91.21%      0.67s  1.16%  encoding/json.(*decodeState).value
-         0     0% 91.21%      0.89s  1.54%  encoding/json.(*encodeState).marshal
-         0     0% 91.21%      0.87s  1.50%  encoding/json.Unmarshal
-         0     0% 91.21%      3.69s  6.38%  github.com/elotusteam/microservice-project/tests/performance.BenchmarkCryptoOperations.func1
-         0     0% 91.21%      6.77s 11.70%  github.com/elotusteam/microservice-project/tests/performance.BenchmarkGoroutineCreation.func2.1
-         0     0% 91.21%         1s  1.73%  github.com/elotusteam/microservice-project/tests/performance.BenchmarkJSONMarshaling
-         0     0% 91.21%      0.87s  1.50%  github.com/elotusteam/microservice-project/tests/performance.BenchmarkJSONUnmarshaling
-         0     0% 91.21%      0.65s  1.12%  github.com/elotusteam/microservice-project/tests/performance.BenchmarkMapOperations.func3
-         0     0% 91.21%      3.69s  6.38%  github.com/elotusteam/microservice-project/tests/performance.BenchmarkPasswordHashing.func1
-         0     0% 91.21%      1.14s  1.97%  github.com/elotusteam/microservice-project/tests/performance.BenchmarkPasswordVerification
-         0     0% 91.21%      0.99s  1.71%  golang.org/x/crypto/bcrypt.CompareHashAndPassword
-         0     0% 91.21%      3.84s  6.63%  golang.org/x/crypto/bcrypt.GenerateFromPassword
-         0     0% 91.21%      4.82s  8.33%  golang.org/x/crypto/bcrypt.bcrypt
-         0     0% 91.21%      4.77s  8.24%  golang.org/x/crypto/bcrypt.expensiveBlowfishSetup
-         0     0% 91.21%      3.84s  6.63%  golang.org/x/crypto/bcrypt.newFromPassword
-         0     0% 91.21%      3.70s  6.39%  internal/syscall/unix.GetEntropy
-         0     0% 91.21%      3.70s  6.39%  io.ReadAtLeast
-         0     0% 91.21%      3.70s  6.39%  io.ReadFull (inline)
-         0     0% 91.21%      1.51s  2.61%  runtime.(*gcControllerState).enlistWorker
-         0     0% 91.21%      0.52s   0.9%  runtime.(*pageAlloc).scavenge.func1
-         0     0% 91.21%      0.52s   0.9%  runtime.(*pageAlloc).scavengeOne
-         0     0% 91.21%      0.43s  0.74%  runtime.bgsweep
-         0     0% 91.21%      5.39s  9.31%  runtime.chanrecv2
-         0     0% 91.21%      2.54s  4.39%  runtime.chansend
-         0     0% 91.21%      2.54s  4.39%  runtime.chansend1
-         0     0% 91.21%      0.87s  1.50%  runtime.forEachPInternal
-         0     0% 91.21%      0.38s  0.66%  runtime.gcAssistAlloc
-         0     0% 91.21%      0.58s  1.00%  runtime.gcAssistAlloc.func1
-         0     0% 91.21%      3.74s  6.46%  runtime.gcBgMarkWorker.func2
-         0     0% 91.21%      2.52s  4.35%  runtime.gcDrainMarkWorkerDedicated (inline)
-         0     0% 91.21%      1.10s  1.90%  runtime.gcDrainMarkWorkerIdle (inline)
-         0     0% 91.21%      0.64s  1.11%  runtime.gcMarkDone.forEachP.func5
-         0     0% 91.21%      0.29s   0.5%  runtime.gcMarkTermination.func3
-         0     0% 91.21%      5.22s  9.02%  runtime.gcStart.func3
-         0     0% 91.21%      0.86s  1.49%  runtime.goexit0
-         0     0% 91.21%      1.44s  2.49%  runtime.gopreempt_m (inline)
-         0     0% 91.21%      1.45s  2.51%  runtime.goschedImpl
-         0     0% 91.21%      0.29s   0.5%  runtime.handoff
-         0     0% 91.21%     13.80s 23.84%  runtime.lock (partial-inline)
-         0     0% 91.21%     13.80s 23.84%  runtime.lockWithRank (inline)
-         0     0% 91.21%      6.10s 10.54%  runtime.mPark (inline)
-         0     0% 91.21%      1.43s  2.47%  runtime.makeslice
-         0     0% 91.21%      7.99s 13.80%  runtime.mcall
-         0     0% 91.21%      5.32s  9.19%  runtime.netpoll
-         0     0% 91.21%      0.75s  1.30%  runtime.newproc.func1
-         0     0% 91.21%      1.53s  2.64%  runtime.newstack
-         0     0% 91.21%      6.10s 10.54%  runtime.notesleep
-         0     0% 91.21%      0.56s  0.97%  runtime.notetsleep
-         0     0% 91.21%      0.56s  0.97%  runtime.notetsleep_internal
-         0     0% 91.21%     11.59s 20.02%  runtime.osyield (inline)
-         0     0% 91.21%      1.95s  3.37%  runtime.preemptM
-         0     0% 91.21%      0.37s  0.64%  runtime.preemptall
-         0     0% 91.21%      1.88s  3.25%  runtime.preemptone
-         0     0% 91.21%      1.03s  1.78%  runtime.ready
-         0     0% 91.21%      0.94s  1.62%  runtime.resetspinning
-         0     0% 91.21%      0.71s  1.23%  runtime.runqgrab
-         0     0% 91.21%      0.71s  1.23%  runtime.runqsteal
-         0     0% 91.21%      8.37s 14.46%  runtime.schedule
-         0     0% 91.21%      7.12s 12.30%  runtime.semasleep
-         0     0% 91.21%      6.68s 11.54%  runtime.semawakeup
-         0     0% 91.21%      0.73s  1.26%  runtime.send.goready.func1
-         0     0% 91.21%      1.95s  3.37%  runtime.signalM (inline)
-         0     0% 91.21%      5.52s  9.54%  runtime.startTheWorldWithSema
-         0     0% 91.21%      3.52s  6.08%  runtime.startm
-         0     0% 91.21%      6.13s 10.59%  runtime.stopm
-         0     0% 91.21%      0.51s  0.88%  runtime.sysUnused (inline)
-         0     0% 91.21%      0.51s  0.88%  runtime.sysUnusedOS (inline)
-         0     0% 91.21%      1.38s  2.38%  runtime.sysUsed (inline)
-         0     0% 91.21%      1.38s  2.38%  runtime.sysUsedOS (inline)
-         0     0% 91.21%     15.30s 26.43%  runtime.systemstack
-         0     0% 91.21%      3.04s  5.25%  runtime.unlock (partial-inline)
-         0     0% 91.21%      3.04s  5.25%  runtime.unlockWithRank (inline)
-         0     0% 91.21%      8.50s 14.69%  testing.(*B).RunParallel.func1
-         0     0% 91.21%     17.77s 30.70%  testing.(*B).launch
-         0     0% 91.21%      0.62s  1.07%  testing.(*B).run1.func1
-         0     0% 91.21%     18.39s 31.77%  testing.(*B).runN
+    14.09s 22.27% 22.27%     14.09s 22.27%  runtime.usleep
+     7.30s 11.54% 33.81%      7.30s 11.54%  runtime.kevent
+     7.04s 11.13% 44.94%      7.04s 11.13%  runtime.pthread_cond_wait
+     5.44s  8.60% 53.54%      5.53s  8.74%  golang.org/x/crypto/blowfish.encryptBlock
+     5.14s  8.13% 61.67%      5.15s  8.14%  runtime.pthread_cond_signal
+     3.90s  6.17% 67.83%      3.90s  6.17%  syscall.syscall
+     2.26s  3.57% 71.40%      2.26s  3.57%  runtime.pthread_kill
+     2.08s  3.29% 74.69%      2.08s  3.29%  runtime.madvise
+     1.65s  2.61% 77.30%      1.65s  2.61%  runtime.procyield
+     1.64s  2.59% 79.89%      1.64s  2.59%  runtime.pthread_mutex_lock
+     1.61s  2.55% 82.44%      1.64s  2.59%  github.com/elotusteam/microservice-project/tests/performance.BenchmarkSliceOperations.func3
+     1.52s  2.40% 84.84%      1.58s  2.50%  github.com/elotusteam/microservice-project/tests/performance.BenchmarkSliceOperations.func2
+     1.12s  1.77% 86.61%      1.12s  1.77%  runtime.memmove
+     0.60s  0.95% 87.56%      0.60s  0.95%  runtime.pthread_cond_timedwait_relative_np
+     0.53s  0.84% 88.40%      0.58s  0.92%  runtime.scanblock
+     0.41s  0.65% 89.05%      2.16s  3.41%  runtime.mallocgc
+     0.38s   0.6% 89.65%      0.38s   0.6%  runtime.memclrNoHeapPointers
+     0.35s  0.55% 90.20%     15.79s 24.96%  runtime.lock2
+     0.31s  0.49% 90.69%      0.86s  1.36%  runtime.scanobject
+     0.20s  0.32% 91.01%      3.19s  5.04%  runtime.unlock2
+     0.16s  0.25% 91.26%      5.68s  8.98%  golang.org/x/crypto/blowfish.ExpandKey
+     0.08s  0.13% 91.38%      0.59s  0.93%  encoding/json.(*decodeState).object
+     0.06s 0.095% 91.48%      9.32s 14.73%  runtime.selectgo
+     0.05s 0.079% 91.56%      6.67s 10.54%  runtime.chanrecv
+     0.04s 0.063% 91.62%      0.90s  1.42%  encoding/json.structEncoder.encode
+     0.04s 0.063% 91.69%      0.47s  0.74%  runtime.gcAssistAlloc1
+     0.04s 0.063% 91.75%      4.03s  6.37%  runtime.gcDrain
+     0.04s 0.063% 91.81%      0.78s  1.23%  runtime.typedmemmove
+     0.03s 0.047% 91.86%      0.98s  1.55%  github.com/elotusteam/microservice-project/tests/performance.BenchmarkMemoryAllocation.func1
+     0.03s 0.047% 91.91%      1.92s  3.04%  runtime.(*mheap).allocSpan
+     0.03s 0.047% 91.95%      0.54s  0.85%  runtime.(*sweepLocked).sweep
+     0.03s 0.047% 92.00%      0.35s  0.55%  runtime.growslice
+     0.03s 0.047% 92.05%      0.85s  1.34%  runtime.stealWork
+     0.02s 0.032% 92.08%      0.53s  0.84%  runtime.(*mcache).nextFree
+     0.02s 0.032% 92.11%      0.51s  0.81%  runtime.(*mcache).refill
+     0.02s 0.032% 92.14%      0.38s   0.6%  runtime.(*mheap).alloc
+     0.02s 0.032% 92.18%      2.11s  3.34%  runtime.gcBgMarkWorker
+     0.02s 0.032% 92.21%      1.25s  1.98%  runtime.makeslice
+     0.02s 0.032% 92.24%      0.89s  1.41%  runtime.markroot
+     0.02s 0.032% 92.27%      0.72s  1.14%  runtime.runqgrab
+     0.02s 0.032% 92.30%      0.62s  0.98%  runtime.sweepone
+     0.02s 0.032% 92.33%     18.21s 28.79%  runtime.systemstack
+     0.01s 0.016% 92.35%      0.41s  0.65%  fmt.Sprintf
+     0.01s 0.016% 92.36%      1.04s  1.64%  github.com/elotusteam/microservice-project/tests/performance.BenchmarkGoroutineCreation.func2
+     0.01s 0.016% 92.38%      2.13s  3.37%  runtime.(*gcWork).balance
+     0.01s 0.016% 92.40%      1.90s  3.00%  runtime.(*mheap).alloc.func1
+     0.01s 0.016% 92.41%      0.40s  0.63%  runtime.(*mheap).freeSpan (inline)
+     0.01s 0.016% 92.43%      0.54s  0.85%  runtime.(*pageAlloc).scavengeOne
+     0.01s 0.016% 92.44%      1.06s  1.68%  runtime.(*sweepLocked).sweep.(*mheap).freeSpan.func3
+     0.01s 0.016% 92.46%      2.10s  3.32%  runtime.chansend
+     0.01s 0.016% 92.48%      2.11s  3.34%  runtime.chansend1
+     0.01s 0.016% 92.49%      8.03s 12.69%  runtime.findRunnable
+     0.01s 0.016% 92.51%      0.36s  0.57%  runtime.gcFlushBgCredit
+     0.01s 0.016% 92.52%      0.73s  1.15%  runtime.runqsteal
+     0.01s 0.016% 92.54%      8.96s 14.16%  runtime.schedule
+     0.01s 0.016% 92.55%      7.62s 12.05%  runtime.sellock
+         0     0% 92.55%      3.90s  6.17%  crypto/rand.(*reader).Read
+         0     0% 92.55%      3.90s  6.17%  crypto/rand.Read
+         0     0% 92.55%      3.90s  6.17%  crypto/rand.init.0.batched.func1
+         0     0% 92.55%      0.59s  0.93%  encoding/json.(*decodeState).unmarshal
+         0     0% 92.55%      0.59s  0.93%  encoding/json.(*decodeState).value
+         0     0% 92.55%      0.91s  1.44%  encoding/json.(*encodeState).marshal
+         0     0% 92.55%      0.91s  1.44%  encoding/json.(*encodeState).reflectValue
+         0     0% 92.55%      0.97s  1.53%  encoding/json.Marshal
+         0     0% 92.55%      0.77s  1.22%  encoding/json.Unmarshal
+         0     0% 92.55%      0.61s  0.96%  encoding/json.mapEncoder.encode
+         0     0% 92.55%      9.33s 14.75%  github.com/elotusteam/microservice-project/tests/performance.BenchmarkConcurrentAccess.func1.1
+         0     0% 92.55%      3.90s  6.17%  github.com/elotusteam/microservice-project/tests/performance.BenchmarkCryptoOperations.func1
+         0     0% 92.55%      7.77s 12.28%  github.com/elotusteam/microservice-project/tests/performance.BenchmarkGoroutineCreation.func2.1
+         0     0% 92.55%         1s  1.58%  github.com/elotusteam/microservice-project/tests/performance.BenchmarkJSONMarshaling
+         0     0% 92.55%      0.78s  1.23%  github.com/elotusteam/microservice-project/tests/performance.BenchmarkJSONUnmarshaling
+         0     0% 92.55%      4.48s  7.08%  github.com/elotusteam/microservice-project/tests/performance.BenchmarkPasswordHashing.func1
+         0     0% 92.55%      1.24s  1.96%  github.com/elotusteam/microservice-project/tests/performance.BenchmarkPasswordVerification
+         0     0% 92.55%      1.10s  1.74%  golang.org/x/crypto/bcrypt.CompareHashAndPassword
+         0     0% 92.55%      4.62s  7.30%  golang.org/x/crypto/bcrypt.GenerateFromPassword
+         0     0% 92.55%      5.71s  9.03%  golang.org/x/crypto/bcrypt.bcrypt
+         0     0% 92.55%      5.68s  8.98%  golang.org/x/crypto/bcrypt.expensiveBlowfishSetup
+         0     0% 92.55%      4.61s  7.29%  golang.org/x/crypto/bcrypt.newFromPassword
+         0     0% 92.55%      3.90s  6.17%  internal/syscall/unix.GetEntropy
+         0     0% 92.55%      3.90s  6.17%  io.ReadAtLeast
+         0     0% 92.55%      3.90s  6.17%  io.ReadFull (inline)
+         0     0% 92.55%      1.73s  2.73%  runtime.(*gcControllerState).enlistWorker
+         0     0% 92.55%      0.40s  0.63%  runtime.(*mcentral).cacheSpan
+         0     0% 92.55%      0.34s  0.54%  runtime.(*mcentral).grow
+         0     0% 92.55%      0.54s  0.85%  runtime.(*pageAlloc).scavenge.func1
+         0     0% 92.55%      0.60s  0.95%  runtime.bgsweep
+         0     0% 92.55%      6.45s 10.20%  runtime.chanrecv2
+         0     0% 92.55%      0.94s  1.49%  runtime.forEachPInternal
+         0     0% 92.55%      0.47s  0.74%  runtime.gcAssistAlloc.func1
+         0     0% 92.55%      4.15s  6.56%  runtime.gcBgMarkWorker.func2
+         0     0% 92.55%      2.90s  4.58%  runtime.gcDrainMarkWorkerDedicated (inline)
+         0     0% 92.55%      1.13s  1.79%  runtime.gcDrainMarkWorkerIdle (inline)
+         0     0% 92.55%      0.38s   0.6%  runtime.gcDrainN
+         0     0% 92.55%      0.61s  0.96%  runtime.gcMarkDone.forEachP.func5
+         0     0% 92.55%      0.33s  0.52%  runtime.gcMarkTermination.forEachP.func6
+         0     0% 92.55%      7.21s 11.40%  runtime.gcStart.func3
+         0     0% 92.55%      0.81s  1.28%  runtime.goexit0
+         0     0% 92.55%      2.15s  3.40%  runtime.gopreempt_m (inline)
+         0     0% 92.55%      2.19s  3.46%  runtime.goschedImpl
+         0     0% 92.55%      0.39s  0.62%  runtime.handoff
+         0     0% 92.55%     15.79s 24.96%  runtime.lock (partial-inline)
+         0     0% 92.55%     15.79s 24.96%  runtime.lockWithRank (inline)
+         0     0% 92.55%      6.62s 10.46%  runtime.mPark (inline)
+         0     0% 92.55%      0.34s  0.54%  runtime.markroot.func1
+         0     0% 92.55%      0.52s  0.82%  runtime.markrootBlock
+         0     0% 92.55%      8.34s 13.18%  runtime.mcall
+         0     0% 92.55%      2.26s  3.57%  runtime.morestack
+         0     0% 92.55%      7.30s 11.54%  runtime.netpoll
+         0     0% 92.55%      0.72s  1.14%  runtime.newproc.func1
+         0     0% 92.55%      2.28s  3.60%  runtime.newstack
+         0     0% 92.55%      6.62s 10.46%  runtime.notesleep
+         0     0% 92.55%      0.60s  0.95%  runtime.notetsleep
+         0     0% 92.55%      0.60s  0.95%  runtime.notetsleep_internal
+         0     0% 92.55%      4.07s  6.43%  runtime.notewakeup
+         0     0% 92.55%     13.39s 21.17%  runtime.osyield (inline)
+         0     0% 92.55%      7.48s 11.82%  runtime.park_m
+         0     0% 92.55%      2.26s  3.57%  runtime.preemptM
+         0     0% 92.55%      0.43s  0.68%  runtime.preemptall
+         0     0% 92.55%      2.16s  3.41%  runtime.preemptone
+         0     0% 92.55%      1.17s  1.85%  runtime.ready
+         0     0% 92.55%      0.84s  1.33%  runtime.resetspinning
+         0     0% 92.55%      1.61s  2.55%  runtime.selunlock
+         0     0% 92.55%      7.67s 12.12%  runtime.semasleep
+         0     0% 92.55%      7.04s 11.13%  runtime.semawakeup
+         0     0% 92.55%      0.80s  1.26%  runtime.send.goready.func1
+         0     0% 92.55%      2.26s  3.57%  runtime.signalM (inline)
+         0     0% 92.55%      7.41s 11.71%  runtime.startTheWorldWithSema
+         0     0% 92.55%      3.69s  5.83%  runtime.startm
+         0     0% 92.55%      6.62s 10.46%  runtime.stopm
+         0     0% 92.55%      0.52s  0.82%  runtime.sysUnused (inline)
+         0     0% 92.55%      0.52s  0.82%  runtime.sysUnusedOS (inline)
+         0     0% 92.55%      1.56s  2.47%  runtime.sysUsed (inline)
+         0     0% 92.55%      1.56s  2.47%  runtime.sysUsedOS (inline)
+         0     0% 92.55%      3.19s  5.04%  runtime.unlock (partial-inline)
+         0     0% 92.55%      3.19s  5.04%  runtime.unlockWithRank (inline)
+         0     0% 92.55%      3.71s  5.86%  runtime.wakep
+         0     0% 92.55%      9.33s 14.75%  testing.(*B).RunParallel.func1
+         0     0% 92.55%     17.12s 27.06%  testing.(*B).launch
+         0     0% 92.55%      0.64s  1.01%  testing.(*B).run1.func1
+         0     0% 92.55%     17.76s 28.07%  testing.(*B).runN

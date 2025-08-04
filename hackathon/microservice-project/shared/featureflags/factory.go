@@ -263,15 +263,14 @@ func (qs *QuickStart) CreateSampleFlags() error {
 			},
 		},
 		{
-			ID:             "performance-mode",
-			Name:           "Performance Mode",
-			Description:    "Enable performance optimizations",
-			Enabled:        true,
-			Environment:    qs.factory.config.Environment,
-			Service:        "backend",
-			Tags:           []string{"performance", "optimization"},
-			CreatedBy:      "system",
-
+			ID:          "performance-mode",
+			Name:        "Performance Mode",
+			Description: "Enable performance optimizations",
+			Enabled:     true,
+			Environment: qs.factory.config.Environment,
+			Service:     "backend",
+			Tags:        []string{"performance", "optimization"},
+			CreatedBy:   "system",
 		},
 	}
 

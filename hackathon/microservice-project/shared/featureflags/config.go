@@ -68,22 +68,22 @@ type FeatureFlagEvent struct {
 
 // FeatureFlagConfig represents the configuration for the feature flag system
 type FeatureFlagConfig struct {
-	Enabled           bool          `json:"enabled"`
-	RefreshInterval   time.Duration `json:"refresh_interval"`
-	CacheEnabled      bool          `json:"cache_enabled"`
-	CacheTTL          time.Duration `json:"cache_ttl"`
-	AnalyticsEnabled  bool          `json:"analytics_enabled"`
-	DefaultVariant    string        `json:"default_variant"`
-	Environment       string        `json:"environment"`
-	Service           string        `json:"service"`
-	StorageType       string        `json:"storage_type"` // "database", "redis", "file", "remote"
-	RemoteURL         string        `json:"remote_url,omitempty"`
-	RemoteAPIKey      string        `json:"remote_api_key,omitempty"`
-	DatabaseURL       string        `json:"database_url,omitempty"`
-	RedisURL          string        `json:"redis_url,omitempty"`
-	FilePath          string        `json:"file_path,omitempty"`
-	MetricsEnabled    bool          `json:"metrics_enabled"`
-	DebugMode         bool          `json:"debug_mode"`
+	Enabled          bool          `json:"enabled"`
+	RefreshInterval  time.Duration `json:"refresh_interval"`
+	CacheEnabled     bool          `json:"cache_enabled"`
+	CacheTTL         time.Duration `json:"cache_ttl"`
+	AnalyticsEnabled bool          `json:"analytics_enabled"`
+	DefaultVariant   string        `json:"default_variant"`
+	Environment      string        `json:"environment"`
+	Service          string        `json:"service"`
+	StorageType      string        `json:"storage_type"` // "database", "redis", "file", "remote"
+	RemoteURL        string        `json:"remote_url,omitempty"`
+	RemoteAPIKey     string        `json:"remote_api_key,omitempty"`
+	DatabaseURL      string        `json:"database_url,omitempty"`
+	RedisURL         string        `json:"redis_url,omitempty"`
+	FilePath         string        `json:"file_path,omitempty"`
+	MetricsEnabled   bool          `json:"metrics_enabled"`
+	DebugMode        bool          `json:"debug_mode"`
 }
 
 // FeatureFlagRepository defines the interface for feature flag storage
@@ -255,11 +255,11 @@ var (
 
 // Error definitions
 var (
-	ErrFlagNotFound     = fmt.Errorf("feature flag not found")
-	ErrInvalidFlagID    = fmt.Errorf("invalid flag ID")
-	ErrInvalidRollout   = fmt.Errorf("invalid rollout percentage")
-	ErrFlagExpired      = fmt.Errorf("feature flag has expired")
-	ErrEvaluationFailed = fmt.Errorf("flag evaluation failed")
-	ErrCacheUnavailable = fmt.Errorf("cache is unavailable")
+	ErrFlagNotFound       = fmt.Errorf("feature flag not found")
+	ErrInvalidFlagID      = fmt.Errorf("invalid flag ID")
+	ErrInvalidRollout     = fmt.Errorf("invalid rollout percentage")
+	ErrFlagExpired        = fmt.Errorf("feature flag has expired")
+	ErrEvaluationFailed   = fmt.Errorf("flag evaluation failed")
+	ErrCacheUnavailable   = fmt.Errorf("cache is unavailable")
 	ErrStorageUnavailable = fmt.Errorf("storage is unavailable")
 )

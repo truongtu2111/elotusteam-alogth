@@ -85,6 +85,13 @@ type ActivityService interface {
 	LogActivity(ctx context.Context, userID uuid.UUID, action, resourceType string, resourceID *uuid.UUID, details map[string]interface{}, ipAddress, userAgent string) error
 }
 
+// ImageProcessingService defines the interface for image processing operations
+type ImageProcessingService interface {
+	GenerateVariants(ctx context.Context, fileID uuid.UUID, originalPath string) error
+	GetVariants(ctx context.Context, fileID uuid.UUID) ([]*fileDomain.ImageVariant, error)
+	DeleteVariants(ctx context.Context, fileID uuid.UUID) error
+}
+
 // Request/Response DTOs
 type UploadFileRequest struct {
 	UserID     uuid.UUID

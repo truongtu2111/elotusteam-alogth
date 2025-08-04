@@ -4,6 +4,7 @@ import (
 	"bytes"
 	"encoding/json"
 	"fmt"
+	"io"
 	"mime/multipart"
 	"net/http"
 	"net/http/httptest"
@@ -566,6 +567,9 @@ func mockAuthHandler(w http.ResponseWriter, r *http.Request) {
 // Track registered users for duplicate detection
 var registeredUsers = make(map[string]bool)
 
+// Track user profiles for updates
+var userProfiles = make(map[string]map[string]interface{})
+
 func mockUserHandler(w http.ResponseWriter, r *http.Request) {
 	if strings.Contains(r.URL.Path, "health") {
 		w.WriteHeader(http.StatusOK)
@@ -612,13 +616,47 @@ func mockUserHandler(w http.ResponseWriter, r *http.Request) {
 		}
 
 		if r.Method == "GET" {
+			// Get stored profile or return default
+			profile := userProfiles[auth]
+			if profile == nil {
+				profile = map[string]interface{}{
+					"id":    "user-123",
+					"name":  "John Doe",
+					"email": "john.doe@example.com",
+				}
+				userProfiles[auth] = profile
+			}
+
+			profileJSON, _ := json.Marshal(profile)
 			w.WriteHeader(http.StatusOK)
-			if _, err := w.Write([]byte(`{"id":"user-123","name":"John Doe","email":"john.doe@example.com"}`)); err != nil {
+			if _, err := w.Write(profileJSON); err != nil {
 				fmt.Printf("Warning: Failed to write response: %v\n", err)
 			}
 			return
 		}
 		if r.Method == "PUT" {
+			// Update profile with new data
+			var updates map[string]interface{}
+			if err := json.NewDecoder(r.Body).Decode(&updates); err != nil {
+				fmt.Printf("Warning: Failed to decode profile updates: %v\n", err)
+			}
+
+			// Get existing profile or create default
+			profile := userProfiles[auth]
+			if profile == nil {
+				profile = map[string]interface{}{
+					"id":    "user-123",
+					"name":  "John Doe",
+					"email": "john.doe@example.com",
+				}
+			}
+
+			// Apply updates
+			for key, value := range updates {
+				profile[key] = value
+			}
+			userProfiles[auth] = profile
+
 			w.WriteHeader(http.StatusOK)
 			if _, err := w.Write([]byte(`{"message":"profile updated"}`)); err != nil {
 				fmt.Printf("Warning: Failed to write response: %v\n", err)
@@ -632,6 +670,9 @@ func mockUserHandler(w http.ResponseWriter, r *http.Request) {
 
 // Track uploaded files per user
 var userFiles = make(map[string][]map[string]interface{})
+
+// Track file contents for download
+var fileContents = make(map[string][]byte)
 var fileCounter = 0
 
 func mockFileHandler(w http.ResponseWriter, r *http.Request) {
@@ -668,25 +709,44 @@ func mockFileHandler(w http.ResponseWriter, r *http.Request) {
 					}
 					return
 				}
+
+				// Read file content
+				content, err := io.ReadAll(file)
+				if err != nil {
+					w.WriteHeader(http.StatusInternalServerError)
+					if _, writeErr := w.Write([]byte(`{"error":"Failed to read file"}`)); writeErr != nil {
+						fmt.Printf("Warning: Failed to write response: %v\n", writeErr)
+					}
+					return
+				}
+
+				// Extract user from token (simplified)
+				token := r.Header.Get("Authorization")
+				fileCounter++
+				fileID := fmt.Sprintf("file-%d", fileCounter)
+
+				// Store file content
+				fileContents[fileID] = content
+
+				// Store file for this user
+				if userFiles[token] == nil {
+					userFiles[token] = make([]map[string]interface{}, 0)
+				}
+				userFiles[token] = append(userFiles[token], map[string]interface{}{
+					"id":       fileID,
+					"filename": header.Filename,
+				})
+
+				w.WriteHeader(http.StatusOK)
+				if _, err := w.Write([]byte(fmt.Sprintf(`{"id":"%s","message":"file uploaded"}`, fileID))); err != nil {
+					fmt.Printf("Warning: failed to write response: %v\n", err)
+				}
+				return
 			}
 		}
 
-		// Extract user from token (simplified)
-		token := r.Header.Get("Authorization")
-		fileCounter++
-		fileID := fmt.Sprintf("file-%d", fileCounter)
-
-		// Store file for this user
-		if userFiles[token] == nil {
-			userFiles[token] = make([]map[string]interface{}, 0)
-		}
-		userFiles[token] = append(userFiles[token], map[string]interface{}{
-			"id":       fileID,
-			"filename": r.FormValue("filename"),
-		})
-
-		w.WriteHeader(http.StatusOK)
-		if _, err := w.Write([]byte(fmt.Sprintf(`{"id":"%s","message":"file uploaded"}`, fileID))); err != nil {
+		w.WriteHeader(http.StatusBadRequest)
+		if _, err := w.Write([]byte(`{"error":"Failed to process file upload"}`)); err != nil {
 			fmt.Printf("Warning: failed to write response: %v\n", err)
 		}
 		return
@@ -708,14 +768,46 @@ func mockFileHandler(w http.ResponseWriter, r *http.Request) {
 	}
 
 	if r.Method == "GET" && strings.Contains(r.URL.Path, "files/") {
-		w.WriteHeader(http.StatusOK)
-		if _, err := w.Write([]byte("test file content")); err != nil {
+		// Extract file ID from URL path
+		pathParts := strings.Split(r.URL.Path, "/")
+		if len(pathParts) >= 4 {
+			fileID := pathParts[len(pathParts)-1]
+			if content, exists := fileContents[fileID]; exists {
+				w.WriteHeader(http.StatusOK)
+				if _, err := w.Write(content); err != nil {
+					fmt.Printf("Warning: failed to write response: %v\n", err)
+				}
+				return
+			}
+		}
+		w.WriteHeader(http.StatusNotFound)
+		if _, err := w.Write([]byte(`{"error":"File not found"}`)); err != nil {
 			fmt.Printf("Warning: failed to write response: %v\n", err)
 		}
 		return
 	}
 
-	if r.Method == "DELETE" {
+	if r.Method == "DELETE" && strings.Contains(r.URL.Path, "files/") {
+		// Extract file ID from URL path
+		pathParts := strings.Split(r.URL.Path, "/")
+		if len(pathParts) >= 4 {
+			fileID := pathParts[len(pathParts)-1]
+			token := r.Header.Get("Authorization")
+
+			// Remove file from user's file list
+			if userFiles[token] != nil {
+				for i, file := range userFiles[token] {
+					if file["id"] == fileID {
+						// Remove file from slice
+						userFiles[token] = append(userFiles[token][:i], userFiles[token][i+1:]...)
+						// Also remove file content
+						delete(fileContents, fileID)
+						break
+					}
+				}
+			}
+		}
+
 		w.WriteHeader(http.StatusOK)
 		if _, err := w.Write([]byte(`{"message":"file deleted"}`)); err != nil {
 			fmt.Printf("Warning: failed to write response: %v\n", err)

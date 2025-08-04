@@ -293,953 +293,877 @@ function handleMouseUp(evt) {
 		state = '';
 	}
 }
-]]></script><g id="viewport" transform="scale(0.5,0.5) translate(0,0)"><g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 740.25)">
+]]></script><g id="viewport" transform="scale(0.5,0.5) translate(0,0)"><g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 711.5)">
 <title>performance.test</title>
-<polygon fill="white" stroke="none" points="-4,4 -4,-740.25 2611,-740.25 2611,4 -4,4"/>
+<polygon fill="white" stroke="none" points="-4,4 -4,-711.5 2483.75,-711.5 2483.75,4 -4,4"/>
 <g id="clust1" class="cluster">
 <title>cluster_L</title>
-<polygon fill="none" stroke="black" points="8,-572.75 8,-728.25 524,-728.25 524,-572.75 8,-572.75"/>
+<polygon fill="none" stroke="black" points="8,-544 8,-699.5 468,-699.5 468,-544 8,-544"/>
 </g>
 <!-- File: performance.test -->
 <g id="node1" class="node">
 <title>File: performance.test</title>
 <g id="a_node1"><a xlink:title="performance.test">
-<polygon fill="#f8f8f8" stroke="black" points="515.5,-720.25 16.5,-720.25 16.5,-580.75 515.5,-580.75 515.5,-720.25"/>
-<text xml:space="preserve" text-anchor="start" x="24.5" y="-701.05" font-family="Times,serif" font-size="16.00">File: performance.test</text>
-<text xml:space="preserve" text-anchor="start" x="24.5" y="-682.3" font-family="Times,serif" font-size="16.00">Type: alloc_space</text>
-<text xml:space="preserve" text-anchor="start" x="24.5" y="-663.55" font-family="Times,serif" font-size="16.00">Time: Aug 3, 2025 at 3:29pm (+07)</text>
-<text xml:space="preserve" text-anchor="start" x="24.5" y="-644.8" font-family="Times,serif" font-size="16.00">Showing nodes accounting for 31768.47MB, 98.73% of 32176.45MB total</text>
-<text xml:space="preserve" text-anchor="start" x="24.5" y="-626.05" font-family="Times,serif" font-size="16.00">Dropped 64 nodes (cum &lt;= 160.88MB)</text>
-<text xml:space="preserve" text-anchor="start" x="24.5" y="-588.3" font-family="Times,serif" font-size="16.00">See https://git.io/JfYMW for how to read the graph</text>
+<polygon fill="#f8f8f8" stroke="black" points="459.75,-691.5 16.25,-691.5 16.25,-552 459.75,-552 459.75,-691.5"/>
+<text xml:space="preserve" text-anchor="start" x="24.25" y="-672.3" font-family="Times,serif" font-size="16.00">File: performance.test</text>
+<text xml:space="preserve" text-anchor="start" x="24.25" y="-653.55" font-family="Times,serif" font-size="16.00">Type: alloc_space</text>
+<text xml:space="preserve" text-anchor="start" x="24.25" y="-634.8" font-family="Times,serif" font-size="16.00">Time: Aug 4, 2025 at 8:12am (+07)</text>
+<text xml:space="preserve" text-anchor="start" x="24.25" y="-616.05" font-family="Times,serif" font-size="16.00">Showing nodes accounting for 35.72GB, 98.35% of 36.32GB total</text>
+<text xml:space="preserve" text-anchor="start" x="24.25" y="-597.3" font-family="Times,serif" font-size="16.00">Dropped 53 nodes (cum &lt;= 0.18GB)</text>
+<text xml:space="preserve" text-anchor="start" x="24.25" y="-559.55" font-family="Times,serif" font-size="16.00">See https://git.io/JfYMW for how to read the graph</text>
 </a>
 </g>
 </g>
 <!-- N1 -->
 <g id="node1" class="node">
 <title>N1</title>
-<g id="a_node1"><a xlink:title="testing.(*B).runN (32172.65MB)">
-<polygon fill="#edd5d5" stroke="#b20000" points="630.88,-528.25 533.12,-528.25 533.12,-481.25 630.88,-481.25 630.88,-528.25"/>
-<text xml:space="preserve" text-anchor="middle" x="582" y="-516.65" font-family="Times,serif" font-size="8.00">testing</text>
-<text xml:space="preserve" text-anchor="middle" x="582" y="-506.9" font-family="Times,serif" font-size="8.00">(*B)</text>
-<text xml:space="preserve" text-anchor="middle" x="582" y="-497.15" font-family="Times,serif" font-size="8.00">runN</text>
-<text xml:space="preserve" text-anchor="middle" x="582" y="-487.4" font-family="Times,serif" font-size="8.00">0 of 32172.65MB (100%)</text>
+<g id="a_node1"><a xlink:title="testing.(*B).runN (36.32GB)">
+<polygon fill="#edd5d5" stroke="#b20000" points="563.88,-499.5 478.12,-499.5 478.12,-452.5 563.88,-452.5 563.88,-499.5"/>
+<text xml:space="preserve" text-anchor="middle" x="521" y="-487.9" font-family="Times,serif" font-size="8.00">testing</text>
+<text xml:space="preserve" text-anchor="middle" x="521" y="-478.15" font-family="Times,serif" font-size="8.00">(*B)</text>
+<text xml:space="preserve" text-anchor="middle" x="521" y="-468.4" font-family="Times,serif" font-size="8.00">runN</text>
+<text xml:space="preserve" text-anchor="middle" x="521" y="-458.65" font-family="Times,serif" font-size="8.00">0 of 36.32GB (100%)</text>
 </a>
 </g>
 </g>
 <!-- N2 -->
 <g id="node2" class="node">
 <title>N2</title>
-<g id="a_node2"><a xlink:title="github.com/elotusteam/microservice&#45;project/tests/performance.BenchmarkMemoryAllocation.func1 (20188.24MB)">
-<polygon fill="#edd8d5" stroke="#b21700" points="737,-428.75 427,-428.75 427,-312.75 737,-312.75 737,-428.75"/>
-<text xml:space="preserve" text-anchor="middle" x="582" y="-401.95" font-family="Times,serif" font-size="24.00">performance</text>
-<text xml:space="preserve" text-anchor="middle" x="582" y="-374.95" font-family="Times,serif" font-size="24.00">BenchmarkMemoryAllocation</text>
-<text xml:space="preserve" text-anchor="middle" x="582" y="-347.95" font-family="Times,serif" font-size="24.00">func1</text>
-<text xml:space="preserve" text-anchor="middle" x="582" y="-320.95" font-family="Times,serif" font-size="24.00">20188.24MB (62.74%)</text>
+<g id="a_node2"><a xlink:title="github.com/elotusteam/microservice&#45;project/tests/performance.BenchmarkMemoryAllocation.func1 (23.13GB)">
+<polygon fill="#edd8d5" stroke="#b21600" points="676,-400 366,-400 366,-284 676,-284 676,-400"/>
+<text xml:space="preserve" text-anchor="middle" x="521" y="-373.2" font-family="Times,serif" font-size="24.00">performance</text>
+<text xml:space="preserve" text-anchor="middle" x="521" y="-346.2" font-family="Times,serif" font-size="24.00">BenchmarkMemoryAllocation</text>
+<text xml:space="preserve" text-anchor="middle" x="521" y="-319.2" font-family="Times,serif" font-size="24.00">func1</text>
+<text xml:space="preserve" text-anchor="middle" x="521" y="-292.2" font-family="Times,serif" font-size="24.00">23.13GB (63.68%)</text>
 </a>
 </g>
 </g>
 <!-- N1&#45;&gt;N2 -->
-<g id="edge19" class="edge">
+<g id="edge20" class="edge">
 <title>N1&#45;&gt;N2</title>
-<g id="a_edge19"><a xlink:title="testing.(*B).runN &#45;&gt; github.com/elotusteam/microservice&#45;project/tests/performance.BenchmarkMemoryAllocation.func1 (20188.24MB)">
-<path fill="none" stroke="#b21700" stroke-width="4" d="M582,-480.76C582,-470.57 582,-457.96 582,-444.97"/>
-<polygon fill="#b21700" stroke="#b21700" stroke-width="4" points="585.5,-445.14 582,-435.14 578.5,-445.14 585.5,-445.14"/>
+<g id="a_edge20"><a xlink:title="testing.(*B).runN &#45;&gt; github.com/elotusteam/microservice&#45;project/tests/performance.BenchmarkMemoryAllocation.func1 (23.13GB)">
+<path fill="none" stroke="#b21600" stroke-width="4" d="M521,-452.01C521,-441.82 521,-429.21 521,-416.22"/>
+<polygon fill="#b21600" stroke="#b21600" stroke-width="4" points="524.5,-416.39 521,-406.39 517.5,-416.39 524.5,-416.39"/>
 </a>
 </g>
-<g id="a_edge19&#45;label"><a xlink:title="testing.(*B).runN &#45;&gt; github.com/elotusteam/microservice&#45;project/tests/performance.BenchmarkMemoryAllocation.func1 (20188.24MB)">
-<text xml:space="preserve" text-anchor="middle" x="620.25" y="-449.95" font-family="Times,serif" font-size="14.00"> 20188.24MB</text>
+<g id="a_edge20&#45;label"><a xlink:title="testing.(*B).runN &#45;&gt; github.com/elotusteam/microservice&#45;project/tests/performance.BenchmarkMemoryAllocation.func1 (23.13GB)">
+<text xml:space="preserve" text-anchor="middle" x="547.62" y="-421.2" font-family="Times,serif" font-size="14.00"> 23.13GB</text>
 </a>
 </g>
 </g>
 <!-- N4 -->
 <g id="node4" class="node">
 <title>N4</title>
-<g id="a_node4"><a xlink:title="github.com/elotusteam/microservice&#45;project/tests/performance.BenchmarkSliceOperations.func1 (3939.68MB)">
-<polygon fill="#ede5de" stroke="#b27845" points="956.38,-412.25 765.62,-412.25 765.62,-329.25 956.38,-329.25 956.38,-412.25"/>
-<text xml:space="preserve" text-anchor="middle" x="861" y="-393.05" font-family="Times,serif" font-size="16.00">performance</text>
-<text xml:space="preserve" text-anchor="middle" x="861" y="-374.3" font-family="Times,serif" font-size="16.00">BenchmarkSliceOperations</text>
-<text xml:space="preserve" text-anchor="middle" x="861" y="-355.55" font-family="Times,serif" font-size="16.00">func1</text>
-<text xml:space="preserve" text-anchor="middle" x="861" y="-336.8" font-family="Times,serif" font-size="16.00">3939.68MB (12.24%)</text>
+<g id="a_node4"><a xlink:title="github.com/elotusteam/microservice&#45;project/tests/performance.BenchmarkSliceOperations.func1 (4.05GB)">
+<polygon fill="#ede6df" stroke="#b27e4e" points="877.62,-380.5 694.38,-380.5 694.38,-303.5 877.62,-303.5 877.62,-380.5"/>
+<text xml:space="preserve" text-anchor="middle" x="786" y="-362.25" font-family="Times,serif" font-size="15.00">performance</text>
+<text xml:space="preserve" text-anchor="middle" x="786" y="-345" font-family="Times,serif" font-size="15.00">BenchmarkSliceOperations</text>
+<text xml:space="preserve" text-anchor="middle" x="786" y="-327.75" font-family="Times,serif" font-size="15.00">func1</text>
+<text xml:space="preserve" text-anchor="middle" x="786" y="-310.5" font-family="Times,serif" font-size="15.00">4.05GB (11.15%)</text>
 </a>
 </g>
 </g>
 <!-- N1&#45;&gt;N4 -->
-<g id="edge20" class="edge">
+<g id="edge21" class="edge">
 <title>N1&#45;&gt;N4</title>
-<g id="a_edge20"><a xlink:title="testing.(*B).runN &#45;&gt; github.com/elotusteam/microservice&#45;project/tests/performance.BenchmarkSliceOperations.func1 (3939.68MB)">
-<path fill="none" stroke="#b27845" d="M631.34,-481.67C664,-466.94 707.7,-446.99 746,-428.75 753.48,-425.19 761.22,-421.45 768.98,-417.68"/>
-<polygon fill="#b27845" stroke="#b27845" points="770.36,-420.9 777.81,-413.36 767.29,-414.61 770.36,-420.9"/>
+<g id="a_edge21"><a xlink:title="testing.(*B).runN &#45;&gt; github.com/elotusteam/microservice&#45;project/tests/performance.BenchmarkSliceOperations.func1 (4.05GB)">
+<path fill="none" stroke="#b27e4e" d="M564.29,-456.4C597.64,-441.79 644.69,-420.54 685,-400 693.38,-395.73 702.07,-391.12 710.67,-386.43"/>
+<polygon fill="#b27e4e" stroke="#b27e4e" points="712.3,-389.53 719.37,-381.65 708.92,-383.4 712.3,-389.53"/>
 </a>
 </g>
-<g id="a_edge20&#45;label"><a xlink:title="testing.(*B).runN &#45;&gt; github.com/elotusteam/microservice&#45;project/tests/performance.BenchmarkSliceOperations.func1 (3939.68MB)">
-<text xml:space="preserve" text-anchor="middle" x="740.57" y="-449.95" font-family="Times,serif" font-size="14.00"> 3939.68MB</text>
+<g id="a_edge21&#45;label"><a xlink:title="testing.(*B).runN &#45;&gt; github.com/elotusteam/microservice&#45;project/tests/performance.BenchmarkSliceOperations.func1 (4.05GB)">
+<text xml:space="preserve" text-anchor="middle" x="668.29" y="-421.2" font-family="Times,serif" font-size="14.00"> 4.05GB</text>
 </a>
 </g>
 </g>
 <!-- N5 -->
 <g id="node5" class="node">
 <title>N5</title>
-<g id="a_node5"><a xlink:title="github.com/elotusteam/microservice&#45;project/tests/performance.BenchmarkMemoryUsage.func1 (3227.15MB)">
-<polygon fill="#ede7e1" stroke="#b28558" points="1213.88,-409.25 1038.12,-409.25 1038.12,-332.25 1213.88,-332.25 1213.88,-409.25"/>
-<text xml:space="preserve" text-anchor="middle" x="1126" y="-391" font-family="Times,serif" font-size="15.00">performance</text>
-<text xml:space="preserve" text-anchor="middle" x="1126" y="-373.75" font-family="Times,serif" font-size="15.00">BenchmarkMemoryUsage</text>
-<text xml:space="preserve" text-anchor="middle" x="1126" y="-356.5" font-family="Times,serif" font-size="15.00">func1</text>
-<text xml:space="preserve" text-anchor="middle" x="1126" y="-339.25" font-family="Times,serif" font-size="15.00">3227.15MB (10.03%)</text>
+<g id="a_node5"><a xlink:title="github.com/elotusteam/microservice&#45;project/tests/performance.BenchmarkMemoryUsage.func1 (3.28GB)">
+<polygon fill="#ede7e2" stroke="#b28b61" points="1071.88,-380.5 896.12,-380.5 896.12,-303.5 1071.88,-303.5 1071.88,-380.5"/>
+<text xml:space="preserve" text-anchor="middle" x="984" y="-362.25" font-family="Times,serif" font-size="15.00">performance</text>
+<text xml:space="preserve" text-anchor="middle" x="984" y="-345" font-family="Times,serif" font-size="15.00">BenchmarkMemoryUsage</text>
+<text xml:space="preserve" text-anchor="middle" x="984" y="-327.75" font-family="Times,serif" font-size="15.00">func1</text>
+<text xml:space="preserve" text-anchor="middle" x="984" y="-310.5" font-family="Times,serif" font-size="15.00">3.28GB (9.04%)</text>
 </a>
 </g>
 </g>
 <!-- N1&#45;&gt;N5 -->
-<g id="edge21" class="edge">
+<g id="edge22" class="edge">
 <title>N1&#45;&gt;N5</title>
-<g id="a_edge21"><a xlink:title="testing.(*B).runN &#45;&gt; github.com/elotusteam/microservice&#45;project/tests/performance.BenchmarkMemoryUsage.func1 (3227.15MB)">
-<path fill="none" stroke="#b28558" d="M631.2,-496.49C704.62,-485.12 846.86,-461.04 965,-428.75 985.24,-423.22 1006.6,-416.39 1026.91,-409.4"/>
-<polygon fill="#b28558" stroke="#b28558" points="1028.02,-412.72 1036.31,-406.12 1025.72,-406.11 1028.02,-412.72"/>
+<g id="a_edge22"><a xlink:title="testing.(*B).runN &#45;&gt; github.com/elotusteam/microservice&#45;project/tests/performance.BenchmarkMemoryUsage.func1 (3.28GB)">
+<path fill="none" stroke="#b28b61" d="M564.28,-470.79C634.11,-462.98 775.13,-442.96 887,-400 896.88,-396.21 906.92,-391.46 916.62,-386.35"/>
+<polygon fill="#b28b61" stroke="#b28b61" points="918.15,-389.5 925.24,-381.63 914.79,-383.36 918.15,-389.5"/>
 </a>
 </g>
-<g id="a_edge21&#45;label"><a xlink:title="testing.(*B).runN &#45;&gt; github.com/elotusteam/microservice&#45;project/tests/performance.BenchmarkMemoryUsage.func1 (3227.15MB)">
-<text xml:space="preserve" text-anchor="middle" x="927.48" y="-449.95" font-family="Times,serif" font-size="14.00"> 3227.15MB</text>
+<g id="a_edge22&#45;label"><a xlink:title="testing.(*B).runN &#45;&gt; github.com/elotusteam/microservice&#45;project/tests/performance.BenchmarkMemoryUsage.func1 (3.28GB)">
+<text xml:space="preserve" text-anchor="middle" x="852.49" y="-421.2" font-family="Times,serif" font-size="14.00"> 3.28GB</text>
 </a>
 </g>
 </g>
 <!-- N6 -->
 <g id="node6" class="node">
 <title>N6</title>
-<g id="a_node6"><a xlink:title="github.com/elotusteam/microservice&#45;project/tests/performance.BenchmarkStringOperations.func1 (1503.08MB)">
-<polygon fill="#edeae7" stroke="#b2a188" points="1401.88,-412.25 1232.12,-412.25 1232.12,-329.25 1401.88,-329.25 1401.88,-412.25"/>
-<text xml:space="preserve" text-anchor="middle" x="1317" y="-395.9" font-family="Times,serif" font-size="13.00">performance</text>
-<text xml:space="preserve" text-anchor="middle" x="1317" y="-380.9" font-family="Times,serif" font-size="13.00">BenchmarkStringOperations</text>
-<text xml:space="preserve" text-anchor="middle" x="1317" y="-365.9" font-family="Times,serif" font-size="13.00">func1</text>
-<text xml:space="preserve" text-anchor="middle" x="1317" y="-350.9" font-family="Times,serif" font-size="13.00">1467.57MB (4.56%)</text>
-<text xml:space="preserve" text-anchor="middle" x="1317" y="-335.9" font-family="Times,serif" font-size="13.00">of 1503.08MB (4.67%)</text>
+<g id="a_node6"><a xlink:title="github.com/elotusteam/microservice&#45;project/tests/performance.BenchmarkMapOperations.func2 (1.77GB)">
+<polygon fill="#edeae7" stroke="#b2a087" points="1250.38,-376 1089.62,-376 1089.62,-308 1250.38,-308 1250.38,-376"/>
+<text xml:space="preserve" text-anchor="middle" x="1170" y="-359.65" font-family="Times,serif" font-size="13.00">performance</text>
+<text xml:space="preserve" text-anchor="middle" x="1170" y="-344.65" font-family="Times,serif" font-size="13.00">BenchmarkMapOperations</text>
+<text xml:space="preserve" text-anchor="middle" x="1170" y="-329.65" font-family="Times,serif" font-size="13.00">func2</text>
+<text xml:space="preserve" text-anchor="middle" x="1170" y="-314.65" font-family="Times,serif" font-size="13.00">1.77GB (4.87%)</text>
 </a>
 </g>
 </g>
 <!-- N1&#45;&gt;N6 -->
-<g id="edge22" class="edge">
+<g id="edge23" class="edge">
 <title>N1&#45;&gt;N6</title>
-<g id="a_edge22"><a xlink:title="testing.(*B).runN &#45;&gt; github.com/elotusteam/microservice&#45;project/tests/performance.BenchmarkStringOperations.func1 (1503.08MB)">
-<path fill="none" stroke="#b2a188" d="M630.97,-500.83C761.19,-492.62 1113.51,-467.39 1223,-428.75 1231.23,-425.85 1239.51,-422.16 1247.57,-418.07"/>
-<polygon fill="#b2a188" stroke="#b2a188" points="1249.13,-421.21 1256.3,-413.41 1245.83,-415.03 1249.13,-421.21"/>
+<g id="a_edge23"><a xlink:title="testing.(*B).runN &#45;&gt; github.com/elotusteam/microservice&#45;project/tests/performance.BenchmarkMapOperations.func2 (1.77GB)">
+<path fill="none" stroke="#b2a087" d="M564.29,-471.84C678.62,-463.08 986.34,-436.69 1081,-400 1092.91,-395.38 1104.92,-389.06 1116.1,-382.31"/>
+<polygon fill="#b2a087" stroke="#b2a087" points="1117.8,-385.38 1124.41,-377.09 1114.08,-379.45 1117.8,-385.38"/>
 </a>
 </g>
-<g id="a_edge22&#45;label"><a xlink:title="testing.(*B).runN &#45;&gt; github.com/elotusteam/microservice&#45;project/tests/performance.BenchmarkStringOperations.func1 (1503.08MB)">
-<text xml:space="preserve" text-anchor="middle" x="1181.69" y="-449.95" font-family="Times,serif" font-size="14.00"> 1503.08MB</text>
+<g id="a_edge23&#45;label"><a xlink:title="testing.(*B).runN &#45;&gt; github.com/elotusteam/microservice&#45;project/tests/performance.BenchmarkMapOperations.func2 (1.77GB)">
+<text xml:space="preserve" text-anchor="middle" x="1038.03" y="-421.2" font-family="Times,serif" font-size="14.00"> 1.77GB</text>
 </a>
 </g>
 </g>
 <!-- N7 -->
 <g id="node7" class="node">
 <title>N7</title>
-<g id="a_node7"><a xlink:title="github.com/elotusteam/microservice&#45;project/tests/performance.BenchmarkMapOperations.func2 (831.83MB)">
-<polygon fill="#edecea" stroke="#b2aa9b" points="1564.12,-403.25 1419.88,-403.25 1419.88,-338.25 1564.12,-338.25 1564.12,-403.25"/>
-<text xml:space="preserve" text-anchor="middle" x="1492" y="-387.85" font-family="Times,serif" font-size="12.00">performance</text>
-<text xml:space="preserve" text-anchor="middle" x="1492" y="-373.6" font-family="Times,serif" font-size="12.00">BenchmarkMapOperations</text>
-<text xml:space="preserve" text-anchor="middle" x="1492" y="-359.35" font-family="Times,serif" font-size="12.00">func2</text>
-<text xml:space="preserve" text-anchor="middle" x="1492" y="-345.1" font-family="Times,serif" font-size="12.00">831.83MB (2.59%)</text>
+<g id="a_node7"><a xlink:title="github.com/elotusteam/microservice&#45;project/tests/performance.BenchmarkStringOperations.func1 (1.51GB)">
+<polygon fill="#edebe8" stroke="#b2a48d" points="1437.88,-383.5 1268.12,-383.5 1268.12,-300.5 1437.88,-300.5 1437.88,-383.5"/>
+<text xml:space="preserve" text-anchor="middle" x="1353" y="-367.15" font-family="Times,serif" font-size="13.00">performance</text>
+<text xml:space="preserve" text-anchor="middle" x="1353" y="-352.15" font-family="Times,serif" font-size="13.00">BenchmarkStringOperations</text>
+<text xml:space="preserve" text-anchor="middle" x="1353" y="-337.15" font-family="Times,serif" font-size="13.00">func1</text>
+<text xml:space="preserve" text-anchor="middle" x="1353" y="-322.15" font-family="Times,serif" font-size="13.00">1.48GB (4.06%)</text>
+<text xml:space="preserve" text-anchor="middle" x="1353" y="-307.15" font-family="Times,serif" font-size="13.00">of 1.51GB (4.16%)</text>
 </a>
 </g>
 </g>
 <!-- N1&#45;&gt;N7 -->
-<g id="edge23" class="edge">
+<g id="edge24" class="edge">
 <title>N1&#45;&gt;N7</title>
-<g id="a_edge23"><a xlink:title="testing.(*B).runN &#45;&gt; github.com/elotusteam/microservice&#45;project/tests/performance.BenchmarkMapOperations.func2 (831.83MB)">
-<path fill="none" stroke="#b2aa9b" d="M631.08,-502.58C738.42,-499.61 1001.97,-489.98 1221,-463.25 1306.19,-452.85 1331.83,-461.89 1411,-428.75 1422.54,-423.92 1434.06,-417.23 1444.64,-410.14"/>
-<polygon fill="#b2aa9b" stroke="#b2aa9b" points="1446.64,-413.01 1452.82,-404.41 1442.62,-407.27 1446.64,-413.01"/>
+<g id="a_edge24"><a xlink:title="testing.(*B).runN &#45;&gt; github.com/elotusteam/microservice&#45;project/tests/performance.BenchmarkStringOperations.func1 (1.51GB)">
+<path fill="none" stroke="#b2a48d" d="M564.15,-473.51C701.99,-468.31 1130.21,-448.56 1259,-400 1266.88,-397.03 1274.85,-393.38 1282.62,-389.39"/>
+<polygon fill="#b2a48d" stroke="#b2a48d" points="1284.23,-392.5 1291.38,-384.68 1280.92,-386.33 1284.23,-392.5"/>
 </a>
 </g>
-<g id="a_edge23&#45;label"><a xlink:title="testing.(*B).runN &#45;&gt; github.com/elotusteam/microservice&#45;project/tests/performance.BenchmarkMapOperations.func2 (831.83MB)">
-<text xml:space="preserve" text-anchor="middle" x="1389.62" y="-449.95" font-family="Times,serif" font-size="14.00"> 831.83MB</text>
+<g id="a_edge24&#45;label"><a xlink:title="testing.(*B).runN &#45;&gt; github.com/elotusteam/microservice&#45;project/tests/performance.BenchmarkStringOperations.func1 (1.51GB)">
+<text xml:space="preserve" text-anchor="middle" x="1209.92" y="-421.2" font-family="Times,serif" font-size="14.00"> 1.51GB</text>
 </a>
 </g>
 </g>
 <!-- N8 -->
 <g id="node8" class="node">
 <title>N8</title>
-<g id="a_node8"><a xlink:title="github.com/elotusteam/microservice&#45;project/tests/performance.BenchmarkCryptoOperations.func1 (442.35MB)">
-<polygon fill="#edeceb" stroke="#b2afa6" points="1727.88,-401.75 1582.12,-401.75 1582.12,-339.75 1727.88,-339.75 1727.88,-401.75"/>
-<text xml:space="preserve" text-anchor="middle" x="1655" y="-387.3" font-family="Times,serif" font-size="11.00">performance</text>
-<text xml:space="preserve" text-anchor="middle" x="1655" y="-373.8" font-family="Times,serif" font-size="11.00">BenchmarkCryptoOperations</text>
-<text xml:space="preserve" text-anchor="middle" x="1655" y="-360.3" font-family="Times,serif" font-size="11.00">func1</text>
-<text xml:space="preserve" text-anchor="middle" x="1655" y="-346.8" font-family="Times,serif" font-size="11.00">442.35MB (1.37%)</text>
+<g id="a_node8"><a xlink:title="github.com/elotusteam/microservice&#45;project/tests/performance.BenchmarkCryptoOperations.func1 (0.46GB)">
+<polygon fill="#edeceb" stroke="#b2afa7" points="1601.88,-373 1456.12,-373 1456.12,-311 1601.88,-311 1601.88,-373"/>
+<text xml:space="preserve" text-anchor="middle" x="1529" y="-358.55" font-family="Times,serif" font-size="11.00">performance</text>
+<text xml:space="preserve" text-anchor="middle" x="1529" y="-345.05" font-family="Times,serif" font-size="11.00">BenchmarkCryptoOperations</text>
+<text xml:space="preserve" text-anchor="middle" x="1529" y="-331.55" font-family="Times,serif" font-size="11.00">func1</text>
+<text xml:space="preserve" text-anchor="middle" x="1529" y="-318.05" font-family="Times,serif" font-size="11.00">0.46GB (1.26%)</text>
 </a>
 </g>
 </g>
 <!-- N1&#45;&gt;N8 -->
-<g id="edge25" class="edge">
+<g id="edge26" class="edge">
 <title>N1&#45;&gt;N8</title>
-<g id="a_edge25"><a xlink:title="testing.(*B).runN &#45;&gt; github.com/elotusteam/microservice&#45;project/tests/performance.BenchmarkCryptoOperations.func1 (442.35MB)">
-<path fill="none" stroke="#b2afa6" d="M631.18,-502.56C787.23,-498.59 1270.08,-484.85 1425,-463.25 1491.89,-453.92 1511.28,-456.18 1573,-428.75 1585.01,-423.41 1597.09,-416.24 1608.16,-408.78"/>
-<polygon fill="#b2afa6" stroke="#b2afa6" points="1610.15,-411.66 1616.35,-403.07 1606.15,-405.92 1610.15,-411.66"/>
+<g id="a_edge26"><a xlink:title="testing.(*B).runN &#45;&gt; github.com/elotusteam/microservice&#45;project/tests/performance.BenchmarkCryptoOperations.func1 (0.46GB)">
+<path fill="none" stroke="#b2afa7" d="M564.31,-474.15C676.03,-471.62 982.99,-462.47 1237,-434.5 1331.02,-424.15 1359.34,-435.53 1447,-400 1459.55,-394.91 1472.08,-387.62 1483.43,-379.94"/>
+<polygon fill="#b2afa7" stroke="#b2afa7" points="1485.26,-382.94 1491.42,-374.32 1481.23,-377.21 1485.26,-382.94"/>
 </a>
 </g>
-<g id="a_edge25&#45;label"><a xlink:title="testing.(*B).runN &#45;&gt; github.com/elotusteam/microservice&#45;project/tests/performance.BenchmarkCryptoOperations.func1 (442.35MB)">
-<text xml:space="preserve" text-anchor="middle" x="1555.31" y="-449.95" font-family="Times,serif" font-size="14.00"> 442.35MB</text>
+<g id="a_edge26&#45;label"><a xlink:title="testing.(*B).runN &#45;&gt; github.com/elotusteam/microservice&#45;project/tests/performance.BenchmarkCryptoOperations.func1 (0.46GB)">
+<text xml:space="preserve" text-anchor="middle" x="1415.66" y="-421.2" font-family="Times,serif" font-size="14.00"> 0.46GB</text>
 </a>
 </g>
 </g>
 <!-- N10 -->
 <g id="node10" class="node">
 <title>N10</title>
-<g id="a_node10"><a xlink:title="github.com/elotusteam/microservice&#45;project/tests/performance.BenchmarkMapOperations.func1 (551.47MB)">
-<polygon fill="#edeceb" stroke="#b2ada3" points="1882,-408.5 1746,-408.5 1746,-333 1882,-333 1882,-408.5"/>
-<text xml:space="preserve" text-anchor="middle" x="1814" y="-394.05" font-family="Times,serif" font-size="11.00">performance</text>
-<text xml:space="preserve" text-anchor="middle" x="1814" y="-380.55" font-family="Times,serif" font-size="11.00">BenchmarkMapOperations</text>
-<text xml:space="preserve" text-anchor="middle" x="1814" y="-367.05" font-family="Times,serif" font-size="11.00">func1</text>
-<text xml:space="preserve" text-anchor="middle" x="1814" y="-353.55" font-family="Times,serif" font-size="11.00">518.47MB (1.61%)</text>
-<text xml:space="preserve" text-anchor="middle" x="1814" y="-340.05" font-family="Times,serif" font-size="11.00">of 551.47MB (1.71%)</text>
+<g id="a_node10"><a xlink:title="github.com/elotusteam/microservice&#45;project/tests/performance.BenchmarkMapOperations.func1 (0.58GB)">
+<polygon fill="#edeceb" stroke="#b2aea4" points="1756,-379.75 1620,-379.75 1620,-304.25 1756,-304.25 1756,-379.75"/>
+<text xml:space="preserve" text-anchor="middle" x="1688" y="-365.3" font-family="Times,serif" font-size="11.00">performance</text>
+<text xml:space="preserve" text-anchor="middle" x="1688" y="-351.8" font-family="Times,serif" font-size="11.00">BenchmarkMapOperations</text>
+<text xml:space="preserve" text-anchor="middle" x="1688" y="-338.3" font-family="Times,serif" font-size="11.00">func1</text>
+<text xml:space="preserve" text-anchor="middle" x="1688" y="-324.8" font-family="Times,serif" font-size="11.00">0.54GB (1.50%)</text>
+<text xml:space="preserve" text-anchor="middle" x="1688" y="-311.3" font-family="Times,serif" font-size="11.00">of 0.58GB (1.59%)</text>
 </a>
 </g>
 </g>
 <!-- N1&#45;&gt;N10 -->
-<g id="edge24" class="edge">
+<g id="edge25" class="edge">
 <title>N1&#45;&gt;N10</title>
-<g id="a_edge24"><a xlink:title="testing.(*B).runN &#45;&gt; github.com/elotusteam/microservice&#45;project/tests/performance.BenchmarkMapOperations.func1 (551.47MB)">
-<path fill="none" stroke="#b2ada3" d="M631.08,-503.03C806.54,-500.25 1402.22,-489.1 1591,-463.25 1657.06,-454.2 1676.52,-456.83 1737,-428.75 1745.15,-424.97 1753.29,-420.24 1761.06,-415.14"/>
-<polygon fill="#b2ada3" stroke="#b2ada3" points="1762.83,-418.17 1769.09,-409.62 1758.86,-412.4 1762.83,-418.17"/>
+<g id="a_edge25"><a xlink:title="testing.(*B).runN &#45;&gt; github.com/elotusteam/microservice&#45;project/tests/performance.BenchmarkMapOperations.func1 (0.58GB)">
+<path fill="none" stroke="#b2aea4" d="M563.94,-475.53C695.79,-476.62 1106.3,-476.2 1443,-434.5 1518.65,-425.13 1541.4,-431.07 1611,-400 1619.31,-396.29 1627.59,-391.56 1635.47,-386.41"/>
+<polygon fill="#b2aea4" stroke="#b2aea4" points="1637.35,-389.37 1643.61,-380.83 1633.39,-383.6 1637.35,-389.37"/>
 </a>
 </g>
-<g id="a_edge24&#45;label"><a xlink:title="testing.(*B).runN &#45;&gt; github.com/elotusteam/microservice&#45;project/tests/performance.BenchmarkMapOperations.func1 (551.47MB)">
-<text xml:space="preserve" text-anchor="middle" x="1722.78" y="-449.95" font-family="Times,serif" font-size="14.00"> 551.47MB</text>
+<g id="a_edge25&#45;label"><a xlink:title="testing.(*B).runN &#45;&gt; github.com/elotusteam/microservice&#45;project/tests/performance.BenchmarkMapOperations.func1 (0.58GB)">
+<text xml:space="preserve" text-anchor="middle" x="1584.61" y="-421.2" font-family="Times,serif" font-size="14.00"> 0.58GB</text>
 </a>
 </g>
 </g>
 <!-- N11 -->
 <g id="node11" class="node">
 <title>N11</title>
-<g id="a_node11"><a xlink:title="github.com/elotusteam/microservice&#45;project/tests/performance.BenchmarkMapOperations.func3 (431.02MB)">
-<polygon fill="#edeceb" stroke="#b2afa6" points="2036,-408.5 1900,-408.5 1900,-333 2036,-333 2036,-408.5"/>
-<text xml:space="preserve" text-anchor="middle" x="1968" y="-394.05" font-family="Times,serif" font-size="11.00">performance</text>
-<text xml:space="preserve" text-anchor="middle" x="1968" y="-380.55" font-family="Times,serif" font-size="11.00">BenchmarkMapOperations</text>
-<text xml:space="preserve" text-anchor="middle" x="1968" y="-367.05" font-family="Times,serif" font-size="11.00">func3</text>
-<text xml:space="preserve" text-anchor="middle" x="1968" y="-353.55" font-family="Times,serif" font-size="11.00">381.01MB (1.18%)</text>
-<text xml:space="preserve" text-anchor="middle" x="1968" y="-340.05" font-family="Times,serif" font-size="11.00">of 431.02MB (1.34%)</text>
+<g id="a_node11"><a xlink:title="github.com/elotusteam/microservice&#45;project/tests/performance.BenchmarkMapOperations.func3 (0.45GB)">
+<polygon fill="#edeceb" stroke="#b2afa7" points="1911,-379.75 1775,-379.75 1775,-304.25 1911,-304.25 1911,-379.75"/>
+<text xml:space="preserve" text-anchor="middle" x="1843" y="-365.3" font-family="Times,serif" font-size="11.00">performance</text>
+<text xml:space="preserve" text-anchor="middle" x="1843" y="-351.8" font-family="Times,serif" font-size="11.00">BenchmarkMapOperations</text>
+<text xml:space="preserve" text-anchor="middle" x="1843" y="-338.3" font-family="Times,serif" font-size="11.00">func3</text>
+<text xml:space="preserve" text-anchor="middle" x="1843" y="-324.8" font-family="Times,serif" font-size="11.00">0.40GB (1.11%)</text>
+<text xml:space="preserve" text-anchor="middle" x="1843" y="-311.3" font-family="Times,serif" font-size="11.00">of 0.45GB (1.25%)</text>
 </a>
 </g>
 </g>
 <!-- N1&#45;&gt;N11 -->
-<g id="edge26" class="edge">
+<g id="edge27" class="edge">
 <title>N1&#45;&gt;N11</title>
-<g id="a_edge26"><a xlink:title="testing.(*B).runN &#45;&gt; github.com/elotusteam/microservice&#45;project/tests/performance.BenchmarkMapOperations.func3 (431.02MB)">
-<path fill="none" stroke="#b2afa6" d="M631.37,-503.49C825.34,-502.25 1535.36,-495.56 1758,-463.25 1818.43,-454.48 1835.89,-455.07 1891,-428.75 1898.91,-424.97 1906.84,-420.33 1914.43,-415.34"/>
-<polygon fill="#b2afa6" stroke="#b2afa6" points="1916.33,-418.28 1922.59,-409.74 1912.36,-412.51 1916.33,-418.28"/>
+<g id="a_edge27"><a xlink:title="testing.(*B).runN &#45;&gt; github.com/elotusteam/microservice&#45;project/tests/performance.BenchmarkMapOperations.func3 (0.45GB)">
+<path fill="none" stroke="#b2afa7" d="M564.36,-474.46C740.64,-472.1 1404.08,-461.57 1612,-434.5 1681.12,-425.5 1701.54,-428.83 1765,-400 1773.25,-396.25 1781.49,-391.55 1789.36,-386.46"/>
+<polygon fill="#b2afa7" stroke="#b2afa7" points="1791.19,-389.45 1797.5,-380.94 1787.26,-383.65 1791.19,-389.45"/>
 </a>
 </g>
-<g id="a_edge26&#45;label"><a xlink:title="testing.(*B).runN &#45;&gt; github.com/elotusteam/microservice&#45;project/tests/performance.BenchmarkMapOperations.func3 (431.02MB)">
-<text xml:space="preserve" text-anchor="middle" x="1878.52" y="-449.95" font-family="Times,serif" font-size="14.00"> 431.02MB</text>
+<g id="a_edge27&#45;label"><a xlink:title="testing.(*B).runN &#45;&gt; github.com/elotusteam/microservice&#45;project/tests/performance.BenchmarkMapOperations.func3 (0.45GB)">
+<text xml:space="preserve" text-anchor="middle" x="1740.28" y="-421.2" font-family="Times,serif" font-size="14.00"> 0.45GB</text>
 </a>
 </g>
 </g>
 <!-- N12 -->
 <g id="node12" class="node">
 <title>N12</title>
-<g id="a_node12"><a xlink:title="github.com/elotusteam/microservice&#45;project/tests/performance.BenchmarkGoroutineCreation.func1 (262.52MB)">
-<polygon fill="#edecec" stroke="#b2b0ab" points="2193.88,-397.25 2054.12,-397.25 2054.12,-344.25 2193.88,-344.25 2193.88,-397.25"/>
-<text xml:space="preserve" text-anchor="middle" x="2124" y="-383.75" font-family="Times,serif" font-size="10.00">performance</text>
-<text xml:space="preserve" text-anchor="middle" x="2124" y="-372.5" font-family="Times,serif" font-size="10.00">BenchmarkGoroutineCreation</text>
-<text xml:space="preserve" text-anchor="middle" x="2124" y="-361.25" font-family="Times,serif" font-size="10.00">func1</text>
-<text xml:space="preserve" text-anchor="middle" x="2124" y="-350" font-family="Times,serif" font-size="10.00">262.52MB (0.82%)</text>
+<g id="a_node12"><a xlink:title="github.com/elotusteam/microservice&#45;project/tests/performance.BenchmarkGoroutineCreation.func1 (0.24GB)">
+<polygon fill="#edecec" stroke="#b2b1ac" points="2068.88,-368.5 1929.12,-368.5 1929.12,-315.5 2068.88,-315.5 2068.88,-368.5"/>
+<text xml:space="preserve" text-anchor="middle" x="1999" y="-355" font-family="Times,serif" font-size="10.00">performance</text>
+<text xml:space="preserve" text-anchor="middle" x="1999" y="-343.75" font-family="Times,serif" font-size="10.00">BenchmarkGoroutineCreation</text>
+<text xml:space="preserve" text-anchor="middle" x="1999" y="-332.5" font-family="Times,serif" font-size="10.00">func1</text>
+<text xml:space="preserve" text-anchor="middle" x="1999" y="-321.25" font-family="Times,serif" font-size="10.00">0.24GB (0.65%)</text>
 </a>
 </g>
 </g>
 <!-- N1&#45;&gt;N12 -->
-<g id="edge28" class="edge">
+<g id="edge30" class="edge">
 <title>N1&#45;&gt;N12</title>
-<g id="a_edge28"><a xlink:title="testing.(*B).runN &#45;&gt; github.com/elotusteam/microservice&#45;project/tests/performance.BenchmarkGoroutineCreation.func1 (262.52MB)">
-<path fill="none" stroke="#b2b0ab" d="M631.37,-503.75C841.13,-503.51 1659.28,-500.17 1914,-463.25 1973.58,-454.61 1990.56,-454.46 2045,-428.75 2058.77,-422.25 2072.63,-413.26 2084.81,-404.35"/>
-<polygon fill="#b2b0ab" stroke="#b2b0ab" points="2086.68,-407.32 2092.56,-398.51 2082.47,-401.74 2086.68,-407.32"/>
+<g id="a_edge30"><a xlink:title="testing.(*B).runN &#45;&gt; github.com/elotusteam/microservice&#45;project/tests/performance.BenchmarkGoroutineCreation.func1 (0.24GB)">
+<path fill="none" stroke="#b2b1ac" d="M564.26,-474.7C755.7,-473.21 1527.78,-465.38 1768,-434.5 1836.71,-425.67 1856.86,-428.51 1920,-400 1934,-393.68 1948.02,-384.66 1960.27,-375.67"/>
+<polygon fill="#b2b1ac" stroke="#b2b1ac" points="1962.21,-378.58 1968.06,-369.75 1957.98,-373.01 1962.21,-378.58"/>
 </a>
 </g>
-<g id="a_edge28&#45;label"><a xlink:title="testing.(*B).runN &#45;&gt; github.com/elotusteam/microservice&#45;project/tests/performance.BenchmarkGoroutineCreation.func1 (262.52MB)">
-<text xml:space="preserve" text-anchor="middle" x="2030.82" y="-449.95" font-family="Times,serif" font-size="14.00"> 262.52MB</text>
-</a>
-</g>
-</g>
-<!-- N15 -->
-<g id="node15" class="node">
-<title>N15</title>
-<g id="a_node15"><a xlink:title="github.com/elotusteam/microservice&#45;project/tests/performance.BenchmarkStringOperations.func2 (288.65MB)">
-<polygon fill="#edecec" stroke="#b2b0aa" points="2319.75,-394.25 2212.25,-394.25 2212.25,-347.25 2319.75,-347.25 2319.75,-394.25"/>
-<text xml:space="preserve" text-anchor="middle" x="2266" y="-382.65" font-family="Times,serif" font-size="8.00">performance</text>
-<text xml:space="preserve" text-anchor="middle" x="2266" y="-372.9" font-family="Times,serif" font-size="8.00">BenchmarkStringOperations</text>
-<text xml:space="preserve" text-anchor="middle" x="2266" y="-363.15" font-family="Times,serif" font-size="8.00">func2</text>
-<text xml:space="preserve" text-anchor="middle" x="2266" y="-353.4" font-family="Times,serif" font-size="8.00">0 of 288.65MB (0.9%)</text>
-</a>
-</g>
-</g>
-<!-- N1&#45;&gt;N15 -->
-<g id="edge27" class="edge">
-<title>N1&#45;&gt;N15</title>
-<g id="a_edge27"><a xlink:title="testing.(*B).runN &#45;&gt; github.com/elotusteam/microservice&#45;project/tests/performance.BenchmarkStringOperations.func2 (288.65MB)">
-<path fill="none" stroke="#b2b0aa" d="M631.23,-503.86C855.23,-504.12 1779.56,-502.74 2066,-463.25 2128.2,-454.68 2147.63,-458.36 2203,-428.75 2215.6,-422.01 2227.69,-412.21 2237.84,-402.63"/>
-<polygon fill="#b2b0aa" stroke="#b2b0aa" points="2240.14,-405.28 2244.81,-395.77 2235.23,-400.29 2240.14,-405.28"/>
-</a>
-</g>
-<g id="a_edge27&#45;label"><a xlink:title="testing.(*B).runN &#45;&gt; github.com/elotusteam/microservice&#45;project/tests/performance.BenchmarkStringOperations.func2 (288.65MB)">
-<text xml:space="preserve" text-anchor="middle" x="2194.71" y="-449.95" font-family="Times,serif" font-size="14.00"> 288.65MB</text>
-</a>
-</g>
-</g>
-<!-- N16 -->
-<g id="node16" class="node">
-<title>N16</title>
-<g id="a_node16"><a xlink:title="github.com/elotusteam/microservice&#45;project/tests/performance.BenchmarkJSONUnmarshaling (172.01MB)">
-<polygon fill="#ededec" stroke="#b2b1ad" points="2466.62,-395.75 2337.38,-395.75 2337.38,-345.75 2466.62,-345.75 2466.62,-395.75"/>
-<text xml:space="preserve" text-anchor="middle" x="2402" y="-383.2" font-family="Times,serif" font-size="9.00">performance</text>
-<text xml:space="preserve" text-anchor="middle" x="2402" y="-372.7" font-family="Times,serif" font-size="9.00">BenchmarkJSONUnmarshaling</text>
-<text xml:space="preserve" text-anchor="middle" x="2402" y="-362.2" font-family="Times,serif" font-size="9.00">38.01MB (0.12%)</text>
-<text xml:space="preserve" text-anchor="middle" x="2402" y="-351.7" font-family="Times,serif" font-size="9.00">of 172.01MB (0.53%)</text>
-</a>
-</g>
-</g>
-<!-- N1&#45;&gt;N16 -->
-<g id="edge31" class="edge">
-<title>N1&#45;&gt;N16</title>
-<g id="a_edge31"><a xlink:title="testing.(*B).runN &#45;&gt; github.com/elotusteam/microservice&#45;project/tests/performance.BenchmarkJSONUnmarshaling (172.01MB)">
-<path fill="none" stroke="#b2b1ad" d="M631.07,-503.45C887.68,-501.76 2069.5,-492.45 2230,-463.25 2275.84,-454.91 2288.09,-451.05 2329,-428.75 2341.92,-421.71 2354.94,-412.41 2366.32,-403.38"/>
-<polygon fill="#b2b1ad" stroke="#b2b1ad" points="2368.37,-406.23 2373.9,-397.19 2363.94,-400.8 2368.37,-406.23"/>
-</a>
-</g>
-<g id="a_edge31&#45;label"><a xlink:title="testing.(*B).runN &#45;&gt; github.com/elotusteam/microservice&#45;project/tests/performance.BenchmarkJSONUnmarshaling (172.01MB)">
-<text xml:space="preserve" text-anchor="middle" x="2322.86" y="-449.95" font-family="Times,serif" font-size="14.00"> 172.01MB</text>
-</a>
-</g>
-</g>
-<!-- N17 -->
-<g id="node17" class="node">
-<title>N17</title>
-<g id="a_node17"><a xlink:title="github.com/elotusteam/microservice&#45;project/tests/performance.BenchmarkJSONMarshaling (232.53MB)">
-<polygon fill="#edecec" stroke="#b2b1ac" points="2603.75,-395.75 2484.25,-395.75 2484.25,-345.75 2603.75,-345.75 2603.75,-395.75"/>
-<text xml:space="preserve" text-anchor="middle" x="2544" y="-383.2" font-family="Times,serif" font-size="9.00">performance</text>
-<text xml:space="preserve" text-anchor="middle" x="2544" y="-372.7" font-family="Times,serif" font-size="9.00">BenchmarkJSONMarshaling</text>
-<text xml:space="preserve" text-anchor="middle" x="2544" y="-362.2" font-family="Times,serif" font-size="9.00">31MB (0.096%)</text>
-<text xml:space="preserve" text-anchor="middle" x="2544" y="-351.7" font-family="Times,serif" font-size="9.00">of 232.53MB (0.72%)</text>
-</a>
-</g>
-</g>
-<!-- N1&#45;&gt;N17 -->
-<g id="edge29" class="edge">
-<title>N1&#45;&gt;N17</title>
-<g id="a_edge29"><a xlink:title="testing.(*B).runN &#45;&gt; github.com/elotusteam/microservice&#45;project/tests/performance.BenchmarkJSONMarshaling (232.53MB)">
-<path fill="none" stroke="#b2b1ac" d="M631.28,-503.4C900.06,-501.36 2183.51,-490.27 2358,-463.25 2412,-454.89 2427.82,-454.51 2476,-428.75 2488.52,-422.05 2500.84,-412.79 2511.49,-403.67"/>
-<polygon fill="#b2b1ac" stroke="#b2b1ac" points="2513.72,-406.37 2518.87,-397.12 2509.07,-401.14 2513.72,-406.37"/>
-</a>
-</g>
-<g id="a_edge29&#45;label"><a xlink:title="testing.(*B).runN &#45;&gt; github.com/elotusteam/microservice&#45;project/tests/performance.BenchmarkJSONMarshaling (232.53MB)">
-<text xml:space="preserve" text-anchor="middle" x="2468.87" y="-449.95" font-family="Times,serif" font-size="14.00"> 232.53MB</text>
-</a>
-</g>
-</g>
-<!-- NN2_0 -->
-<g id="NN2_0" class="node">
-<title>NN2_0</title>
-<g id="a_NN2_0"><a xlink:title="6763.65MB">
-<polygon fill="#f8f8f8" stroke="black" points="423,-251.75 373,-251.75 369,-247.75 369,-215.75 419,-215.75 423,-219.75 423,-251.75"/>
-<polyline fill="none" stroke="black" points="419,-247.75 369,-247.75"/>
-<polyline fill="none" stroke="black" points="419,-247.75 419,-215.75"/>
-<polyline fill="none" stroke="black" points="419,-247.75 423,-251.75"/>
-<text xml:space="preserve" text-anchor="middle" x="396" y="-231.03" font-family="Times,serif" font-size="8.00">64kB</text>
-</a>
-</g>
-</g>
-<!-- N2&#45;&gt;NN2_0 -->
-<g id="edge1" class="edge">
-<title>N2&#45;&gt;NN2_0</title>
-<g id="a_edge1"><a xlink:title="6763.65MB">
-<path fill="none" stroke="black" d="M448.52,-312.46C440.95,-306.99 433.78,-301.1 427.25,-294.75 418.09,-285.85 411.07,-273.68 406.03,-262.63"/>
-<polygon fill="black" stroke="black" points="409.31,-261.39 402.22,-253.51 402.85,-264.09 409.31,-261.39"/>
-</a>
-</g>
-<g id="a_edge1&#45;label"><a xlink:title="6763.65MB">
-<text xml:space="preserve" text-anchor="middle" x="462.12" y="-281.45" font-family="Times,serif" font-size="14.00"> 6763.65MB</text>
-</a>
-</g>
-</g>
-<!-- NN2_1 -->
-<g id="NN2_1" class="node">
-<title>NN2_1</title>
-<g id="a_NN2_1"><a xlink:title="5366.99MB">
-<polygon fill="#f8f8f8" stroke="black" points="516,-251.75 466,-251.75 462,-247.75 462,-215.75 512,-215.75 516,-219.75 516,-251.75"/>
-<polyline fill="none" stroke="black" points="512,-247.75 462,-247.75"/>
-<polyline fill="none" stroke="black" points="512,-247.75 512,-215.75"/>
-<polyline fill="none" stroke="black" points="512,-247.75 516,-251.75"/>
-<text xml:space="preserve" text-anchor="middle" x="489" y="-231.03" font-family="Times,serif" font-size="8.00">16kB</text>
-</a>
-</g>
-</g>
-<!-- N2&#45;&gt;NN2_1 -->
-<g id="edge2" class="edge">
-<title>N2&#45;&gt;NN2_1</title>
-<g id="a_edge2"><a xlink:title="5366.99MB">
-<path fill="none" stroke="black" d="M520.81,-312.58C516.21,-306.82 511.93,-300.84 508.25,-294.75 502.45,-285.16 498.21,-273.64 495.21,-263.26"/>
-<polygon fill="black" stroke="black" points="498.62,-262.46 492.71,-253.67 491.85,-264.23 498.62,-262.46"/>
-</a>
-</g>
-<g id="a_edge2&#45;label"><a xlink:title="5366.99MB">
-<text xml:space="preserve" text-anchor="middle" x="543.12" y="-281.45" font-family="Times,serif" font-size="14.00"> 5366.99MB</text>
-</a>
-</g>
-</g>
-<!-- NN2_2 -->
-<g id="NN2_2" class="node">
-<title>NN2_2</title>
-<g id="a_NN2_2"><a xlink:title="4383.78MB">
-<polygon fill="#f8f8f8" stroke="black" points="609,-251.75 559,-251.75 555,-247.75 555,-215.75 605,-215.75 609,-219.75 609,-251.75"/>
-<polyline fill="none" stroke="black" points="605,-247.75 555,-247.75"/>
-<polyline fill="none" stroke="black" points="605,-247.75 605,-215.75"/>
-<polyline fill="none" stroke="black" points="605,-247.75 609,-251.75"/>
-<text xml:space="preserve" text-anchor="middle" x="582" y="-231.03" font-family="Times,serif" font-size="8.00">1kB</text>
-</a>
-</g>
-</g>
-<!-- N2&#45;&gt;NN2_2 -->
-<g id="edge3" class="edge">
-<title>N2&#45;&gt;NN2_2</title>
-<g id="a_edge3"><a xlink:title="4383.78MB">
-<path fill="none" stroke="black" d="M582,-312.5C582,-295.43 582,-277.47 582,-263.11"/>
-<polygon fill="black" stroke="black" points="585.5,-263.52 582,-253.52 578.5,-263.52 585.5,-263.52"/>
-</a>
-</g>
-<g id="a_edge3&#45;label"><a xlink:title="4383.78MB">
-<text xml:space="preserve" text-anchor="middle" x="616.88" y="-281.45" font-family="Times,serif" font-size="14.00"> 4383.78MB</text>
-</a>
-</g>
-</g>
-<!-- NN2_3 -->
-<g id="NN2_3" class="node">
-<title>NN2_3</title>
-<g id="a_NN2_3"><a xlink:title="3673.81MB">
-<polygon fill="#f8f8f8" stroke="black" points="702,-251.75 652,-251.75 648,-247.75 648,-215.75 698,-215.75 702,-219.75 702,-251.75"/>
-<polyline fill="none" stroke="black" points="698,-247.75 648,-247.75"/>
-<polyline fill="none" stroke="black" points="698,-247.75 698,-215.75"/>
-<polyline fill="none" stroke="black" points="698,-247.75 702,-251.75"/>
-<text xml:space="preserve" text-anchor="middle" x="675" y="-231.03" font-family="Times,serif" font-size="8.00">4kB</text>
-</a>
-</g>
-</g>
-<!-- N2&#45;&gt;NN2_3 -->
-<g id="edge4" class="edge">
-<title>N2&#45;&gt;NN2_3</title>
-<g id="a_edge4"><a xlink:title="3673.81MB">
-<path fill="none" stroke="black" d="M640.62,-312.25C645.11,-306.57 649.32,-300.69 653,-294.75 659.05,-284.98 663.81,-273.3 667.32,-262.85"/>
-<polygon fill="black" stroke="black" points="670.58,-264.18 670.21,-253.59 663.89,-262.1 670.58,-264.18"/>
-</a>
-</g>
-<g id="a_edge4&#45;label"><a xlink:title="3673.81MB">
-<text xml:space="preserve" text-anchor="middle" x="695.91" y="-281.45" font-family="Times,serif" font-size="14.00"> 3673.81MB</text>
-</a>
-</g>
-</g>
-<!-- N3 -->
-<g id="node3" class="node">
-<title>N3</title>
-<g id="a_node3"><a xlink:title="testing.(*B).launch (32170.12MB)">
-<polygon fill="#edd5d5" stroke="#b20000" points="630.88,-674 533.12,-674 533.12,-627 630.88,-627 630.88,-674"/>
-<text xml:space="preserve" text-anchor="middle" x="582" y="-662.4" font-family="Times,serif" font-size="8.00">testing</text>
-<text xml:space="preserve" text-anchor="middle" x="582" y="-652.65" font-family="Times,serif" font-size="8.00">(*B)</text>
-<text xml:space="preserve" text-anchor="middle" x="582" y="-642.9" font-family="Times,serif" font-size="8.00">launch</text>
-<text xml:space="preserve" text-anchor="middle" x="582" y="-633.15" font-family="Times,serif" font-size="8.00">0 of 32170.12MB (100%)</text>
-</a>
-</g>
-</g>
-<!-- N3&#45;&gt;N1 -->
-<g id="edge18" class="edge">
-<title>N3&#45;&gt;N1</title>
-<g id="a_edge18"><a xlink:title="testing.(*B).launch &#45;&gt; testing.(*B).runN (32170.12MB)">
-<path fill="none" stroke="#b20000" stroke-width="5" d="M582,-626.72C582,-604.64 582,-570.72 582,-544.41"/>
-<polygon fill="#b20000" stroke="#b20000" stroke-width="5" points="586.38,-544.66 582,-534.66 577.63,-544.66 586.38,-544.66"/>
-</a>
-</g>
-<g id="a_edge18&#45;label"><a xlink:title="testing.(*B).launch &#45;&gt; testing.(*B).runN (32170.12MB)">
-<text xml:space="preserve" text-anchor="middle" x="620.25" y="-549.45" font-family="Times,serif" font-size="14.00"> 32170.12MB</text>
-</a>
-</g>
-</g>
-<!-- NN4_0 -->
-<g id="NN4_0" class="node">
-<title>NN4_0</title>
-<g id="a_NN4_0"><a xlink:title="1616.69MB">
-<polygon fill="#f8f8f8" stroke="black" points="795,-251.75 745,-251.75 741,-247.75 741,-215.75 791,-215.75 795,-219.75 795,-251.75"/>
-<polyline fill="none" stroke="black" points="791,-247.75 741,-247.75"/>
-<polyline fill="none" stroke="black" points="791,-247.75 791,-215.75"/>
-<polyline fill="none" stroke="black" points="791,-247.75 795,-251.75"/>
-<text xml:space="preserve" text-anchor="middle" x="768" y="-231.03" font-family="Times,serif" font-size="8.00">10kB</text>
-</a>
-</g>
-</g>
-<!-- N4&#45;&gt;NN4_0 -->
-<g id="edge5" class="edge">
-<title>N4&#45;&gt;NN4_0</title>
-<g id="a_edge5"><a xlink:title="1616.69MB">
-<path fill="none" stroke="black" d="M814.31,-329.07C804.34,-318.66 794.62,-306.94 787.25,-294.75 781.45,-285.16 777.21,-273.64 774.21,-263.26"/>
-<polygon fill="black" stroke="black" points="777.62,-262.46 771.71,-253.67 770.85,-264.23 777.62,-262.46"/>
-</a>
-</g>
-<g id="a_edge5&#45;label"><a xlink:title="1616.69MB">
-<text xml:space="preserve" text-anchor="middle" x="822.12" y="-281.45" font-family="Times,serif" font-size="14.00"> 1616.69MB</text>
-</a>
-</g>
-</g>
-<!-- NN4_1 -->
-<g id="NN4_1" class="node">
-<title>NN4_1</title>
-<g id="a_NN4_1"><a xlink:title="1022.59MB">
-<polygon fill="#f8f8f8" stroke="black" points="888,-251.75 838,-251.75 834,-247.75 834,-215.75 884,-215.75 888,-219.75 888,-251.75"/>
-<polyline fill="none" stroke="black" points="884,-247.75 834,-247.75"/>
-<polyline fill="none" stroke="black" points="884,-247.75 884,-215.75"/>
-<polyline fill="none" stroke="black" points="884,-247.75 888,-251.75"/>
-<text xml:space="preserve" text-anchor="middle" x="861" y="-231.03" font-family="Times,serif" font-size="8.00">6.62kB</text>
-</a>
-</g>
-</g>
-<!-- N4&#45;&gt;NN4_1 -->
-<g id="edge6" class="edge">
-<title>N4&#45;&gt;NN4_1</title>
-<g id="a_edge6"><a xlink:title="1022.59MB">
-<path fill="none" stroke="black" d="M861,-328.88C861,-307.74 861,-282.46 861,-263.42"/>
-<polygon fill="black" stroke="black" points="864.5,-263.43 861,-253.43 857.5,-263.43 864.5,-263.43"/>
-</a>
-</g>
-<g id="a_edge6&#45;label"><a xlink:title="1022.59MB">
-<text xml:space="preserve" text-anchor="middle" x="895.88" y="-281.45" font-family="Times,serif" font-size="14.00"> 1022.59MB</text>
-</a>
-</g>
-</g>
-<!-- NN4_2 -->
-<g id="NN4_2" class="node">
-<title>NN4_2</title>
-<g id="a_NN4_2"><a xlink:title="664.09MB">
-<polygon fill="#f8f8f8" stroke="black" points="981,-251.75 931,-251.75 927,-247.75 927,-215.75 977,-215.75 981,-219.75 981,-251.75"/>
-<polyline fill="none" stroke="black" points="977,-247.75 927,-247.75"/>
-<polyline fill="none" stroke="black" points="977,-247.75 977,-215.75"/>
-<polyline fill="none" stroke="black" points="977,-247.75 981,-251.75"/>
-<text xml:space="preserve" text-anchor="middle" x="954" y="-231.03" font-family="Times,serif" font-size="8.00">4kB</text>
-</a>
-</g>
-</g>
-<!-- N4&#45;&gt;NN4_2 -->
-<g id="edge7" class="edge">
-<title>N4&#45;&gt;NN4_2</title>
-<g id="a_edge7"><a xlink:title="664.09MB">
-<path fill="none" stroke="black" d="M905.19,-329.04C914.92,-318.54 924.54,-306.79 932,-294.75 938.05,-284.98 942.81,-273.3 946.32,-262.85"/>
-<polygon fill="black" stroke="black" points="949.58,-264.18 949.21,-253.59 942.89,-262.1 949.58,-264.18"/>
-</a>
-</g>
-<g id="a_edge7&#45;label"><a xlink:title="664.09MB">
-<text xml:space="preserve" text-anchor="middle" x="971.53" y="-281.45" font-family="Times,serif" font-size="14.00"> 664.09MB</text>
-</a>
-</g>
-</g>
-<!-- NN4_3 -->
-<g id="NN4_3" class="node">
-<title>NN4_3</title>
-<g id="a_NN4_3"><a xlink:title="314.11MB">
-<polygon fill="#f8f8f8" stroke="black" points="1067,-251.75 1017,-251.75 1013,-247.75 1013,-215.75 1063,-215.75 1067,-219.75 1067,-251.75"/>
-<polyline fill="none" stroke="black" points="1063,-247.75 1013,-247.75"/>
-<polyline fill="none" stroke="black" points="1063,-247.75 1063,-215.75"/>
-<polyline fill="none" stroke="black" points="1063,-247.75 1067,-251.75"/>
-<text xml:space="preserve" text-anchor="middle" x="1040" y="-231.03" font-family="Times,serif" font-size="8.00">2kB</text>
-</a>
-</g>
-</g>
-<!-- N4&#45;&gt;NN4_3 -->
-<g id="edge8" class="edge">
-<title>N4&#45;&gt;NN4_3</title>
-<g id="a_edge8"><a xlink:title="314.11MB">
-<path fill="none" stroke="black" d="M956.81,-330.95C974.8,-320.9 992.49,-308.85 1007,-294.75 1016.27,-285.74 1023.62,-273.56 1029.01,-262.52"/>
-<polygon fill="black" stroke="black" points="1032.2,-263.97 1033.12,-253.41 1025.81,-261.09 1032.2,-263.97"/>
-</a>
-</g>
-<g id="a_edge8&#45;label"><a xlink:title="314.11MB">
-<text xml:space="preserve" text-anchor="middle" x="1051.35" y="-281.45" font-family="Times,serif" font-size="14.00"> 314.11MB</text>
-</a>
-</g>
-</g>
-<!-- NN5_0 -->
-<g id="NN5_0" class="node">
-<title>NN5_0</title>
-<g id="a_NN5_0"><a xlink:title="3227.15MB">
-<polygon fill="#f8f8f8" stroke="black" points="1153,-251.75 1103,-251.75 1099,-247.75 1099,-215.75 1149,-215.75 1153,-219.75 1153,-251.75"/>
-<polyline fill="none" stroke="black" points="1149,-247.75 1099,-247.75"/>
-<polyline fill="none" stroke="black" points="1149,-247.75 1149,-215.75"/>
-<polyline fill="none" stroke="black" points="1149,-247.75 1153,-251.75"/>
-<text xml:space="preserve" text-anchor="middle" x="1126" y="-231.03" font-family="Times,serif" font-size="8.00">1kB</text>
-</a>
-</g>
-</g>
-<!-- N5&#45;&gt;NN5_0 -->
-<g id="edge9" class="edge">
-<title>N5&#45;&gt;NN5_0</title>
-<g id="a_edge9"><a xlink:title="3227.15MB">
-<path fill="none" stroke="black" d="M1126,-331.79C1126,-310.09 1126,-283.31 1126,-263.39"/>
-<polygon fill="black" stroke="black" points="1129.5,-263.49 1126,-253.49 1122.5,-263.49 1129.5,-263.49"/>
-</a>
-</g>
-<g id="a_edge9&#45;label"><a xlink:title="3227.15MB">
-<text xml:space="preserve" text-anchor="middle" x="1160.88" y="-281.45" font-family="Times,serif" font-size="14.00"> 3227.15MB</text>
-</a>
-</g>
-</g>
-<!-- NN6_0 -->
-<g id="NN6_0" class="node">
-<title>NN6_0</title>
-<g id="a_NN6_0"><a xlink:title="263.64MB">
-<polygon fill="#f8f8f8" stroke="black" points="1344,-251.75 1294,-251.75 1290,-247.75 1290,-215.75 1340,-215.75 1344,-219.75 1344,-251.75"/>
-<polyline fill="none" stroke="black" points="1340,-247.75 1290,-247.75"/>
-<polyline fill="none" stroke="black" points="1340,-247.75 1340,-215.75"/>
-<polyline fill="none" stroke="black" points="1340,-247.75 1344,-251.75"/>
-<text xml:space="preserve" text-anchor="middle" x="1317" y="-231.03" font-family="Times,serif" font-size="8.00">576B</text>
-</a>
-</g>
-</g>
-<!-- N6&#45;&gt;NN6_0 -->
-<g id="edge10" class="edge">
-<title>N6&#45;&gt;NN6_0</title>
-<g id="a_edge10"><a xlink:title="263.64MB">
-<path fill="none" stroke="black" d="M1317,-328.88C1317,-307.74 1317,-282.46 1317,-263.42"/>
-<polygon fill="black" stroke="black" points="1320.5,-263.43 1317,-253.43 1313.5,-263.43 1320.5,-263.43"/>
-</a>
-</g>
-<g id="a_edge10&#45;label"><a xlink:title="263.64MB">
-<text xml:space="preserve" text-anchor="middle" x="1348.5" y="-281.45" font-family="Times,serif" font-size="14.00"> 263.64MB</text>
-</a>
-</g>
-</g>
-<!-- N9 -->
-<g id="node9" class="node">
-<title>N9</title>
-<g id="a_node9"><a xlink:title="fmt.Sprintf (189.01MB)">
-<polygon fill="#ededec" stroke="#b2b1ad" points="1859.62,-151 1754.38,-151 1754.38,-98 1859.62,-98 1859.62,-151"/>
-<text xml:space="preserve" text-anchor="middle" x="1807" y="-137.5" font-family="Times,serif" font-size="10.00">fmt</text>
-<text xml:space="preserve" text-anchor="middle" x="1807" y="-126.25" font-family="Times,serif" font-size="10.00">Sprintf</text>
-<text xml:space="preserve" text-anchor="middle" x="1807" y="-115" font-family="Times,serif" font-size="10.00">187MB (0.58%)</text>
-<text xml:space="preserve" text-anchor="middle" x="1807" y="-103.75" font-family="Times,serif" font-size="10.00">of 189.01MB (0.59%)</text>
-</a>
-</g>
-</g>
-<!-- N6&#45;&gt;N9 -->
-<g id="edge37" class="edge">
-<title>N6&#45;&gt;N9</title>
-<g id="a_edge37"><a xlink:title="github.com/elotusteam/microservice&#45;project/tests/performance.BenchmarkStringOperations.func1 &#45;&gt; fmt.Sprintf (35.50MB)">
-<path fill="none" stroke="#b2b2b1" d="M1359.43,-328.76C1367.88,-318.45 1375.76,-306.84 1381,-294.75 1396.55,-258.84 1364.25,-236.04 1390.75,-207.25 1437.38,-156.58 1637.97,-136.32 1742.73,-129.07"/>
-<polygon fill="#b2b2b1" stroke="#b2b2b1" points="1742.84,-132.57 1752.58,-128.41 1742.37,-125.59 1742.84,-132.57"/>
-</a>
-</g>
-<g id="a_edge37&#45;label"><a xlink:title="github.com/elotusteam/microservice&#45;project/tests/performance.BenchmarkStringOperations.func1 &#45;&gt; fmt.Sprintf (35.50MB)">
-<text xml:space="preserve" text-anchor="middle" x="1418.88" y="-228.7" font-family="Times,serif" font-size="14.00"> 35.50MB</text>
-</a>
-</g>
-</g>
-<!-- NN7_0 -->
-<g id="NN7_0" class="node">
-<title>NN7_0</title>
-<g id="a_NN7_0"><a xlink:title="382.56MB">
-<polygon fill="#f8f8f8" stroke="black" points="1510,-251.75 1460,-251.75 1456,-247.75 1456,-215.75 1506,-215.75 1510,-219.75 1510,-251.75"/>
-<polyline fill="none" stroke="black" points="1506,-247.75 1456,-247.75"/>
-<polyline fill="none" stroke="black" points="1506,-247.75 1506,-215.75"/>
-<polyline fill="none" stroke="black" points="1506,-247.75 1510,-251.75"/>
-<text xml:space="preserve" text-anchor="middle" x="1483" y="-231.03" font-family="Times,serif" font-size="8.00">40kB</text>
-</a>
-</g>
-</g>
-<!-- N7&#45;&gt;NN7_0 -->
-<g id="edge11" class="edge">
-<title>N7&#45;&gt;NN7_0</title>
-<g id="a_edge11"><a xlink:title="382.56MB">
-<path fill="none" stroke="black" d="M1487.98,-338.05C1486.46,-324.71 1484.88,-309 1484,-294.75 1483.37,-284.55 1483.08,-273.35 1482.96,-263.43"/>
-<polygon fill="black" stroke="black" points="1486.46,-263.58 1482.89,-253.61 1479.46,-263.63 1486.46,-263.58"/>
-</a>
-</g>
-<g id="a_edge11&#45;label"><a xlink:title="382.56MB">
-<text xml:space="preserve" text-anchor="middle" x="1515.5" y="-281.45" font-family="Times,serif" font-size="14.00"> 382.56MB</text>
-</a>
-</g>
-</g>
-<!-- NN7_1 -->
-<g id="NN7_1" class="node">
-<title>NN7_1</title>
-<g id="a_NN7_1"><a xlink:title="204.44MB">
-<polygon fill="#f8f8f8" stroke="black" points="1596,-251.75 1546,-251.75 1542,-247.75 1542,-215.75 1592,-215.75 1596,-219.75 1596,-251.75"/>
-<polyline fill="none" stroke="black" points="1592,-247.75 1542,-247.75"/>
-<polyline fill="none" stroke="black" points="1592,-247.75 1592,-215.75"/>
-<polyline fill="none" stroke="black" points="1592,-247.75 1596,-251.75"/>
-<text xml:space="preserve" text-anchor="middle" x="1569" y="-231.03" font-family="Times,serif" font-size="8.00">20kB</text>
-</a>
-</g>
-</g>
-<!-- N7&#45;&gt;NN7_1 -->
-<g id="edge12" class="edge">
-<title>N7&#45;&gt;NN7_1</title>
-<g id="a_edge12"><a xlink:title="204.44MB">
-<path fill="none" stroke="black" d="M1518.47,-337.85C1528.3,-324.99 1538.99,-309.69 1547,-294.75 1552.33,-284.8 1556.9,-273.29 1560.47,-263.02"/>
-<polygon fill="black" stroke="black" points="1563.79,-264.14 1563.59,-253.55 1557.14,-261.95 1563.79,-264.14"/>
-</a>
-</g>
-<g id="a_edge12&#45;label"><a xlink:title="204.44MB">
-<text xml:space="preserve" text-anchor="middle" x="1585.94" y="-281.45" font-family="Times,serif" font-size="14.00"> 204.44MB</text>
-</a>
-</g>
-</g>
-<!-- NN8_0 -->
-<g id="NN8_0" class="node">
-<title>NN8_0</title>
-<g id="a_NN8_0"><a xlink:title="182.71MB">
-<polygon fill="#f8f8f8" stroke="black" points="1682,-251.75 1632,-251.75 1628,-247.75 1628,-215.75 1678,-215.75 1682,-219.75 1682,-251.75"/>
-<polyline fill="none" stroke="black" points="1678,-247.75 1628,-247.75"/>
-<polyline fill="none" stroke="black" points="1678,-247.75 1678,-215.75"/>
-<polyline fill="none" stroke="black" points="1678,-247.75 1682,-251.75"/>
-<text xml:space="preserve" text-anchor="middle" x="1655" y="-231.03" font-family="Times,serif" font-size="8.00">4kB</text>
-</a>
-</g>
-</g>
-<!-- N8&#45;&gt;NN8_0 -->
-<g id="edge13" class="edge">
-<title>N8&#45;&gt;NN8_0</title>
-<g id="a_edge13"><a xlink:title="182.71MB">
-<path fill="none" stroke="black" d="M1655,-339.45C1655,-316.76 1655,-285.9 1655,-263.57"/>
-<polygon fill="black" stroke="black" points="1658.5,-263.66 1655,-253.66 1651.5,-263.66 1658.5,-263.66"/>
-</a>
-</g>
-<g id="a_edge13&#45;label"><a xlink:title="182.71MB">
-<text xml:space="preserve" text-anchor="middle" x="1686.5" y="-281.45" font-family="Times,serif" font-size="14.00"> 182.71MB</text>
-</a>
-</g>
-</g>
-<!-- NN9_0 -->
-<g id="NN9_0" class="node">
-<title>NN9_0</title>
-<g id="a_NN9_0"><a xlink:title="187MB">
-<polygon fill="#f8f8f8" stroke="black" points="1834,-38.88 1784,-38.88 1780,-34.88 1780,-2.88 1830,-2.88 1834,-6.88 1834,-38.88"/>
-<polyline fill="none" stroke="black" points="1830,-34.88 1780,-34.88"/>
-<polyline fill="none" stroke="black" points="1830,-34.88 1830,-2.88"/>
-<polyline fill="none" stroke="black" points="1830,-34.88 1834,-38.88"/>
-<text xml:space="preserve" text-anchor="middle" x="1807" y="-18.15" font-family="Times,serif" font-size="8.00">16B</text>
-</a>
-</g>
-</g>
-<!-- N9&#45;&gt;NN9_0 -->
-<g id="edge14" class="edge">
-<title>N9&#45;&gt;NN9_0</title>
-<g id="a_edge14"><a xlink:title="187MB">
-<path fill="none" stroke="black" d="M1807,-97.59C1807,-83.12 1807,-65.05 1807,-50.2"/>
-<polygon fill="black" stroke="black" points="1810.5,-50.62 1807,-40.62 1803.5,-50.62 1810.5,-50.62"/>
-</a>
-</g>
-<g id="a_edge14&#45;label"><a xlink:title="187MB">
-<text xml:space="preserve" text-anchor="middle" x="1829.88" y="-62.95" font-family="Times,serif" font-size="14.00"> 187MB</text>
-</a>
-</g>
-</g>
-<!-- N10&#45;&gt;N9 -->
-<g id="edge38" class="edge">
-<title>N10&#45;&gt;N9</title>
-<g id="a_edge38"><a xlink:title="github.com/elotusteam/microservice&#45;project/tests/performance.BenchmarkMapOperations.func1 &#45;&gt; fmt.Sprintf (33MB)">
-<path fill="none" stroke="#b2b2b1" d="M1780.31,-332.73C1764.45,-312.8 1747.25,-286.88 1739,-260.25 1732.03,-237.75 1730.99,-229.4 1739,-207.25 1745.39,-189.57 1757.46,-173.01 1769.68,-159.49"/>
-<polygon fill="#b2b2b1" stroke="#b2b2b1" points="1771.89,-162.25 1776.22,-152.58 1766.81,-157.44 1771.89,-162.25"/>
-</a>
-</g>
-<g id="a_edge38&#45;label"><a xlink:title="github.com/elotusteam/microservice&#45;project/tests/performance.BenchmarkMapOperations.func1 &#45;&gt; fmt.Sprintf (33MB)">
-<text xml:space="preserve" text-anchor="middle" x="1758.5" y="-228.7" font-family="Times,serif" font-size="14.00"> 33MB</text>
-</a>
-</g>
-</g>
-<!-- NN10_0 -->
-<g id="NN10_0" class="node">
-<title>NN10_0</title>
-<g id="a_NN10_0"><a xlink:title="248.61MB">
-<polygon fill="#f8f8f8" stroke="black" points="1841,-251.75 1791,-251.75 1787,-247.75 1787,-215.75 1837,-215.75 1841,-219.75 1841,-251.75"/>
-<polyline fill="none" stroke="black" points="1837,-247.75 1787,-247.75"/>
-<polyline fill="none" stroke="black" points="1837,-247.75 1837,-215.75"/>
-<polyline fill="none" stroke="black" points="1837,-247.75 1841,-251.75"/>
-<text xml:space="preserve" text-anchor="middle" x="1814" y="-231.03" font-family="Times,serif" font-size="8.00">56kB</text>
-</a>
-</g>
-</g>
-<!-- N10&#45;&gt;NN10_0 -->
-<g id="edge15" class="edge">
-<title>N10&#45;&gt;NN10_0</title>
-<g id="a_edge15"><a xlink:title="248.61MB">
-<path fill="none" stroke="black" d="M1814,-332.5C1814,-310.68 1814,-283.55 1814,-263.41"/>
-<polygon fill="black" stroke="black" points="1817.5,-263.68 1814,-253.68 1810.5,-263.68 1817.5,-263.68"/>
-</a>
-</g>
-<g id="a_edge15&#45;label"><a xlink:title="248.61MB">
-<text xml:space="preserve" text-anchor="middle" x="1845.5" y="-281.45" font-family="Times,serif" font-size="14.00"> 248.61MB</text>
-</a>
-</g>
-</g>
-<!-- N11&#45;&gt;N9 -->
-<g id="edge36" class="edge">
-<title>N11&#45;&gt;N9</title>
-<g id="a_edge36"><a xlink:title="github.com/elotusteam/microservice&#45;project/tests/performance.BenchmarkMapOperations.func3 &#45;&gt; fmt.Sprintf (50MB)">
-<path fill="none" stroke="#b2b2b1" d="M1942.18,-332.7C1927.58,-311.58 1909.08,-284.56 1893,-260.25 1870.91,-226.85 1846.4,-188.3 1829.22,-161.01"/>
-<polygon fill="#b2b2b1" stroke="#b2b2b1" points="1832.33,-159.38 1824.04,-152.77 1826.4,-163.1 1832.33,-159.38"/>
-</a>
-</g>
-<g id="a_edge36&#45;label"><a xlink:title="github.com/elotusteam/microservice&#45;project/tests/performance.BenchmarkMapOperations.func3 &#45;&gt; fmt.Sprintf (50MB)">
-<text xml:space="preserve" text-anchor="middle" x="1912.5" y="-228.7" font-family="Times,serif" font-size="14.00"> 50MB</text>
-</a>
-</g>
-</g>
-<!-- NN11_0 -->
-<g id="NN11_0" class="node">
-<title>NN11_0</title>
-<g id="a_NN11_0"><a xlink:title="341.51MB">
-<polygon fill="#f8f8f8" stroke="black" points="1995,-251.75 1945,-251.75 1941,-247.75 1941,-215.75 1991,-215.75 1995,-219.75 1995,-251.75"/>
-<polyline fill="none" stroke="black" points="1991,-247.75 1941,-247.75"/>
-<polyline fill="none" stroke="black" points="1991,-247.75 1991,-215.75"/>
-<polyline fill="none" stroke="black" points="1991,-247.75 1995,-251.75"/>
-<text xml:space="preserve" text-anchor="middle" x="1968" y="-231.03" font-family="Times,serif" font-size="8.00">56kB</text>
-</a>
-</g>
-</g>
-<!-- N11&#45;&gt;NN11_0 -->
-<g id="edge16" class="edge">
-<title>N11&#45;&gt;NN11_0</title>
-<g id="a_edge16"><a xlink:title="341.51MB">
-<path fill="none" stroke="black" d="M1968,-332.5C1968,-310.68 1968,-283.55 1968,-263.41"/>
-<polygon fill="black" stroke="black" points="1971.5,-263.68 1968,-253.68 1964.5,-263.68 1971.5,-263.68"/>
-</a>
-</g>
-<g id="a_edge16&#45;label"><a xlink:title="341.51MB">
-<text xml:space="preserve" text-anchor="middle" x="1999.5" y="-281.45" font-family="Times,serif" font-size="14.00"> 341.51MB</text>
-</a>
-</g>
-</g>
-<!-- NN12_0 -->
-<g id="NN12_0" class="node">
-<title>NN12_0</title>
-<g id="a_NN12_0"><a xlink:title="225.52MB">
-<polygon fill="#f8f8f8" stroke="black" points="2151,-251.75 2101,-251.75 2097,-247.75 2097,-215.75 2147,-215.75 2151,-219.75 2151,-251.75"/>
-<polyline fill="none" stroke="black" points="2147,-247.75 2097,-247.75"/>
-<polyline fill="none" stroke="black" points="2147,-247.75 2147,-215.75"/>
-<polyline fill="none" stroke="black" points="2147,-247.75 2151,-251.75"/>
-<text xml:space="preserve" text-anchor="middle" x="2124" y="-231.03" font-family="Times,serif" font-size="8.00">96B</text>
-</a>
-</g>
-</g>
-<!-- N12&#45;&gt;NN12_0 -->
-<g id="edge17" class="edge">
-<title>N12&#45;&gt;NN12_0</title>
-<g id="a_edge17"><a xlink:title="225.52MB">
-<path fill="none" stroke="black" d="M2124,-344.04C2124,-321.11 2124,-287.57 2124,-263.7"/>
-<polygon fill="black" stroke="black" points="2127.5,-263.72 2124,-253.72 2120.5,-263.72 2127.5,-263.72"/>
-</a>
-</g>
-<g id="a_edge17&#45;label"><a xlink:title="225.52MB">
-<text xml:space="preserve" text-anchor="middle" x="2155.5" y="-281.45" font-family="Times,serif" font-size="14.00"> 225.52MB</text>
-</a>
-</g>
-</g>
-<!-- N13 -->
-<g id="node13" class="node">
-<title>N13</title>
-<g id="a_node13"><a xlink:title="bytes.growSlice (164.12MB)">
-<polygon fill="#ededec" stroke="#b2b1ad" points="2370.38,-41.75 2275.62,-41.75 2275.62,0 2370.38,0 2370.38,-41.75"/>
-<text xml:space="preserve" text-anchor="middle" x="2323" y="-28.25" font-family="Times,serif" font-size="10.00">bytes</text>
-<text xml:space="preserve" text-anchor="middle" x="2323" y="-17" font-family="Times,serif" font-size="10.00">growSlice</text>
-<text xml:space="preserve" text-anchor="middle" x="2323" y="-5.75" font-family="Times,serif" font-size="10.00">164.12MB (0.51%)</text>
+<g id="a_edge30&#45;label"><a xlink:title="testing.(*B).runN &#45;&gt; github.com/elotusteam/microservice&#45;project/tests/performance.BenchmarkGoroutineCreation.func1 (0.24GB)">
+<text xml:space="preserve" text-anchor="middle" x="1895.56" y="-421.2" font-family="Times,serif" font-size="14.00"> 0.24GB</text>
 </a>
 </g>
 </g>
 <!-- N14 -->
 <g id="node14" class="node">
 <title>N14</title>
-<g id="a_node14"><a xlink:title="encoding/json.Marshal (201.52MB)">
-<polygon fill="#edecec" stroke="#b2b1ac" points="2596.62,-260.25 2491.38,-260.25 2491.38,-207.25 2596.62,-207.25 2596.62,-260.25"/>
-<text xml:space="preserve" text-anchor="middle" x="2544" y="-246.75" font-family="Times,serif" font-size="10.00">json</text>
-<text xml:space="preserve" text-anchor="middle" x="2544" y="-235.5" font-family="Times,serif" font-size="10.00">Marshal</text>
-<text xml:space="preserve" text-anchor="middle" x="2544" y="-224.25" font-family="Times,serif" font-size="10.00">83.02MB (0.26%)</text>
-<text xml:space="preserve" text-anchor="middle" x="2544" y="-213" font-family="Times,serif" font-size="10.00">of 201.52MB (0.63%)</text>
+<g id="a_node14"><a xlink:title="github.com/elotusteam/microservice&#45;project/tests/performance.BenchmarkJSONUnmarshaling (0.20GB)">
+<polygon fill="#ededec" stroke="#b2b1ad" points="2216.62,-367 2087.38,-367 2087.38,-317 2216.62,-317 2216.62,-367"/>
+<text xml:space="preserve" text-anchor="middle" x="2152" y="-354.45" font-family="Times,serif" font-size="9.00">performance</text>
+<text xml:space="preserve" text-anchor="middle" x="2152" y="-343.95" font-family="Times,serif" font-size="9.00">BenchmarkJSONUnmarshaling</text>
+<text xml:space="preserve" text-anchor="middle" x="2152" y="-333.45" font-family="Times,serif" font-size="9.00">0.05GB (0.14%)</text>
+<text xml:space="preserve" text-anchor="middle" x="2152" y="-322.95" font-family="Times,serif" font-size="9.00">of 0.20GB (0.54%)</text>
 </a>
 </g>
 </g>
-<!-- N15&#45;&gt;N9 -->
-<g id="edge35" class="edge">
-<title>N15&#45;&gt;N9</title>
-<g id="a_edge35"><a xlink:title="github.com/elotusteam/microservice&#45;project/tests/performance.BenchmarkStringOperations.func2 &#45;&gt; fmt.Sprintf (70.50MB)">
-<path fill="none" stroke="#b2b2b0" d="M2257.62,-346.85C2243.33,-311.17 2210.79,-242.76 2160,-207.25 2072.84,-146.31 1946.84,-130.2 1871.31,-126.3"/>
-<polygon fill="#b2b2b0" stroke="#b2b2b0" points="1871.76,-122.81 1861.61,-125.85 1871.44,-129.8 1871.76,-122.81"/>
-</a>
-</g>
-<g id="a_edge35&#45;label"><a xlink:title="github.com/elotusteam/microservice&#45;project/tests/performance.BenchmarkStringOperations.func2 &#45;&gt; fmt.Sprintf (70.50MB)">
-<text xml:space="preserve" text-anchor="middle" x="2238.84" y="-228.7" font-family="Times,serif" font-size="14.00"> 70.50MB</text>
-</a>
-</g>
-</g>
-<!-- N19 -->
-<g id="node19" class="node">
-<title>N19</title>
-<g id="a_node19"><a xlink:title="bytes.(*Buffer).WriteString (170.62MB)">
-<polygon fill="#ededec" stroke="#b2b1ad" points="2369.25,-257.25 2276.75,-257.25 2276.75,-210.25 2369.25,-210.25 2369.25,-257.25"/>
-<text xml:space="preserve" text-anchor="middle" x="2323" y="-245.65" font-family="Times,serif" font-size="8.00">bytes</text>
-<text xml:space="preserve" text-anchor="middle" x="2323" y="-235.9" font-family="Times,serif" font-size="8.00">(*Buffer)</text>
-<text xml:space="preserve" text-anchor="middle" x="2323" y="-226.15" font-family="Times,serif" font-size="8.00">WriteString</text>
-<text xml:space="preserve" text-anchor="middle" x="2323" y="-216.4" font-family="Times,serif" font-size="8.00">0 of 170.62MB (0.53%)</text>
-</a>
-</g>
-</g>
-<!-- N15&#45;&gt;N19 -->
-<g id="edge33" class="edge">
-<title>N15&#45;&gt;N19</title>
-<g id="a_edge33"><a xlink:title="github.com/elotusteam/microservice&#45;project/tests/performance.BenchmarkStringOperations.func2 &#45;&gt; bytes.(*Buffer).WriteString (170.62MB)">
-<path fill="none" stroke="#b2b1ad" d="M2275.67,-346.85C2284.86,-325.09 2298.76,-292.15 2309.13,-267.6"/>
-<polygon fill="#b2b1ad" stroke="#b2b1ad" points="2312.22,-269.28 2312.88,-258.71 2305.77,-266.56 2312.22,-269.28"/>
-</a>
-</g>
-<g id="a_edge33&#45;label"><a xlink:title="github.com/elotusteam/microservice&#45;project/tests/performance.BenchmarkStringOperations.func2 &#45;&gt; bytes.(*Buffer).WriteString (170.62MB)">
-<text xml:space="preserve" text-anchor="middle" x="2336.06" y="-281.45" font-family="Times,serif" font-size="14.00"> 170.62MB</text>
-</a>
-</g>
-</g>
-<!-- N17&#45;&gt;N14 -->
-<g id="edge30" class="edge">
-<title>N17&#45;&gt;N14</title>
-<g id="a_edge30"><a xlink:title="github.com/elotusteam/microservice&#45;project/tests/performance.BenchmarkJSONMarshaling &#45;&gt; encoding/json.Marshal (201.52MB)">
-<path fill="none" stroke="#b2b1ac" d="M2544,-345.3C2544,-324.76 2544,-295.09 2544,-271.66"/>
-<polygon fill="#b2b1ac" stroke="#b2b1ac" points="2547.5,-271.91 2544,-261.91 2540.5,-271.91 2547.5,-271.91"/>
-</a>
-</g>
-<g id="a_edge30&#45;label"><a xlink:title="github.com/elotusteam/microservice&#45;project/tests/performance.BenchmarkJSONMarshaling &#45;&gt; encoding/json.Marshal (201.52MB)">
-<text xml:space="preserve" text-anchor="middle" x="2575.5" y="-281.45" font-family="Times,serif" font-size="14.00"> 201.52MB</text>
-</a>
-</g>
-</g>
-<!-- N18 -->
-<g id="node18" class="node">
-<title>N18</title>
-<g id="a_node18"><a xlink:title="bytes.(*Buffer).grow (170.62MB)">
-<polygon fill="#ededec" stroke="#b2b1ad" points="2371.12,-154.75 2274.88,-154.75 2274.88,-94.25 2371.12,-94.25 2371.12,-154.75"/>
-<text xml:space="preserve" text-anchor="middle" x="2323" y="-142.2" font-family="Times,serif" font-size="9.00">bytes</text>
-<text xml:space="preserve" text-anchor="middle" x="2323" y="-131.7" font-family="Times,serif" font-size="9.00">(*Buffer)</text>
-<text xml:space="preserve" text-anchor="middle" x="2323" y="-121.2" font-family="Times,serif" font-size="9.00">grow</text>
-<text xml:space="preserve" text-anchor="middle" x="2323" y="-110.7" font-family="Times,serif" font-size="9.00">6.50MB (0.02%)</text>
-<text xml:space="preserve" text-anchor="middle" x="2323" y="-100.2" font-family="Times,serif" font-size="9.00">of 170.62MB (0.53%)</text>
-</a>
-</g>
-</g>
-<!-- N18&#45;&gt;N13 -->
-<g id="edge34" class="edge">
-<title>N18&#45;&gt;N13</title>
-<g id="a_edge34"><a xlink:title="bytes.(*Buffer).grow &#45;&gt; bytes.growSlice (164.12MB)">
-<path fill="none" stroke="#b2b1ad" d="M2323,-93.83C2323,-81.09 2323,-66.2 2323,-53.27"/>
-<polygon fill="#b2b1ad" stroke="#b2b1ad" points="2326.5,-53.59 2323,-43.59 2319.5,-53.59 2326.5,-53.59"/>
-</a>
-</g>
-<g id="a_edge34&#45;label"><a xlink:title="bytes.(*Buffer).grow &#45;&gt; bytes.growSlice (164.12MB)">
-<text xml:space="preserve" text-anchor="middle" x="2354.5" y="-62.95" font-family="Times,serif" font-size="14.00"> 164.12MB</text>
-</a>
-</g>
-</g>
-<!-- N19&#45;&gt;N18 -->
+<!-- N1&#45;&gt;N14 -->
 <g id="edge32" class="edge">
-<title>N19&#45;&gt;N18</title>
-<g id="a_edge32"><a xlink:title="bytes.(*Buffer).WriteString &#45;&gt; bytes.(*Buffer).grow (170.62MB)">
-<path fill="none" stroke="#b2b1ad" d="M2323,-210.01C2323,-197.39 2323,-181.32 2323,-166.58"/>
-<polygon fill="#b2b1ad" stroke="#b2b1ad" points="2326.5,-166.66 2323,-156.66 2319.5,-166.66 2326.5,-166.66"/>
+<title>N1&#45;&gt;N14</title>
+<g id="a_edge32"><a xlink:title="testing.(*B).runN &#45;&gt; github.com/elotusteam/microservice&#45;project/tests/performance.BenchmarkJSONUnmarshaling (0.20GB)">
+<path fill="none" stroke="#b2b1ad" d="M564.36,-474.86C770.25,-474.01 1650.56,-468.44 1923,-434.5 1993.03,-425.78 2014.08,-429.91 2078,-400 2091.93,-393.48 2105.69,-383.97 2117.5,-374.58"/>
+<polygon fill="#b2b1ad" stroke="#b2b1ad" points="2119.46,-377.5 2124.95,-368.44 2115.01,-372.1 2119.46,-377.5"/>
 </a>
 </g>
-<g id="a_edge32&#45;label"><a xlink:title="bytes.(*Buffer).WriteString &#45;&gt; bytes.(*Buffer).grow (170.62MB)">
-<text xml:space="preserve" text-anchor="middle" x="2354.5" y="-175.95" font-family="Times,serif" font-size="14.00"> 170.62MB</text>
+<g id="a_edge32&#45;label"><a xlink:title="testing.(*B).runN &#45;&gt; github.com/elotusteam/microservice&#45;project/tests/performance.BenchmarkJSONUnmarshaling (0.20GB)">
+<text xml:space="preserve" text-anchor="middle" x="2055.62" y="-421.2" font-family="Times,serif" font-size="14.00"> 0.20GB</text>
+</a>
+</g>
+</g>
+<!-- N15 -->
+<g id="node15" class="node">
+<title>N15</title>
+<g id="a_node15"><a xlink:title="github.com/elotusteam/microservice&#45;project/tests/performance.BenchmarkJSONMarshaling (0.26GB)">
+<polygon fill="#edecec" stroke="#b2b1ac" points="2353.75,-367 2234.25,-367 2234.25,-317 2353.75,-317 2353.75,-367"/>
+<text xml:space="preserve" text-anchor="middle" x="2294" y="-354.45" font-family="Times,serif" font-size="9.00">performance</text>
+<text xml:space="preserve" text-anchor="middle" x="2294" y="-343.95" font-family="Times,serif" font-size="9.00">BenchmarkJSONMarshaling</text>
+<text xml:space="preserve" text-anchor="middle" x="2294" y="-333.45" font-family="Times,serif" font-size="9.00">0.04GB (0.099%)</text>
+<text xml:space="preserve" text-anchor="middle" x="2294" y="-322.95" font-family="Times,serif" font-size="9.00">of 0.26GB (0.73%)</text>
+</a>
+</g>
+</g>
+<!-- N1&#45;&gt;N15 -->
+<g id="edge29" class="edge">
+<title>N1&#45;&gt;N15</title>
+<g id="a_edge29"><a xlink:title="testing.(*B).runN &#45;&gt; github.com/elotusteam/microservice&#45;project/tests/performance.BenchmarkJSONMarshaling (0.26GB)">
+<path fill="none" stroke="#b2b1ac" d="M564.11,-475.11C783.5,-475.48 1777.42,-474.86 2083,-434.5 2147.82,-425.94 2167.63,-429.44 2226,-400 2238.79,-393.55 2251.25,-384.27 2261.95,-375.06"/>
+<polygon fill="#b2b1ac" stroke="#b2b1ac" points="2264.25,-377.7 2269.36,-368.42 2259.57,-372.49 2264.25,-377.7"/>
+</a>
+</g>
+<g id="a_edge29&#45;label"><a xlink:title="testing.(*B).runN &#45;&gt; github.com/elotusteam/microservice&#45;project/tests/performance.BenchmarkJSONMarshaling (0.26GB)">
+<text xml:space="preserve" text-anchor="middle" x="2204.87" y="-421.2" font-family="Times,serif" font-size="14.00"> 0.26GB</text>
+</a>
+</g>
+</g>
+<!-- N16 -->
+<g id="node16" class="node">
+<title>N16</title>
+<g id="a_node16"><a xlink:title="github.com/elotusteam/microservice&#45;project/tests/performance.BenchmarkStringOperations.func2 (0.29GB)">
+<polygon fill="#edecec" stroke="#b2b0ab" points="2479.75,-365.5 2372.25,-365.5 2372.25,-318.5 2479.75,-318.5 2479.75,-365.5"/>
+<text xml:space="preserve" text-anchor="middle" x="2426" y="-353.9" font-family="Times,serif" font-size="8.00">performance</text>
+<text xml:space="preserve" text-anchor="middle" x="2426" y="-344.15" font-family="Times,serif" font-size="8.00">BenchmarkStringOperations</text>
+<text xml:space="preserve" text-anchor="middle" x="2426" y="-334.4" font-family="Times,serif" font-size="8.00">func2</text>
+<text xml:space="preserve" text-anchor="middle" x="2426" y="-324.65" font-family="Times,serif" font-size="8.00">0 of 0.29GB (0.8%)</text>
+</a>
+</g>
+</g>
+<!-- N1&#45;&gt;N16 -->
+<g id="edge28" class="edge">
+<title>N1&#45;&gt;N16</title>
+<g id="a_edge28"><a xlink:title="testing.(*B).runN &#45;&gt; github.com/elotusteam/microservice&#45;project/tests/performance.BenchmarkStringOperations.func2 (0.29GB)">
+<path fill="none" stroke="#b2b0ab" d="M564.31,-474.58C813.83,-472.08 2062.65,-458.47 2232,-434.5 2291.61,-426.06 2310.06,-428.68 2363,-400 2375.56,-393.19 2387.64,-383.38 2397.8,-373.8"/>
+<polygon fill="#b2b0ab" stroke="#b2b0ab" points="2400.09,-376.45 2404.77,-366.95 2395.19,-371.46 2400.09,-376.45"/>
+</a>
+</g>
+<g id="a_edge28&#45;label"><a xlink:title="testing.(*B).runN &#45;&gt; github.com/elotusteam/microservice&#45;project/tests/performance.BenchmarkStringOperations.func2 (0.29GB)">
+<text xml:space="preserve" text-anchor="middle" x="2345.88" y="-421.2" font-family="Times,serif" font-size="14.00"> 0.29GB</text>
+</a>
+</g>
+</g>
+<!-- NN2_0 -->
+<g id="NN2_0" class="node">
+<title>NN2_0</title>
+<g id="a_NN2_0"><a xlink:title="6.89GB">
+<polygon fill="#f8f8f8" stroke="black" points="412,-223 362,-223 358,-219 358,-187 408,-187 412,-191 412,-223"/>
+<polyline fill="none" stroke="black" points="408,-219 358,-219"/>
+<polyline fill="none" stroke="black" points="408,-219 408,-187"/>
+<polyline fill="none" stroke="black" points="408,-219 412,-223"/>
+<text xml:space="preserve" text-anchor="middle" x="385" y="-202.28" font-family="Times,serif" font-size="8.00">4kB</text>
+</a>
+</g>
+</g>
+<!-- N2&#45;&gt;NN2_0 -->
+<g id="edge1" class="edge">
+<title>N2&#45;&gt;NN2_0</title>
+<g id="a_edge1"><a xlink:title="6.89GB">
+<path fill="none" stroke="black" d="M434.99,-283.57C428.76,-277.97 422.84,-272.09 417.5,-266 409.12,-256.45 402.06,-244.37 396.68,-233.56"/>
+<polygon fill="black" stroke="black" points="399.93,-232.25 392.52,-224.68 393.59,-235.22 399.93,-232.25"/>
+</a>
+</g>
+<g id="a_edge1&#45;label"><a xlink:title="6.89GB">
+<text xml:space="preserve" text-anchor="middle" x="440.75" y="-252.7" font-family="Times,serif" font-size="14.00"> 6.89GB</text>
+</a>
+</g>
+</g>
+<!-- NN2_1 -->
+<g id="NN2_1" class="node">
+<title>NN2_1</title>
+<g id="a_NN2_1"><a xlink:title="6.23GB">
+<polygon fill="#f8f8f8" stroke="black" points="484,-223 434,-223 430,-219 430,-187 480,-187 484,-191 484,-223"/>
+<polyline fill="none" stroke="black" points="480,-219 430,-219"/>
+<polyline fill="none" stroke="black" points="480,-219 480,-187"/>
+<polyline fill="none" stroke="black" points="480,-219 484,-223"/>
+<text xml:space="preserve" text-anchor="middle" x="457" y="-202.28" font-family="Times,serif" font-size="8.00">64kB</text>
+</a>
+</g>
+</g>
+<!-- N2&#45;&gt;NN2_1 -->
+<g id="edge2" class="edge">
+<title>N2&#45;&gt;NN2_1</title>
+<g id="a_edge2"><a xlink:title="6.23GB">
+<path fill="none" stroke="black" d="M483.34,-283.71C480.13,-277.84 477.12,-271.88 474.5,-266 470.01,-255.92 466.32,-244.38 463.51,-234.13"/>
+<polygon fill="black" stroke="black" points="466.97,-233.53 461.09,-224.71 460.19,-235.27 466.97,-233.53"/>
+</a>
+</g>
+<g id="a_edge2&#45;label"><a xlink:title="6.23GB">
+<text xml:space="preserve" text-anchor="middle" x="497.75" y="-252.7" font-family="Times,serif" font-size="14.00"> 6.23GB</text>
+</a>
+</g>
+</g>
+<!-- NN2_2 -->
+<g id="NN2_2" class="node">
+<title>NN2_2</title>
+<g id="a_NN2_2"><a xlink:title="5.42GB">
+<polygon fill="#f8f8f8" stroke="black" points="556,-223 506,-223 502,-219 502,-187 552,-187 556,-191 556,-223"/>
+<polyline fill="none" stroke="black" points="552,-219 502,-219"/>
+<polyline fill="none" stroke="black" points="552,-219 552,-187"/>
+<polyline fill="none" stroke="black" points="552,-219 556,-223"/>
+<text xml:space="preserve" text-anchor="middle" x="529" y="-202.28" font-family="Times,serif" font-size="8.00">16kB</text>
+</a>
+</g>
+</g>
+<!-- N2&#45;&gt;NN2_2 -->
+<g id="edge3" class="edge">
+<title>N2&#45;&gt;NN2_2</title>
+<g id="a_edge3"><a xlink:title="5.42GB">
+<path fill="none" stroke="black" d="M524.39,-283.75C525.4,-266.68 526.47,-248.72 527.32,-234.36"/>
+<polygon fill="black" stroke="black" points="530.79,-234.95 527.89,-224.76 523.8,-234.54 530.79,-234.95"/>
+</a>
+</g>
+<g id="a_edge3&#45;label"><a xlink:title="5.42GB">
+<text xml:space="preserve" text-anchor="middle" x="549.66" y="-252.7" font-family="Times,serif" font-size="14.00"> 5.42GB</text>
+</a>
+</g>
+</g>
+<!-- NN2_3 -->
+<g id="NN2_3" class="node">
+<title>NN2_3</title>
+<g id="a_NN2_3"><a xlink:title="4.59GB">
+<polygon fill="#f8f8f8" stroke="black" points="628,-223 578,-223 574,-219 574,-187 624,-187 628,-191 628,-223"/>
+<polyline fill="none" stroke="black" points="624,-219 574,-219"/>
+<polyline fill="none" stroke="black" points="624,-219 624,-187"/>
+<polyline fill="none" stroke="black" points="624,-219 628,-223"/>
+<text xml:space="preserve" text-anchor="middle" x="601" y="-202.28" font-family="Times,serif" font-size="8.00">1kB</text>
+</a>
+</g>
+</g>
+<!-- N2&#45;&gt;NN2_3 -->
+<g id="edge4" class="edge">
+<title>N2&#45;&gt;NN2_3</title>
+<g id="a_edge4"><a xlink:title="4.59GB">
+<path fill="none" stroke="black" d="M565.98,-283.87C569.91,-277.97 573.66,-271.95 577,-266 582.64,-255.94 587.62,-244.28 591.56,-233.93"/>
+<polygon fill="black" stroke="black" points="594.76,-235.37 594.9,-224.78 588.19,-232.98 594.76,-235.37"/>
+</a>
+</g>
+<g id="a_edge4&#45;label"><a xlink:title="4.59GB">
+<text xml:space="preserve" text-anchor="middle" x="608.14" y="-252.7" font-family="Times,serif" font-size="14.00"> 4.59GB</text>
+</a>
+</g>
+</g>
+<!-- N3 -->
+<g id="node3" class="node">
+<title>N3</title>
+<g id="a_node3"><a xlink:title="testing.(*B).launch (36.32GB)">
+<polygon fill="#edd5d5" stroke="#b20000" points="563.88,-645.25 478.12,-645.25 478.12,-598.25 563.88,-598.25 563.88,-645.25"/>
+<text xml:space="preserve" text-anchor="middle" x="521" y="-633.65" font-family="Times,serif" font-size="8.00">testing</text>
+<text xml:space="preserve" text-anchor="middle" x="521" y="-623.9" font-family="Times,serif" font-size="8.00">(*B)</text>
+<text xml:space="preserve" text-anchor="middle" x="521" y="-614.15" font-family="Times,serif" font-size="8.00">launch</text>
+<text xml:space="preserve" text-anchor="middle" x="521" y="-604.4" font-family="Times,serif" font-size="8.00">0 of 36.32GB (100%)</text>
+</a>
+</g>
+</g>
+<!-- N3&#45;&gt;N1 -->
+<g id="edge19" class="edge">
+<title>N3&#45;&gt;N1</title>
+<g id="a_edge19"><a xlink:title="testing.(*B).launch &#45;&gt; testing.(*B).runN (36.32GB)">
+<path fill="none" stroke="#b20000" stroke-width="5" d="M521,-597.97C521,-575.89 521,-541.97 521,-515.66"/>
+<polygon fill="#b20000" stroke="#b20000" stroke-width="5" points="525.38,-515.91 521,-505.91 516.63,-515.91 525.38,-515.91"/>
+</a>
+</g>
+<g id="a_edge19&#45;label"><a xlink:title="testing.(*B).launch &#45;&gt; testing.(*B).runN (36.32GB)">
+<text xml:space="preserve" text-anchor="middle" x="547.62" y="-520.7" font-family="Times,serif" font-size="14.00"> 36.32GB</text>
+</a>
+</g>
+</g>
+<!-- NN4_0 -->
+<g id="NN4_0" class="node">
+<title>NN4_0</title>
+<g id="a_NN4_0"><a xlink:title="1.68GB">
+<polygon fill="#f8f8f8" stroke="black" points="715,-223 665,-223 661,-219 661,-187 711,-187 715,-191 715,-223"/>
+<polyline fill="none" stroke="black" points="711,-219 661,-219"/>
+<polyline fill="none" stroke="black" points="711,-219 711,-187"/>
+<polyline fill="none" stroke="black" points="711,-219 715,-223"/>
+<text xml:space="preserve" text-anchor="middle" x="688" y="-202.28" font-family="Times,serif" font-size="8.00">10kB</text>
+</a>
+</g>
+</g>
+<!-- N4&#45;&gt;NN4_0 -->
+<g id="edge5" class="edge">
+<title>N4&#45;&gt;NN4_0</title>
+<g id="a_edge5"><a xlink:title="1.68GB">
+<path fill="none" stroke="black" d="M741.75,-303.36C730.47,-292.19 719.12,-279.34 710.5,-266 704.25,-256.32 699.37,-244.66 695.78,-234.2"/>
+<polygon fill="black" stroke="black" points="699.2,-233.39 692.84,-224.91 692.52,-235.5 699.2,-233.39"/>
+</a>
+</g>
+<g id="a_edge5&#45;label"><a xlink:title="1.68GB">
+<text xml:space="preserve" text-anchor="middle" x="733.75" y="-252.7" font-family="Times,serif" font-size="14.00"> 1.68GB</text>
+</a>
+</g>
+</g>
+<!-- NN4_1 -->
+<g id="NN4_1" class="node">
+<title>NN4_1</title>
+<g id="a_NN4_1"><a xlink:title="1.08GB">
+<polygon fill="#f8f8f8" stroke="black" points="787,-223 737,-223 733,-219 733,-187 783,-187 787,-191 787,-223"/>
+<polyline fill="none" stroke="black" points="783,-219 733,-219"/>
+<polyline fill="none" stroke="black" points="783,-219 783,-187"/>
+<polyline fill="none" stroke="black" points="783,-219 787,-223"/>
+<text xml:space="preserve" text-anchor="middle" x="760" y="-202.28" font-family="Times,serif" font-size="8.00">6.62kB</text>
+</a>
+</g>
+</g>
+<!-- N4&#45;&gt;NN4_1 -->
+<g id="edge6" class="edge">
+<title>N4&#45;&gt;NN4_1</title>
+<g id="a_edge6"><a xlink:title="1.08GB">
+<path fill="none" stroke="black" d="M772.81,-303.26C769.19,-291.47 765.68,-278.32 763.5,-266 761.72,-255.92 760.79,-244.75 760.32,-234.81"/>
+<polygon fill="black" stroke="black" points="763.82,-234.85 760,-224.97 756.83,-235.08 763.82,-234.85"/>
+</a>
+</g>
+<g id="a_edge6&#45;label"><a xlink:title="1.08GB">
+<text xml:space="preserve" text-anchor="middle" x="786.75" y="-252.7" font-family="Times,serif" font-size="14.00"> 1.08GB</text>
+</a>
+</g>
+</g>
+<!-- NN4_2 -->
+<g id="NN4_2" class="node">
+<title>NN4_2</title>
+<g id="a_NN4_2"><a xlink:title="0.66GB">
+<polygon fill="#f8f8f8" stroke="black" points="859,-223 809,-223 805,-219 805,-187 855,-187 859,-191 859,-223"/>
+<polyline fill="none" stroke="black" points="855,-219 805,-219"/>
+<polyline fill="none" stroke="black" points="855,-219 855,-187"/>
+<polyline fill="none" stroke="black" points="855,-219 859,-223"/>
+<text xml:space="preserve" text-anchor="middle" x="832" y="-202.28" font-family="Times,serif" font-size="8.00">4kB</text>
+</a>
+</g>
+</g>
+<!-- N4&#45;&gt;NN4_2 -->
+<g id="edge7" class="edge">
+<title>N4&#45;&gt;NN4_2</title>
+<g id="a_edge7"><a xlink:title="0.66GB">
+<path fill="none" stroke="black" d="M798.94,-303.04C806.4,-281.13 815.63,-254.06 822.43,-234.08"/>
+<polygon fill="black" stroke="black" points="825.73,-235.25 825.64,-224.66 819.1,-233 825.73,-235.25"/>
+</a>
+</g>
+<g id="a_edge7&#45;label"><a xlink:title="0.66GB">
+<text xml:space="preserve" text-anchor="middle" x="840.37" y="-252.7" font-family="Times,serif" font-size="14.00"> 0.66GB</text>
+</a>
+</g>
+</g>
+<!-- NN4_3 -->
+<g id="NN4_3" class="node">
+<title>NN4_3</title>
+<g id="a_NN4_3"><a xlink:title="0.32GB">
+<polygon fill="#f8f8f8" stroke="black" points="931,-223 881,-223 877,-219 877,-187 927,-187 931,-191 931,-223"/>
+<polyline fill="none" stroke="black" points="927,-219 877,-219"/>
+<polyline fill="none" stroke="black" points="927,-219 927,-187"/>
+<polyline fill="none" stroke="black" points="927,-219 931,-223"/>
+<text xml:space="preserve" text-anchor="middle" x="904" y="-202.28" font-family="Times,serif" font-size="8.00">2kB</text>
+</a>
+</g>
+</g>
+<!-- N4&#45;&gt;NN4_3 -->
+<g id="edge8" class="edge">
+<title>N4&#45;&gt;NN4_3</title>
+<g id="a_edge8"><a xlink:title="0.32GB">
+<path fill="none" stroke="black" d="M832.14,-303.09C844.51,-291.82 857.38,-279 868,-266 876.13,-256.05 883.69,-244.09 889.75,-233.46"/>
+<polygon fill="black" stroke="black" points="892.8,-235.19 894.56,-224.74 886.67,-231.81 892.8,-235.19"/>
+</a>
+</g>
+<g id="a_edge8&#45;label"><a xlink:title="0.32GB">
+<text xml:space="preserve" text-anchor="middle" x="902.55" y="-252.7" font-family="Times,serif" font-size="14.00"> 0.32GB</text>
+</a>
+</g>
+</g>
+<!-- NN5_0 -->
+<g id="NN5_0" class="node">
+<title>NN5_0</title>
+<g id="a_NN5_0"><a xlink:title="3.28GB">
+<polygon fill="#f8f8f8" stroke="black" points="1011,-223 961,-223 957,-219 957,-187 1007,-187 1011,-191 1011,-223"/>
+<polyline fill="none" stroke="black" points="1007,-219 957,-219"/>
+<polyline fill="none" stroke="black" points="1007,-219 1007,-187"/>
+<polyline fill="none" stroke="black" points="1007,-219 1011,-223"/>
+<text xml:space="preserve" text-anchor="middle" x="984" y="-202.28" font-family="Times,serif" font-size="8.00">1kB</text>
+</a>
+</g>
+</g>
+<!-- N5&#45;&gt;NN5_0 -->
+<g id="edge9" class="edge">
+<title>N5&#45;&gt;NN5_0</title>
+<g id="a_edge9"><a xlink:title="3.28GB">
+<path fill="none" stroke="black" d="M984,-303.04C984,-281.34 984,-254.56 984,-234.64"/>
+<polygon fill="black" stroke="black" points="987.5,-234.74 984,-224.74 980.5,-234.74 987.5,-234.74"/>
+</a>
+</g>
+<g id="a_edge9&#45;label"><a xlink:title="3.28GB">
+<text xml:space="preserve" text-anchor="middle" x="1007.25" y="-252.7" font-family="Times,serif" font-size="14.00"> 3.28GB</text>
+</a>
+</g>
+</g>
+<!-- NN6_0 -->
+<g id="NN6_0" class="node">
+<title>NN6_0</title>
+<g id="a_NN6_0"><a xlink:title="0.83GB">
+<polygon fill="#f8f8f8" stroke="black" points="1125,-223 1075,-223 1071,-219 1071,-187 1121,-187 1125,-191 1125,-223"/>
+<polyline fill="none" stroke="black" points="1121,-219 1071,-219"/>
+<polyline fill="none" stroke="black" points="1121,-219 1121,-187"/>
+<polyline fill="none" stroke="black" points="1121,-219 1125,-223"/>
+<text xml:space="preserve" text-anchor="middle" x="1098" y="-202.28" font-family="Times,serif" font-size="8.00">40kB</text>
+</a>
+</g>
+</g>
+<!-- N6&#45;&gt;NN6_0 -->
+<g id="edge10" class="edge">
+<title>N6&#45;&gt;NN6_0</title>
+<g id="a_edge10"><a xlink:title="0.83GB">
+<path fill="none" stroke="black" d="M1145.01,-307.74C1136.21,-295.1 1126.73,-280.29 1119.5,-266 1114.42,-255.96 1109.98,-244.42 1106.48,-234.17"/>
+<polygon fill="black" stroke="black" points="1109.83,-233.14 1103.4,-224.72 1103.17,-235.31 1109.83,-233.14"/>
+</a>
+</g>
+<g id="a_edge10&#45;label"><a xlink:title="0.83GB">
+<text xml:space="preserve" text-anchor="middle" x="1142.75" y="-252.7" font-family="Times,serif" font-size="14.00"> 0.83GB</text>
+</a>
+</g>
+</g>
+<!-- NN6_1 -->
+<g id="NN6_1" class="node">
+<title>NN6_1</title>
+<g id="a_NN6_1"><a xlink:title="0.43GB">
+<polygon fill="#f8f8f8" stroke="black" points="1197,-223 1147,-223 1143,-219 1143,-187 1193,-187 1197,-191 1197,-223"/>
+<polyline fill="none" stroke="black" points="1193,-219 1143,-219"/>
+<polyline fill="none" stroke="black" points="1193,-219 1193,-187"/>
+<polyline fill="none" stroke="black" points="1193,-219 1197,-223"/>
+<text xml:space="preserve" text-anchor="middle" x="1170" y="-202.28" font-family="Times,serif" font-size="8.00">20kB</text>
+</a>
+</g>
+</g>
+<!-- N6&#45;&gt;NN6_1 -->
+<g id="edge11" class="edge">
+<title>N6&#45;&gt;NN6_1</title>
+<g id="a_edge11"><a xlink:title="0.43GB">
+<path fill="none" stroke="black" d="M1170,-307.63C1170,-285.2 1170,-255.95 1170,-234.6"/>
+<polygon fill="black" stroke="black" points="1173.5,-234.85 1170,-224.85 1166.5,-234.85 1173.5,-234.85"/>
+</a>
+</g>
+<g id="a_edge11&#45;label"><a xlink:title="0.43GB">
+<text xml:space="preserve" text-anchor="middle" x="1193.25" y="-252.7" font-family="Times,serif" font-size="14.00"> 0.43GB</text>
+</a>
+</g>
+</g>
+<!-- NN6_2 -->
+<g id="NN6_2" class="node">
+<title>NN6_2</title>
+<g id="a_NN6_2"><a xlink:title="0.21GB">
+<polygon fill="#f8f8f8" stroke="black" points="1269,-223 1219,-223 1215,-219 1215,-187 1265,-187 1269,-191 1269,-223"/>
+<polyline fill="none" stroke="black" points="1265,-219 1215,-219"/>
+<polyline fill="none" stroke="black" points="1265,-219 1265,-187"/>
+<polyline fill="none" stroke="black" points="1265,-219 1269,-223"/>
+<text xml:space="preserve" text-anchor="middle" x="1242" y="-202.28" font-family="Times,serif" font-size="8.00">10kB</text>
+</a>
+</g>
+</g>
+<!-- N6&#45;&gt;NN6_2 -->
+<g id="edge12" class="edge">
+<title>N6&#45;&gt;NN6_2</title>
+<g id="a_edge12"><a xlink:title="0.21GB">
+<path fill="none" stroke="black" d="M1194.67,-307.68C1203.37,-295.03 1212.77,-280.23 1220,-266 1225.11,-255.94 1229.63,-244.4 1233.23,-234.14"/>
+<polygon fill="black" stroke="black" points="1236.53,-235.29 1236.39,-224.7 1229.9,-233.07 1236.53,-235.29"/>
+</a>
+</g>
+<g id="a_edge12&#45;label"><a xlink:title="0.21GB">
+<text xml:space="preserve" text-anchor="middle" x="1250.47" y="-252.7" font-family="Times,serif" font-size="14.00"> 0.21GB</text>
+</a>
+</g>
+</g>
+<!-- NN7_0 -->
+<g id="NN7_0" class="node">
+<title>NN7_0</title>
+<g id="a_NN7_0"><a xlink:title="0.27GB">
+<polygon fill="#f8f8f8" stroke="black" points="1380,-223 1330,-223 1326,-219 1326,-187 1376,-187 1380,-191 1380,-223"/>
+<polyline fill="none" stroke="black" points="1376,-219 1326,-219"/>
+<polyline fill="none" stroke="black" points="1376,-219 1376,-187"/>
+<polyline fill="none" stroke="black" points="1376,-219 1380,-223"/>
+<text xml:space="preserve" text-anchor="middle" x="1353" y="-202.28" font-family="Times,serif" font-size="8.00">576B</text>
+</a>
+</g>
+</g>
+<!-- N7&#45;&gt;NN7_0 -->
+<g id="edge13" class="edge">
+<title>N7&#45;&gt;NN7_0</title>
+<g id="a_edge13"><a xlink:title="0.27GB">
+<path fill="none" stroke="black" d="M1353,-300.13C1353,-278.99 1353,-253.71 1353,-234.67"/>
+<polygon fill="black" stroke="black" points="1356.5,-234.68 1353,-224.68 1349.5,-234.68 1356.5,-234.68"/>
+</a>
+</g>
+<g id="a_edge13&#45;label"><a xlink:title="0.27GB">
+<text xml:space="preserve" text-anchor="middle" x="1376.25" y="-252.7" font-family="Times,serif" font-size="14.00"> 0.27GB</text>
+</a>
+</g>
+</g>
+<!-- NN8_0 -->
+<g id="NN8_0" class="node">
+<title>NN8_0</title>
+<g id="a_NN8_0"><a xlink:title="0.18GB">
+<polygon fill="#f8f8f8" stroke="black" points="1556,-223 1506,-223 1502,-219 1502,-187 1552,-187 1556,-191 1556,-223"/>
+<polyline fill="none" stroke="black" points="1552,-219 1502,-219"/>
+<polyline fill="none" stroke="black" points="1552,-219 1552,-187"/>
+<polyline fill="none" stroke="black" points="1552,-219 1556,-223"/>
+<text xml:space="preserve" text-anchor="middle" x="1529" y="-202.28" font-family="Times,serif" font-size="8.00">4kB</text>
+</a>
+</g>
+</g>
+<!-- N8&#45;&gt;NN8_0 -->
+<g id="edge14" class="edge">
+<title>N8&#45;&gt;NN8_0</title>
+<g id="a_edge14"><a xlink:title="0.18GB">
+<path fill="none" stroke="black" d="M1529,-310.7C1529,-288.01 1529,-257.15 1529,-234.82"/>
+<polygon fill="black" stroke="black" points="1532.5,-234.91 1529,-224.91 1525.5,-234.91 1532.5,-234.91"/>
+</a>
+</g>
+<g id="a_edge14&#45;label"><a xlink:title="0.18GB">
+<text xml:space="preserve" text-anchor="middle" x="1552.25" y="-252.7" font-family="Times,serif" font-size="14.00"> 0.18GB</text>
+</a>
+</g>
+</g>
+<!-- N9 -->
+<g id="node9" class="node">
+<title>N9</title>
+<g id="a_node9"><a xlink:title="fmt.Sprintf (0.19GB)">
+<polygon fill="#ededec" stroke="#b2b1ad" points="2122.62,-141.5 2029.38,-141.5 2029.38,-88.5 2122.62,-88.5 2122.62,-141.5"/>
+<text xml:space="preserve" text-anchor="middle" x="2076" y="-128" font-family="Times,serif" font-size="10.00">fmt</text>
+<text xml:space="preserve" text-anchor="middle" x="2076" y="-116.75" font-family="Times,serif" font-size="10.00">Sprintf</text>
+<text xml:space="preserve" text-anchor="middle" x="2076" y="-105.5" font-family="Times,serif" font-size="10.00">0.19GB (0.51%)</text>
+<text xml:space="preserve" text-anchor="middle" x="2076" y="-94.25" font-family="Times,serif" font-size="10.00">of 0.19GB (0.52%)</text>
+</a>
+</g>
+</g>
+<!-- NN9_0 -->
+<g id="NN9_0" class="node">
+<title>NN9_0</title>
+<g id="a_NN9_0"><a xlink:title="0.19GB">
+<polygon fill="#f8f8f8" stroke="black" points="2103,-36 2053,-36 2049,-32 2049,0 2099,0 2103,-4 2103,-36"/>
+<polyline fill="none" stroke="black" points="2099,-32 2049,-32"/>
+<polyline fill="none" stroke="black" points="2099,-32 2099,0"/>
+<polyline fill="none" stroke="black" points="2099,-32 2103,-36"/>
+<text xml:space="preserve" text-anchor="middle" x="2076" y="-15.28" font-family="Times,serif" font-size="8.00">16B</text>
+</a>
+</g>
+</g>
+<!-- N9&#45;&gt;NN9_0 -->
+<g id="edge15" class="edge">
+<title>N9&#45;&gt;NN9_0</title>
+<g id="a_edge15"><a xlink:title="0.19GB">
+<path fill="none" stroke="black" stroke-dasharray="1,5" d="M2076,-88.04C2076,-75.55 2076,-60.54 2076,-47.71"/>
+<polygon fill="black" stroke="black" points="2079.5,-47.74 2076,-37.74 2072.5,-47.74 2079.5,-47.74"/>
+</a>
+</g>
+<g id="a_edge15&#45;label"><a xlink:title="0.19GB">
+<text xml:space="preserve" text-anchor="middle" x="2099.25" y="-57.2" font-family="Times,serif" font-size="14.00"> 0.19GB</text>
+</a>
+</g>
+</g>
+<!-- NN10_0 -->
+<g id="NN10_0" class="node">
+<title>NN10_0</title>
+<g id="a_NN10_0"><a xlink:title="0.24GB">
+<polygon fill="#f8f8f8" stroke="black" points="1715,-223 1665,-223 1661,-219 1661,-187 1711,-187 1715,-191 1715,-223"/>
+<polyline fill="none" stroke="black" points="1711,-219 1661,-219"/>
+<polyline fill="none" stroke="black" points="1711,-219 1711,-187"/>
+<polyline fill="none" stroke="black" points="1711,-219 1715,-223"/>
+<text xml:space="preserve" text-anchor="middle" x="1688" y="-202.28" font-family="Times,serif" font-size="8.00">56kB</text>
+</a>
+</g>
+</g>
+<!-- N10&#45;&gt;NN10_0 -->
+<g id="edge16" class="edge">
+<title>N10&#45;&gt;NN10_0</title>
+<g id="a_edge16"><a xlink:title="0.24GB">
+<path fill="none" stroke="black" d="M1688,-303.75C1688,-281.93 1688,-254.8 1688,-234.66"/>
+<polygon fill="black" stroke="black" points="1691.5,-234.93 1688,-224.93 1684.5,-234.93 1691.5,-234.93"/>
+</a>
+</g>
+<g id="a_edge16&#45;label"><a xlink:title="0.24GB">
+<text xml:space="preserve" text-anchor="middle" x="1711.25" y="-252.7" font-family="Times,serif" font-size="14.00"> 0.24GB</text>
+</a>
+</g>
+</g>
+<!-- N11&#45;&gt;N9 -->
+<g id="edge34" class="edge">
+<title>N11&#45;&gt;N9</title>
+<g id="a_edge34"><a xlink:title="github.com/elotusteam/microservice&#45;project/tests/performance.BenchmarkMapOperations.func3 &#45;&gt; fmt.Sprintf (0.05GB)">
+<path fill="none" stroke="#b2b2b1" d="M1801.06,-303.78C1766.9,-268.97 1729.07,-216.76 1760.5,-178.5 1792.41,-139.65 1935.55,-124.53 2017.64,-118.98"/>
+<polygon fill="#b2b2b1" stroke="#b2b2b1" points="2017.78,-122.48 2027.54,-118.34 2017.33,-115.49 2017.78,-122.48"/>
+</a>
+</g>
+<g id="a_edge34&#45;label"><a xlink:title="github.com/elotusteam/microservice&#45;project/tests/performance.BenchmarkMapOperations.func3 &#45;&gt; fmt.Sprintf (0.05GB)">
+<text xml:space="preserve" text-anchor="middle" x="1783.75" y="-199.95" font-family="Times,serif" font-size="14.00"> 0.05GB</text>
+</a>
+</g>
+</g>
+<!-- NN11_0 -->
+<g id="NN11_0" class="node">
+<title>NN11_0</title>
+<g id="a_NN11_0"><a xlink:title="0.36GB">
+<polygon fill="#f8f8f8" stroke="black" points="1870,-223 1820,-223 1816,-219 1816,-187 1866,-187 1870,-191 1870,-223"/>
+<polyline fill="none" stroke="black" points="1866,-219 1816,-219"/>
+<polyline fill="none" stroke="black" points="1866,-219 1866,-187"/>
+<polyline fill="none" stroke="black" points="1866,-219 1870,-223"/>
+<text xml:space="preserve" text-anchor="middle" x="1843" y="-202.28" font-family="Times,serif" font-size="8.00">56kB</text>
+</a>
+</g>
+</g>
+<!-- N11&#45;&gt;NN11_0 -->
+<g id="edge17" class="edge">
+<title>N11&#45;&gt;NN11_0</title>
+<g id="a_edge17"><a xlink:title="0.36GB">
+<path fill="none" stroke="black" d="M1843,-303.75C1843,-281.93 1843,-254.8 1843,-234.66"/>
+<polygon fill="black" stroke="black" points="1846.5,-234.93 1843,-224.93 1839.5,-234.93 1846.5,-234.93"/>
+</a>
+</g>
+<g id="a_edge17&#45;label"><a xlink:title="0.36GB">
+<text xml:space="preserve" text-anchor="middle" x="1866.25" y="-252.7" font-family="Times,serif" font-size="14.00"> 0.36GB</text>
+</a>
+</g>
+</g>
+<!-- NN12_0 -->
+<g id="NN12_0" class="node">
+<title>NN12_0</title>
+<g id="a_NN12_0"><a xlink:title="0.21GB">
+<polygon fill="#f8f8f8" stroke="black" points="2026,-223 1976,-223 1972,-219 1972,-187 2022,-187 2026,-191 2026,-223"/>
+<polyline fill="none" stroke="black" points="2022,-219 1972,-219"/>
+<polyline fill="none" stroke="black" points="2022,-219 2022,-187"/>
+<polyline fill="none" stroke="black" points="2022,-219 2026,-223"/>
+<text xml:space="preserve" text-anchor="middle" x="1999" y="-202.28" font-family="Times,serif" font-size="8.00">96B</text>
+</a>
+</g>
+</g>
+<!-- N12&#45;&gt;NN12_0 -->
+<g id="edge18" class="edge">
+<title>N12&#45;&gt;NN12_0</title>
+<g id="a_edge18"><a xlink:title="0.21GB">
+<path fill="none" stroke="black" d="M1999,-315.29C1999,-292.36 1999,-258.82 1999,-234.95"/>
+<polygon fill="black" stroke="black" points="2002.5,-234.97 1999,-224.97 1995.5,-234.97 2002.5,-234.97"/>
+</a>
+</g>
+<g id="a_edge18&#45;label"><a xlink:title="0.21GB">
+<text xml:space="preserve" text-anchor="middle" x="2022.25" y="-252.7" font-family="Times,serif" font-size="14.00"> 0.21GB</text>
+</a>
+</g>
+</g>
+<!-- N13 -->
+<g id="node13" class="node">
+<title>N13</title>
+<g id="a_node13"><a xlink:title="encoding/json.Marshal (0.23GB)">
+<polygon fill="#edecec" stroke="#b2b1ac" points="2340.62,-231.5 2247.38,-231.5 2247.38,-178.5 2340.62,-178.5 2340.62,-231.5"/>
+<text xml:space="preserve" text-anchor="middle" x="2294" y="-218" font-family="Times,serif" font-size="10.00">json</text>
+<text xml:space="preserve" text-anchor="middle" x="2294" y="-206.75" font-family="Times,serif" font-size="10.00">Marshal</text>
+<text xml:space="preserve" text-anchor="middle" x="2294" y="-195.5" font-family="Times,serif" font-size="10.00">0.10GB (0.28%)</text>
+<text xml:space="preserve" text-anchor="middle" x="2294" y="-184.25" font-family="Times,serif" font-size="10.00">of 0.23GB (0.63%)</text>
+</a>
+</g>
+</g>
+<!-- N15&#45;&gt;N13 -->
+<g id="edge31" class="edge">
+<title>N15&#45;&gt;N13</title>
+<g id="a_edge31"><a xlink:title="github.com/elotusteam/microservice&#45;project/tests/performance.BenchmarkJSONMarshaling &#45;&gt; encoding/json.Marshal (0.23GB)">
+<path fill="none" stroke="#b2b1ac" d="M2294,-316.55C2294,-296.01 2294,-266.34 2294,-242.91"/>
+<polygon fill="#b2b1ac" stroke="#b2b1ac" points="2297.5,-243.16 2294,-233.16 2290.5,-243.16 2297.5,-243.16"/>
+</a>
+</g>
+<g id="a_edge31&#45;label"><a xlink:title="github.com/elotusteam/microservice&#45;project/tests/performance.BenchmarkJSONMarshaling &#45;&gt; encoding/json.Marshal (0.23GB)">
+<text xml:space="preserve" text-anchor="middle" x="2317.25" y="-252.7" font-family="Times,serif" font-size="14.00"> 0.23GB</text>
+</a>
+</g>
+</g>
+<!-- N16&#45;&gt;N9 -->
+<g id="edge33" class="edge">
+<title>N16&#45;&gt;N9</title>
+<g id="a_edge33"><a xlink:title="github.com/elotusteam/microservice&#45;project/tests/performance.BenchmarkStringOperations.func2 &#45;&gt; fmt.Sprintf (0.07GB)">
+<path fill="none" stroke="#b2b2b0" d="M2421.93,-318.21C2414.35,-282.69 2394.6,-214.48 2350,-178.5 2317.31,-152.13 2204.66,-132.96 2134.39,-123.23"/>
+<polygon fill="#b2b2b0" stroke="#b2b2b0" points="2134.95,-119.78 2124.57,-121.9 2134.01,-126.71 2134.95,-119.78"/>
+</a>
+</g>
+<g id="a_edge33&#45;label"><a xlink:title="github.com/elotusteam/microservice&#45;project/tests/performance.BenchmarkStringOperations.func2 &#45;&gt; fmt.Sprintf (0.07GB)">
+<text xml:space="preserve" text-anchor="middle" x="2414.56" y="-199.95" font-family="Times,serif" font-size="14.00"> 0.07GB</text>
 </a>
 </g>
 </g>

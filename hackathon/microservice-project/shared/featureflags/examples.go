@@ -190,9 +190,9 @@ func (h *ExampleAPIHandler) GetUserHandler(c *gin.Context) {
 	if enhancedResponse {
 		// Add additional metadata
 		response["metadata"] = gin.H{
-			"timestamp":    time.Now(),
+			"timestamp":   time.Now(),
 			"api_version": "2.0",
-			"features":     []string{"enhanced"},
+			"features":    []string{"enhanced"},
 		}
 		response["_flags"] = gin.H{
 			"enhanced_response": true,
@@ -218,7 +218,7 @@ func (h *ExampleAPIHandler) GetDashboardHandler(c *gin.Context) {
 
 	// Build dashboard response based on flags
 	dashboard := gin.H{
-		"title": "User Dashboard",
+		"title":   "User Dashboard",
 		"widgets": []gin.H{},
 	}
 

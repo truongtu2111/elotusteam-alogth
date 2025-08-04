@@ -17,12 +17,13 @@ import (
 
 // fileService implements the FileService interface
 type fileService struct {
-	repoManager         fileDomain.RepositoryManager
-	storageService      StorageService
-	permissionService   PermissionService
-	notificationService NotificationService
-	activityService     ActivityService
-	config              *config.Config
+	repoManager            fileDomain.RepositoryManager
+	storageService         StorageService
+	permissionService      PermissionService
+	notificationService    NotificationService
+	activityService        ActivityService
+	imageProcessingService ImageProcessingService
+	config                 *config.Config
 }
 
 // NewFileService creates a new file service instance
@@ -32,15 +33,17 @@ func NewFileService(
 	permissionService PermissionService,
 	notificationService NotificationService,
 	activityService ActivityService,
+	imageProcessingService ImageProcessingService,
 	config *config.Config,
 ) FileService {
 	return &fileService{
-		repoManager:         repoManager,
-		storageService:      storageService,
-		permissionService:   permissionService,
-		notificationService: notificationService,
-		activityService:     activityService,
-		config:              config,
+		repoManager:            repoManager,
+		storageService:         storageService,
+		permissionService:      permissionService,
+		notificationService:    notificationService,
+		activityService:        activityService,
+		imageProcessingService: imageProcessingService,
+		config:                 config,
 	}
 }
 
@@ -145,6 +148,17 @@ func (s *fileService) UploadFile(ctx context.Context, req *UploadFileRequest) (*
 	if err != nil {
 		// Log error but don't fail the upload
 		fmt.Printf("Failed to send notification: %v\n", err)
+	}
+
+	// Generate image variants if the file is an image
+	if s.isImageFile(file.MimeType) {
+		go func() {
+			// Use background context for async processing
+			bgCtx := context.Background()
+			if err := s.imageProcessingService.GenerateVariants(bgCtx, file.ID, file.Path); err != nil {
+				fmt.Printf("Failed to generate image variants for file %s: %v\n", file.ID, err)
+			}
+		}()
 	}
 
 	return &UploadFileResponse{
@@ -335,6 +349,7 @@ func (s *fileService) UpdateFileMetadata(ctx context.Context, fileID uuid.UUID, 
 		return fmt.Errorf("failed to get file: %w", err)
 	}
 
+	// Update metadata
 	file.Metadata = metadata
 	file.UpdatedAt = time.Now()
 
@@ -344,6 +359,11 @@ func (s *fileService) UpdateFileMetadata(ctx context.Context, fileID uuid.UUID, 
 	}
 
 	return nil
+}
+
+// isImageFile checks if the file is an image based on its MIME type
+func (s *fileService) isImageFile(mimeType string) bool {
+	return strings.HasPrefix(mimeType, "image/")
 }
 
 // GetUserStorageStats retrieves user storage statistics

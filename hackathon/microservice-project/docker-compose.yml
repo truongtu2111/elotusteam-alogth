@@ -40,8 +40,14 @@ services:
       - DB_NAME=file_db
       - DB_USER=postgres
       - DB_PASSWORD=password
+      - AUTH_SERVICE_URL=http://auth-service:8081
+      - NOTIFICATION_SERVICE_URL=http://notification-service:8084
+      - ANALYTICS_SERVICE_URL=http://analytics-service:8085
     depends_on:
       - postgres
+      - auth-service
+      - notification-service
+      - analytics-service
     networks:
       - microservice-network
 
@@ -58,6 +64,26 @@ services:
       - DB_HOST=postgres
       - DB_PORT=5432
       - DB_NAME=user_db
+      - DB_USER=postgres
+      - DB_PASSWORD=password
+    depends_on:
+      - postgres
+    networks:
+      - microservice-network
+
+  # Notification Service
+  notification-service:
+    build:
+      context: .
+      dockerfile: services/notification/Dockerfile
+    ports:
+      - "8084:8084"
+    environment:
+      - SERVER_HOST=0.0.0.0
+      - SERVER_PORT=8084
+      - DB_HOST=postgres
+      - DB_PORT=5432
+      - DB_NAME=notification_db
       - DB_USER=postgres
       - DB_PASSWORD=password
     depends_on:
@@ -121,6 +147,7 @@ services:
       - auth-service
       - file-service
       - user-service
+      - notification-service
       - analytics-service
     networks:
       - microservice-network

@@ -642,7 +642,7 @@ func LoadConfig() (*Config, error) {
 	// Load services configuration
 	config.Services = ServicesConfig{
 		User: ServiceConfig{
-			BaseURL: getEnv("USER_SERVICE_URL", "http://localhost:8081"),
+			BaseURL: getEnv("USER_SERVICE_URL", "http://localhost:8083"),
 			Timeout: getEnvDuration("USER_SERVICE_TIMEOUT", 30*time.Second),
 			Retries: getEnvInt("USER_SERVICE_RETRIES", 3),
 		},
@@ -652,22 +652,22 @@ func LoadConfig() (*Config, error) {
 			Retries: getEnvInt("FILE_SERVICE_RETRIES", 3),
 		},
 		Notification: ServiceConfig{
-			BaseURL: getEnv("NOTIFICATION_SERVICE_URL", "http://localhost:8083"),
+			BaseURL: getEnv("NOTIFICATION_SERVICE_URL", "http://localhost:8084"),
 			Timeout: getEnvDuration("NOTIFICATION_SERVICE_TIMEOUT", 30*time.Second),
 			Retries: getEnvInt("NOTIFICATION_SERVICE_RETRIES", 3),
 		},
 		Analytics: ServiceConfig{
-			BaseURL: getEnv("ANALYTICS_SERVICE_URL", "http://localhost:8084"),
+			BaseURL: getEnv("ANALYTICS_SERVICE_URL", "http://localhost:8085"),
 			Timeout: getEnvDuration("ANALYTICS_SERVICE_TIMEOUT", 30*time.Second),
 			Retries: getEnvInt("ANALYTICS_SERVICE_RETRIES", 3),
 		},
 		Search: ServiceConfig{
-			BaseURL: getEnv("SEARCH_SERVICE_URL", "http://localhost:8085"),
+			BaseURL: getEnv("SEARCH_SERVICE_URL", "http://localhost:8086"),
 			Timeout: getEnvDuration("SEARCH_SERVICE_TIMEOUT", 30*time.Second),
 			Retries: getEnvInt("SEARCH_SERVICE_RETRIES", 3),
 		},
 		Auth: ServiceConfig{
-			BaseURL: getEnv("AUTH_SERVICE_URL", "http://localhost:8086"),
+			BaseURL: getEnv("AUTH_SERVICE_URL", "http://localhost:8081"),
 			Timeout: getEnvDuration("AUTH_SERVICE_TIMEOUT", 30*time.Second),
 			Retries: getEnvInt("AUTH_SERVICE_RETRIES", 3),
 		},

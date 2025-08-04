@@ -52,12 +52,23 @@ type FileVersionRepository interface {
 	DeleteByFileID(ctx context.Context, fileID uuid.UUID) error
 }
 
+// ImageVariantRepository defines the interface for image variant operations
+type ImageVariantRepository interface {
+	Create(ctx context.Context, variant *ImageVariant) error
+	GetByFileID(ctx context.Context, fileID uuid.UUID) ([]*ImageVariant, error)
+	GetByID(ctx context.Context, id string) (*ImageVariant, error)
+	Update(ctx context.Context, variant *ImageVariant) error
+	Delete(ctx context.Context, id string) error
+	DeleteByFileID(ctx context.Context, fileID uuid.UUID) error
+}
+
 // RepositoryManager aggregates all file-related repositories
 type RepositoryManager interface {
 	File() FileRepository
 	UploadSession() UploadSessionRepository
 	FileShare() FileShareRepository
 	FileVersion() FileVersionRepository
+	ImageVariant() ImageVariantRepository
 	BeginTx(ctx context.Context) (RepositoryManager, error)
 	Commit() error
 	Rollback() error
